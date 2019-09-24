@@ -1,0 +1,167 @@
+---
+title: "Chapter 2 Carrizo"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(meta)
+library(PRISMAstatement)
+library(skimr)
+setwd("/R Packages/Chapter 2")
+```
+
+```{r}
+###Load all necessary .csv files
+setwd("/R Packages/Chapter 2")
+photo <- read.csv("Carrizo Shrub Photo density Sheet.csv")
+focal <- read.csv("Focal Observations Data Sheet.csv")
+transect <- read.csv("Transect Data Sheet.csv")
+cam.location <- read.csv("Camera Location data Sheet.csv")
+```
+
+
+### Data Set-up
+```{r}
+###Give Summary of photo data
+
+summary(photo)
+```
+
+```{r}
+count.hit <- photo %>%
+  count(animal.hit) %>%
+  na.omit()
+summary(count.hit)
+
+###Camera recorded an animal 2.705% of the time. Not too bad
+```
+```{r}
+skim(photo)
+```
+```{r}
+###Transect Data
+
+summary(transect)
+```
+
+```{r}
+tran.hit <- transect %>%
+  count(animal.hit) %>%
+  na.omit()
+summary(tran.hit)
+```
+
+```{r}
+skim(transect)
+```
+```{r}
+tran.hit %>%
+  ggplot(aes(animal.hit, n)) + geom_col() + theme_classic() + xlab("Hits") + ylab("Count") + ggtitle("Hits during Transects")
+```
+```{r}
+####Summary capture data on Transects
+transect.data <- transect %>%
+  group_by(Site, Site.Number, Site.Density) %>%
+  summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTM)-1) %>% mutate(rate = captures/n) #-1 for richness bc of none as level
+transect.data$rate <- as.character(transect.data$rate)
+
+###Summary Transect Animal Data
+transect.diversity <- transect %>%
+  group_by(Site, Site.Number, Site.Density) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
+
+unique(transect.diversity$Site.Density)
+```
+```{r}
+transect.level <- transect %>%
+  group_by(Site, Site.Density, Date) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
+
+unique(transect.level$Site.Density)
+```
+
+```{r}
+###Data Viz for number of hits during photo analysis
+count.hit %>%
+  ggplot(aes(animal.hit, n)) + geom_col() + theme_classic() + xlab("Hits") + ylab("Count") + ggtitle("Number of total animal hits")
+```
+```{r}
+###Summary Capture Data
+data <- photo %>%
+  group_by(region, site..3.or.4., week, level..l.m.h.none., rep, camera.number) %>%
+  summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTU)-1) %>% mutate(rate = captures/n) #-1 for richness bc of none as level
+data$rep <- as.character(data$rep)
+
+###Summary Animal Data
+diversity <- photo %>%
+  group_by(region, site..3.or.4., week, rep, RTU) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
+
+unique(diversity$RTU)
+```
+
+```{r}
+###Summary level Data
+level <- photo %>%
+  group_by(region, site..3.or.4., week, rep, level..l.m.h.none.) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
+
+unique(level$level..l.m.h.none.)
+```
+
+```{r}
+animals <- photo %>%
+  group_by(region, site..3.or.4., week, rep, RTU) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
+
+unique(animals$RTU)
+```
+
+
+#Data Viz
+```{r}
+
+```
+
+
+```{r}
+###Total captures between site levels
+
+ggplot(level, aes(level..l.m.h.none., captures)) +
+  geom_boxplot() + 
+  labs(y = "total captures", x = "site density")
+```
+```{r}
+m <- glm(captures~level..l.m.h.none., data = level)
+summary(m)
+```
+```{r}
+### Test if data is significant
+anova(m, test = "Chisq")
+
+####ITS SIGNIFICANT!!!
+```
+```{r}
+shapiro.test(m$residuals)
+
+###Data is Normal
+```
+```{r}
+
+```
+
+
+```{r}
+###Capture rate per site level
+ggplot(level, aes(level..l.m.h.none., rate)) +
+  geom_boxplot() + 
+  labs(y = "capture rate", x = "site density")
+```
+
+```{r}
+
+```
+
