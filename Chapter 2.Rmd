@@ -122,9 +122,6 @@ unique(animals$RTU)
 
 
 #Data Viz
-```{r}
-
-```
 
 
 ```{r}
@@ -132,8 +129,68 @@ unique(animals$RTU)
 
 ggplot(level, aes(level..l.m.h.none., captures)) +
   geom_boxplot() + 
-  labs(y = "total captures", x = "site density")
+  labs(y = "total captures", x = "site density") + ggtitle("Number of Total Animal Hits in Camera Traps")
 ```
+```{r}
+###Capture rate per site level
+ggplot(level, aes(level..l.m.h.none., rate)) +
+  geom_boxplot() + 
+  labs(y = "capture rate", x = "site density")
+```
+
+
+```{r}
+ggplot(transect.level, aes(rate, captures, color = Site.Density)) +
+         geom_point() +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "Rate of Capture", y = "total captures")
+```
+```{r}
+require(mgcv)
+ggplot(transect.level, aes(rate, captures, color = Site.Density)) +
+         stat_smooth(method = "gam") +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "Rate of Capture", y = "total captures")
+```
+
+```{r}
+ggplot(transect.level, aes(n, captures, color = Site.Density)) +
+         geom_point() +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "n", y = "total captures")
+```
+```{r}
+require(mgcv)
+ggplot(transect.level, aes(n, captures, color = Site.Density)) +
+         stat_smooth(method = "gam") +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "n", y = "total captures")
+```
+
+```{r}
+ggplot(transect.level, aes(rate, n, color = Site.Density)) +
+         geom_point() +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "Rate of Capture", y = "n")
+```
+```{r}
+require(mgcv)
+ggplot(transect.level, aes(n, rate, color = Site.Density)) +
+         stat_smooth(method = "gam") +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "n", y = "rate")
+```
+
+
+
+###Stats
+
 ```{r}
 m <- glm(captures~level..l.m.h.none., data = level)
 summary(m)
@@ -150,18 +207,29 @@ shapiro.test(m$residuals)
 ###Data is Normal
 ```
 ```{r}
-
+m <- glm(captures~level..l.m.h.none., data = level, family = "quasipoisson")
+summary(m)
 ```
 
+```{r}
+mp <- glm(rate~level..l.m.h.none., data = level)
+summary(mp)
+```
+```{r}
+anova(mp)
+```
 
 ```{r}
-###Capture rate per site level
-ggplot(level, aes(level..l.m.h.none., rate)) +
-  geom_boxplot() + 
+###Boxplot for Transect Captures
+ggplot(transect.level,  aes(Site.Density, captures)) +
+  geom_boxplot() +
   labs(y = "capture rate", x = "site density")
 ```
 
 ```{r}
-
+mt <- glm(captures~Site.Density, data = transect.level)
+summary(mt)
 ```
-
+```{r}
+anova(mt, test = "Chisq")
+```
