@@ -2,7 +2,7 @@
 title: "Chapter 2 Carrizo"
 output: html_document
 ---
-
+###Load Data
 ```{r setup, include=FALSE}
 library(ggplot2)
 library(tidyverse)
@@ -121,8 +121,7 @@ unique(animals$RTU)
 ```
 
 
-#Data Viz
-
+##Data Viz
 
 ```{r}
 ###Total captures between site levels
@@ -208,8 +207,7 @@ ggplot(plot.diversity, aes(RTU, rate, fill = site..3.or.4.)) +
 ```
 
 
-###Stats
-
+##Stats
 ```{r}
 m <- glm(captures~level..l.m.h.none., data = level)
 summary(m)
