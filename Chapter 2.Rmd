@@ -209,7 +209,7 @@ ggplot(plot.diversity, aes(RTU, rate, fill = site..3.or.4.)) +
 
 ##Stats
 ```{r}
-m <- glm(captures~level..l.m.h.none., data = level)
+m <- glm(captures~level..l.m.h.none., data = level) #capture difference between microsite
 summary(m)
 ```
 ```{r}
@@ -227,13 +227,44 @@ shapiro.test(m$residuals)
 m <- glm(captures~level..l.m.h.none., data = level, family = "quasipoisson")
 summary(m)
 ```
+```{r}
+m <- glm(captures~site..3.or.4., data = level) #capture difference between microsite
+summary(m)
+```
+```{r}
+anova(m, test = "Chisq")
+```
+```{r}
+ggplot(level, aes(level..l.m.h.none., captures)) +
+  geom_boxplot() +
+  labs(y = "capture rate", x = "site density")
+```
 
 ```{r}
-mp <- glm(rate~level..l.m.h.none., data = level)
+m <- glm(rate~site..3.or.4., data = level) #capture difference between microsite
+summary(m)
+```
+```{r}
+m <- glm(rate~level..l.m.h.none., data = level) #rate of capture between microsites
+summary(m)
+```
+```{r}
+anova(m, test = "Chisq")
+```
+
+
+```{r}
+ggplot(level, aes(level..l.m.h.none., rate)) +
+  geom_boxplot() +
+  labs(y = "capture rate", x = "site density")
+```
+
+```{r}
+mp <- glm(rate~level..l.m.h.none., data = level, family = "quasipoisson")
 summary(mp)
 ```
 ```{r}
-anova(mp)
+anova(mp, test = "Chisq")
 ```
 
 ```{r}
@@ -248,5 +279,16 @@ mt <- glm(captures~Site.Density, data = transect.level)
 summary(mt)
 ```
 ```{r}
+anova(mt, test = "Chisq") #get p-value for model
+```
+```{r}
+shapiro.test(mt$residuals) #explore residuals
+```
+```{r}
+mt <- glm(rate~Site.Density, data = transect.level)
+summary(mt)
+```
+```{r}
 anova(mt, test = "Chisq")
 ```
+
