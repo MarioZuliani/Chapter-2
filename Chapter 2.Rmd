@@ -77,7 +77,7 @@ unique(transect.diversity$Site.Density)
 ```
 ```{r}
 transect.level <- transect %>%
-  group_by(Site, Site.Density, Date) %>%
+  group_by(Site, Site.Number, Site.Density, Date) %>%
   summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
 
 unique(transect.level$Site.Density)
@@ -188,7 +188,7 @@ ggplot(transect.level, aes(n, rate, color = Site.Density)) +
 
 ```{r}
 ###Diversity Plot from Photo Data looking at Total Captures
-excludes <- c("none", "None", "unidentifiable", "unkown", "", "Unidentifiable")
+excludes <- c("none", "None", "unidentifiable", "unkown", "", "Unidentifiable", "Human")
 
 plot.diversity <- diversity%>%
   filter(!RTU %in% excludes)
@@ -207,7 +207,8 @@ ggplot(plot.diversity, aes(RTU, rate, fill = site..3.or.4.)) +
 ```
 
 
-##Stats
+###Stats
+###Stats for capture compare to level
 ```{r}
 m <- glm(captures~level..l.m.h.none., data = level) #capture difference between microsite
 summary(m)
@@ -221,12 +222,19 @@ anova(m, test = "Chisq")
 ```{r}
 shapiro.test(m$residuals)
 
-###Data is Normal
+###Data is not Normally distributed
+```
+```{r}
+library(lsmeans)
+lsmeans(m, pairwise~level..l.m.h.none., adjust = "Tukey")
 ```
 ```{r}
 m <- glm(captures~level..l.m.h.none., data = level, family = "quasipoisson")
 summary(m)
 ```
+
+
+###Stats for Captures by Site
 ```{r}
 m <- glm(captures~site..3.or.4., data = level) #capture difference between microsite
 summary(m)
@@ -258,7 +266,7 @@ ggplot(level, aes(level..l.m.h.none., rate)) +
   geom_boxplot() +
   labs(y = "capture rate", x = "site density")
 ```
-
+###Stats for rate of capture between Levels
 ```{r}
 mp <- glm(rate~level..l.m.h.none., data = level, family = "quasipoisson")
 summary(mp)
@@ -266,10 +274,20 @@ summary(mp)
 ```{r}
 anova(mp, test = "Chisq")
 ```
+```{r}
+shapiro.test(mp$residuals)
 
+###Data is not Normally distributed
+```
+```{r}
+library(lsmeans)
+lsmeans(mp, pairwise~level..l.m.h.none., adjust = "Tukey")
+```
+
+###Stats for Transect captures
 ```{r}
 ###Boxplot for Transect Captures
-ggplot(transect.level,  aes(Site.Density, captures)) +
+ggplot(transect.data,  aes(Site.Density, captures)) +
   geom_boxplot() +
   labs(y = "capture rate", x = "site density")
 ```
@@ -285,10 +303,19 @@ anova(mt, test = "Chisq") #get p-value for model
 shapiro.test(mt$residuals) #explore residuals
 ```
 ```{r}
+library(lsmeans)
+lsmeans(mt, pairwise~Site.Density, adjust = "Tukey")
+```
+```{r}
+mt <- lm(captures~Site.Number, data = transect.level)
+summary(mt)
+```
+
+
+```{r}
 mt <- glm(rate~Site.Density, data = transect.level)
 summary(mt)
 ```
 ```{r}
 anova(mt, test = "Chisq")
 ```
-
