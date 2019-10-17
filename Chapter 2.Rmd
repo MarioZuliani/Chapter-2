@@ -121,8 +121,7 @@ unique(animals$RTU)
 ```
 
 
-##Data Viz
-
+###Data Viz
 ```{r}
 ###Total captures between site levels
 
@@ -207,7 +206,7 @@ ggplot(plot.diversity, aes(RTU, rate, fill = site..3.or.4.)) +
 ```
 
 
-###Stats
+##Stats
 ###Stats for capture compare to level
 ```{r}
 m <- glm(captures~level..l.m.h.none., data = level) #capture difference between microsite
@@ -319,3 +318,7 @@ summary(mt)
 ```{r}
 anova(mt, test = "Chisq")
 ```
+
+
+###Interpretation
+1) 
