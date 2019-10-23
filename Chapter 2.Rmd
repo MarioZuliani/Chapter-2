@@ -17,6 +17,8 @@ setwd("/R Packages/Chapter 2")
 ###Load all necessary .csv files
 setwd("/R Packages/Chapter 2")
 photo <- read.csv("Carrizo Shrub Photo density Sheet.csv")
+colnames(photo)[5] = "site"
+colnames(photo)[10] = "dense.level"
 focal <- read.csv("Focal Observations Data Sheet.csv")
 transect <- read.csv("Transect Data Sheet.csv")
 cam.location <- read.csv("Camera Location data Sheet.csv")
@@ -91,13 +93,14 @@ count.hit %>%
 ```{r}
 ###Summary Capture Data
 data <- photo %>%
-  group_by(region, site..3.or.4., week, level..l.m.h.none., rep, camera.number) %>%
+  group_by(region, site, week, dense.level, rep, camera.number) %>%
   summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTU)-1) %>% mutate(rate = captures/n) #-1 for richness bc of none as level
 data$rep <- as.character(data$rep)
 
+
 ###Summary Animal Data
 diversity <- photo %>%
-  group_by(region, site..3.or.4., week, rep, RTU) %>%
+  group_by(region, site, week, rep, RTU) %>%
   summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
 
 unique(diversity$RTU)
@@ -106,33 +109,32 @@ unique(diversity$RTU)
 ```{r}
 ###Summary level Data
 level <- photo %>%
-  group_by(region, site..3.or.4., week, rep, level..l.m.h.none.) %>%
+  group_by(region, site, week, rep, dense.level) %>%
   summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
 
-unique(level$level..l.m.h.none.)
+unique(level$dense.level)
 ```
 
 ```{r}
 animals <- photo %>%
-  group_by(region, site..3.or.4., week, rep, RTU) %>%
+  group_by(region, site, week, rep, RTU) %>%
   summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
 
 unique(animals$RTU)
 ```
 
 
-##Data Viz
-
+###Data Viz
 ```{r}
 ###Total captures between site levels
 
-ggplot(level, aes(level..l.m.h.none., captures)) +
+ggplot(level, aes(dense.level, captures)) +
   geom_boxplot() + 
   labs(y = "total captures", x = "site density") + ggtitle("Number of Total Animal Hits in Camera Traps")
 ```
 ```{r}
 ###Capture rate per site level
-ggplot(level, aes(level..l.m.h.none., rate)) +
+ggplot(level, aes(dense.level, rate)) +
   geom_boxplot() + 
   labs(y = "capture rate", x = "site density")
 ```
@@ -193,24 +195,24 @@ excludes <- c("none", "None", "unidentifiable", "unkown", "", "Unidentifiable", 
 plot.diversity <- diversity%>%
   filter(!RTU %in% excludes)
 
-ggplot(plot.diversity, aes(RTU, captures, fill = site..3.or.4.)) +
+ggplot(plot.diversity, aes(RTU, captures, fill = site)) +
   geom_bar(stat = "identity") +
   coord_flip() + 
   labs(fill = "", x = "total captures")
 ```
 ```{r}
 ###Diversity Plot from Photo Data looking at Rate
-ggplot(plot.diversity, aes(RTU, rate, fill = site..3.or.4.)) +
+ggplot(plot.diversity, aes(RTU, rate, fill = site)) +
   geom_bar(stat = "identity") +
   coord_flip() + 
   labs(fill = "", x = "total captures")
 ```
 
 
-###Stats
+##Stats
 ###Stats for capture compare to level
 ```{r}
-m <- glm(captures~level..l.m.h.none., data = level) #capture difference between microsite
+m <- glm(captures~dense.level, data = level) #capture difference between microsite
 summary(m)
 ```
 ```{r}
@@ -226,34 +228,34 @@ shapiro.test(m$residuals)
 ```
 ```{r}
 library(lsmeans)
-lsmeans(m, pairwise~level..l.m.h.none., adjust = "Tukey")
+lsmeans(m, pairwise~dense.level, adjust = "Tukey")
 ```
 ```{r}
-m <- glm(captures~level..l.m.h.none., data = level, family = "quasipoisson")
+m <- glm(captures~dense.level, data = level, family = "quasipoisson")
 summary(m)
 ```
 
 
 ###Stats for Captures by Site
 ```{r}
-m <- glm(captures~site..3.or.4., data = level) #capture difference between microsite
+m <- glm(captures~site, data = level) #capture difference between microsite
 summary(m)
 ```
 ```{r}
 anova(m, test = "Chisq")
 ```
 ```{r}
-ggplot(level, aes(level..l.m.h.none., captures)) +
+ggplot(level, aes(dense.level, captures, fill = as.character(site))) +
   geom_boxplot() +
   labs(y = "capture rate", x = "site density")
 ```
 
 ```{r}
-m <- glm(rate~site..3.or.4., data = level) #capture difference between microsite
+m <- glm(rate~site, data = level) #capture difference between microsite
 summary(m)
 ```
 ```{r}
-m <- glm(rate~level..l.m.h.none., data = level) #rate of capture between microsites
+m <- glm(rate~dense.level, data = level) #rate of capture between microsites
 summary(m)
 ```
 ```{r}
@@ -262,13 +264,13 @@ anova(m, test = "Chisq")
 
 
 ```{r}
-ggplot(level, aes(level..l.m.h.none., rate)) +
+ggplot(level, aes(dense.level, rate)) +
   geom_boxplot() +
   labs(y = "capture rate", x = "site density")
 ```
 ###Stats for rate of capture between Levels
 ```{r}
-mp <- glm(rate~level..l.m.h.none., data = level, family = "quasipoisson")
+mp <- glm(rate~dense.level, data = level, family = "quasipoisson")
 summary(mp)
 ```
 ```{r}
@@ -281,7 +283,7 @@ shapiro.test(mp$residuals)
 ```
 ```{r}
 library(lsmeans)
-lsmeans(mp, pairwise~level..l.m.h.none., adjust = "Tukey")
+lsmeans(mp, pairwise~dense.level, adjust = "Tukey")
 ```
 
 ###Stats for Transect captures
@@ -303,6 +305,7 @@ anova(mt, test = "Chisq") #get p-value for model
 shapiro.test(mt$residuals) #explore residuals
 ```
 ```{r}
+library(emmeans)
 library(lsmeans)
 lsmeans(mt, pairwise~Site.Density, adjust = "Tukey")
 ```
@@ -319,3 +322,24 @@ summary(mt)
 ```{r}
 anova(mt, test = "Chisq")
 ```
+###Look at Stats for varying density level by individual sites for cameras
+```{r}
+library(emmeans)
+mg <- glm(captures~dense.level*as.factor(site), family = "quasipoisson", data = level)
+summary(mg)
+anova(mg, test = "Chisq")
+emmeans(mg, pairwise~dense.level*as.factor(site))
+```
+regression curve
+
+###Look at Stats for varying density level by individual sites for Transects
+```{r}
+library(emmeans)
+mt <- glm(captures~Site.Density*as.factor(Site.Number), family = "quasipoisson", data = transect.level)
+summary(mg)
+anova(mt, test = "Chisq")
+emmeans(mt, pairwise~Site.Density*as.factor(Site.Number))
+```
+
+###Interpretation
+1) 
