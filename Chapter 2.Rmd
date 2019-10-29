@@ -13,15 +13,19 @@ library(skimr)
 setwd("/R Packages/Chapter 2")
 ```
 
-```{r}
+```{r, message=FALSE, warning=TRUE}
 ###Load all necessary .csv files
 setwd("/R Packages/Chapter 2")
-photo <- read.csv("Carrizo Shrub Photo density Sheet.csv")
+photo <- read_csv("Carrizo Shrub Photo density Sheet.csv")
 colnames(photo)[5] = "site"
 colnames(photo)[10] = "dense.level"
-focal <- read.csv("Focal Observations Data Sheet.csv")
-transect <- read.csv("Transect Data Sheet.csv")
-cam.location <- read.csv("Camera Location data Sheet.csv")
+photo$site <- as.character(photo$site)
+focal <- read_csv("Focal Observations Data Sheet.csv")
+focal$Site <- as.character(focal$Site)
+transect <- read_csv("Transect Data Sheet.csv")
+transect$Site.Number <- as.character(transect$Site.Number)
+cam.location <- read_csv("Camera Location data Sheet.csv")
+str(transect)
 ```
 
 
@@ -330,15 +334,35 @@ summary(mg)
 anova(mg, test = "Chisq")
 emmeans(mg, pairwise~dense.level*as.factor(site))
 ```
-regression curve
+regression curve needed!!!!!
 
 ###Look at Stats for varying density level by individual sites for Transects
 ```{r}
 library(emmeans)
 mt <- glm(captures~Site.Density*as.factor(Site.Number), family = "quasipoisson", data = transect.level)
-summary(mg)
+summary(mt)
 anova(mt, test = "Chisq")
 emmeans(mt, pairwise~Site.Density*as.factor(Site.Number))
+```
+###Look at the rate of capture difference between the sites (Cameras)
+```{r}
+mg <- glm(rate~dense.level*as.factor(site), family = "quasipoisson", data = level)
+summary(mg)
+anova(mg, test = "Chisq")
+emmeans(mg, pairwise~dense.level*as.factor(site))
+```
+###Looks at the rate of capture between site densities (Transects)
+```{r}
+mt <- glm(rate~Site.Density*as.factor(Site.Number), family = "quasipoisson", data = transect.level)
+summary(mt)
+anova(mt, test = "Chisq")
+emmeans(mt, pairwise~Site.Density*as.factor(Site.Number))
+```
+
+
+```{r}
+mod <- lm(captures~dense.level*as.factor(site), data = level)
+summary(mod)
 ```
 
 ###Interpretation
