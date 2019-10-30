@@ -131,13 +131,20 @@ unique(animals$RTU)
 
 ```{r}
 summary(shrub)
-shrub.size <- shrub%>%
-  group_by(Site, site.density, shrub.count, x, y, z)
-summarise(shrub.size)
 ```
 
-##Clean up focal data
 ```{r}
+###Data for shrub size and total number of shrubs in each site. (Ask Chris about)
+shrub.size <- shrub%>%
+  group_by(site.number, site.density, shrub.count, x, y, z) %>%
+  summarise(volume = sum(x*y*z))
+```
+
+
+
+
+```{r}
+##Clean up focal data
 focal.data <- focal %>%
   count(animal.hit) %>%
   na.omit()
@@ -148,6 +155,10 @@ focal.data <- focal %>%
   summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTU)-1) %>% mutate(rate = captures/n)
 
 unique(transect.level$Site.Density)
+
+focal.site <- focal%>%
+  group_by(Site, site.density, Date) %>%
+  summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTU)-1) %>% mutate(rate = captures/n)
 ```
 
 
@@ -234,7 +245,18 @@ ggplot(plot.diversity, aes(RTU, rate, fill = site)) +
   coord_flip() + 
   labs(fill = "", x = "total captures")
 ```
-
+```{r}
+ggplot(focal.data, aes(n, captures, color = site.density)) +
+         stat_smooth(method = "gam") +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~site.density, scales = "free") +
+  labs(color = "", x = "captures", y = "rate")
+```
+```{r}
+ggplot(focal.site, aes(site.density, captures, fill = as.character(Site))) +
+  geom_boxplot() +
+  labs(y = "capture rate", x = "site density")
+```
 
 ##Stats
 ###Stats for capture compare to level
@@ -294,10 +316,6 @@ anova(m, test = "Chisq")
 ggplot(level, aes(dense.level, rate)) +
   geom_boxplot() +
   labs(y = "capture rate", x = "site density")
-```
-
-```{r}
-
 ```
 
 
