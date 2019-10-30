@@ -26,6 +26,8 @@ transect <- read_csv("Transect Data Sheet.csv")
 transect$Site.Number <- as.character(transect$Site.Number)
 cam.location <- read_csv("Camera Location data Sheet.csv")
 str(transect)
+
+shrub <- read.csv("Site Data Sheet.csv")
 ```
 
 
@@ -127,6 +129,12 @@ animals <- photo %>%
 unique(animals$RTU)
 ```
 
+```{r}
+summary(shrub)
+shrub.size <- shrub%>%
+  group_by(Site, site.density, shrub.count, x, y, z)
+summarise(shrub.size)
+```
 
 ###Data Viz
 ```{r}
@@ -272,6 +280,12 @@ ggplot(level, aes(dense.level, rate)) +
   geom_boxplot() +
   labs(y = "capture rate", x = "site density")
 ```
+
+```{r}
+
+```
+
+
 ###Stats for rate of capture between Levels
 ```{r}
 mp <- glm(rate~dense.level, data = level, family = "quasipoisson")
