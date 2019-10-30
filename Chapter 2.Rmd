@@ -10,6 +10,7 @@ library(dplyr)
 library(meta)
 library(PRISMAstatement)
 library(skimr)
+library(MASS)
 setwd("/R Packages/Chapter 2")
 ```
 
@@ -34,7 +35,6 @@ shrub <- read.csv("Site Data Sheet.csv")
 ### Data Set-up
 ```{r}
 ###Give Summary of photo data
-
 summary(photo)
 ```
 
@@ -135,6 +135,21 @@ shrub.size <- shrub%>%
   group_by(Site, site.density, shrub.count, x, y, z)
 summarise(shrub.size)
 ```
+
+##Clean up focal data
+```{r}
+focal.data <- focal %>%
+  count(animal.hit) %>%
+  na.omit()
+
+skim(focal)
+focal.data <- focal %>%
+  group_by(Site, site.density) %>%
+  summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTU)-1) %>% mutate(rate = captures/n)
+
+unique(transect.level$Site.Density)
+```
+
 
 ###Data Viz
 ```{r}
@@ -313,7 +328,7 @@ ggplot(transect.data,  aes(Site.Density, captures)) +
 ```
 
 ```{r}
-mt <- glm(captures~Site.Density, data = transect.level)
+mt <- glm(captures~Site.Density, data = transect.level, family = "poisson")
 summary(mt)
 ```
 ```{r}
@@ -378,6 +393,26 @@ emmeans(mt, pairwise~Site.Density*as.factor(Site.Number))
 mod <- lm(captures~dense.level*as.factor(site), data = level)
 summary(mod)
 ```
+
+
+
+```{r}
+ggplot(level, aes(rate, captures, color = dense.level)) +
+         geom_point() +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~dense.level, scales = "free") +
+  labs(color = "", x = "Rate of Capture", y = "captures")
+```
+
+```{r}
+library(emmeans)
+mg <- glm(captures~dense.level*as.factor(site) + offset(log(n)), family = "quasipoisson", data = level)
+summary(mg)
+anova(mg, test = "Chisq")
+emmeans(mg, pairwise~dense.level*as.factor(site))
+```
+
+
 
 ###Interpretation
 1) 
