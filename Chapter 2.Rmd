@@ -252,11 +252,33 @@ ggplot(focal.data, aes(n, captures, color = site.density)) +
   facet_wrap(~site.density, scales = "free") +
   labs(color = "", x = "captures", y = "rate")
 ```
+Camera Presence Boxplot
+```{r}
+ggplot(level, aes(dense.level, captures, fill = as.character(site))) +
+  geom_boxplot() +
+  labs(y = "Presence", x = "site density")
+```
+Camera Abundance Boxplot
+```{r}
+ggplot(level, aes(dense.level, rate, fill = as.character(site))) +
+  geom_boxplot() +
+  labs(y = "Abundance", x = "site density")
+```
+
+
+Focal Presence Boxplot
 ```{r}
 ggplot(focal.site, aes(site.density, captures, fill = as.character(Site))) +
   geom_boxplot() +
-  labs(y = "capture rate", x = "site density")
+  labs(y = "presence", x = "site density")
 ```
+###Focal abundance Boxplot
+```{r}
+ggplot(focal.site, aes(site.density, rate, fill = as.character(Site))) +
+  geom_boxplot() +
+  labs(y = "abundance", x = "site density")
+```
+
 
 ##Stats
 ###Stats for capture compare to level
