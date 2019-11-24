@@ -103,10 +103,9 @@ data <- photo %>%
   summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTU)-1) %>% mutate(rate = captures/n) #-1 for richness bc of none as level
 data$rep <- as.character(data$rep)
 
-
 ###Summary Animal Data
 diversity <- photo %>%
-  group_by(region, site, week, rep, RTU) %>%
+  group_by(region, site, RTU) %>%
   summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
 
 unique(diversity$RTU)
@@ -123,7 +122,8 @@ unique(level$dense.level)
 
 ```{r}
 animals <- photo %>%
-  group_by(region, site, week, rep, RTU) %>%
+  group_by(region, site, RTU) %>%
+  filter(!RTU %in% excludes) %>%
   summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
 
 unique(animals$RTU)
@@ -272,6 +272,10 @@ ggplot(focal.site, aes(site.density, captures, fill = as.character(Site))) +
   geom_boxplot() +
   labs(y = "presence", x = "site density")
 ```
+```{r}
+
+```
+
 ###Focal abundance Boxplot
 ```{r}
 ggplot(focal.site, aes(site.density, rate, fill = as.character(Site))) +
@@ -456,3 +460,7 @@ emmeans(mg, pairwise~dense.level*as.factor(site))
 
 ###Interpretation
 1) 
+##Things still to do
+1) Figure out how to do abundance for images
+2) Figure out how to do diversity for images
+3) Build a species list off what we founf in camera traps
