@@ -18,8 +18,8 @@ setwd("/R Packages/Chapter 2")
 ###Load all necessary .csv files
 setwd("/R Packages/Chapter 2")
 photo <- read_csv("Carrizo Shrub Photo density Sheet.csv")
-colnames(photo)[5] = "site"
-colnames(photo)[10] = "dense.level"
+colnames(photo)[6] = "site"
+colnames(photo)[11] = "dense.level"
 photo$site <- as.character(photo$site)
 focal <- read_csv("Focal Observations Data Sheet.csv")
 focal$Site <- as.character(focal$Site)
@@ -105,7 +105,7 @@ data$rep <- as.character(data$rep)
 
 ###Summary Animal Data
 diversity <- photo %>%
-  group_by(region, site, RTU) %>%
+  group_by(region, site, dense.level, RTU) %>%
   summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
 
 unique(diversity$RTU)
@@ -123,7 +123,6 @@ unique(level$dense.level)
 ```{r}
 animals <- photo %>%
   group_by(region, site, RTU) %>%
-  filter(!RTU %in% excludes) %>%
   summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
 
 unique(animals$RTU)
@@ -139,9 +138,6 @@ shrub.size <- shrub%>%
   group_by(site.number, site.density, shrub.count, x, y, z) %>%
   summarise(volume = sum(x*y*z))
 ```
-
-
-
 
 ```{r}
 ##Clean up focal data
@@ -464,3 +460,42 @@ emmeans(mg, pairwise~dense.level*as.factor(site))
 1) Figure out how to do abundance for images
 2) Figure out how to do diversity for images
 3) Build a species list off what we founf in camera traps
+
+
+
+
+```{r}
+library(tidyverse)
+library(vegan)
+photovegan <- photo %>%
+  group_by(region, site, rep, dense.level, RTU) %>%
+  summarise(captures = sum(animal.hit))
+
+photovegan$region <- gsub(" ", "", photovegan$region)
+photovegan$region <- as.factor(photovegan$region)
+photovegan$uniID <- paste(photovegan$site, photovegan$dense.level, photovegan$rep)
+str(photovegan)
+```
+```{r}
+photovegan %>% select(uniID, RTU, captures) 
+```
+
+
+
+
+
+
+###Diversity Work with Vegan
+```{r}
+library(tidyverse)
+library(vegan)
+diverse <- photo %>%
+  column_to_rownames("ID")
+  
+```
+```{r}
+sppr <- specnumber(photo)
+
+```
+
+
