@@ -476,9 +476,23 @@ photovegan$region <- as.factor(photovegan$region)
 photovegan$uniID <- paste(photovegan$site, photovegan$dense.level, photovegan$rep)
 str(photovegan)
 ```
+
 ```{r}
-photovegan %>% select(uniID, RTU, captures) 
+library(dplyr)
+photovegan <- photovegan %>% 
+  ungroup()%>%
+  dplyr::select(uniID, RTU, captures)
+photovegan <- photovegan %>% group_by(uniID, RTU) %>% summarise(captures = sum(captures))
+
+comm <- photovegan %>% spread(RTU, captures) %>% dplyr::select(-none, -None)
+comm[is.na(comm)] <- 0
 ```
+
+```{r}
+sppr <- specnumber(comm)
+sppr_aov <- aov()
+```
+
 
 
 
