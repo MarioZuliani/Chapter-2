@@ -463,7 +463,7 @@ emmeans(mg, pairwise~dense.level*as.factor(site))
 
 
 
-
+###Diversity Data
 ```{r}
 library(tidyverse)
 library(vegan)
@@ -488,28 +488,20 @@ comm <- photovegan %>% spread(RTU, captures) %>% dplyr::select(-none, -None)
 comm[is.na(comm)] <- 0
 ```
 
+
+
 ```{r}
-sppr <- specnumber(comm)
-sppr_aov <- aov()
+comm <- comm %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
 ```
 
-
-
-
-
-
-
-###Diversity Work with Vegan
 ```{r}
-library(tidyverse)
-library(vegan)
-diverse <- photo %>%
-  column_to_rownames("ID")
-  
+Hphoto <- diversity(comm)
+simpphoto <- diversity(comm, index = "simpson")
+Sphoto <- specnumber(comm)
+Jphoto <- Hphoto/log(Sphoto)
 ```
-```{r}
-sppr <- specnumber(photo)
 
-```
 
 
