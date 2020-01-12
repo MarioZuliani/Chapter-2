@@ -473,7 +473,7 @@ photovegan <- photo %>%
 
 photovegan$region <- gsub(" ", "", photovegan$region)
 photovegan$region <- as.factor(photovegan$region)
-photovegan$uniID <- paste(photovegan$site, photovegan$dense.level, photovegan$rep)
+photovegan$uniID <- paste(photovegan$site, photovegan$dense.level)
 str(photovegan)
 ```
 
@@ -488,8 +488,6 @@ comm <- photovegan %>% spread(RTU, captures) %>% dplyr::select(-none, -None)
 comm[is.na(comm)] <- 0
 ```
 
-
-
 ```{r}
 comm <- comm %>%
   ungroup() %>%
@@ -497,11 +495,39 @@ comm <- comm %>%
 ```
 
 ```{r}
+siteshort <- read_csv("site desntiy shortcut.csv")
+
+shortvegan <- siteshort %>%
+  group_by(Site, site.density, shrub.count)
+
+shortvegan$shrub.count <- gsub(" ", "", shortvegan$shrub.count)
+shortvegan$shrub.count <- as.factor(shortvegan$shrub.count)
+shortvegan$uniID <- paste(shortvegan$site.density, shortvegan$site.count)
+str(shortvegan)
+
+shortvegan <- shortvegan %>%
+  ungroup() %>%
+  dplyr::select(uniID, site.density, shrub.count)
+shortvegan <- shortvegan %>% group_by(uniID, site.density)
+
+shortvegan <- shortvegan %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+
+```
+
+```{r}
 Hphoto <- diversity(comm)
 simpphoto <- diversity(comm, index = "simpson")
 Sphoto <- specnumber(comm)
 Jphoto <- Hphoto/log(Sphoto)
+shortvegan$H <- Hphoto
+shortvegan$Simpson <- simpphoto
+shortvegan$Species <- Sphoto
+shortvegan$Even <- Jphoto
 ```
 
-
+```{r}
+ggplot(shortvegan, aes(site.density, Species)) + geom_boxplot() + ylab("Species Richness")
+```
 
