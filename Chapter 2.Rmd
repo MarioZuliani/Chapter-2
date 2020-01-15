@@ -543,4 +543,77 @@ emmeans(dataphoto, pairwise~site.density)
 
 
 ###Diversity Data for Transects
+```{r}
+library(tidyverse)
+library(vegan)
+transectvegan <- transect %>%
+  group_by(Site, Site.Number, Site.Density, RTM) %>%
+  summarise(captures = sum(animal.hit))
+
+transectvegan$Site.Number <- gsub(" ", "", transectvegan$Site.Number)
+transectvegan$Site.Number <- as.factor(transectvegan$Site.Number)
+transectvegan$uniID <- paste(transectvegan$Site, transectvegan$Site.Density, transectvegan$Site.Number)
+str(photovegan)
+```
+```{r}
+library(dplyr)
+transectvegan <- transectvegan %>% 
+  ungroup()%>%
+  dplyr::select(uniID, RTM, captures)
+transectvegan <- transectvegan %>% group_by(uniID, RTM) %>% summarise(captures = sum(captures))
+
+transectdata <- transectvegan %>% spread(RTM, captures) %>% dplyr::select(-none)
+transectdata[is.na(transectdata)] <- 0
+transectdata <- transectdata %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+```
+
+Now put the site data with the transect data (Seperate from the photo data)
+```{r}
+shorttransect <- siteshort %>%
+  group_by(Site, site.density, shrub.count)
+
+shorttransect$shrub.count <- gsub(" ", "", shorttransect$shrub.count)
+shorttransect$shrub.count <- as.factor(shorttransect$shrub.count)
+shorttransect$uniID <- paste(shorttransect$site.density, shorttransect$site.count)
+str(shorttransect)
+
+shorttransect <- shorttransect %>%
+  ungroup() %>%
+  dplyr::select(uniID, site.density, shrub.count)
+shorttransect <- shorttransect %>% group_by(uniID, site.density)
+
+shorttransect <- shorttransect %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+```
+```{r}
+Htransect <- diversity(transectdata)
+simptransect <- diversity(transectdata, index = "simpson")
+Stransect <- specnumber(transectdata)
+Jtransect <- Htransect/log(Stransect)
+shorttransect$H <- Hphoto
+shorttransect$Simpson <- simptransect
+shorttransect$Species <- Stransect
+shorttransect$Even <- Jtransect
+```
+Figures for transect diversity
+```{r}
+ggplot(shorttransect, aes(site.density, Species)) + geom_boxplot() + ylab("Species Richness")
+ggplot(shorttransect, aes(site.density, Even)) + geom_boxplot() + ylab("Species Richness")
+ggplot(shorttransect, aes(site.density, H)) + geom_boxplot() + ylab("Species Richness")
+```
+```{r}
+datatransect <- glm(H~site.density, data = shorttransect)
+summary(dataphoto)
+```
+```{r}
+anova(datatransect, test = "Chisq")
+emmeans(datatransect, pairwise~site.density)
+```
+Diversity Data for Focal Observations
+```{r}
+
+```
 
