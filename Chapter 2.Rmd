@@ -463,7 +463,7 @@ emmeans(mg, pairwise~dense.level*as.factor(site))
 
 
 
-###Diversity Data
+###Diversity Data for Photos
 ```{r}
 library(tidyverse)
 library(vegan)
@@ -529,5 +529,18 @@ shortvegan$Even <- Jphoto
 
 ```{r}
 ggplot(shortvegan, aes(site.density, Species)) + geom_boxplot() + ylab("Species Richness")
+ggplot(shortvegan, aes(site.density, Even)) + geom_boxplot() + ylab("Species Richness")
+ggplot(shortvegan, aes(site.density, H)) + geom_boxplot() + ylab("Species Richness")
 ```
+```{r}
+dataphoto <- glm(H~site.density, data = shortvegan)
+summary(dataphoto)
+```
+```{r}
+anova(dataphoto, test = "Chisq")
+emmeans(dataphoto, pairwise~site.density)
+```
+
+
+###Diversity Data for Transects
 
