@@ -553,7 +553,7 @@ transectvegan <- transect %>%
 transectvegan$Site.Number <- gsub(" ", "", transectvegan$Site.Number)
 transectvegan$Site.Number <- as.factor(transectvegan$Site.Number)
 transectvegan$uniID <- paste(transectvegan$Site, transectvegan$Site.Density, transectvegan$Site.Number)
-str(photovegan)
+str(transectvegan)
 ```
 ```{r}
 library(dplyr)
@@ -600,8 +600,8 @@ shorttransect$Even <- Jtransect
 ```
 Figures for transect diversity
 ```{r}
-ggplot(shorttransect, aes(site.density, Species)) + geom_boxplot() + ylab("Species Richness")
-ggplot(shorttransect, aes(site.density, Even)) + geom_boxplot() + ylab("Species Richness")
+ggplot(shorttransect, aes(site.density, Species)) + geom_boxplot() + ylab("Number of Species")
+ggplot(shorttransect, aes(site.density, Even)) + geom_boxplot() + ylab("Species Evenness")
 ggplot(shorttransect, aes(site.density, H)) + geom_boxplot() + ylab("Species Richness")
 ```
 ```{r}
@@ -614,6 +614,83 @@ emmeans(datatransect, pairwise~site.density)
 ```
 Diversity Data for Focal Observations
 ```{r}
+library(tidyverse)
+library(vegan)
+focalvegan <- focal %>%
+  group_by(Site, site.density, RTU) %>%
+  summarise(captures = sum(animal.hit))
 
+focalvegan$Site <- gsub(" ", "", focalvegan$Site)
+focalvegan$Site <- as.factor(focalvegan$Site)
+focalvegan$uniID <- paste(focalvegan$Site, focalvegan$site.density)
+str(focalvegan)
+```
+```{r}
+library(dplyr)
+focalvegan <- focalvegan %>% 
+  ungroup()%>%
+  dplyr::select(uniID, RTU, captures)
+focalvegan <- focalvegan %>% group_by(uniID, RTU) %>% summarise(captures = sum(captures))
+
+focaldata <- focalvegan %>% spread(RTU, captures) %>% dplyr::select(-none)
+focaldata[is.na(focaldata)] <- 0
+focaldata <- focaldata %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
 ```
 
+```{r}
+shortfocal <- siteshort %>%
+  group_by(Site, site.density, shrub.count)
+
+shortfocal$shrub.count <- gsub(" ", "", shortfocal$shrub.count)
+shortfocal$shrub.count <- as.factor(shortfocal$shrub.count)
+shortfocal$uniID <- paste(shortfocal$site.density, shortfocal$site.count)
+str(shortfocal)
+
+shortfocal <- shortfocal %>%
+  ungroup() %>%
+  dplyr::select(uniID, site.density, shrub.count)
+shortfocal <- shortfocal %>% group_by(uniID, site.density)
+
+shortfocal <- shortfocal %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+```
+
+
+
+```{r}
+Hfocal <- diversity(focaldata)
+simpfocal <- diversity(focaldata, index = "simpson")
+Sfocal <- specnumber(focaldata)
+Jfocal <- Hfocal/log(Sfocal)
+shortfocal$H <- Hfocal
+shortfocal$Simpson <- simpfocal
+shortfocal$Species <- Sfocal
+shortfocal$Even <- Jfocal
+```
+
+```{r}
+ggplot(shortfocal, aes(site.density, Species)) + geom_boxplot() + ylab("Number of Species")
+ggplot(shortfocal, aes(site.density, Even)) + geom_boxplot() + ylab("Species Evenness")
+ggplot(shortfocal, aes(site.density, H)) + geom_boxplot() + ylab("Species Richness")
+```
+```{r}
+datafocal <- glm(H~site.density, data = shortfocal)
+summary(shortfocal)
+```
+```{r}
+anova(datafocal, test = "Chisq")
+emmeans(datafocal, pairwise~site.density)
+```
+
+So what has been done so far.
+1) First couple hundred lines of code display that there is a difference in the number of visitation between site densities. It seems more animals are in the low density area than the Medium, High and None areas
+2) I ran the code for diversity for the focal data first and it seems to be significant with high density (seen in GLM) but after running annova and emmeans it says it is not significant
+3) I ran the code for diversity of transects and focal observations. Both of which say that there is no significant difference between the Diversity of the sites
+
+Questions:
+1) When running the stats for diversity do i just look at the H value or should i be considering the evenness for the stats?
+2) Are all p-values significant or not and done properly for reporting
+3) For final figure putting 9 figures into 1 with ggarrange may look bad and clustered. Perhaps seperating them into groups of 3?
