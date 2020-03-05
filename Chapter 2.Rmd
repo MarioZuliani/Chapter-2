@@ -11,6 +11,7 @@ library(meta)
 library(PRISMAstatement)
 library(skimr)
 library(MASS)
+library(ggpubr)
 setwd("/R Packages/Chapter 2")
 ```
 
@@ -250,10 +251,20 @@ ggplot(focal.data, aes(n, captures, color = site.density)) +
 ```
 Camera Presence Boxplot
 ```{r}
-ggplot(level, aes(dense.level, captures, fill = as.character(site))) +
+photopresence <- ggplot(level, aes(dense.level, captures, fill = as.character(site))) +
   geom_boxplot() +
-  labs(y = "Presence", x = "site density")
+  labs(y = "Presence", x = "site density") + theme_classic() + guides(fill=FALSE)
+photopresence
 ```
+```{r}
+transectpresence <- ggplot(transect.level, aes(Site.Density, captures, fill = as.character(Site.Number))) +
+  geom_boxplot() +
+  labs(y = "Presence", x = "site density") + theme_classic() + guides(fill=FALSE)
+transectpresence
+```
+
+
+
 Camera Abundance Boxplot
 ```{r}
 ggplot(level, aes(dense.level, rate, fill = as.character(site))) +
@@ -264,12 +275,10 @@ ggplot(level, aes(dense.level, rate, fill = as.character(site))) +
 
 Focal Presence Boxplot
 ```{r}
-ggplot(focal.site, aes(site.density, captures, fill = as.character(Site))) +
-  geom_boxplot() +
-  labs(y = "presence", x = "site density")
-```
-```{r}
+focalpresence <- ggplot(focal.site, aes(site.density, captures, fill = as.character(Site))) +
+  geom_boxplot() + guides(fill=FALSE) + theme_classic() + xlab("site density") + ylab("Presence")
 
+focalpresence
 ```
 
 ###Focal abundance Boxplot
@@ -303,6 +312,7 @@ lsmeans(m, pairwise~dense.level, adjust = "Tukey")
 ```
 ```{r}
 m <- glm(captures~dense.level, data = level, family = "quasipoisson")
+anova(m)
 summary(m)
 ```
 
@@ -364,7 +374,7 @@ lsmeans(mp, pairwise~dense.level, adjust = "Tukey")
 ###Boxplot for Transect Captures
 ggplot(transect.data,  aes(Site.Density, captures)) +
   geom_boxplot() +
-  labs(y = "capture rate", x = "site density")
+  labs(y = "capture", x = "site density")
 ```
 
 ```{r}
@@ -401,7 +411,7 @@ library(emmeans)
 mg <- glm(captures~dense.level*as.factor(site), family = "quasipoisson", data = level)
 summary(mg)
 anova(mg, test = "Chisq")
-emmeans(mg, pairwise~dense.level*as.factor(site))
+emmeans(mg, pairwise~dense.level)
 ```
 regression curve needed!!!!!
 
@@ -411,14 +421,14 @@ library(emmeans)
 mt <- glm(captures~Site.Density*as.factor(Site.Number), family = "quasipoisson", data = transect.level)
 summary(mt)
 anova(mt, test = "Chisq")
-emmeans(mt, pairwise~Site.Density*as.factor(Site.Number))
+emmeans(mt, pairwise~Site.Density)
 ```
 ###Look at the rate of capture difference between the sites (Cameras)
 ```{r}
 mg <- glm(rate~dense.level*as.factor(site), family = "quasipoisson", data = level)
 summary(mg)
 anova(mg, test = "Chisq")
-emmeans(mg, pairwise~dense.level*as.factor(site))
+emmeans(mg, pairwise~dense.level)
 ```
 ###Looks at the rate of capture between site densities (Transects)
 ```{r}
@@ -443,11 +453,10 @@ ggplot(level, aes(rate, captures, color = dense.level)) +
   facet_wrap(~dense.level, scales = "free") +
   labs(color = "", x = "Rate of Capture", y = "captures")
 ```
-
+##Captures for Photo Data Stats
 ```{r}
 library(emmeans)
 mg <- glm(captures~dense.level*as.factor(site) + offset(log(n)), family = "quasipoisson", data = level)
-summary(mg)
 anova(mg, test = "Chisq")
 emmeans(mg, pairwise~dense.level*as.factor(site))
 ```
@@ -528,9 +537,10 @@ shortvegan$Even <- Jphoto
 ```
 
 ```{r}
-ggplot(shortvegan, aes(site.density, Species)) + geom_boxplot() + ylab("Species Diversity")
-ggplot(shortvegan, aes(site.density, Even)) + geom_boxplot() + ylab("Species Evenness")
-ggplot(shortvegan, aes(site.density, H)) + geom_boxplot() + ylab("Species Richness")
+ggplot(shortvegan, aes(site.density, Species)) + geom_boxplot() + ylab("Species Diversity (Photo)") + xlab("Site Density") + theme_classic()
+ggplot(shortvegan, aes(site.density, Even)) + geom_boxplot() + ylab("Species Evenness (Photo)") + xlab("Site Density") + theme_classic()
+plot1 <- ggplot(shortvegan, aes(site.density, H)) + geom_boxplot() + ylab("Species Diversity") + xlab("Site Density") + theme_classic() + ggtitle("Photo")
+plot1
 ```
 ```{r}
 dataphoto <- glm(H~site.density, data = shortvegan)
@@ -593,20 +603,20 @@ Htransect <- diversity(transectdata)
 simptransect <- diversity(transectdata, index = "simpson")
 Stransect <- specnumber(transectdata)
 Jtransect <- Htransect/log(Stransect)
-shorttransect$H <- Hphoto
+shorttransect$H <- Htransect
 shorttransect$Simpson <- simptransect
 shorttransect$Species <- Stransect
 shorttransect$Even <- Jtransect
 ```
 Figures for transect diversity
 ```{r}
-ggplot(shorttransect, aes(site.density, Species)) + geom_boxplot() + ylab("Number of Species")
-ggplot(shorttransect, aes(site.density, Even)) + geom_boxplot() + ylab("Species Evenness")
-ggplot(shorttransect, aes(site.density, H)) + geom_boxplot() + ylab("Species Richness")
+ggplot(shorttransect, aes(site.density, Species)) + geom_boxplot() + ylab("Number of Species (Transect)") + xlab("Site Density") + theme_classic()
+ggplot(shorttransect, aes(site.density, Even)) + geom_boxplot() + ylab("Species Evenness (Transect)") + xlab("Site Density") + theme_classic()
+plot2 <- ggplot(shorttransect, aes(site.density, H)) + geom_boxplot() + xlab("Site Density") + theme_classic() + ggtitle("Transect") + ylab("")
 ```
 ```{r}
 datatransect <- glm(H~site.density, data = shorttransect)
-summary(dataphoto)
+summary(datatransect)
 ```
 ```{r}
 anova(datatransect, test = "Chisq")
@@ -672,9 +682,9 @@ shortfocal$Even <- Jfocal
 ```
 
 ```{r}
-ggplot(shortfocal, aes(site.density, Species)) + geom_boxplot() + ylab("Number of Species")
-ggplot(shortfocal, aes(site.density, Even)) + geom_boxplot() + ylab("Species Evenness")
-ggplot(shortfocal, aes(site.density, H)) + geom_boxplot() + ylab("Species Richness")
+ggplot(shortfocal, aes(site.density, Species)) + geom_boxplot() + ylab("Number of Species") + xlab("Site Density") + theme_classic()
+ggplot(shortfocal, aes(site.density, Even)) + geom_boxplot() + ylab("Species Evenness") + xlab("Site Density") + theme_classic()
+plot3 <- ggplot(shortfocal, aes(site.density, H)) + geom_boxplot() + xlab("Site Density") + theme_classic() + ggtitle("Focal") +ylab("")
 ```
 ```{r}
 datafocal <- glm(H~site.density, data = shortfocal)
@@ -690,7 +700,42 @@ So what has been done so far.
 2) I ran the code for diversity for the focal data first and it seems to be significant with high density (seen in GLM) but after running annova and emmeans it says it is not significant
 3) I ran the code for diversity of transects and focal observations. Both of which say that there is no significant difference between the Diversity of the sites
 
-Questions:
-1) When running the stats for diversity do i just look at the H value or should i be considering the evenness for the stats?
-2) Are all p-values significant or not and done properly for reporting
-3) For final figure putting 9 figures into 1 with ggarrange may look bad and clustered. Perhaps seperating them into groups of 3?
+```{r}
+dataphoto1 <- glm(Even~site.density, data = shortvegan)
+anova(dataphoto1, test = "Chisq")
+emmeans(dataphoto1, pairwise~site.density)
+```
+```{r}
+ggarrange(plot1, plot2, plot3, nrow = 1, ncol = 3)
+```
+
+```{r}
+datatransect1 <- glm(Even~site.density, data = shorttransect)
+anova(datatransect1, test = "Chisq")
+emmeans(datatransect1, pairwise~site.density)
+```
+
+```{r}
+ggarrange(photopresence, transectpresence, focalpresence, nrow = 2, ncol = 2)
+```
+
+```{r}
+anova1 <- anova(captures~dense.level, data = level)
+```
+
+```{r}
+fig1 <- ggplot(level, aes(dense.level, captures)) +
+  geom_boxplot() +
+  labs(y = "Animal Abundance", x = "Site Density") + theme_classic()
+fig2 <- ggplot(transect.data, aes(Site.Density, captures)) +
+  geom_boxplot() +
+  labs(y = "Animal Abundance", x = "Site Density") + theme_classic()
+fig3 <- ggplot(focal.data, aes(site.density, captures)) +
+  geom_boxplot() +
+  labs(y = "Animal Abundance", x = "Site Density") + theme_classic()
+```
+
+```{r}
+ggarrange(fig1, fig2, fig3, nrow = 2, ncol = 2)
+```
+
