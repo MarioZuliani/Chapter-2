@@ -20,7 +20,6 @@ setwd("/R Packages/Chapter 2")
 setwd("/R Packages/Chapter 2")
 photo <- read_csv("Carrizo Shrub Photo density Sheet.csv")
 colnames(photo)[6] = "site"
-colnames(photo)[11] = "dense.level"
 photo$site <- as.character(photo$site)
 focal <- read_csv("Focal Observations Data Sheet.csv")
 focal$Site <- as.character(focal$Site)
@@ -100,13 +99,13 @@ count.hit %>%
 ```{r}
 ###Summary Capture Data
 data <- photo %>%
-  group_by(region, site, week, dense.level, rep, camera.number) %>%
+  group_by(region, site, week, `level (l,m,h,none)`, rep, camera.number) %>%
   summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTU)-1) %>% mutate(rate = captures/n) #-1 for richness bc of none as level
 data$rep <- as.character(data$rep)
 
 ###Summary Animal Data
 diversity <- photo %>%
-  group_by(region, site, dense.level, RTU) %>%
+  group_by(region, site, `level (l,m,h,none)`, RTU) %>%
   summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
 
 unique(diversity$RTU)
@@ -115,10 +114,10 @@ unique(diversity$RTU)
 ```{r}
 ###Summary level Data
 level <- photo %>%
-  group_by(region, site, week, rep, dense.level) %>%
+  group_by(region, site, week, rep, `level (l,m,h,none)`) %>%
   summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
 
-unique(level$dense.level)
+unique(level$`level (l,m,h,none)`)
 ```
 
 ```{r}
@@ -163,13 +162,13 @@ focal.site <- focal%>%
 ```{r}
 ###Total captures between site levels
 
-ggplot(level, aes(dense.level, captures)) +
+ggplot(level, aes(`level (l,m,h,none)`, captures)) +
   geom_boxplot() + 
   labs(y = "total captures", x = "site density") + ggtitle("Number of Total Animal Hits in Camera Traps")
 ```
 ```{r}
 ###Capture rate per site level
-ggplot(level, aes(dense.level, rate)) +
+ggplot(level, aes(`level (l,m,h,none)`, rate)) +
   geom_boxplot() + 
   labs(y = "capture rate", x = "site density")
 ```
@@ -251,7 +250,7 @@ ggplot(focal.data, aes(n, captures, color = site.density)) +
 ```
 Camera Presence Boxplot
 ```{r}
-photopresence <- ggplot(level, aes(dense.level, captures, fill = as.character(site))) +
+photopresence <- ggplot(level, aes(`level (l,m,h,none)`, captures, fill = as.character(site))) +
   geom_boxplot() +
   labs(y = "Presence", x = "site density") + theme_classic() + guides(fill=FALSE)
 photopresence
@@ -267,7 +266,7 @@ transectpresence
 
 Camera Abundance Boxplot
 ```{r}
-ggplot(level, aes(dense.level, rate, fill = as.character(site))) +
+ggplot(level, aes(`level (l,m,h,none)`, rate, fill = as.character(site))) +
   geom_boxplot() +
   labs(y = "Abundance", x = "site density")
 ```
@@ -292,7 +291,7 @@ ggplot(focal.site, aes(site.density, rate, fill = as.character(Site))) +
 ##Stats
 ###Stats for capture compare to level
 ```{r}
-m <- glm(captures~dense.level, data = level) #capture difference between microsite
+m <- glm(captures~`level (l,m,h,none)`, data = level) #capture difference between microsite
 summary(m)
 ```
 ```{r}
@@ -308,10 +307,10 @@ shapiro.test(m$residuals)
 ```
 ```{r}
 library(lsmeans)
-lsmeans(m, pairwise~dense.level, adjust = "Tukey")
+lsmeans(m, pairwise~`level (l,m,h,none)`, adjust = "Tukey")
 ```
 ```{r}
-m <- glm(captures~dense.level, data = level, family = "quasipoisson")
+m <- glm(captures~`level (l,m,h,none)`, data = level, family = "quasipoisson")
 anova(m)
 summary(m)
 ```
@@ -326,7 +325,7 @@ summary(m)
 anova(m, test = "Chisq")
 ```
 ```{r}
-ggplot(level, aes(dense.level, captures, fill = as.character(site))) +
+ggplot(level, aes(`level (l,m,h,none)`, captures, fill = as.character(site))) +
   geom_boxplot() +
   labs(y = "capture rate", x = "site density")
 ```
@@ -336,7 +335,7 @@ m <- glm(rate~site, data = level) #capture difference between microsite
 summary(m)
 ```
 ```{r}
-m <- glm(rate~dense.level, data = level) #rate of capture between microsites
+m <- glm(rate~`level (l,m,h,none)`, data = level) #rate of capture between microsites
 summary(m)
 ```
 ```{r}
@@ -345,7 +344,7 @@ anova(m, test = "Chisq")
 
 
 ```{r}
-ggplot(level, aes(dense.level, rate)) +
+ggplot(level, aes(`level (l,m,h,none)`, rate)) +
   geom_boxplot() +
   labs(y = "capture rate", x = "site density")
 ```
@@ -353,7 +352,7 @@ ggplot(level, aes(dense.level, rate)) +
 
 ###Stats for rate of capture between Levels
 ```{r}
-mp <- glm(rate~dense.level, data = level, family = "quasipoisson")
+mp <- glm(rate~`level (l,m,h,none)`, data = level, family = "quasipoisson")
 summary(mp)
 ```
 ```{r}
@@ -366,7 +365,7 @@ shapiro.test(mp$residuals)
 ```
 ```{r}
 library(lsmeans)
-lsmeans(mp, pairwise~dense.level, adjust = "Tukey")
+lsmeans(mp, pairwise~`level (l,m,h,none)`, adjust = "Tukey")
 ```
 
 ###Stats for Transect captures
@@ -408,10 +407,10 @@ anova(mt, test = "Chisq")
 ###Look at Stats for varying density level by individual sites for cameras
 ```{r}
 library(emmeans)
-mg <- glm(captures~dense.level*as.factor(site), family = "quasipoisson", data = level)
+mg <- glm(captures~`level (l,m,h,none)`*as.factor(site), family = "quasipoisson", data = level)
 summary(mg)
 anova(mg, test = "Chisq")
-emmeans(mg, pairwise~dense.level)
+emmeans(mg, pairwise~`level (l,m,h,none)`)
 ```
 regression curve needed!!!!!
 
@@ -425,10 +424,10 @@ emmeans(mt, pairwise~Site.Density)
 ```
 ###Look at the rate of capture difference between the sites (Cameras)
 ```{r}
-mg <- glm(rate~dense.level*as.factor(site), family = "quasipoisson", data = level)
+mg <- glm(rate~`level (l,m,h,none)`*as.factor(site), family = "quasipoisson", data = level)
 summary(mg)
 anova(mg, test = "Chisq")
-emmeans(mg, pairwise~dense.level)
+emmeans(mg, pairwise~`level (l,m,h,none)`)
 ```
 ###Looks at the rate of capture between site densities (Transects)
 ```{r}
@@ -440,25 +439,25 @@ emmeans(mt, pairwise~Site.Density*as.factor(Site.Number))
 
 
 ```{r}
-mod <- lm(captures~dense.level*as.factor(site), data = level)
+mod <- lm(captures~`level (l,m,h,none)`*as.factor(site), data = level)
 summary(mod)
 ```
 
 
 
 ```{r}
-ggplot(level, aes(rate, captures, color = dense.level)) +
+ggplot(level, aes(rate, captures, color = `level (l,m,h,none)`)) +
          geom_point() +
   geom_smooth(method = lm, se = FALSE) +
-  facet_wrap(~dense.level, scales = "free") +
+  facet_wrap(~`level (l,m,h,none)`, scales = "free") +
   labs(color = "", x = "Rate of Capture", y = "captures")
 ```
 ##Captures for Photo Data Stats
 ```{r}
 library(emmeans)
-mg <- glm(captures~dense.level*as.factor(site) + offset(log(n)), family = "quasipoisson", data = level)
+mg <- glm(captures~`level (l,m,h,none)`*as.factor(site) + offset(log(n)), family = "quasipoisson", data = level)
 anova(mg, test = "Chisq")
-emmeans(mg, pairwise~dense.level*as.factor(site))
+emmeans(mg, pairwise~`level (l,m,h,none)`*as.factor(site))
 ```
 
 
@@ -477,12 +476,12 @@ emmeans(mg, pairwise~dense.level*as.factor(site))
 library(tidyverse)
 library(vegan)
 photovegan <- photo %>%
-  group_by(region, site, rep, dense.level, RTU) %>%
+  group_by(region, site, rep, `level (l,m,h,none)`, RTU) %>%
   summarise(captures = sum(animal.hit))
 
 photovegan$region <- gsub(" ", "", photovegan$region)
 photovegan$region <- as.factor(photovegan$region)
-photovegan$uniID <- paste(photovegan$site, photovegan$dense.level)
+photovegan$uniID <- paste(photovegan$site, photovegan$`level (l,m,h,none)`)
 str(photovegan)
 ```
 
@@ -719,12 +718,9 @@ emmeans(datatransect1, pairwise~site.density)
 ggarrange(photopresence, transectpresence, focalpresence, nrow = 2, ncol = 2)
 ```
 
-```{r}
-anova1 <- anova(captures~dense.level, data = level)
-```
 
 ```{r}
-fig1 <- ggplot(level, aes(dense.level, captures)) +
+fig1 <- ggplot(level, aes(`level (l,m,h,none)`, captures)) +
   geom_boxplot() +
   labs(y = "Animal Abundance", x = "Site Density") + theme_classic()
 fig2 <- ggplot(transect.data, aes(Site.Density, captures)) +
@@ -737,5 +733,73 @@ fig3 <- ggplot(focal.data, aes(site.density, captures)) +
 
 ```{r}
 ggarrange(fig1, fig2, fig3, nrow = 2, ncol = 2)
+```
+
+##Set up data to have Photo, Transect and Focals all together with shrub covers!
+
+```{r}
+masterphoto <- photo %>%
+  group_by(site, plot,  `level (l,m,h,none)`, density_level,Measure, date, day_sample, RTU) %>%
+  summarise(daily_animal_totals = sum(animal.hit))
+
+
+masterphoto$uniID <- paste(masterphoto$site, masterphoto$`level (l,m,h,none)`)
+str(masterphoto)
+
+masterphoto$uniID <- NULL
+names(masterphoto)[3] <- "density_category"
+```
+```{r}
+mastertransect <- transect %>%
+  group_by(Site.Number, plot, Site.Density, density_level, Measure, Date, day_sample, RTM) %>%
+  summarise(daily_animal_totals = sum(animal.hit))
+
+
+mastertransect$uniID <- paste(mastertransect$site, mastertransect$Site.Density)
+str(mastertransect)
+mastertransect$uniID <- NULL
+names(mastertransect)[1] <- "site"
+names(mastertransect)[3] <- "density_category"
+names(mastertransect)[6] <- "date"
+names(mastertransect)[8] <- "RTU"
+```
+```{r}
+masterfocal <- focal %>%
+  group_by(Site, plot, site.density, density_level, Measure, Date, day_sample, RTU) %>%
+  summarise(daily_animal_totals = sum(animal.hit))
+
+
+masterfocal$uniID <- paste(masterfocal$Site, masterfocal$site.density)
+str(masterfocal)
+masterfocal$uniID <- NULL
+names(masterfocal)[6] <- "date"
+names(masterfocal)[1] <- "site"
+names(masterfocal)[3] <- "density_category"
+
+```
+```{r}
+masterphotofocal <- merge(masterphoto, masterfocal, all=TRUE)
+
+masterdata <- merge(masterphotofocal, mastertransect, all=TRUE)
+names(masterdata)[8] <- "species"
+names(masterdata)[5] <- "method"
+names(masterdata)[7] <- "sample_day"
+
+write.csv(masterdata, "data_2019_compiled2.csv")
+```
+
+```{r}
+masterdata2 <- masterdata %>%
+  group_by(date) %>%
+  summarize(richness = n_distinct(species), count = sum(daily_animal_totals))
+masterdata2$date <- NULL
+
+masterdata3 <- masterdata
+
+masterdatarichness <- merge(masterdata3, masterdata2, all=TRUE)
+masterdatarichness$count <- NULL
+names(masterdatarichness)[10] <- "daily_animal_richness"
+
+write.csv(masterdatarichness, "data_2019_compiled1.csv")
 ```
 

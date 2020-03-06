@@ -1,0 +1,863 @@
+"","site","plot","density_category","density_level","method","date","sample_day","species","daily_animal_totals"
+"1","3",5,"HD",3,"camera trap","01-Jun",16,"Kangaroo rat",1
+"2","3",5,"HD",3,"camera trap","02-Jun",17,"Antelope Squirrel",1
+"3","3",5,"HD",3,"camera trap","02-Jun",17,"Butterfly",1
+"4","3",5,"HD",3,"camera trap","02-Jun",17,"Kangaroo rat",1
+"5","3",5,"HD",3,"camera trap","03-Jun",18,"Kangaroo rat",1
+"6","3",5,"HD",3,"camera trap","04-Jun",19,"Jackrabbit",1
+"7","3",5,"HD",3,"camera trap","05-Jun",20,"Bird",1
+"8","3",5,"HD",3,"camera trap","05-Jun",20,"Kangaroo rat",2
+"9","3",5,"HD",3,"camera trap","05-Jun",20,"Unidentifiable",1
+"10","3",5,"HD",3,"camera trap","06-Jun",21,"Kangaroo rat",4
+"11","3",5,"HD",3,"camera trap","06-Jun",21,"Unidentifiable",1
+"12","3",5,"HD",3,"camera trap","07-Jun",22,"Kangaroo rat",4
+"13","3",5,"HD",3,"camera trap","07-Jun",22,"Kit fox",1
+"14","3",5,"HD",3,"camera trap","08-Jun",23,"Bird",3
+"15","3",5,"HD",3,"camera trap","08-Jun",23,"Kangaroo rat",3
+"16","3",5,"HD",3,"camera trap","09-Jun",24,"Antelope Squirrel",1
+"17","3",5,"HD",3,"camera trap","09-Jun",24,"Kangaroo rat",1
+"18","3",5,"HD",3,"camera trap","10-Jun",25,"Antelope Squirrel",1
+"19","3",5,"HD",3,"camera trap","10-Jun",25,"Kangaroo rat",4
+"20","3",5,"HD",3,"camera trap","11-Jun",26,"Kangaroo rat",2
+"21","3",5,"HD",3,"camera trap","12-Jun",27,"Kangaroo rat",5
+"22","3",5,"HD",3,"camera trap","18-May",2,"Antelope Squirrel",1
+"23","3",5,"HD",3,"camera trap","18-May",2,"Human",1
+"24","3",5,"HD",3,"camera trap","18-May",2,"Kangaroo rat",1
+"25","3",5,"HD",3,"camera trap","19-May",3,"Antelope Squirrel",2
+"26","3",5,"HD",3,"camera trap","19-May",3,"Kangaroo rat",1
+"27","3",5,"HD",3,"camera trap","20-May",4,"none",0
+"28","3",5,"HD",3,"camera trap","20-May",4,"Unidentifiable",1
+"29","3",5,"HD",3,"camera trap","23-May",7,"Antelope Squirrel",1
+"30","3",5,"HD",3,"camera trap","23-May",7,"Kangaroo rat",1
+"31","3",5,"HD",3,"camera trap","23-May",7,"none",0
+"32","3",5,"HD",3,"camera trap","24-May",8,"Antelope Squirrel",1
+"33","3",5,"HD",3,"camera trap","24-May",8,"Kangaroo rat",1
+"34","3",5,"HD",3,"camera trap","24-May",8,"none",0
+"35","3",5,"HD",3,"camera trap","25-May",9,"none",0
+"36","3",5,"HD",3,"camera trap","27-May",11,"Kangaroo rat",1
+"37","3",5,"HD",3,"camera trap","28-May",12,"none",0
+"38","3",5,"HD",3,"camera trap","28-May",12,"Unidentifiable",2
+"39","3",5,"HD",3,"camera trap","29-May",13,"Antelope Squirrel",2
+"40","3",5,"HD",3,"camera trap","29-May",13,"Kangaroo rat",1
+"41","3",5,"HD",3,"camera trap","30-May",14,"Kangaroo rat",3
+"42","3",5,"HD",3,"camera trap","31-May",15,"Kangaroo rat",3
+"43","3",5,"HD",3,"focal","02-Jun-19",17,"Dragonfly",2
+"44","3",5,"HD",3,"focal","02-Jun-19",17,"Grasshopper",4
+"45","3",5,"HD",3,"focal","02-Jun-19",17,"none",0
+"46","3",5,"HD",3,"focal","02-Jun-19",17,"Ooda",1
+"47","3",5,"HD",3,"focal","04-Jun-19",19,"Butterfly",1
+"48","3",5,"HD",3,"focal","04-Jun-19",19,"none",0
+"49","3",5,"HD",3,"focal","07-Jun-19",22,"Bird",1
+"50","3",5,"HD",3,"focal","07-Jun-19",22,"Grasshopper",3
+"51","3",5,"HD",3,"focal","07-Jun-19",22,"Leopard Lizard",1
+"52","3",5,"HD",3,"focal","07-Jun-19",22,"none",0
+"53","3",5,"HD",3,"focal","07-Jun-19",22,"Whiptail Lizard",1
+"54","3",5,"HD",3,"focal","18-May-19",2,"Butterfly",3
+"55","3",5,"HD",3,"focal","18-May-19",2,"none",0
+"56","3",5,"HD",3,"focal","25-May-19",9,"Bird",1
+"57","3",5,"HD",3,"focal","25-May-19",9,"Butterfly",7
+"58","3",5,"HD",3,"focal","25-May-19",9,"none",0
+"59","3",5,"HD",3,"focal","28-May-19",12,"Bee",1
+"60","3",5,"HD",3,"focal","28-May-19",12,"Butterfly",1
+"61","3",5,"HD",3,"focal","28-May-19",12,"Fly",2
+"62","3",5,"HD",3,"focal","28-May-19",12,"none",0
+"63","3",5,"HD",3,"focal","31-May-19",15,"Butterfly",1
+"64","3",5,"HD",3,"focal","31-May-19",15,"Fly",1
+"65","3",5,"HD",3,"focal","31-May-19",15,"Grasshopper",1
+"66","3",5,"HD",3,"focal","31-May-19",15,"none",0
+"67","3",5,"HD",3,"transect","04-Jun-19",19,"Antelope squirrel",1
+"68","3",5,"HD",3,"transect","04-Jun-19",19,"Beetle",2
+"69","3",5,"HD",3,"transect","04-Jun-19",19,"Bird",2
+"70","3",5,"HD",3,"transect","04-Jun-19",19,"BIrd",1
+"71","3",5,"HD",3,"transect","04-Jun-19",19,"Butterfly",1
+"72","3",5,"HD",3,"transect","04-Jun-19",19,"Grasshopper",3
+"73","3",5,"HD",3,"transect","04-Jun-19",19,"none",0
+"74","3",5,"HD",3,"transect","07-Jun-19",22,"Grasshopper",2
+"75","3",5,"HD",3,"transect","07-Jun-19",22,"none",0
+"76","3",5,"HD",3,"transect","12-Jun-19",27,"Dragonfly",1
+"77","3",5,"HD",3,"transect","12-Jun-19",27,"Grasshopper",4
+"78","3",5,"HD",3,"transect","12-Jun-19",27,"none",0
+"79","3",5,"HD",3,"transect","23-May-19",7,"Bird",5
+"80","3",5,"HD",3,"transect","23-May-19",7,"Butterfly",22
+"81","3",5,"HD",3,"transect","23-May-19",7,"none",0
+"82","3",5,"HD",3,"transect","25-May-19",9,"Antelope squirrel",1
+"83","3",5,"HD",3,"transect","25-May-19",9,"Bird",4
+"84","3",5,"HD",3,"transect","25-May-19",9,"Butterfly",22
+"85","3",5,"HD",3,"transect","25-May-19",9,"Grasshopper",2
+"86","3",5,"HD",3,"transect","25-May-19",9,"none",0
+"87","3",5,"HD",3,"transect","25-May-19",9,"Whiptail Lizard",1
+"88","3",5,"HD",3,"transect","28-May-19",12,"Beetle",1
+"89","3",5,"HD",3,"transect","28-May-19",12,"Butterfly",16
+"90","3",5,"HD",3,"transect","28-May-19",12,"Fly",1
+"91","3",5,"HD",3,"transect","28-May-19",12,"Grasshopper",3
+"92","3",5,"HD",3,"transect","28-May-19",12,"none",0
+"93","3",5,"HD",3,"transect","31-May-19",15,"Bird",1
+"94","3",5,"HD",3,"transect","31-May-19",15,"Butterfly",1
+"95","3",5,"HD",3,"transect","31-May-19",15,"Grasshopper",4
+"96","3",5,"HD",3,"transect","31-May-19",15,"Jackrabbit",1
+"97","3",5,"HD",3,"transect","31-May-19",15,"none",0
+"98","3",5,"HD",3,"transect","31-May-19",15,"Roadrunner",1
+"99","3",5,"MD",2,"focal","04-Jun-19",19,"Bird",1
+"100","3",6,"MD",2,"camera trap","01-Jun",16,"Kangaroo rat",6
+"101","3",6,"MD",2,"camera trap","02-Jun",17,"Antelope Squirrel",1
+"102","3",6,"MD",2,"camera trap","03-Jun",18,"Antelope Squirrel",3
+"103","3",6,"MD",2,"camera trap","03-Jun",18,"Bird",1
+"104","3",6,"MD",2,"camera trap","03-Jun",18,"Kangaroo rat",7
+"105","3",6,"MD",2,"camera trap","04-Jun",19,"Kangaroo rat",3
+"106","3",6,"MD",2,"camera trap","05-Jun",20,"Antelope Squirrel",2
+"107","3",6,"MD",2,"camera trap","05-Jun",20,"Kangaroo rat",4
+"108","3",6,"MD",2,"camera trap","05-Jun",20,"Unidentifiable",1
+"109","3",6,"MD",2,"camera trap","06-Jun",21,"Kangaroo rat",5
+"110","3",6,"MD",2,"camera trap","07-Jun",22,"Antelope Squirrel",1
+"111","3",6,"MD",2,"camera trap","07-Jun",22,"Jackrabbit",16
+"112","3",6,"MD",2,"camera trap","07-Jun",22,"Kangaroo rat",12
+"113","3",6,"MD",2,"camera trap","08-Jun",23,"Kangaroo rat",2
+"114","3",6,"MD",2,"camera trap","08-Jun",23,"Unidentifiable",1
+"115","3",6,"MD",2,"camera trap","09-Jun",24,"Kangaroo rat",4
+"116","3",6,"MD",2,"camera trap","10-Jun",25,"Antelope Squirrel",1
+"117","3",6,"MD",2,"camera trap","10-Jun",25,"Kangaroo rat",3
+"118","3",6,"MD",2,"camera trap","11-Jun",26,"Jackrabbit",3
+"119","3",6,"MD",2,"camera trap","11-Jun",26,"Kangaroo rat",8
+"120","3",6,"MD",2,"camera trap","11-Jun",26,"Moth",1
+"121","3",6,"MD",2,"camera trap","11-Jun",26,"Unidentifiable",1
+"122","3",6,"MD",2,"camera trap","12-Jun",27,"Kangaroo rat",7
+"123","3",6,"MD",2,"camera trap","18-May",2,"none",0
+"124","3",6,"MD",2,"camera trap","19-May",3,"Kangaroo rat",1
+"125","3",6,"MD",2,"camera trap","19-May",3,"none",0
+"126","3",6,"MD",2,"camera trap","20-May",4,"Antelope Squirrel",1
+"127","3",6,"MD",2,"camera trap","20-May",4,"Kangaroo rat",5
+"128","3",6,"MD",2,"camera trap","20-May",4,"none",0
+"129","3",6,"MD",2,"camera trap","21-May",5,"Kangaroo rat",2
+"130","3",6,"MD",2,"camera trap","22-May",6,"Antelope Squirrel",1
+"131","3",6,"MD",2,"camera trap","22-May",6,"Kangaroo rat",4
+"132","3",6,"MD",2,"camera trap","23-May",7,"Kangaroo rat",2
+"133","3",6,"MD",2,"camera trap","24-May",8,"Antelope Squirrel",1
+"134","3",6,"MD",2,"camera trap","24-May",8,"Kangaroo rat",2
+"135","3",6,"MD",2,"camera trap","25-May",9,"Antelope Squirrel",3
+"136","3",6,"MD",2,"camera trap","25-May",9,"Kangaroo rat",2
+"137","3",6,"MD",2,"camera trap","26-May",10,"Antelope Squirrel",1
+"138","3",6,"MD",2,"camera trap","26-May",10,"Kangaroo rat",3
+"139","3",6,"MD",2,"camera trap","27-May",11,"Kangaroo rat",1
+"140","3",6,"MD",2,"camera trap","28-May",12,"Antelope Squirrel",1
+"141","3",6,"MD",2,"camera trap","28-May",12,"Butterfly",1
+"142","3",6,"MD",2,"camera trap","28-May",12,"Jackrabbit",1
+"143","3",6,"MD",2,"camera trap","28-May",12,"Kangaroo rat",10
+"144","3",6,"MD",2,"camera trap","28-May",12,"Unidentifiable",2
+"145","3",6,"MD",2,"camera trap","29-May",13,"Kangaroo rat",13
+"146","3",6,"MD",2,"camera trap","30-May",14,"Jackrabbit",3
+"147","3",6,"MD",2,"camera trap","30-May",14,"Kangaroo rat",7
+"148","3",6,"MD",2,"camera trap","30-May",14,"Unidentifiable",2
+"149","3",6,"MD",2,"camera trap","31-May",15,"Bird",1
+"150","3",6,"MD",2,"camera trap","31-May",15,"Jackrabbit",1
+"151","3",6,"MD",2,"camera trap","31-May",15,"Kangaroo rat",4
+"152","3",6,"MD",2,"camera trap","31-May",15,"Kit fox",1
+"153","3",6,"MD",2,"camera trap","31-May",15,"Unidentifiable",1
+"154","3",6,"MD",2,"focal","02-Jun-19",17,"Bird",1
+"155","3",6,"MD",2,"focal","02-Jun-19",17,"Fly",1
+"156","3",6,"MD",2,"focal","02-Jun-19",17,"Grasshopper",2
+"157","3",6,"MD",2,"focal","02-Jun-19",17,"none",0
+"158","3",6,"MD",2,"focal","04-Jun-19",19,"Antelope Squirrel",2
+"159","3",6,"MD",2,"focal","04-Jun-19",19,"Bird",1
+"160","3",6,"MD",2,"focal","04-Jun-19",19,"Grasshopper",3
+"161","3",6,"MD",2,"focal","04-Jun-19",19,"none",0
+"162","3",6,"MD",2,"focal","07-Jun-19",22,"Butterfly",2
+"163","3",6,"MD",2,"focal","07-Jun-19",22,"Fly",1
+"164","3",6,"MD",2,"focal","07-Jun-19",22,"Grasshopper",1
+"165","3",6,"MD",2,"focal","07-Jun-19",22,"none",0
+"166","3",6,"MD",2,"focal","18-May-19",2,"Bird",2
+"167","3",6,"MD",2,"focal","18-May-19",2,"Grasshopper",1
+"168","3",6,"MD",2,"focal","18-May-19",2,"none",0
+"169","3",6,"MD",2,"focal","25-May-19",9,"Butterfly",6
+"170","3",6,"MD",2,"focal","25-May-19",9,"none",0
+"171","3",6,"MD",2,"focal","28-May-19",12,"Bee",1
+"172","3",6,"MD",2,"focal","28-May-19",12,"Bird",1
+"173","3",6,"MD",2,"focal","28-May-19",12,"Butterfly",6
+"174","3",6,"MD",2,"focal","28-May-19",12,"none",0
+"175","3",6,"MD",2,"focal","31-May-19",15,"Butterfly",1
+"176","3",6,"MD",2,"focal","31-May-19",15,"Grasshopper",1
+"177","3",6,"MD",2,"focal","31-May-19",15,"none",0
+"178","3",6,"MD",2,"transect","04-Jun-19",19,"Beetle",1
+"179","3",6,"MD",2,"transect","04-Jun-19",19,"Butterfly",2
+"180","3",6,"MD",2,"transect","04-Jun-19",19,"Grasshopper",8
+"181","3",6,"MD",2,"transect","04-Jun-19",19,"none",0
+"182","3",6,"MD",2,"transect","07-Jun-19",22,"Antelope squirrel",1
+"183","3",6,"MD",2,"transect","07-Jun-19",22,"Grasshopper",5
+"184","3",6,"MD",2,"transect","07-Jun-19",22,"none",0
+"185","3",6,"MD",2,"transect","07-Jun-19",22,"Ooda",2
+"186","3",6,"MD",2,"transect","07-Jun-19",22,"Tarantula Wasp",1
+"187","3",6,"MD",2,"transect","12-Jun-19",27,"Grasshopper",10
+"188","3",6,"MD",2,"transect","12-Jun-19",27,"none",0
+"189","3",6,"MD",2,"transect","23-May-19",7,"Bird",1
+"190","3",6,"MD",2,"transect","23-May-19",7,"Butterfly",21
+"191","3",6,"MD",2,"transect","23-May-19",7,"none",0
+"192","3",6,"MD",2,"transect","25-May-19",9,"Bird",1
+"193","3",6,"MD",2,"transect","25-May-19",9,"Butterfly",10
+"194","3",6,"MD",2,"transect","25-May-19",9,"Grasshopper",3
+"195","3",6,"MD",2,"transect","25-May-19",9,"none",0
+"196","3",6,"MD",2,"transect","25-May-19",9,"Whiptail Lizard",2
+"197","3",6,"MD",2,"transect","28-May-19",12,"Butterfly",7
+"198","3",6,"MD",2,"transect","28-May-19",12,"Fly",2
+"199","3",6,"MD",2,"transect","28-May-19",12,"none",0
+"200","3",6,"MD",2,"transect","28-May-19",12,"ooda",1
+"201","3",6,"MD",2,"transect","31-May-19",15,"Butterfly",2
+"202","3",6,"MD",2,"transect","31-May-19",15,"Grasshopper",5
+"203","3",6,"MD",2,"transect","31-May-19",15,"Hummingbird",1
+"204","3",6,"MD",2,"transect","31-May-19",15,"Leopard Lizard",2
+"205","3",6,"MD",2,"transect","31-May-19",15,"none",0
+"206","3",7,"HD",3,"focal","07-Jun-19",22,"none",0
+"207","3",7,"LD",1,"camera trap","01-Jun",16,"Antelope Squirrel",1
+"208","3",7,"LD",1,"camera trap","01-Jun",16,"Kangaroo rat",18
+"209","3",7,"LD",1,"camera trap","02-Jun",17,"Antelope Squirrel",1
+"210","3",7,"LD",1,"camera trap","02-Jun",17,"Kangaroo rat",22
+"211","3",7,"LD",1,"camera trap","03-Jun",18,"Antelope Squirrel",1
+"212","3",7,"LD",1,"camera trap","03-Jun",18,"Jackrabbit",1
+"213","3",7,"LD",1,"camera trap","03-Jun",18,"Kangaroo rat",1
+"214","3",7,"LD",1,"camera trap","03-Jun",18,"Unidentifiable",1
+"215","3",7,"LD",1,"camera trap","04-Jun",19,"Kangaroo rat",6
+"216","3",7,"LD",1,"camera trap","05-Jun",20,"Jackrabbit",2
+"217","3",7,"LD",1,"camera trap","05-Jun",20,"Kangaroo rat",9
+"218","3",7,"LD",1,"camera trap","05-Jun",20,"Kit fox",1
+"219","3",7,"LD",1,"camera trap","06-Jun",21,"Antelope Squirrel",1
+"220","3",7,"LD",1,"camera trap","06-Jun",21,"Jackrabbit",1
+"221","3",7,"LD",1,"camera trap","06-Jun",21,"Kangaroo rat",2
+"222","3",7,"LD",1,"camera trap","06-Jun",21,"Leopard Lizard",20
+"223","3",7,"LD",1,"camera trap","07-Jun",22,"Jackrabbit",3
+"224","3",7,"LD",1,"camera trap","07-Jun",22,"Kangaroo rat",5
+"225","3",7,"LD",1,"camera trap","08-Jun",23,"Antelope Squirrel",1
+"226","3",7,"LD",1,"camera trap","08-Jun",23,"Kangaroo rat",5
+"227","3",7,"LD",1,"camera trap","08-Jun",23,"Unidentifiable",1
+"228","3",7,"LD",1,"camera trap","09-Jun",24,"Antelope Squirrel",1
+"229","3",7,"LD",1,"camera trap","09-Jun",24,"Bird",1
+"230","3",7,"LD",1,"camera trap","09-Jun",24,"Jackrabbit",2
+"231","3",7,"LD",1,"camera trap","09-Jun",24,"Kangaroo rat",13
+"232","3",7,"LD",1,"camera trap","09-Jun",24,"Moth",1
+"233","3",7,"LD",1,"camera trap","10-Jun",25,"Kangaroo rat",13
+"234","3",7,"LD",1,"camera trap","10-Jun",25,"Moth",1
+"235","3",7,"LD",1,"camera trap","11-Jun",26,"Kangaroo rat",9
+"236","3",7,"LD",1,"camera trap","11-Jun",26,"Moth",1
+"237","3",7,"LD",1,"camera trap","12-Jun",27,"Kangaroo rat",7
+"238","3",7,"LD",1,"camera trap","18-May",2,"Antelope Squirrel",1
+"239","3",7,"LD",1,"camera trap","18-May",2,"Bird",1
+"240","3",7,"LD",1,"camera trap","18-May",2,"Kangaroo rat",3
+"241","3",7,"LD",1,"camera trap","18-May",2,"Unidentifiable",1
+"242","3",7,"LD",1,"camera trap","19-May",3,"Antelope Squirrel",1
+"243","3",7,"LD",1,"camera trap","19-May",3,"Jackrabbit",3
+"244","3",7,"LD",1,"camera trap","19-May",3,"Kangaroo rat",2
+"245","3",7,"LD",1,"camera trap","19-May",3,"Unidentifiable",1
+"246","3",7,"LD",1,"camera trap","20-May",4,"Antelope Squirrel",2
+"247","3",7,"LD",1,"camera trap","20-May",4,"Jackrabbit",1
+"248","3",7,"LD",1,"camera trap","20-May",4,"Kangaroo rat",5
+"249","3",7,"LD",1,"camera trap","20-May",4,"Unidentifiable",1
+"250","3",7,"LD",1,"camera trap","21-May",5,"Antelope Squirrel",3
+"251","3",7,"LD",1,"camera trap","21-May",5,"Bird",1
+"252","3",7,"LD",1,"camera trap","21-May",5,"Hawk",1
+"253","3",7,"LD",1,"camera trap","21-May",5,"Kangaroo rat",3
+"254","3",7,"LD",1,"camera trap","22-May",6,"Kangaroo rat",2
+"255","3",7,"LD",1,"camera trap","25-May",9,"Insect",1
+"256","3",7,"LD",1,"camera trap","25-May",9,"Jackrabbit",2
+"257","3",7,"LD",1,"camera trap","26-May",10,"Antelope Squirrel",1
+"258","3",7,"LD",1,"camera trap","26-May",10,"Unidentifiable",1
+"259","3",7,"LD",1,"camera trap","27-May",11,"Kangaroo rat",1
+"260","3",7,"LD",1,"camera trap","28-May",12,"Bird",1
+"261","3",7,"LD",1,"camera trap","28-May",12,"Jackrabbit",1
+"262","3",7,"LD",1,"camera trap","28-May",12,"Kangaroo rat",3
+"263","3",7,"LD",1,"camera trap","28-May",12,"Kit fox",1
+"264","3",7,"LD",1,"camera trap","28-May",12,"Unidentifiable",1
+"265","3",7,"LD",1,"camera trap","29-May",13,"Kangaroo rat",18
+"266","3",7,"LD",1,"camera trap","30-May",14,"Antelope Squirrel",4
+"267","3",7,"LD",1,"camera trap","30-May",14,"Kangaroo rat",17
+"268","3",7,"LD",1,"camera trap","31-May",15,"Antelope Squirrel",2
+"269","3",7,"LD",1,"camera trap","31-May",15,"Kangaroo rat",23
+"270","3",7,"LD",1,"focal","02-Jun-19",17,"Butterfly",1
+"271","3",7,"LD",1,"focal","02-Jun-19",17,"Grasshopper",1
+"272","3",7,"LD",1,"focal","02-Jun-19",17,"none",0
+"273","3",7,"LD",1,"focal","02-Jun-19",17,"Ooda",1
+"274","3",7,"LD",1,"focal","07-Jun-19",22,"Butterfly",1
+"275","3",7,"LD",1,"focal","07-Jun-19",22,"Grasshopper",4
+"276","3",7,"LD",1,"focal","07-Jun-19",22,"none",0
+"277","3",7,"LD",1,"focal","18-May-19",2,"Jack Rabbit",1
+"278","3",7,"LD",1,"focal","18-May-19",2,"none",0
+"279","3",7,"LD",1,"focal","25-May-19",9,"Butterfly",6
+"280","3",7,"LD",1,"focal","25-May-19",9,"Dragonfly",1
+"281","3",7,"LD",1,"focal","25-May-19",9,"Grasshopper",1
+"282","3",7,"LD",1,"focal","25-May-19",9,"Ladybug",1
+"283","3",7,"LD",1,"focal","25-May-19",9,"none",0
+"284","3",7,"LD",1,"focal","28-May-19",12,"Beetle",1
+"285","3",7,"LD",1,"focal","28-May-19",12,"Bird",1
+"286","3",7,"LD",1,"focal","28-May-19",12,"Butterfly",2
+"287","3",7,"LD",1,"focal","28-May-19",12,"Fly",1
+"288","3",7,"LD",1,"focal","28-May-19",12,"Grasshopper",1
+"289","3",7,"LD",1,"focal","28-May-19",12,"none",0
+"290","3",7,"LD",1,"focal","31-May-19",15,"Bird",1
+"291","3",7,"LD",1,"focal","31-May-19",15,"none",0
+"292","3",7,"LD",1,"transect","04-Jun-19",19,"Antelope squirrel",3
+"293","3",7,"LD",1,"transect","04-Jun-19",19,"Grasshopper",7
+"294","3",7,"LD",1,"transect","04-Jun-19",19,"none",0
+"295","3",7,"LD",1,"transect","04-Jun-19",19,"Raven",1
+"296","3",7,"LD",1,"transect","07-Jun-19",22,"BIrd",1
+"297","3",7,"LD",1,"transect","07-Jun-19",22,"Butterfly",1
+"298","3",7,"LD",1,"transect","07-Jun-19",22,"Grasshopper",1
+"299","3",7,"LD",1,"transect","07-Jun-19",22,"Jackrabbit",1
+"300","3",7,"LD",1,"transect","07-Jun-19",22,"none",0
+"301","3",7,"LD",1,"transect","12-Jun-19",27,"Bird",1
+"302","3",7,"LD",1,"transect","12-Jun-19",27,"Grasshopper",4
+"303","3",7,"LD",1,"transect","12-Jun-19",27,"none",0
+"304","3",7,"LD",1,"transect","23-May-19",7,"none",0
+"305","3",7,"LD",1,"transect","25-May-19",9,"Antelope squirrel",1
+"306","3",7,"LD",1,"transect","25-May-19",9,"Bird",1
+"307","3",7,"LD",1,"transect","25-May-19",9,"Butterfly",10
+"308","3",7,"LD",1,"transect","25-May-19",9,"Dragonfly",1
+"309","3",7,"LD",1,"transect","25-May-19",9,"Grasshopper",2
+"310","3",7,"LD",1,"transect","25-May-19",9,"none",0
+"311","3",7,"LD",1,"transect","28-May-19",12,"Butterfly",6
+"312","3",7,"LD",1,"transect","28-May-19",12,"Grasshopper",3
+"313","3",7,"LD",1,"transect","28-May-19",12,"none",0
+"314","3",7,"LD",1,"transect","31-May-19",15,"Grasshopper",6
+"315","3",7,"LD",1,"transect","31-May-19",15,"none",0
+"316","3",8,"ND",0,"camera trap","01-Jun",16,"Unidentifiable",1
+"317","3",8,"ND",0,"camera trap","02-Jun",17,"Bird",1
+"318","3",8,"ND",0,"camera trap","02-Jun",17,"Kangaroo rat",6
+"319","3",8,"ND",0,"camera trap","02-Jun",17,"Kit fox",1
+"320","3",8,"ND",0,"camera trap","02-Jun",17,"Leopard Lizard",9
+"321","3",8,"ND",0,"camera trap","03-Jun",18,"Antelope Squirrel",2
+"322","3",8,"ND",0,"camera trap","03-Jun",18,"Jackrabbit",3
+"323","3",8,"ND",0,"camera trap","03-Jun",18,"Kangaroo rat",10
+"324","3",8,"ND",0,"camera trap","04-Jun",19,"Antelope Squirrel",1
+"325","3",8,"ND",0,"camera trap","04-Jun",19,"Jackrabbit",1
+"326","3",8,"ND",0,"camera trap","04-Jun",19,"Kangaroo rat",11
+"327","3",8,"ND",0,"camera trap","05-Jun",20,"Kangaroo rat",13
+"328","3",8,"ND",0,"camera trap","05-Jun",20,"Kit fox",1
+"329","3",8,"ND",0,"camera trap","06-Jun",21,"Kangaroo rat",17
+"330","3",8,"ND",0,"camera trap","06-Jun",21,"Ooda",3
+"331","3",8,"ND",0,"camera trap","06-Jun",21,"Unidentifiable",1
+"332","3",8,"ND",0,"camera trap","07-Jun",22,"Antelope Squirrel",1
+"333","3",8,"ND",0,"camera trap","07-Jun",22,"Jackrabbit",1
+"334","3",8,"ND",0,"camera trap","07-Jun",22,"Kangaroo rat",7
+"335","3",8,"ND",0,"camera trap","09-Jun",24,"Jackrabbit",1
+"336","3",8,"ND",0,"camera trap","18-May",2,"Kangaroo rat",3
+"337","3",8,"ND",0,"camera trap","19-May",3,"Kangaroo rat",5
+"338","3",8,"ND",0,"camera trap","20-May",4,"Antelope Squirrel",1
+"339","3",8,"ND",0,"camera trap","20-May",4,"Kangaroo rat",3
+"340","3",8,"ND",0,"camera trap","21-May",5,"Kangaroo rat",1
+"341","3",8,"ND",0,"camera trap","22-May",6,"Bird",1
+"342","3",8,"ND",0,"camera trap","22-May",6,"Jackrabbit",1
+"343","3",8,"ND",0,"camera trap","24-May",8,"Kangaroo rat",3
+"344","3",8,"ND",0,"camera trap","24-May",8,"Kit fox",1
+"345","3",8,"ND",0,"camera trap","25-May",9,"Kangaroo rat",4
+"346","3",8,"ND",0,"camera trap","26-May",10,"Kangaroo rat",1
+"347","3",8,"ND",0,"camera trap","26-May",10,"Raven",2
+"348","3",8,"ND",0,"camera trap","27-May",11,"Antelope Squirrel",2
+"349","3",8,"ND",0,"camera trap","27-May",11,"Kangaroo rat",2
+"350","3",8,"ND",0,"camera trap","27-May",11,"Kit fox",1
+"351","3",8,"ND",0,"camera trap","27-May",11,"Raven",1
+"352","3",8,"ND",0,"camera trap","28-May",12,"Jackrabbit",1
+"353","3",8,"ND",0,"camera trap","28-May",12,"Kangaroo rat",6
+"354","3",8,"ND",0,"camera trap","29-May",13,"Jackrabbit",1
+"355","3",8,"ND",0,"camera trap","29-May",13,"Kangaroo rat",5
+"356","3",8,"ND",0,"camera trap","30-May",14,"Jackrabbit",1
+"357","3",8,"ND",0,"camera trap","30-May",14,"Kangaroo rat",3
+"358","3",8,"ND",0,"camera trap","31-May",15,"Kangaroo rat",1
+"359","3",8,"ND",0,"focal","02-Jun-19",17,"Bird",1
+"360","3",8,"ND",0,"focal","02-Jun-19",17,"Butterfly",1
+"361","3",8,"ND",0,"focal","02-Jun-19",17,"none",0
+"362","3",8,"ND",0,"focal","04-Jun-19",19,"none",0
+"363","3",8,"ND",0,"focal","07-Jun-19",22,"none",0
+"364","3",8,"ND",0,"focal","18-May-19",2,"none",0
+"365","3",8,"ND",0,"focal","25-May-19",9,"Butterfly",14
+"366","3",8,"ND",0,"focal","25-May-19",9,"none",0
+"367","3",8,"ND",0,"focal","28-May-19",12,"Butterfly",1
+"368","3",8,"ND",0,"focal","28-May-19",12,"Fly",1
+"369","3",8,"ND",0,"focal","28-May-19",12,"Grasshopper",1
+"370","3",8,"ND",0,"focal","28-May-19",12,"none",0
+"371","3",8,"ND",0,"focal","31-May-19",15,"Fly",1
+"372","3",8,"ND",0,"focal","31-May-19",15,"Grasshopper",1
+"373","3",8,"ND",0,"focal","31-May-19",15,"none",0
+"374","3",8,"ND",0,"transect","04-Jun-19",19,"Grasshopper",5
+"375","3",8,"ND",0,"transect","04-Jun-19",19,"none",0
+"376","3",8,"ND",0,"transect","07-Jun-19",22,"Butterfly",2
+"377","3",8,"ND",0,"transect","07-Jun-19",22,"Grasshopper",2
+"378","3",8,"ND",0,"transect","07-Jun-19",22,"none",0
+"379","3",8,"ND",0,"transect","07-Jun-19",22,"unkown insect",1
+"380","3",8,"ND",0,"transect","12-Jun-19",27,"Antelope squirrel",1
+"381","3",8,"ND",0,"transect","12-Jun-19",27,"Grasshopper",1
+"382","3",8,"ND",0,"transect","12-Jun-19",27,"none",0
+"383","3",8,"ND",0,"transect","23-May-19",7,"Antelope squirrel",1
+"384","3",8,"ND",0,"transect","23-May-19",7,"Butterfly",8
+"385","3",8,"ND",0,"transect","23-May-19",7,"none",0
+"386","3",8,"ND",0,"transect","25-May-19",9,"Antelope squirrel",1
+"387","3",8,"ND",0,"transect","25-May-19",9,"Butterfly",12
+"388","3",8,"ND",0,"transect","25-May-19",9,"Grasshopper",3
+"389","3",8,"ND",0,"transect","25-May-19",9,"none",0
+"390","3",8,"ND",0,"transect","28-May-19",12,"Butterfly",12
+"391","3",8,"ND",0,"transect","28-May-19",12,"Dragonfly",1
+"392","3",8,"ND",0,"transect","28-May-19",12,"fly",1
+"393","3",8,"ND",0,"transect","28-May-19",12,"Grasshopper",2
+"394","3",8,"ND",0,"transect","28-May-19",12,"none",0
+"395","3",8,"ND",0,"transect","28-May-19",12,"ooda",1
+"396","3",8,"ND",0,"transect","31-May-19",15,"Grasshopper",3
+"397","3",8,"ND",0,"transect","31-May-19",15,"none",0
+"398","3",NA,"HD",NA,"camera trap",NA,NA,"none",0
+"399","3",NA,"LD",NA,"camera trap",NA,NA,"none",1
+"400","3",NA,"LD",NA,"camera trap",NA,NA,"None",0
+"401","3",NA,"MD",NA,"camera trap",NA,NA,"none",0
+"402","3",NA,"ND",NA,"camera trap",NA,NA,"none",0
+"403","4",1,"HD",3,"camera trap","01-Jun",16,"Ground Squirrel",1
+"404","4",1,"HD",3,"camera trap","01-Jun",16,"Kangaroo rat",9
+"405","4",1,"HD",3,"camera trap","01-Jun",16,"Kit fox",2
+"406","4",1,"HD",3,"camera trap","01-Jun",16,"none",0
+"407","4",1,"HD",3,"camera trap","01-Jun",16,"unidentifiable",1
+"408","4",1,"HD",3,"camera trap","02-Jun",17,"Antelope Squirrel",1
+"409","4",1,"HD",3,"camera trap","02-Jun",17,"Ground Squirrel",1
+"410","4",1,"HD",3,"camera trap","02-Jun",17,"Jackrabbit",4
+"411","4",1,"HD",3,"camera trap","02-Jun",17,"Kangaroo rat",31
+"412","4",1,"HD",3,"camera trap","03-Jun",18,"Antelope Squirrel",1
+"413","4",1,"HD",3,"camera trap","03-Jun",18,"Kangaroo rat",10
+"414","4",1,"HD",3,"camera trap","03-Jun",18,"unidentifiable",2
+"415","4",1,"HD",3,"camera trap","04-Jun",19,"Antelope Squirrel",2
+"416","4",1,"HD",3,"camera trap","04-Jun",19,"Jackrabbit",1
+"417","4",1,"HD",3,"camera trap","04-Jun",19,"Kangaroo rat",9
+"418","4",1,"HD",3,"camera trap","04-Jun",19,"unidentifiable",1
+"419","4",1,"HD",3,"camera trap","05-Jun",20,"Antelope Squirrel",1
+"420","4",1,"HD",3,"camera trap","05-Jun",20,"Jackrabbit",1
+"421","4",1,"HD",3,"camera trap","06-Jun",21,"Field mouse",1
+"422","4",1,"HD",3,"camera trap","06-Jun",21,"Jackrabbit",1
+"423","4",1,"HD",3,"camera trap","06-Jun",21,"Kangaroo rat",7
+"424","4",1,"HD",3,"camera trap","07-Jun",22,"Antelope Squirrel",4
+"425","4",1,"HD",3,"camera trap","07-Jun",22,"Bird",1
+"426","4",1,"HD",3,"camera trap","07-Jun",22,"Jackrabbit",4
+"427","4",1,"HD",3,"camera trap","07-Jun",22,"unidentifiable",1
+"428","4",1,"HD",3,"camera trap","08-Jun",23,"Antelope Squirrel",2
+"429","4",1,"HD",3,"camera trap","08-Jun",23,"Field mouse",1
+"430","4",1,"HD",3,"camera trap","08-Jun",23,"Ground Squirrel",1
+"431","4",1,"HD",3,"camera trap","08-Jun",23,"Jackrabbit",1
+"432","4",1,"HD",3,"camera trap","08-Jun",23,"Kangaroo rat",3
+"433","4",1,"HD",3,"camera trap","09-Jun",24,"Antelope Squirrel",2
+"434","4",1,"HD",3,"camera trap","09-Jun",24,"Jackrabbit",2
+"435","4",1,"HD",3,"camera trap","09-Jun",24,"Kangaroo rat",5
+"436","4",1,"HD",3,"camera trap","10-Jun",25,"Antelope Squirrel",5
+"437","4",1,"HD",3,"camera trap","10-Jun",25,"Jackrabbit",4
+"438","4",1,"HD",3,"camera trap","10-Jun",25,"Kangaroo rat",7
+"439","4",1,"HD",3,"camera trap","11-Jun",26,"Antelope Squirrel",1
+"440","4",1,"HD",3,"camera trap","11-Jun",26,"Ground Squirrel",1
+"441","4",1,"HD",3,"camera trap","11-Jun",26,"Kangaroo rat",1
+"442","4",1,"HD",3,"camera trap","17-May",1,"Jackrabbit",1
+"443","4",1,"HD",3,"camera trap","17-May",1,"Kangaroo rat",2
+"444","4",1,"HD",3,"camera trap","17-May",1,"none",0
+"445","4",1,"HD",3,"camera trap","17-May",1,"Unidentifiable",2
+"446","4",1,"HD",3,"camera trap","18-May",2,"Jackrabbit",1
+"447","4",1,"HD",3,"camera trap","18-May",2,"none",0
+"448","4",1,"HD",3,"camera trap","18-May",2,"Unidentifiable",4
+"449","4",1,"HD",3,"camera trap","19-May",3,"Human",2
+"450","4",1,"HD",3,"camera trap","19-May",3,"none",0
+"451","4",1,"HD",3,"camera trap","19-May",3,"Unidentifiable",5
+"452","4",1,"HD",3,"camera trap","20-May",4,"none",0
+"453","4",1,"HD",3,"camera trap","20-May",4,"Unidentifiable",1
+"454","4",1,"HD",3,"camera trap","21-May",5,"Human",2
+"455","4",1,"HD",3,"camera trap","21-May",5,"Jackrabbit",1
+"456","4",1,"HD",3,"camera trap","21-May",5,"none",0
+"457","4",1,"HD",3,"camera trap","21-May",5,"Unidentifiable",2
+"458","4",1,"HD",3,"camera trap","22-May",5,"Unidentifiable",1
+"459","4",1,"HD",3,"camera trap","22-May",6,"none",0
+"460","4",1,"HD",3,"camera trap","23-May",7,"Jackrabbit",1
+"461","4",1,"HD",3,"camera trap","23-May",7,"none",0
+"462","4",1,"HD",3,"camera trap","25-May",9,"Hawk",1
+"463","4",1,"HD",3,"camera trap","25-May",9,"Kangaroo rat",1
+"464","4",1,"HD",3,"camera trap","25-May",9,"none",0
+"465","4",1,"HD",3,"camera trap","25-May",9,"Unidentifiable",2
+"466","4",1,"HD",3,"camera trap","26-May",10,"none",0
+"467","4",1,"HD",3,"camera trap","27-May",11,"none",0
+"468","4",1,"HD",3,"camera trap","27-May",11,"Unidentifiable",1
+"469","4",1,"HD",3,"camera trap","29-May",13,"Jackrabbit",2
+"470","4",1,"HD",3,"camera trap","29-May",13,"Kangaroo rat",7
+"471","4",1,"HD",3,"camera trap","29-May",13,"none",0
+"472","4",1,"HD",3,"camera trap","30-May",14,"Antelope Squirrel",1
+"473","4",1,"HD",3,"camera trap","30-May",14,"Bird",1
+"474","4",1,"HD",3,"camera trap","30-May",14,"Jackrabbit",3
+"475","4",1,"HD",3,"camera trap","30-May",14,"Kangaroo rat",10
+"476","4",1,"HD",3,"camera trap","30-May",14,"none",0
+"477","4",1,"HD",3,"camera trap","30-May",14,"Unidentifiable",1
+"478","4",1,"HD",3,"camera trap","31-May",15,"Kangaroo rat",11
+"479","4",1,"HD",3,"camera trap","31-May",15,"none",0
+"480","4",1,"HD",3,"focal","02-Jun-19",17,"Antelope Squirrel",1
+"481","4",1,"HD",3,"focal","02-Jun-19",17,"Grasshopper",5
+"482","4",1,"HD",3,"focal","02-Jun-19",17,"Leopard Lizard",1
+"483","4",1,"HD",3,"focal","02-Jun-19",17,"none",0
+"484","4",1,"HD",3,"focal","04-Jun-19",19,"Grasshopper",1
+"485","4",1,"HD",3,"focal","04-Jun-19",19,"Jack Rabbit",1
+"486","4",1,"HD",3,"focal","04-Jun-19",19,"Leopard Lizard",1
+"487","4",1,"HD",3,"focal","04-Jun-19",19,"none",0
+"488","4",1,"HD",3,"focal","04-Jun-19",19,"Ooda",1
+"489","4",1,"HD",3,"focal","06-Jun-19",21,"Antelope Squirrel",2
+"490","4",1,"HD",3,"focal","06-Jun-19",21,"Bird",1
+"491","4",1,"HD",3,"focal","06-Jun-19",21,"Fly",2
+"492","4",1,"HD",3,"focal","06-Jun-19",21,"Grasshopper",3
+"493","4",1,"HD",3,"focal","06-Jun-19",21,"none",0
+"494","4",1,"HD",3,"focal","17-May-19",1,"none",0
+"495","4",1,"HD",3,"focal","25-May-19",9,"Antelope Squirrel",1
+"496","4",1,"HD",3,"focal","25-May-19",9,"Butterfly",9
+"497","4",1,"HD",3,"focal","25-May-19",9,"Grasshopper",2
+"498","4",1,"HD",3,"focal","25-May-19",9,"none",0
+"499","4",1,"HD",3,"focal","29-May-19",13,"Bird",4
+"500","4",1,"HD",3,"focal","29-May-19",13,"Fly",1
+"501","4",1,"HD",3,"focal","29-May-19",13,"Grasshopper",2
+"502","4",1,"HD",3,"focal","29-May-19",13,"none",0
+"503","4",1,"HD",3,"focal","31-May-19",15,"Bird",1
+"504","4",1,"HD",3,"focal","31-May-19",15,"Butterfly",1
+"505","4",1,"HD",3,"focal","31-May-19",15,"Grasshopper",2
+"506","4",1,"HD",3,"focal","31-May-19",15,"none",0
+"507","4",1,"HD",3,"transect","04-Jun-19",19,"Grasshopper",4
+"508","4",1,"HD",3,"transect","04-Jun-19",19,"Jackrabbit",1
+"509","4",1,"HD",3,"transect","04-Jun-19",19,"none",0
+"510","4",1,"HD",3,"transect","06-Jun-19",21,"Butterfly",1
+"511","4",1,"HD",3,"transect","06-Jun-19",21,"Grasshopper",5
+"512","4",1,"HD",3,"transect","06-Jun-19",21,"none",0
+"513","4",1,"HD",3,"transect","11-Jun-19",26,"Grasshopper",3
+"514","4",1,"HD",3,"transect","11-Jun-19",26,"none",0
+"515","4",1,"HD",3,"transect","21-May-19",5,"Butterfly",1
+"516","4",1,"HD",3,"transect","21-May-19",5,"Grasshopper",2
+"517","4",1,"HD",3,"transect","21-May-19",5,"none",0
+"518","4",1,"HD",3,"transect","25-May-19",9,"none",0
+"519","4",1,"HD",3,"transect","29-May-19",13,"Antelope squirrel",2
+"520","4",1,"HD",3,"transect","29-May-19",13,"Butterfly",2
+"521","4",1,"HD",3,"transect","29-May-19",13,"Fly",1
+"522","4",1,"HD",3,"transect","29-May-19",13,"Grasshopper",6
+"523","4",1,"HD",3,"transect","29-May-19",13,"none",0
+"524","4",1,"HD",3,"transect","31-May-19",15,"Antelope squirrel",1
+"525","4",1,"HD",3,"transect","31-May-19",15,"Bird",2
+"526","4",1,"HD",3,"transect","31-May-19",15,"Grasshopper",6
+"527","4",1,"HD",3,"transect","31-May-19",15,"none",2
+"528","4",2,"MD",2,"camera trap","01-Jun",16,"Antelope Squirrel",1
+"529","4",2,"MD",2,"camera trap","01-Jun",16,"Jackrabbit",1
+"530","4",2,"MD",2,"camera trap","01-Jun",16,"Kangaroo rat",19
+"531","4",2,"MD",2,"camera trap","01-Jun",16,"Kit fox",1
+"532","4",2,"MD",2,"camera trap","01-Jun",16,"Unidentifiable",2
+"533","4",2,"MD",2,"camera trap","02-Jun",17,"Antelope Squirrel",1
+"534","4",2,"MD",2,"camera trap","02-Jun",17,"Jackrabbit",2
+"535","4",2,"MD",2,"camera trap","02-Jun",17,"Kangaroo rat",3
+"536","4",2,"MD",2,"camera trap","03-Jun",18,"Antelope Squirrel",1
+"537","4",2,"MD",2,"camera trap","03-Jun",18,"Grasshopper",2
+"538","4",2,"MD",2,"camera trap","03-Jun",18,"Kangaroo rat",6
+"539","4",2,"MD",2,"camera trap","03-Jun",18,"Unidentifiable",1
+"540","4",2,"MD",2,"camera trap","04-Jun",19,"Antelope Squirrel",1
+"541","4",2,"MD",2,"camera trap","04-Jun",19,"Field mouse",1
+"542","4",2,"MD",2,"camera trap","04-Jun",19,"Ground Squirrel",1
+"543","4",2,"MD",2,"camera trap","04-Jun",19,"Kangaroo rat",8
+"544","4",2,"MD",2,"camera trap","04-Jun",19,"Unidentifiable",1
+"545","4",2,"MD",2,"camera trap","05-Jun",20,"Antelope Squirrel",3
+"546","4",2,"MD",2,"camera trap","05-Jun",20,"Kangaroo rat",9
+"547","4",2,"MD",2,"camera trap","06-Jun",21,"Jackrabbit",2
+"548","4",2,"MD",2,"camera trap","06-Jun",21,"Kangaroo rat",6
+"549","4",2,"MD",2,"camera trap","06-Jun",21,"Unidentifiable",1
+"550","4",2,"MD",2,"camera trap","07-Jun",22,"Jackrabbit",7
+"551","4",2,"MD",2,"camera trap","07-Jun",22,"Kangaroo rat",3
+"552","4",2,"MD",2,"camera trap","08-Jun",23,"Kit fox",2
+"553","4",2,"MD",2,"camera trap","09-Jun",24,"Jackrabbit",1
+"554","4",2,"MD",2,"camera trap","09-Jun",24,"Kangaroo rat",4
+"555","4",2,"MD",2,"camera trap","10-Jun",25,"Ooda",1
+"556","4",2,"MD",2,"camera trap","10-Jun",25,"Unidentifiable",0
+"557","4",2,"MD",2,"camera trap","11-Jun",26,"Jackrabbit",1
+"558","4",2,"MD",2,"camera trap","11-Jun",26,"Kangaroo rat",1
+"559","4",2,"MD",2,"camera trap","17-May",1,"Field mouse",2
+"560","4",2,"MD",2,"camera trap","17-May",1,"Human",1
+"561","4",2,"MD",2,"camera trap","17-May",1,"Jackrabbit",1
+"562","4",2,"MD",2,"camera trap","17-May",1,"none",0
+"563","4",2,"MD",2,"camera trap","17-May",1,"Unidentifiable",1
+"564","4",2,"MD",2,"camera trap","18-May",2,"Field mouse",2
+"565","4",2,"MD",2,"camera trap","18-May",2,"Human",1
+"566","4",2,"MD",2,"camera trap","18-May",2,"Kangaroo rat",2
+"567","4",2,"MD",2,"camera trap","18-May",2,"none",0
+"568","4",2,"MD",2,"camera trap","18-May",2,"Unidentifiable",4
+"569","4",2,"MD",2,"camera trap","19-May",3,"Field mouse",3
+"570","4",2,"MD",2,"camera trap","19-May",3,"Human",1
+"571","4",2,"MD",2,"camera trap","19-May",3,"Kangaroo rat",2
+"572","4",2,"MD",2,"camera trap","19-May",3,"none",0
+"573","4",2,"MD",2,"camera trap","20-May",4,"Field mouse",2
+"574","4",2,"MD",2,"camera trap","20-May",4,"Human",1
+"575","4",2,"MD",2,"camera trap","20-May",4,"none",0
+"576","4",2,"MD",2,"camera trap","20-May",4,"Unidentifiable",1
+"577","4",2,"MD",2,"camera trap","21-May",5,"Ground Squirrel",1
+"578","4",2,"MD",2,"camera trap","21-May",5,"Human",1
+"579","4",2,"MD",2,"camera trap","21-May",5,"Kangaroo rat",4
+"580","4",2,"MD",2,"camera trap","21-May",5,"none",0
+"581","4",2,"MD",2,"camera trap","21-May",5,"Unidentifiable",1
+"582","4",2,"MD",2,"camera trap","22-May",5,"Unidentifiable",3
+"583","4",2,"MD",2,"camera trap","22-May",6,"Antelope Squirrel",2
+"584","4",2,"MD",2,"camera trap","22-May",6,"Kangaroo rat",10
+"585","4",2,"MD",2,"camera trap","23-May",7,"Antelope Squirrel",1
+"586","4",2,"MD",2,"camera trap","23-May",7,"Jackrabbit",5
+"587","4",2,"MD",2,"camera trap","23-May",7,"Kangaroo rat",15
+"588","4",2,"MD",2,"camera trap","24-May",8,"Antelope Squirrel",6
+"589","4",2,"MD",2,"camera trap","24-May",8,"Jackrabbit",1
+"590","4",2,"MD",2,"camera trap","24-May",8,"Kangaroo rat",21
+"591","4",2,"MD",2,"camera trap","25-May",9,"Kangaroo rat",5
+"592","4",2,"MD",2,"camera trap","25-May",9,"Unidentifiable",2
+"593","4",2,"MD",2,"camera trap","26-May",10,"Field mouse",1
+"594","4",2,"MD",2,"camera trap","26-May",10,"Kangaroo rat",7
+"595","4",2,"MD",2,"camera trap","27-May",11,"Antelope Squirrel",1
+"596","4",2,"MD",2,"camera trap","27-May",11,"Bird",1
+"597","4",2,"MD",2,"camera trap","27-May",11,"Field mouse",1
+"598","4",2,"MD",2,"camera trap","27-May",11,"Kangaroo rat",9
+"599","4",2,"MD",2,"camera trap","28-May",12,"Antelope Squirrel",3
+"600","4",2,"MD",2,"camera trap","28-May",12,"Kangaroo rat",28
+"601","4",2,"MD",2,"camera trap","29-May",13,"Antelope Squirrel",1
+"602","4",2,"MD",2,"camera trap","29-May",13,"Jackrabbit",1
+"603","4",2,"MD",2,"camera trap","29-May",13,"Kangaroo rat",26
+"604","4",2,"MD",2,"camera trap","29-May",13,"Leopard Lizard",10
+"605","4",2,"MD",2,"camera trap","29-May",13,"Unidentifiable",1
+"606","4",2,"MD",2,"camera trap","30-May",14,"Field mouse",1
+"607","4",2,"MD",2,"camera trap","30-May",14,"Jackrabbit",3
+"608","4",2,"MD",2,"camera trap","30-May",14,"Kangaroo rat",12
+"609","4",2,"MD",2,"camera trap","30-May",14,"Unidentifiable",2
+"610","4",2,"MD",2,"camera trap","31-May",15,"Antelope Squirrel",2
+"611","4",2,"MD",2,"camera trap","31-May",15,"Jackrabbit",1
+"612","4",2,"MD",2,"camera trap","31-May",15,"Kangaroo rat",13
+"613","4",2,"MD",2,"focal","02-Jun-19",17,"Butterfly",1
+"614","4",2,"MD",2,"focal","02-Jun-19",17,"Grasshopper",1
+"615","4",2,"MD",2,"focal","02-Jun-19",17,"none",0
+"616","4",2,"MD",2,"focal","02-Jun-19",17,"Spider",1
+"617","4",2,"MD",2,"focal","04-Jun-19",19,"Fly",2
+"618","4",2,"MD",2,"focal","04-Jun-19",19,"Grasshopper",2
+"619","4",2,"MD",2,"focal","04-Jun-19",19,"none",0
+"620","4",2,"MD",2,"focal","06-Jun-19",21,"Bird",2
+"621","4",2,"MD",2,"focal","06-Jun-19",21,"Fly",1
+"622","4",2,"MD",2,"focal","06-Jun-19",21,"Grasshopper",1
+"623","4",2,"MD",2,"focal","06-Jun-19",21,"none",0
+"624","4",2,"MD",2,"focal","17-May-19",1,"Jack Rabbit",1
+"625","4",2,"MD",2,"focal","17-May-19",1,"none",0
+"626","4",2,"MD",2,"focal","25-May-19",9,"Butterfly",15
+"627","4",2,"MD",2,"focal","25-May-19",9,"Leopard Lizard",1
+"628","4",2,"MD",2,"focal","25-May-19",9,"none",0
+"629","4",2,"MD",2,"focal","29-May-19",13,"Fly",2
+"630","4",2,"MD",2,"focal","29-May-19",13,"Grasshopper",3
+"631","4",2,"MD",2,"focal","29-May-19",13,"none",0
+"632","4",2,"MD",2,"focal","29-May-19",13,"Ooda",1
+"633","4",2,"MD",2,"focal","29-May-19",13,"Whiptail Lizard",1
+"634","4",2,"MD",2,"focal","31-May-19",15,"Fly",1
+"635","4",2,"MD",2,"focal","31-May-19",15,"none",0
+"636","4",2,"MD",2,"focal","31-May-19",15,"Whiptail Lizard",1
+"637","4",2,"MD",2,"transect","04-Jun-19",19,"Antelope squirrel",1
+"638","4",2,"MD",2,"transect","04-Jun-19",19,"grasshopper",2
+"639","4",2,"MD",2,"transect","04-Jun-19",19,"Grasshopper",9
+"640","4",2,"MD",2,"transect","04-Jun-19",19,"none",0
+"641","4",2,"MD",2,"transect","06-Jun-19",21,"Antelope squirrel",1
+"642","4",2,"MD",2,"transect","06-Jun-19",21,"Grasshopper",4
+"643","4",2,"MD",2,"transect","06-Jun-19",21,"none",0
+"644","4",2,"MD",2,"transect","11-Jun-19",26,"Grasshopper",5
+"645","4",2,"MD",2,"transect","11-Jun-19",26,"none",0
+"646","4",2,"MD",2,"transect","11-Jun-19",26,"Tarantula Wasp",1
+"647","4",2,"MD",2,"transect","21-May-19",5,"Bee",1
+"648","4",2,"MD",2,"transect","21-May-19",5,"Butterfly",6
+"649","4",2,"MD",2,"transect","21-May-19",5,"Grasshopper",2
+"650","4",2,"MD",2,"transect","21-May-19",5,"none",0
+"651","4",2,"MD",2,"transect","25-May-19",9,"Butterfly",8
+"652","4",2,"MD",2,"transect","25-May-19",9,"Fly",1
+"653","4",2,"MD",2,"transect","25-May-19",9,"Grasshopper",6
+"654","4",2,"MD",2,"transect","25-May-19",9,"none",0
+"655","4",2,"MD",2,"transect","25-May-19",9,"Rattlesnake",1
+"656","4",2,"MD",2,"transect","29-May-19",13,"Fly",3
+"657","4",2,"MD",2,"transect","29-May-19",13,"Grasshopper",3
+"658","4",2,"MD",2,"transect","29-May-19",13,"none",0
+"659","4",2,"MD",2,"transect","29-May-19",13,"Ooda",1
+"660","4",2,"MD",2,"transect","31-May-19",15,"Grasshopper",11
+"661","4",2,"MD",2,"transect","31-May-19",15,"none",0
+"662","4",3,"LD",1,"camera trap","01-Jun",16,"Ground Squirrel",2
+"663","4",3,"LD",1,"camera trap","01-Jun",16,"Jackrabbit",2
+"664","4",3,"LD",1,"camera trap","01-Jun",16,"Kangaroo rat",15
+"665","4",3,"LD",1,"camera trap","01-Jun",16,"Kit fox",1
+"666","4",3,"LD",1,"camera trap","02-Jun",17,"Kangaroo rat",20
+"667","4",3,"LD",1,"camera trap","03-Jun",18,"Jackrabbit",3
+"668","4",3,"LD",1,"camera trap","03-Jun",18,"Kangaroo rat",15
+"669","4",3,"LD",1,"camera trap","04-Jun",19,"Jackrabbit",4
+"670","4",3,"LD",1,"camera trap","04-Jun",19,"Kangaroo rat",13
+"671","4",3,"LD",1,"camera trap","04-Jun",19,"Kit fox",1
+"672","4",3,"LD",1,"camera trap","05-Jun",20,"Jackrabbit",2
+"673","4",3,"LD",1,"camera trap","05-Jun",20,"Kangaroo rat",10
+"674","4",3,"LD",1,"camera trap","07-Jun",22,"Jackrabbit",10
+"675","4",3,"LD",1,"camera trap","07-Jun",22,"Kangaroo rat",7
+"676","4",3,"LD",1,"camera trap","08-Jun",23,"Jackrabbit",1
+"677","4",3,"LD",1,"camera trap","08-Jun",23,"Kangaroo rat",4
+"678","4",3,"LD",1,"camera trap","09-Jun",24,"Jackrabbit",10
+"679","4",3,"LD",1,"camera trap","09-Jun",24,"Kangaroo rat",9
+"680","4",3,"LD",1,"camera trap","10-Jun",25,"Jackrabbit",7
+"681","4",3,"LD",1,"camera trap","10-Jun",25,"Kangaroo rat",4
+"682","4",3,"LD",1,"camera trap","11-Jun",26,"Jackrabbit",2
+"683","4",3,"LD",1,"camera trap","11-Jun",26,"Kangaroo rat",6
+"684","4",3,"LD",1,"camera trap","17-May",1,"Human",1
+"685","4",3,"LD",1,"camera trap","22-May",6,"Jackrabbit",1
+"686","4",3,"LD",1,"camera trap","22-May",6,"Kit fox",1
+"687","4",3,"LD",1,"camera trap","25-May",9,"Bird",1
+"688","4",3,"LD",1,"camera trap","29-May",13,"Antelope Squirrel",1
+"689","4",3,"LD",1,"camera trap","29-May",13,"Kangaroo rat",25
+"690","4",3,"LD",1,"camera trap","30-May",14,"Kangaroo rat",25
+"691","4",3,"LD",1,"camera trap","30-May",14,"Unidentifiable",1
+"692","4",3,"LD",1,"camera trap","31-May",15,"Kangaroo rat",19
+"693","4",3,"LD",1,"focal","02-Jun-19",17,"Antelope Squirrel",1
+"694","4",3,"LD",1,"focal","02-Jun-19",17,"Grasshopper",2
+"695","4",3,"LD",1,"focal","02-Jun-19",17,"Hummingbird",1
+"696","4",3,"LD",1,"focal","02-Jun-19",17,"none",0
+"697","4",3,"LD",1,"focal","04-Jun-19",19,"none",0
+"698","4",3,"LD",1,"focal","06-Jun-19",21,"Grasshopper",7
+"699","4",3,"LD",1,"focal","06-Jun-19",21,"none",0
+"700","4",3,"LD",1,"focal","17-May-19",1,"none",0
+"701","4",3,"LD",1,"focal","25-May-19",9,"Beetle",1
+"702","4",3,"LD",1,"focal","25-May-19",9,"Bird",2
+"703","4",3,"LD",1,"focal","25-May-19",9,"Butterfly",7
+"704","4",3,"LD",1,"focal","25-May-19",9,"Fly",1
+"705","4",3,"LD",1,"focal","25-May-19",9,"Grasshopper",2
+"706","4",3,"LD",1,"focal","25-May-19",9,"none",1
+"707","4",3,"LD",1,"focal","29-May-19",13,"Butterfly",1
+"708","4",3,"LD",1,"focal","29-May-19",13,"Fly",3
+"709","4",3,"LD",1,"focal","29-May-19",13,"none",0
+"710","4",3,"LD",1,"focal","31-May-19",15,"Antelope Squirrel",1
+"711","4",3,"LD",1,"focal","31-May-19",15,"Bird",1
+"712","4",3,"LD",1,"focal","31-May-19",15,"none",0
+"713","4",3,"LD",1,"transect","04-Jun-19",19,"Antelope squirrel",1
+"714","4",3,"LD",1,"transect","04-Jun-19",19,"Butterfly",1
+"715","4",3,"LD",1,"transect","04-Jun-19",19,"Grasshopper",3
+"716","4",3,"LD",1,"transect","04-Jun-19",19,"none",0
+"717","4",3,"LD",1,"transect","06-Jun-19",21,"Dragonfly",1
+"718","4",3,"LD",1,"transect","06-Jun-19",21,"Grasshopper",8
+"719","4",3,"LD",1,"transect","06-Jun-19",21,"none",0
+"720","4",3,"LD",1,"transect","11-Jun-19",26,"Grasshopper",9
+"721","4",3,"LD",1,"transect","11-Jun-19",26,"none",0
+"722","4",3,"LD",1,"transect","21-May-19",5,"Bird",1
+"723","4",3,"LD",1,"transect","21-May-19",5,"none",0
+"724","4",3,"LD",1,"transect","25-May-19",9,"Bird",4
+"725","4",3,"LD",1,"transect","25-May-19",9,"Butterfly",5
+"726","4",3,"LD",1,"transect","25-May-19",9,"Dragonfly",1
+"727","4",3,"LD",1,"transect","25-May-19",9,"Grasshopper",6
+"728","4",3,"LD",1,"transect","25-May-19",9,"Jackrabbit",1
+"729","4",3,"LD",1,"transect","25-May-19",9,"none",0
+"730","4",3,"LD",1,"transect","29-May-19",13,"Antelope squirrel",1
+"731","4",3,"LD",1,"transect","29-May-19",13,"Butterfly",1
+"732","4",3,"LD",1,"transect","29-May-19",13,"Fly",1
+"733","4",3,"LD",1,"transect","29-May-19",13,"Grasshopper",7
+"734","4",3,"LD",1,"transect","29-May-19",13,"Leopard Lizard",1
+"735","4",3,"LD",1,"transect","29-May-19",13,"none",0
+"736","4",3,"LD",1,"transect","31-May-19",15,"Antelope squirrel",2
+"737","4",3,"LD",1,"transect","31-May-19",15,"Bird",1
+"738","4",3,"LD",1,"transect","31-May-19",15,"Grasshopper",7
+"739","4",3,"LD",1,"transect","31-May-19",15,"Jackrabbit",1
+"740","4",3,"LD",1,"transect","31-May-19",15,"none",0
+"741","4",4,"ND",0,"camera trap","01-Jun",16,"Kangaroo rat",2
+"742","4",4,"ND",0,"camera trap","02-Jun",17,"Kangaroo rat",3
+"743","4",4,"ND",0,"camera trap","02-Jun",17,"Unidentifiable",1
+"744","4",4,"ND",0,"camera trap","03-Jun",18,"Antelope Squirrel",2
+"745","4",4,"ND",0,"camera trap","03-Jun",18,"Jackrabbit",1
+"746","4",4,"ND",0,"camera trap","03-Jun",18,"Kangaroo rat",3
+"747","4",4,"ND",0,"camera trap","04-Jun",19,"Jackrabbit",1
+"748","4",4,"ND",0,"camera trap","04-Jun",19,"Kangaroo rat",7
+"749","4",4,"ND",0,"camera trap","05-Jun",20,"Antelope Squirrel",1
+"750","4",4,"ND",0,"camera trap","05-Jun",20,"Jackrabbit",1
+"751","4",4,"ND",0,"camera trap","05-Jun",20,"Kangaroo rat",2
+"752","4",4,"ND",0,"camera trap","06-Jun",21,"Jackrabbit",1
+"753","4",4,"ND",0,"camera trap","06-Jun",21,"Kangaroo rat",5
+"754","4",4,"ND",0,"camera trap","07-Jun",22,"Antelope Squirrel",1
+"755","4",4,"ND",0,"camera trap","07-Jun",22,"Jackrabbit",1
+"756","4",4,"ND",0,"camera trap","07-Jun",22,"Kangaroo rat",1
+"757","4",4,"ND",0,"camera trap","08-Jun",23,"Bird",2
+"758","4",4,"ND",0,"camera trap","08-Jun",23,"Jackrabbit",1
+"759","4",4,"ND",0,"camera trap","08-Jun",23,"Kangaroo rat",2
+"760","4",4,"ND",0,"camera trap","08-Jun",23,"Moth",1
+"761","4",4,"ND",0,"camera trap","08-Jun",23,"Unidentifiable",1
+"762","4",4,"ND",0,"camera trap","09-Jun",24,"Jackrabbit",1
+"763","4",4,"ND",0,"camera trap","09-Jun",24,"Kangaroo rat",4
+"764","4",4,"ND",0,"camera trap","10-Jun",25,"Bird",1
+"765","4",4,"ND",0,"camera trap","10-Jun",25,"Jackrabbit",2
+"766","4",4,"ND",0,"camera trap","10-Jun",25,"Kangaroo rat",2
+"767","4",4,"ND",0,"camera trap","11-Jun",26,"Kangaroo rat",1
+"768","4",4,"ND",0,"camera trap","17-May",1,"Human",1
+"769","4",4,"ND",0,"camera trap","17-May",1,"none",0
+"770","4",4,"ND",0,"camera trap","18-May",2,"Field mouse",4
+"771","4",4,"ND",0,"camera trap","18-May",2,"Kangaroo rat",1
+"772","4",4,"ND",0,"camera trap","18-May",2,"Kit fox",1
+"773","4",4,"ND",0,"camera trap","18-May",2,"none",0
+"774","4",4,"ND",0,"camera trap","18-May",2,"Unidentifiable",4
+"775","4",4,"ND",0,"camera trap","19-May",3,"Field mouse",2
+"776","4",4,"ND",0,"camera trap","19-May",3,"Kit fox",1
+"777","4",4,"ND",0,"camera trap","19-May",3,"none",0
+"778","4",4,"ND",0,"camera trap","20-May",4,"Field mouse",1
+"779","4",4,"ND",0,"camera trap","20-May",4,"Human",2
+"780","4",4,"ND",0,"camera trap","20-May",4,"Kangaroo rat",2
+"781","4",4,"ND",0,"camera trap","20-May",4,"none",0
+"782","4",4,"ND",0,"camera trap","20-May",4,"Unidentifiable",3
+"783","4",4,"ND",0,"camera trap","21-May",5,"Field mouse",1
+"784","4",4,"ND",0,"camera trap","21-May",5,"Human",1
+"785","4",4,"ND",0,"camera trap","21-May",5,"Kangaroo rat",4
+"786","4",4,"ND",0,"camera trap","21-May",5,"none",0
+"787","4",4,"ND",0,"camera trap","22-May",6,"Kangaroo rat",3
+"788","4",4,"ND",0,"camera trap","23-May",7,"Kangaroo rat",2
+"789","4",4,"ND",0,"camera trap","23-May",7,"Kit fox",1
+"790","4",4,"ND",0,"camera trap","23-May",7,"Unidentifiable",1
+"791","4",4,"ND",0,"camera trap","24-May",8,"Kangaroo rat",4
+"792","4",4,"ND",0,"camera trap","25-May",9,"Jackrabbit",1
+"793","4",4,"ND",0,"camera trap","25-May",9,"Kangaroo rat",1
+"794","4",4,"ND",0,"camera trap","25-May",9,"Kit fox",1
+"795","4",4,"ND",0,"camera trap","26-May",10,"Field mouse",2
+"796","4",4,"ND",0,"camera trap","26-May",10,"Kangaroo rat",1
+"797","4",4,"ND",0,"camera trap","26-May",10,"Kit fox",1
+"798","4",4,"ND",0,"camera trap","26-May",10,"Unidentifiable",1
+"799","4",4,"ND",0,"camera trap","27-May",11,"Kangaroo rat",2
+"800","4",4,"ND",0,"camera trap","28-May",12,"Jackrabbit",1
+"801","4",4,"ND",0,"camera trap","28-May",12,"Kangaroo rat",3
+"802","4",4,"ND",0,"camera trap","29-May",13,"Jackrabbit",3
+"803","4",4,"ND",0,"camera trap","29-May",13,"Kangaroo rat",3
+"804","4",4,"ND",0,"camera trap","30-May",14,"Ground Squirrel",1
+"805","4",4,"ND",0,"camera trap","30-May",14,"Jackrabbit",1
+"806","4",4,"ND",0,"camera trap","30-May",14,"Kangaroo rat",8
+"807","4",4,"ND",0,"camera trap","31-May",15,"Antelope Squirrel",2
+"808","4",4,"ND",0,"camera trap","31-May",15,"Jackrabbit",1
+"809","4",4,"ND",0,"camera trap","31-May",15,"Kangaroo rat",5
+"810","4",4,"ND",0,"focal","02-Jun-19",17,"Fly",2
+"811","4",4,"ND",0,"focal","02-Jun-19",17,"Grasshopper",1
+"812","4",4,"ND",0,"focal","02-Jun-19",17,"none",0
+"813","4",4,"ND",0,"focal","04-Jun-19",19,"Fly",3
+"814","4",4,"ND",0,"focal","04-Jun-19",19,"Grasshopper",3
+"815","4",4,"ND",0,"focal","04-Jun-19",19,"none",0
+"816","4",4,"ND",0,"focal","06-Jun-19",21,"Antelope Squirrel",1
+"817","4",4,"ND",0,"focal","06-Jun-19",21,"Grasshopper",1
+"818","4",4,"ND",0,"focal","06-Jun-19",21,"Leopard Lizard",1
+"819","4",4,"ND",0,"focal","06-Jun-19",21,"none",0
+"820","4",4,"ND",0,"focal","17-May-19",1,"none",0
+"821","4",4,"ND",0,"focal","25-May-19",9,"Butterfly",7
+"822","4",4,"ND",0,"focal","25-May-19",9,"Fly",3
+"823","4",4,"ND",0,"focal","25-May-19",9,"Grasshopper",2
+"824","4",4,"ND",0,"focal","25-May-19",9,"none",0
+"825","4",4,"ND",0,"focal","29-May-19",13,"Fly",1
+"826","4",4,"ND",0,"focal","29-May-19",13,"none",0
+"827","4",4,"ND",0,"focal","31-May-19",15,"Grasshopper",1
+"828","4",4,"ND",0,"focal","31-May-19",15,"none",0
+"829","4",4,"ND",0,"transect","04-Jun-19",19,"Grasshopper",7
+"830","4",4,"ND",0,"transect","04-Jun-19",19,"none",0
+"831","4",4,"ND",0,"transect","06-Jun-19",21,"Grasshopper",3
+"832","4",4,"ND",0,"transect","06-Jun-19",21,"Ladybug",1
+"833","4",4,"ND",0,"transect","06-Jun-19",21,"none",0
+"834","4",4,"ND",0,"transect","11-Jun-19",26,"Goepher snake",1
+"835","4",4,"ND",0,"transect","11-Jun-19",26,"Grasshopper",11
+"836","4",4,"ND",0,"transect","11-Jun-19",26,"none",0
+"837","4",4,"ND",0,"transect","21-May-19",5,"Bird",1
+"838","4",4,"ND",0,"transect","21-May-19",5,"Butterfly",4
+"839","4",4,"ND",0,"transect","21-May-19",5,"Grasshopper",2
+"840","4",4,"ND",0,"transect","21-May-19",5,"none",0
+"841","4",4,"ND",0,"transect","25-May-19",9,"Butterfly",3
+"842","4",4,"ND",0,"transect","25-May-19",9,"Gopher Snake",1
+"843","4",4,"ND",0,"transect","25-May-19",9,"Grasshopper",3
+"844","4",4,"ND",0,"transect","25-May-19",9,"none",0
+"845","4",4,"ND",0,"transect","29-May-19",13,"Bee",1
+"846","4",4,"ND",0,"transect","29-May-19",13,"Beetle",1
+"847","4",4,"ND",0,"transect","29-May-19",13,"Bird",1
+"848","4",4,"ND",0,"transect","29-May-19",13,"Butterfly",3
+"849","4",4,"ND",0,"transect","29-May-19",13,"Grasshopper",5
+"850","4",4,"ND",0,"transect","29-May-19",13,"none",0
+"851","4",4,"ND",0,"transect","31-May-19",15,"Bird",1
+"852","4",4,"ND",0,"transect","31-May-19",15,"Grasshopper",8
+"853","4",4,"ND",0,"transect","31-May-19",15,"none",0
+"854","4",5,"HD",3,"transect","25-May-19",9,"Antelope squirrel",1
+"855","4",5,"HD",3,"transect","25-May-19",9,"Bird",1
+"856","4",5,"HD",3,"transect","25-May-19",9,"Butterfly",7
+"857","4",5,"HD",3,"transect","25-May-19",9,"Grasshopper",4
+"858","4",5,"HD",3,"transect","25-May-19",9,"Leopard Lizard",1
+"859","4",NA,"HD",NA,"camera trap",NA,NA,"none",0
+"860","4",NA,"LD",NA,"camera trap",NA,NA,"none",1
+"861","4",NA,"MD",NA,"camera trap",NA,NA,"none",0
+"862","4",NA,"ND",NA,"camera trap",NA,NA,"none",0
