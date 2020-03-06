@@ -133,7 +133,7 @@ photo &lt;- read_csv(&quot;Carrizo Shrub Photo density Sheet.csv&quot;)</code></
 <pre><code>## Warning in rbind(names(probs), probs_f): number of columns of result is not
 ## a multiple of vector length (arg 2)</code></pre>
 <pre><code>## Warning: 1 parsing failure.
-## row # A tibble: 1 x 5 col     row col         expected    actual file                                expected   &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;                               actual 1 22195 actual.time &quot;time like… 1637   'Carrizo Shrub Photo density Sheet… file # A tibble: 1 x 5</code></pre>
+## row # A tibble: 1 x 5 col     row col         expected    actual file                                expected   &lt;int&gt; &lt;chr&gt;       &lt;chr&gt;       &lt;chr&gt;  &lt;chr&gt;                               actual 1 14270 actual.time &quot;time like… 1637   'Carrizo Shrub Photo density Sheet… file # A tibble: 1 x 5</code></pre>
 <pre class="r"><code>colnames(photo)[6] = &quot;site&quot;
 photo$site &lt;- as.character(photo$site)
 focal &lt;- read_csv(&quot;Focal Observations Data Sheet.csv&quot;)
@@ -144,22 +144,22 @@ cam.location &lt;- read_csv(&quot;Camera Location data Sheet.csv&quot;)
 str(transect)</code></pre>
 <pre><code>## Classes 'tbl_df', 'tbl' and 'data.frame':    1957 obs. of  18 variables:
 ##  $ observer            : chr  &quot;Mario, Nargol&quot; &quot;Mario, Nargol&quot; &quot;Mario, Nargol&quot; &quot;Mario, Nargol&quot; ...
-##  $ Date                : chr  &quot;21-May-19&quot; &quot;21-May-19&quot; &quot;21-May-19&quot; &quot;21-May-19&quot; ...
+##  $ Date                : chr  &quot;07-Jun-19&quot; &quot;07-Jun-19&quot; &quot;21-May-19&quot; &quot;25-May-19&quot; ...
 ##  $ Measure             : chr  &quot;transect&quot; &quot;transect&quot; &quot;transect&quot; &quot;transect&quot; ...
-##  $ day_sample          : int  5 5 5 5 5 5 5 5 5 5 ...
+##  $ day_sample          : int  22 22 5 9 13 9 15 15 19 5 ...
 ##  $ Site                : chr  &quot;Carrizo&quot; &quot;Carrizo&quot; &quot;Carrizo&quot; &quot;Carrizo&quot; ...
-##  $ Site.Number         : chr  &quot;4&quot; &quot;4&quot; &quot;4&quot; &quot;4&quot; ...
-##  $ plot                : int  1 1 1 1 1 1 1 1 1 1 ...
-##  $ density_level       : int  3 3 3 3 3 3 3 3 3 3 ...
-##  $ Site.Density        : chr  &quot;HD&quot; &quot;HD&quot; &quot;HD&quot; &quot;HD&quot; ...
-##  $ transect number     : int  1 2 3 1 1 1 1 1 1 1 ...
-##  $ distance on transect: int  60 0 80 0 10 20 30 40 50 70 ...
-##  $ animal.hit          : int  1 1 1 0 0 0 0 0 0 0 ...
-##  $ RTM                 : chr  &quot;Grasshopper&quot; &quot;Butterfly&quot; &quot;Grasshopper&quot; &quot;none&quot; ...
-##  $ observations        : chr  &quot;Standing&quot; &quot;Standing&quot; &quot;Standing&quot; NA ...
-##  $ distance.to.shrub   : chr  &quot;10m&quot; &quot;none&quot; &quot;none&quot; NA ...
-##  $ Time.block          : chr  &quot;AM&quot; &quot;AM&quot; &quot;AM&quot; NA ...
-##  $ actual.time         : 'hms' num  10:42:00 10:41:00 10:45:00 NA ...
+##  $ Site.Number         : chr  &quot;3&quot; &quot;3&quot; &quot;4&quot; &quot;3&quot; ...
+##  $ plot                : int  6 6 1 5 1 7 3 3 3 2 ...
+##  $ density_level       : int  2 2 3 3 3 1 1 1 1 2 ...
+##  $ Site.Density        : chr  &quot;MD&quot; &quot;MD&quot; &quot;HD&quot; &quot;HD&quot; ...
+##  $ transect number     : int  2 2 1 1 1 3 3 1 1 3 ...
+##  $ distance on transect: int  40 40 60 70 40 80 40 0 80 20 ...
+##  $ animal.hit          : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ RTM                 : chr  &quot;Grasshopper&quot; &quot;Grasshopper&quot; &quot;Grasshopper&quot; &quot;Butterfly&quot; ...
+##  $ observations        : chr  &quot;jumping&quot; &quot;jumping&quot; &quot;Standing&quot; &quot;flying&quot; ...
+##  $ microsite           : chr  &quot;shrub&quot; &quot;shrub&quot; &quot;shrub&quot; &quot;shrub&quot; ...
+##  $ Time.block          : chr  &quot;AM&quot; &quot;AM&quot; &quot;AM&quot; &quot;PM&quot; ...
+##  $ actual.time         : 'hms' num  10:35:00 10:35:00 10:42:00 12:03:00 ...
 ##   ..- attr(*, &quot;units&quot;)= chr &quot;secs&quot;
 ##  $ presence of flower  : chr  &quot;no&quot; &quot;no&quot; &quot;no&quot; &quot;no&quot; ...
 ##  - attr(*, &quot;spec&quot;)=List of 2
@@ -192,7 +192,7 @@ str(transect)</code></pre>
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   .. ..$ observations        : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ distance.to.shrub   : list()
+##   .. ..$ microsite           : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   .. ..$ Time.block          : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
@@ -265,6 +265,14 @@ summary(photo)</code></pre>
 ##                                                          
 ##                                                          
 ##                                                          
+##                                                          
+##   microsite        
+##  Length:55632      
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+##                    
 ## </code></pre>
 <pre class="r"><code>count.hit &lt;- photo %&gt;%
   count(animal.hit) %&gt;%
@@ -281,16 +289,17 @@ summary(count.hit)</code></pre>
 <pre class="r"><code>skim(photo)</code></pre>
 <pre><code>## Skim summary statistics
 ##  n obs: 55632 
-##  n variables: 25 
+##  n variables: 26 
 ## 
 ## ── Variable type:character ────────────────────────────────────────────────
 ##            variable missing complete     n min max empty n_unique
-##            behavior   54144     1488 55632   6  11     0       20
+##            behavior   54131     1501 55632   6  11     0       20
 ##                date   52887     2745 55632   6   6     0       27
 ##           day.night       0    55632 55632   3   5     0        2
 ##           file.name       0    55632 55632   7   8     0     7754
 ##  level (l,m,h,none)       0    55632 55632   2   2     0        4
 ##             Measure       0    55632 55632  11  11     0        1
+##           microsite   54127     1505 55632   4   5     0        2
 ##               notes   55622       10 55632  16  66     0       10
 ##         observation   55321      311 55632   6  70     0      131
 ##            recorder       0    55632 55632   5   5     0        1
@@ -352,7 +361,7 @@ summary(transect)</code></pre>
 ##                     Mean   :2.014   Mean   : 50.33       Mean   :0.2744  
 ##                     3rd Qu.:3.000   3rd Qu.: 80.00       3rd Qu.:1.0000  
 ##                     Max.   :3.000   Max.   :100.00       Max.   :1.0000  
-##      RTM            observations       distance.to.shrub 
+##      RTM            observations        microsite        
 ##  Length:1957        Length:1957        Length:1957       
 ##  Class :character   Class :character   Class :character  
 ##  Mode  :character   Mode  :character   Mode  :character  
@@ -385,8 +394,8 @@ summary(tran.hit)</code></pre>
 ## ── Variable type:character ────────────────────────────────────────────────
 ##            variable missing complete    n min max empty n_unique
 ##                Date       0     1957 1957   9   9     0       11
-##   distance.to.shrub    1422      535 1957   1  11     0       15
 ##             Measure       0     1957 1957   8   8     0        1
+##           microsite    1422      535 1957   4   5     0        2
 ##        observations    1423      534 1957   6   8     0       10
 ##            observer       0     1957 1957  13  13     0        1
 ##  presence of flower       0     1957 1957   2   3     0        2
@@ -394,7 +403,7 @@ summary(tran.hit)</code></pre>
 ##                Site       0     1957 1957   7   7     0        1
 ##        Site.Density       0     1957 1957   2   2     0        4
 ##         Site.Number       0     1957 1957   1   1     0        2
-##          Time.block    1423      534 1957   2   2     0        3
+##          Time.block    1422      535 1957   2   2     0        3
 ## 
 ## ── Variable type:difftime ─────────────────────────────────────────────────
 ##     variable missing complete    n        min        max     median
@@ -529,17 +538,17 @@ skim(focal)</code></pre>
 ##  n variables: 17 
 ## 
 ## ── Variable type:character ────────────────────────────────────────────────
-##              variable missing complete   n min max empty n_unique
-##              behavior     189      249 438   6   8     0        6
-##  close to shrub (y/n)     188      250 438   1   1     0        2
-##                  Date       0      438 438   9   9     0       10
-##               Measure       0      438 438   5   5     0        1
-##          observations     189      249 438   7  77     0       44
-##              Observer       0      438 438  13  13     0        1
-##                   RTU       0      438 438   3  17     0       16
-##                  Site       0      438 438   1   1     0        2
-##          site.density       0      438 438   2   2     0        4
-##            time.block       0      438 438   2   2     0        2
+##      variable missing complete   n min max empty n_unique
+##      behavior     189      249 438   6   8     0        6
+##          Date       0      438 438   9   9     0       10
+##       Measure       0      438 438   5   5     0        1
+##     microsite     188      250 438   4   5     0        2
+##  observations     189      249 438   7  77     0       44
+##      Observer       0      438 438  13  13     0        1
+##           RTU       0      438 438   3  17     0       16
+##          Site       0      438 438   1   1     0        2
+##  site.density       0      438 438   2   2     0        4
+##    time.block       0      438 438   2   2     0        2
 ## 
 ## ── Variable type:difftime ─────────────────────────────────────────────────
 ##     variable missing complete   n        min        max     median
@@ -1655,13 +1664,13 @@ str(photovegan)</code></pre>
 ##  $ captures          : int  3 1 2 0 1 7 2 1 4 15 ...
 ##  $ uniID             : chr  &quot;3 HD&quot; &quot;3 HD&quot; &quot;3 HD&quot; &quot;3 HD&quot; ...
 ##  - attr(*, &quot;problems&quot;)=Classes 'tbl_df', 'tbl' and 'data.frame': 1 obs. of  5 variables:
-##   ..$ row     : int 22195
+##   ..$ row     : int 14270
 ##   ..$ col     : chr &quot;actual.time&quot;
 ##   ..$ expected: chr &quot;time like &quot;
 ##   ..$ actual  : chr &quot;1637&quot;
 ##   ..$ file    : chr &quot;'Carrizo Shrub Photo density Sheet.csv'&quot;
 ##  - attr(*, &quot;spec&quot;)=List of 2
-##   ..$ cols   :List of 25
+##   ..$ cols   :List of 26
 ##   .. ..$ year              : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
 ##   .. ..$ ID                : list()
@@ -1712,6 +1721,8 @@ str(photovegan)</code></pre>
 ##   .. ..$ observation       : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   .. ..$ notes             : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ microsite         : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   ..$ default: list()
 ##   .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;
@@ -1927,7 +1938,7 @@ str(transectvegan)</code></pre>
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   .. ..$ observations        : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ distance.to.shrub   : list()
+##   .. ..$ microsite           : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   .. ..$ Time.block          : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
@@ -2113,41 +2124,41 @@ str(focalvegan)</code></pre>
 ##  $ uniID       : chr  &quot;3 HD&quot; &quot;3 HD&quot; &quot;3 HD&quot; &quot;3 HD&quot; ...
 ##  - attr(*, &quot;spec&quot;)=List of 2
 ##   ..$ cols   :List of 17
-##   .. ..$ Observer            : list()
+##   .. ..$ Observer     : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ Date                : list()
+##   .. ..$ Date         : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ Measure             : list()
+##   .. ..$ Measure      : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ day_sample          : list()
+##   .. ..$ day_sample   : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ Site                : list()
+##   .. ..$ Site         : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ plot                : list()
+##   .. ..$ plot         : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ density_level       : list()
+##   .. ..$ density_level: list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ site.density        : list()
+##   .. ..$ site.density : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ start.time          :List of 1
+##   .. ..$ start.time   :List of 1
 ##   .. .. ..$ format: chr &quot;&quot;
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_time&quot; &quot;collector&quot;
-##   .. ..$ animal.hit          : list()
+##   .. ..$ animal.hit   : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ RTU                 : list()
+##   .. ..$ RTU          : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ time.block          : list()
+##   .. ..$ time.block   : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ actual.time         :List of 1
+##   .. ..$ actual.time  :List of 1
 ##   .. .. ..$ format: chr &quot;&quot;
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_time&quot; &quot;collector&quot;
-##   .. ..$ time.interval       : list()
+##   .. ..$ time.interval: list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ behavior            : list()
+##   .. ..$ behavior     : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ close to shrub (y/n): list()
+##   .. ..$ microsite    : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ observations        : list()
+##   .. ..$ observations : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   ..$ default: list()
 ##   .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;
@@ -2388,13 +2399,13 @@ fig3 &lt;- ggplot(focal.data, aes(site.density, captures)) +
 <div id="set-up-data-to-have-photo-transect-and-focals-all-together-with-shrub-covers" class="section level2">
 <h2>Set up data to have Photo, Transect and Focals all together with shrub covers!</h2>
 <pre class="r"><code>masterphoto &lt;- photo %&gt;%
-  group_by(site, plot,  `level (l,m,h,none)`, density_level,Measure, date, day_sample, RTU) %&gt;%
+  group_by(site, plot,  `level (l,m,h,none)`, density_level,Measure, date, day_sample, RTU, microsite) %&gt;%
   summarise(daily_animal_totals = sum(animal.hit))
 
 
 masterphoto$uniID &lt;- paste(masterphoto$site, masterphoto$`level (l,m,h,none)`)
 str(masterphoto)</code></pre>
-<pre><code>## Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':  473 obs. of  10 variables:
+<pre><code>## Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':  513 obs. of  11 variables:
 ##  $ site               : chr  &quot;3&quot; &quot;3&quot; &quot;3&quot; &quot;3&quot; ...
 ##  $ plot               : int  5 5 5 5 5 5 5 5 5 5 ...
 ##  $ level (l,m,h,none) : chr  &quot;HD&quot; &quot;HD&quot; &quot;HD&quot; &quot;HD&quot; ...
@@ -2403,16 +2414,17 @@ str(masterphoto)</code></pre>
 ##  $ date               : chr  &quot;01-Jun&quot; &quot;02-Jun&quot; &quot;02-Jun&quot; &quot;02-Jun&quot; ...
 ##  $ day_sample         : int  16 17 17 17 18 19 20 20 20 21 ...
 ##  $ RTU                : chr  &quot;Kangaroo rat&quot; &quot;Antelope Squirrel&quot; &quot;Butterfly&quot; &quot;Kangaroo rat&quot; ...
+##  $ microsite          : chr  &quot;shrub&quot; &quot;shrub&quot; &quot;shrub&quot; &quot;shrub&quot; ...
 ##  $ daily_animal_totals: int  1 1 1 1 1 1 1 2 1 4 ...
 ##  $ uniID              : chr  &quot;3 HD&quot; &quot;3 HD&quot; &quot;3 HD&quot; &quot;3 HD&quot; ...
 ##  - attr(*, &quot;problems&quot;)=Classes 'tbl_df', 'tbl' and 'data.frame': 1 obs. of  5 variables:
-##   ..$ row     : int 22195
+##   ..$ row     : int 14270
 ##   ..$ col     : chr &quot;actual.time&quot;
 ##   ..$ expected: chr &quot;time like &quot;
 ##   ..$ actual  : chr &quot;1637&quot;
 ##   ..$ file    : chr &quot;'Carrizo Shrub Photo density Sheet.csv'&quot;
 ##  - attr(*, &quot;spec&quot;)=List of 2
-##   ..$ cols   :List of 25
+##   ..$ cols   :List of 26
 ##   .. ..$ year              : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
 ##   .. ..$ ID                : list()
@@ -2464,6 +2476,8 @@ str(masterphoto)</code></pre>
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   .. ..$ notes             : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ microsite         : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   ..$ default: list()
 ##   .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;
 ##   ..- attr(*, &quot;class&quot;)= chr &quot;col_spec&quot;
@@ -2472,23 +2486,24 @@ str(masterphoto)</code></pre>
 <pre class="r"><code>masterphoto$uniID &lt;- NULL
 names(masterphoto)[3] &lt;- &quot;density_category&quot;</code></pre>
 <pre class="r"><code>mastertransect &lt;- transect %&gt;%
-  group_by(Site.Number, plot, Site.Density, density_level, Measure, Date, day_sample, RTM) %&gt;%
+  group_by(Site.Number, plot, Site.Density, density_level, Measure, Date, day_sample, RTM, microsite) %&gt;%
   summarise(daily_animal_totals = sum(animal.hit))
 
 
 mastertransect$uniID &lt;- paste(mastertransect$site, mastertransect$Site.Density)</code></pre>
 <pre><code>## Warning: Unknown or uninitialised column: 'site'.</code></pre>
 <pre class="r"><code>str(mastertransect)</code></pre>
-<pre><code>## Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':  212 obs. of  10 variables:
+<pre><code>## Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':  253 obs. of  11 variables:
 ##  $ Site.Number        : chr  &quot;3&quot; &quot;3&quot; &quot;3&quot; &quot;3&quot; ...
 ##  $ plot               : int  5 5 5 5 5 5 5 5 5 5 ...
 ##  $ Site.Density       : chr  &quot;HD&quot; &quot;HD&quot; &quot;HD&quot; &quot;HD&quot; ...
 ##  $ density_level      : int  3 3 3 3 3 3 3 3 3 3 ...
 ##  $ Measure            : chr  &quot;transect&quot; &quot;transect&quot; &quot;transect&quot; &quot;transect&quot; ...
 ##  $ Date               : chr  &quot;04-Jun-19&quot; &quot;04-Jun-19&quot; &quot;04-Jun-19&quot; &quot;04-Jun-19&quot; ...
-##  $ day_sample         : int  19 19 19 19 19 19 19 22 22 27 ...
-##  $ RTM                : chr  &quot;Antelope squirrel&quot; &quot;Beetle&quot; &quot;Bird&quot; &quot;BIrd&quot; ...
-##  $ daily_animal_totals: int  1 2 2 1 1 3 0 2 0 1 ...
+##  $ day_sample         : int  19 19 19 19 19 19 19 19 22 22 ...
+##  $ RTM                : chr  &quot;Antelope squirrel&quot; &quot;Beetle&quot; &quot;Bird&quot; &quot;Bird&quot; ...
+##  $ microsite          : chr  &quot;shrub&quot; &quot;shrub&quot; &quot;open&quot; &quot;shrub&quot; ...
+##  $ daily_animal_totals: int  1 2 1 1 1 1 3 0 1 1 ...
 ##  $ uniID              : chr  &quot; HD&quot; &quot; HD&quot; &quot; HD&quot; &quot; HD&quot; ...
 ##  - attr(*, &quot;spec&quot;)=List of 2
 ##   ..$ cols   :List of 18
@@ -2520,7 +2535,7 @@ mastertransect$uniID &lt;- paste(mastertransect$site, mastertransect$Site.Densit
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   .. ..$ observations        : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ distance.to.shrub   : list()
+##   .. ..$ microsite           : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   .. ..$ Time.block          : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
@@ -2540,13 +2555,13 @@ names(mastertransect)[3] &lt;- &quot;density_category&quot;
 names(mastertransect)[6] &lt;- &quot;date&quot;
 names(mastertransect)[8] &lt;- &quot;RTU&quot;</code></pre>
 <pre class="r"><code>masterfocal &lt;- focal %&gt;%
-  group_by(Site, plot, site.density, density_level, Measure, Date, day_sample, RTU) %&gt;%
+  group_by(Site, plot, site.density, density_level, Measure, Date, day_sample, RTU, microsite) %&gt;%
   summarise(daily_animal_totals = sum(animal.hit))
 
 
 masterfocal$uniID &lt;- paste(masterfocal$Site, masterfocal$site.density)
 str(masterfocal)</code></pre>
-<pre><code>## Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':  177 obs. of  10 variables:
+<pre><code>## Classes 'grouped_df', 'tbl_df', 'tbl' and 'data.frame':  192 obs. of  11 variables:
 ##  $ Site               : chr  &quot;3&quot; &quot;3&quot; &quot;3&quot; &quot;3&quot; ...
 ##  $ plot               : int  5 5 5 5 5 5 5 5 5 5 ...
 ##  $ site.density       : chr  &quot;HD&quot; &quot;HD&quot; &quot;HD&quot; &quot;HD&quot; ...
@@ -2555,45 +2570,46 @@ str(masterfocal)</code></pre>
 ##  $ Date               : chr  &quot;02-Jun-19&quot; &quot;02-Jun-19&quot; &quot;02-Jun-19&quot; &quot;02-Jun-19&quot; ...
 ##  $ day_sample         : int  17 17 17 17 19 19 22 22 22 22 ...
 ##  $ RTU                : chr  &quot;Dragonfly&quot; &quot;Grasshopper&quot; &quot;none&quot; &quot;Ooda&quot; ...
+##  $ microsite          : chr  &quot;shrub&quot; &quot;shrub&quot; NA &quot;shrub&quot; ...
 ##  $ daily_animal_totals: int  2 4 0 1 1 0 1 3 1 0 ...
 ##  $ uniID              : chr  &quot;3 HD&quot; &quot;3 HD&quot; &quot;3 HD&quot; &quot;3 HD&quot; ...
 ##  - attr(*, &quot;spec&quot;)=List of 2
 ##   ..$ cols   :List of 17
-##   .. ..$ Observer            : list()
+##   .. ..$ Observer     : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ Date                : list()
+##   .. ..$ Date         : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ Measure             : list()
+##   .. ..$ Measure      : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ day_sample          : list()
+##   .. ..$ day_sample   : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ Site                : list()
+##   .. ..$ Site         : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ plot                : list()
+##   .. ..$ plot         : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ density_level       : list()
+##   .. ..$ density_level: list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ site.density        : list()
+##   .. ..$ site.density : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ start.time          :List of 1
+##   .. ..$ start.time   :List of 1
 ##   .. .. ..$ format: chr &quot;&quot;
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_time&quot; &quot;collector&quot;
-##   .. ..$ animal.hit          : list()
+##   .. ..$ animal.hit   : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ RTU                 : list()
+##   .. ..$ RTU          : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ time.block          : list()
+##   .. ..$ time.block   : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ actual.time         :List of 1
+##   .. ..$ actual.time  :List of 1
 ##   .. .. ..$ format: chr &quot;&quot;
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_time&quot; &quot;collector&quot;
-##   .. ..$ time.interval       : list()
+##   .. ..$ time.interval: list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
-##   .. ..$ behavior            : list()
+##   .. ..$ behavior     : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ close to shrub (y/n): list()
+##   .. ..$ microsite    : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
-##   .. ..$ observations        : list()
+##   .. ..$ observations : list()
 ##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
 ##   ..$ default: list()
 ##   .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;

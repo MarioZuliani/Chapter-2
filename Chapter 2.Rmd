@@ -739,7 +739,7 @@ ggarrange(fig1, fig2, fig3, nrow = 2, ncol = 2)
 
 ```{r}
 masterphoto <- photo %>%
-  group_by(site, plot,  `level (l,m,h,none)`, density_level,Measure, date, day_sample, RTU) %>%
+  group_by(site, plot,  `level (l,m,h,none)`, density_level,Measure, date, day_sample, RTU, microsite) %>%
   summarise(daily_animal_totals = sum(animal.hit))
 
 
@@ -751,7 +751,7 @@ names(masterphoto)[3] <- "density_category"
 ```
 ```{r}
 mastertransect <- transect %>%
-  group_by(Site.Number, plot, Site.Density, density_level, Measure, Date, day_sample, RTM) %>%
+  group_by(Site.Number, plot, Site.Density, density_level, Measure, Date, day_sample, RTM, microsite) %>%
   summarise(daily_animal_totals = sum(animal.hit))
 
 
@@ -765,7 +765,7 @@ names(mastertransect)[8] <- "RTU"
 ```
 ```{r}
 masterfocal <- focal %>%
-  group_by(Site, plot, site.density, density_level, Measure, Date, day_sample, RTU) %>%
+  group_by(Site, plot, site.density, density_level, Measure, Date, day_sample, RTU, microsite) %>%
   summarise(daily_animal_totals = sum(animal.hit))
 
 
