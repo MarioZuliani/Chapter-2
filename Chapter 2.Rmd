@@ -545,11 +545,11 @@ plot1
 dataphoto <- glm(H~site.density, data = shortvegan)
 summary(dataphoto)
 ```
+###Stats to show photo captures
 ```{r}
 anova(dataphoto, test = "Chisq")
 emmeans(dataphoto, pairwise~site.density)
 ```
-
 
 ###Diversity Data for Transects
 ```{r}
@@ -621,7 +621,7 @@ summary(datatransect)
 anova(datatransect, test = "Chisq")
 emmeans(datatransect, pairwise~site.density)
 ```
-Diversity Data for Focal Observations
+###Diversity Data for Focal Observations
 ```{r}
 library(tidyverse)
 library(vegan)
@@ -801,5 +801,83 @@ masterdatarichness$count <- NULL
 names(masterdatarichness)[10] <- "daily_animal_richness"
 
 write.csv(masterdatarichness, "data_2019_compiled1.csv")
+```
+
+
+###Continuing here from March!
+```{r}
+data.final <- read.csv("data.csv")
+
+density_simple <- data.final %>%
+  group_by(as.character(density_levels), density_category, density, microsite, phylum) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+ggplot(density_simple, aes(as.character(density_levels), animals)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal density")
+
+m1 <- glm(animals~density_levels, family = "quasipoisson", data = density_simple)
+anova(m1, test = "Chisq")
+emmeans(m1, pairwise~density_levels)
+```
+```{r}
+ggplot(density_simple, aes(as.character(density_levels), richness)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() + 
+  labs(x = "shrub density level", y = "animal richness")
+```
+```{r}
+m2 <- glm(richness~density_levels, family = "quasipoisson", data = density_simple)
+anova(m2, test = "Chisq")
+emmeans(m2, pairwise~density_levels)
+```
+
+
+```{r}
+ggplot(density_simple, aes(as.character(density), animals, color = density_category)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") +
+  labs(x = "shrub density", y = "total animal density")
+
+m3 <- glm(animals~density, family = "quasipoisson", data = density_simple)
+anova(m3, test = "Chisq")
+emmeans(m3, pairwise~density)
+```
+```{r}
+ggplot(density_simple, aes(as.character(density), richness)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") +
+  labs(x = "shrub density", y = "total animal richness")
+
+m4 <- glm(richness~density, family = "quasipoisson", data = density_simple)
+anova(m4, test = "Chisq")
+emmeans(m4, pairwise~density)
+```
+```{r}
+data_simple <- data.final %>%
+  group_by(as.character(density_levels), method, density_category, density, microsite) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+ggplot(data_simple, aes(density_levels, animals)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") +
+  labs(x = "shrub density level", y = "animal abundance")
+
+m5 <- glm(animals~density_levels, family = "quasipoisson", data = data_simple)
+anova(m5, test = "Chisq")
+emmeans(m5, pairwise~density_levels)
+```
+```{r}
+ggplot(data_simple, aes(density_levels, richness)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") +
+  labs(x = "shrub density level", y = "animal richness")
+
+m6 <- glm(animals~density_levels, family = "quasipoisson", data = data_simple)
+anova(m6, test = "Chisq")
+emmeans(m6, pairwise~density_levels)
 ```
 
