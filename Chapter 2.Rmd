@@ -893,7 +893,16 @@ ggplot(density_simple2, aes(as.character(cover), animals)) +
   labs(x = "shrub density level", y = "animal density") + 
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
-Cant seem to get a comparison here. Need to keep working on it.
+Does this work for cover?
+```{r}
+m7 <- glm(animals~density_category*cover, family = "poisson", data = density_simple2)
+m7
+anova(m7, test = "Chisq")
+e7 <- emmeans(m7, pairwise~density_category*cover)
+e7
+```
+
+
 
 ###RDM Data
 ```{r}
@@ -935,9 +944,11 @@ ggplot(animal.RDM.data, aes(RDM_g, animals, fill = microsite)) +
   labs(x = "RDM (grams)", y = "animal density")
 ```
 ```{r}
-m8 <- glm(animals~RDM_g, family = "poisson", data = animal.RDM.data)
+m8 <- glm(animals~density_category*RDM_g, family = "poisson", data = animal.RDM.data)
+m8
 anova(m8, test = "Chisq")
-e8 <- emmeans(m8, pairwise~RDM_g)
+e8 <- emmeans(m8, pairwise~density_category*RDM_g)
 e8
+
 ```
 
