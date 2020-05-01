@@ -803,12 +803,6 @@ ggplot(density_simple, aes(as.character(density_category), animals, color = micr
   labs(x = "shrub density level", y = "animal density")
 
 ```
-```{r}
-m1 <- glm(animals ~ density_category*microsite, family = "poisson", data = density_simple)
-anova(m1, test = "Chisq")
-e1 <- emmeans(m1, pairwise~density_category*microsite)
-e1
-```
 
 ```{r}
 ggplot(density_simple, aes(as.character(density_levels), animals)) +
@@ -816,13 +810,6 @@ ggplot(density_simple, aes(as.character(density_levels), animals)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   labs(x = "shrub density level", y = "animal density")
 ```
-```{r}
-m2 <- glm(animals~density_levels, family = "poisson", data = density_simple)
-anova(m2, test = "Chisq")
-e2 <- emmeans(m2, pairwise~density_levels)
-e2
-```
-
 
 ```{r}
 ggplot(density_simple, aes(as.character(density_levels), animals)) +
@@ -832,22 +819,13 @@ ggplot(density_simple, aes(as.character(density_levels), animals)) +
   labs(x = "shrub density level", y = "animal density")
 
 ```
-```{r}
-m3 <- glm(animals~density_levels*phylum, family = "poisson", data = density_simple)
-anova(m3, test = "Chisq")
-e3 <- emmeans(m3, pairwise~density_levels*phylum)
-e3
-```
+
 
 ```{r}
 ggplot(density_simple, aes(as.character(density), richness)) +
   geom_boxplot() +
   scale_color_brewer(palette = "Set1") +
   labs(x = "shrub density", y = "total animal richness")
-
-m4 <- glm(richness~density, family = "quasipoisson", data = density_simple)
-anova(m4, test = "Chisq")
-emmeans(m4, pairwise~density)
 ```
 ```{r}
 data_simple <- data.final %>%
@@ -862,12 +840,7 @@ ggplot(data_simple, aes(density_levels, animals, color = method)) +
   labs(x = "shrub density level", y = "animal abundance")
 
 ```
-```{r}
-m5 <- glm(animals~method*density_levels, family = "poisson", data = data_simple)
-anova(m5, test = "Chisq")
-e5 <- emmeans(m5, pairwise~method*density_levels)
-e5
-```
+
 
 
 ```{r}
@@ -876,11 +849,8 @@ ggplot(data_simple, aes(density_levels, richness)) +
   scale_color_brewer(palette = "Set1") +
   labs(x = "shrub density level", y = "animal richness")
 
-m6 <- glm(animals~density_levels, family = "poisson", data = data_simple)
-anova(m6, test = "Chisq")
-emmeans(m6, pairwise~density_levels)
 ```
-
+##Cover Data
 ```{r}
 density_simple2 <- data.final %>%
   group_by(as.character(density_levels), density_category, density, cover) %>%
@@ -894,15 +864,6 @@ ggplot(density_simple2, aes(as.character(cover), animals)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1))
 ```
 Does this work for cover?
-```{r}
-m7 <- glm(animals~density_category*cover, family = "poisson", data = density_simple2)
-m7
-anova(m7, test = "Chisq")
-e7 <- emmeans(m7, pairwise~density_category*cover)
-e7
-```
-
-
 
 ###RDM Data
 ```{r}
@@ -913,11 +874,8 @@ density_simple3 <- data.final %>%
 ```
 
 ```{r}
+#RDM Set up
 RDM <- read.csv("RDM.CSV")
-```
-
-
-```{r}
 data_RDM <- RDM %>%
   group_by(as.character(density_level), Site.Density, density, RDM_g, microsite) %>%
   summarise() %>%
@@ -933,6 +891,7 @@ animal.RDM.data <- merge(density_simple3, data_RDM, all = TRUE)
 ```
 
 ```{r}
+#RDM PLot
 ggplot(animal.RDM.data, aes(RDM_g, animals, fill = microsite)) +
   geom_histogram(stat = "identity") +
   facet_wrap(~density_category) +
@@ -943,12 +902,133 @@ ggplot(animal.RDM.data, aes(RDM_g, animals, fill = microsite)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   labs(x = "RDM (grams)", y = "animal density")
 ```
+
 ```{r}
+#Diversity by shrub density by invert/vert
+ggplot(density_simple, aes(as.character(density_levels), richness)) +
+  geom_boxplot() +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal richness")
+```
+
+```{r}
+#Climate Data
+climate <- read_csv("Carrizo_micronet.csv")
+data_climate <- climate %>%
+  group_by(as.character(density_level), microsite, temp) %>%
+  summarise() %>%
+  rename(density_level = 'as.character(density_level)')
+names(data_climate)[1] <- "density_levels"
+
+density_simple4 <- data.final %>%
+  group_by(as.character(density_levels), microsite) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+animal.climate.data <- merge(data_climate, density_simple4, all = TRUE)
+```
+
+```{r}
+#Compares Temperatures with animal abundances for each microsite
+ggplot(animal.climate.data, aes(temp, animals, fill = density_levels)) +
+  geom_histogram(stat = "identity") +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "Temperature", y = "animal density")
+#Compares Temperatures with animal abundance
+ggplot(animal.climate.data, aes(temp, animals, fill = microsite)) +
+  geom_histogram(stat = "identity") +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "Temperature", y = "animal density")
+#Compares Site Density temperatures
+ggplot(animal.climate.data, aes(as.character(density_levels), temp)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal richness")
+#Shows Compares site density temperature in both microsites
+ggplot(animal.climate.data, aes(as.character(density_levels), temp)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  facet_wrap(~microsite)
+  labs(x = "shrub density level", y = "temperature")
+```
+
+###Final Stats
+```{r}
+#Animal Abundance by Density Level and Microsite
+m1 <- glm(animals ~ density_category*microsite, family = "poisson", data = density_simple)
+anova(m1, test = "Chisq")
+e1 <- emmeans(m1, pairwise~density_category*microsite)
+e1
+```
+
+```{r}
+#Animal Abundance by Density Level
+m2 <- glm(animals~density_levels, family = "poisson", data = density_simple)
+anova(m2, test = "Chisq")
+e2 <- emmeans(m2, pairwise~density_levels)
+e2
+```
+
+```{r}
+#Animal Abundance by Density level and Phylum
+m3 <- glm(animals~density_levels*phylum, family = "poisson", data = density_simple)
+anova(m3, test = "Chisq")
+e3 <- emmeans(m3, pairwise~density_levels*phylum)
+e3
+```
+
+```{r}
+#Animal Richness by Density Level
+m4 <- glm(richness~density, family = "quasipoisson", data = density_simple)
+anova(m4, test = "Chisq")
+emmeans(m4, pairwise~density)
+```
+
+```{r}
+#Animal Abundance by Method and Density level
+m5 <- glm(animals~method*density_levels, family = "poisson", data = data_simple)
+anova(m5, test = "Chisq")
+e5 <- emmeans(m5, pairwise~method*density_levels)
+e5
+```
+
+```{r}
+#Animal Abundance by Density Level
+m6 <- glm(animals~density_levels, family = "poisson", data = data_simple)
+anova(m6, test = "Chisq")
+emmeans(m6, pairwise~density_levels)
+
+```
+
+```{r}
+#Cover Stats
+m7 <- glm(animals~density_category*cover, family = "poisson", data = density_simple2)
+m7
+anova(m7, test = "Chisq")
+e7 <- emmeans(m7, pairwise~density_category*cover)
+e7
+```
+
+```{r}
+#RDM Stats
 m8 <- glm(animals~density_category*RDM_g, family = "poisson", data = animal.RDM.data)
 m8
 anova(m8, test = "Chisq")
 e8 <- emmeans(m8, pairwise~density_category*RDM_g)
 e8
+
+```
+```{r}
+#Animal Abundance by Density Level and Phylum
+m8 <- glm(animals ~ density_category*phylum, family = "poisson", data = density_simple)
+anova(m8, test = "Chisq")
+e8 <- emmeans(m8, pairwise~density_category*phylum)
+e8
+```
+
+####For Publication
+```{r}
 
 ```
 
