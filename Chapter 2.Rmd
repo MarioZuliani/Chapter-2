@@ -1026,7 +1026,39 @@ anova(m8, test = "Chisq")
 e8 <- emmeans(m8, pairwise~density_category*phylum)
 e8
 ```
-
+```{r}
+#Animals compared to temp and density level
+m9 <- glm(animals ~ temp*density_levels, family = "poisson", data = animal.climate.data)
+anova(m9, test = "Chisq")
+e9 <- emmeans(m9, pairwise~temp*density_levels)
+e9
+#Significant Difference Between Low - Medium, Low - High and Medium - High Plots
+```
+```{r}
+#Animals compared to temp and microsite
+m10 <- glm(animals ~ temp*microsite, family = "poisson", data = animal.climate.data)
+anova(m10, test = "Chisq")
+e10 <- emmeans(m10, pairwise~temp*microsite)
+e10
+#Significant difference between Shrub and open animal interactions with temperature as a factor
+```
+```{r}
+#Comparing Temp to density levels
+m11 <- glm(temp ~ density_levels, family = "poisson", data = animal.climate.data)
+anova(m11, test = "Chisq")
+e11 <- emmeans(m11, pairwise~density_levels)
+e11
+#Significant difference between Medium - High Density Plots and Low - High Density Plats
+```
+```{r}
+#Comparing Temp vetween Density levels and microsites
+m12 <- glm(temp ~ density_levels*microsite, family = "poisson", data = animal.climate.data)
+anova(m12, test = "Chisq")
+e12 <- emmeans(m12, pairwise~density_levels*microsite)
+e12
+#Significant difference between Low open - High Shrub, Medium Open - High Shrub, Medium Shrub - High Shrub, Which supports why we see more animals at the medium plots
+##Somethings Up with the numbers though. Looks weird when knitted
+```
 ####For Publication
 ```{r}
 
