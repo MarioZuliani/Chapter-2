@@ -796,7 +796,7 @@ density_simple <- data.final %>%
   group_by(as.character(density_levels), density_category, density, microsite, phylum) %>%
   summarise(animals = sum(daily_animal_totals), richness = n()) %>%
   rename(density_levels = 'as.character(density_levels)')
-
+##Plot good for Appendix and Defence
 ggplot(density_simple, aes(as.character(density_category), animals, color = microsite)) +
   geom_boxplot() +
   scale_color_brewer(palette = "Set1") + theme_classic() +
@@ -891,7 +891,7 @@ animal.RDM.data <- merge(density_simple3, data_RDM, all = TRUE)
 ```
 
 ```{r}
-#RDM PLot
+#RDM PLot (Use first for appendix?)
 ggplot(animal.RDM.data, aes(RDM_g, animals, fill = microsite)) +
   geom_histogram(stat = "identity") +
   facet_wrap(~density_category) +
@@ -930,7 +930,7 @@ animal.climate.data <- merge(data_climate, density_simple4, all = TRUE)
 ```
 
 ```{r}
-#Compares Temperatures with animal abundances for each microsite
+#Compares Temperatures with animal abundances for each microsite (Use of Appendix?)
 ggplot(animal.climate.data, aes(temp, animals, fill = density_levels)) +
   geom_histogram(stat = "identity") +
   scale_color_brewer(palette = "Set1") + theme_classic() +
@@ -1059,8 +1059,27 @@ e12
 #Significant difference between Low open - High Shrub, Medium Open - High Shrub, Medium Shrub - High Shrub, Which supports why we see more animals at the medium plots
 ##Somethings Up with the numbers though. Looks weird when knitted
 ```
-####For Publication
+####Possible figures For Publication
 ```{r}
-
+#Diversity by shrub density by invert/vert
+ggplot(density_simple, aes(as.character(density_levels), richness)) +
+  geom_boxplot() +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal richness")
+```
+```{r}
+#Comparison of animal density to individual shrub densities
+ggplot(density_simple, aes(as.character(density), richness)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") +
+  labs(x = "shrub density", y = "total animal richness")
+```
+```{r}
+#Displays animal density to each established plot
+ggplot(density_simple, aes(as.character(density_levels), animals)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal density")
 ```
 
