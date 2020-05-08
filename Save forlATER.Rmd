@@ -1,4 +1,9 @@
 ---
+title: "Save forLater"
+output: html_document
+---
+
+---
 title: "Chapter 2 Carrizo"
 output: html_document
 ---
@@ -1059,6 +1064,15 @@ e12
 #Significant difference between Low open - High Shrub, Medium Open - High Shrub, Medium Shrub - High Shrub, Which supports why we see more animals at the medium plots
 ##Somethings Up with the numbers though. Looks weird when knitted
 ```
+
+```{r}
+m13 <- glm(richness~density + RDM + Temp, family = "quasipoisson", data = density_simple)
+anova(m13, test = "Chisq")
+emmeans(m13, pairwise~density)
+```
+
+
+
 ####Possible figures For Publication
 ```{r}
 #Diversity by shrub density by invert/vert
