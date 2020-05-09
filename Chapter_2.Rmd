@@ -952,6 +952,29 @@ ggplot(animal.climate.data, aes(as.character(density_levels), temp)) +
   facet_wrap(~microsite)
   labs(x = "shrub density level", y = "temperature")
 ```
+```{r}
+density_simple5 <- data.final %>%
+  group_by(as.character(density_levels), density, microsite, phylum) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+data_RDM2 <- RDM %>%
+  group_by(as.character(density_level), density, microsite) %>%
+  summarise(RDM = mean(RDM_g)) %>%
+  rename(density_level = 'as.character(density_level)')
+names(data_RDM2)[1] <- "density_levels"
+
+data_climate2 <- climate %>%
+  group_by(as.character(density_level), microsite) %>%
+  summarise(mean_temp = mean(temp), max_temp = max(temp)) %>%
+  rename(density_level = 'as.character(density_level)')
+names(data_climate2)[1] <- "density_levels"
+
+rdm.climate <- merge(data_climate2, data_RDM2, all = TRUE)
+final.data <- merge(density_simple5, rdm.climate, all = TRUE)
+```
+
+
 
 ###Final Stats
 ```{r}
@@ -1059,6 +1082,19 @@ e12
 #Significant difference between Low open - High Shrub, Medium Open - High Shrub, Medium Shrub - High Shrub, Which supports why we see more animals at the medium plots
 ##Somethings Up with the numbers though. Looks weird when knitted
 ```
+
+```{r}
+ggplot(density_simple, aes(density, richness, color = microsite)) +
+  geom_point() +
+  facet_wrap(~phylum) +
+  scale_x_continuous(breaks = c(0,3,6,9,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  geom_smooth(method = lm, se = FALSE) + 
+  labs(x = "shrub density level", y = "animal richness")
+```
+
+
+
 ####Possible figures For Publication
 ```{r}
 #Diversity by shrub density by invert/vert
