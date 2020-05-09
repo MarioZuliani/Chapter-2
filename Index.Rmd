@@ -1,5 +1,5 @@
 ---
-title: "Index"
+title: "Index (Cleaned up work)"
 output: html_document
 ---
 ```{r setup, include=FALSE}
@@ -15,7 +15,7 @@ library(vegan)
 library(emmeans)
 setwd("/R Packages/Chapter 2")
 ```
-
+###Wrangle
 ```{r}
 data.final <- read.csv("data.csv")
 
@@ -34,7 +34,6 @@ density_simple2 <- data.final %>%
   summarise(animals = sum(daily_animal_totals), richness = n()) %>%
   rename(density_levels = 'as.character(density_levels)')
 ```
-
 ```{r}
 #RDM Set up
 RDM <- read.csv("RDM.CSV")
@@ -45,7 +44,6 @@ data_RDM <- RDM %>%
 
 names(data_RDM)[1] <- "density_levels"
 ```
-
 ```{r}
 climate <- read_csv("Carrizo_micronet.csv")
 data_climate <- climate %>%
@@ -61,7 +59,6 @@ density_simple4 <- data.final %>%
 
 animal.climate.data <- merge(data_climate, density_simple4, all = TRUE)
 ```
-
 ```{r}
 density_simple5 <- data.final %>%
   group_by(as.character(density_levels), density, microsite, phylum) %>%
@@ -84,7 +81,18 @@ rdm.climate <- merge(data_climate2, data_RDM2, all = TRUE)
 final.data <- merge(density_simple5, rdm.climate, all = TRUE)
 ```
 
+###Data Viz
 ```{r}
+ggplot(final.data, aes(density, animals, color = microsite)) +
+  geom_point() +
+  facet_wrap(~phylum) +
+  scale_x_continuous(breaks = c(0,3,6,9,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  geom_smooth(method = lm, se = FALSE) + 
+  labs(x = "shrub density level", y = "animal density")
+```
+```{r}
+#Animal Richness
 ggplot(final.data, aes(density, richness, color = microsite)) +
   geom_point() +
   facet_wrap(~phylum) +
