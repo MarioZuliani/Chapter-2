@@ -1082,9 +1082,17 @@ e12
 #Significant difference between Low open - High Shrub, Medium Open - High Shrub, Medium Shrub - High Shrub, Which supports why we see more animals at the medium plots
 ##Somethings Up with the numbers though. Looks weird when knitted
 ```
+```{r}
+#Stats for animal abundance with density level by micorsite with RDM and mean temp as covariates
+m13 <- glm(animals ~ density_levels*microsite+RDM+mean_temp, family = "quasipoisson", data = final.data)
+anova(m12, test = "Chisq")
+e13 <- emmeans(m13, pairwise~density_levels*microsite)
+e13
+#emmeans seems to not yield any data for this
+```
 
 ```{r}
-ggplot(density_simple, aes(density, richness, color = microsite)) +
+ggplot(final.data, aes(density, richness, color = microsite)) +
   geom_point() +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,3,6,9,12)) +
