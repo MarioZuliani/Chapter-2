@@ -79,101 +79,36 @@ names(data_climate2)[1] <- "density_levels"
 
 rdm.climate <- merge(data_climate2, data_RDM2, all = TRUE)
 final.data <- merge(density_simple5, rdm.climate, all = TRUE)
+
+final.data$sd.animals <- sd(density_simple$animals, na.rm = TRUE)
+final.data$sd.richness <- sd(density_simple$richness, na.rm = TRUE)
 ```
 
 ###Data Viz
 ```{r}
 ggplot(final.data, aes(density, animals, color = microsite)) +
   geom_point() +
+  geom_errorbar(aes(ymin=animals-sd.animals, ymax=animals+sd.animals), width=.2,
+                 position=position_dodge(0.05)) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,3,6,9,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = FALSE) + 
-  labs(x = "shrub density level", y = "animal density")
+  labs(x = "shrub density", y = "animal density")
 ```
 ```{r}
 #Animal Richness
 ggplot(final.data, aes(density, richness, color = microsite)) +
   geom_point() +
+  geom_errorbar(aes(ymin=richness-sd.richness, ymax=richness+sd.richness), width=.2,
+                 position=position_dodge(0.05)) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,3,6,9,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = FALSE) + 
-  labs(x = "shrub density level", y = "animal richness")
+  labs(x = "shrub density", y = "animal richness")
 ```
-```{r}
-#Diversity by shrub density by invert/vert
-ggplot(density_simple, aes(as.character(density_levels), richness)) +
-  geom_boxplot() +
-  facet_wrap(~phylum) +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
-  labs(x = "shrub density level", y = "animal richness")
-```
-```{r}
-#Comparison of animal density to individual shrub densities
-ggplot(density_simple, aes(as.character(density), richness)) +
-  geom_boxplot() +
-  scale_color_brewer(palette = "Set1") +
-  labs(x = "shrub density", y = "total animal richness")
-```
-```{r}
-#Displays animal density to each established plot
-ggplot(density_simple, aes(as.character(density_levels), animals)) +
-  geom_boxplot() +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
-  labs(x = "shrub density level", y = "animal density")
-```
-
 #Stats Analysis
-```{r}
-#Animal Abundance by Density Level and Microsite
-m1 <- glm(animals ~ density_category*microsite, family = "poisson", data = density_simple)
-anova(m1, test = "Chisq")
-e1 <- emmeans(m1, pairwise~density_category*microsite)
-e1
-```
-```{r}
-#Animal Abundance by Density Level
-m2 <- glm(animals~density_levels, family = "poisson", data = density_simple)
-anova(m2, test = "Chisq")
-e2 <- emmeans(m2, pairwise~density_levels)
-e2
-```
-```{r}
-#Animal Abundance by Density level and Phylum
-m3 <- glm(animals~density_levels*phylum, family = "poisson", data = density_simple)
-anova(m3, test = "Chisq")
-e3 <- emmeans(m3, pairwise~density_levels*phylum)
-e3
-```
-```{r}
-#Animal Richness by Density Level
-m4 <- glm(richness~density, family = "quasipoisson", data = density_simple)
-anova(m4, test = "Chisq")
-emmeans(m4, pairwise~density)
-```
-```{r}
-#Animal Abundance by Method and Density level
-m5 <- glm(animals~method*density_levels, family = "poisson", data = data_simple)
-anova(m5, test = "Chisq")
-e5 <- emmeans(m5, pairwise~method*density_levels)
-e5
-```
-```{r}
-#Animal Abundance by Density Level
-m6 <- glm(animals~density_levels, family = "poisson", data = data_simple)
-anova(m6, test = "Chisq")
-emmeans(m6, pairwise~density_levels)
-```
-```{r}
-#Cover Stats
-m7 <- glm(animals~density_category*cover, family = "poisson", data = density_simple2)
-m7
-anova(m7, test = "Chisq")
-e7 <- emmeans(m7, pairwise~density_category*cover)
-e7
-```
-
 ```{r}
 #Stats for animal abundance with density level by micorsite with RDM and mean temp as covariates
 m13 <- glm(animals ~ density_levels*microsite+RDM+mean_temp, family = "quasipoisson", data = final.data)
@@ -205,11 +140,4 @@ anova(m16, test = "Chisq")
 e16 <- emmeans(m16, pairwise~density_levels*microsite+RDM+max_temp)
 e16
 #Again emmeans yields NA
-```
-```{r}
-#Animal Abundance by Density Level and Phylum
-m17 <- glm(animals ~ density_category*phylum, family = "poisson", data = density_simple)
-anova(m17, test = "Chisq")
-e17 <- emmeans(m17, pairwise~density_category*phylum)
-e17
 ```

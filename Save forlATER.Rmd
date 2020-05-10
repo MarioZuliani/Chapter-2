@@ -1096,13 +1096,32 @@ e13
 ```
 
 ```{r}
-#Stats for Animal Richness
+#Stats for Animal Richness by density level with RDM and mean temp as covariates
 m14 <- glm(richness ~ density_levels*microsite+RDM+mean_temp, family = "gaussian", data = final.data)
 anova(m14, test = "Chisq")
 e14 <- emmeans(m14, pairwise~density_levels*microsite)
 e14
 #Again emmeans seems to not work here
 ```
+```{r}
+##Stats for Animal Abundance by density level with RDM and max temp as covariates
+m15 <- glm(animals ~ density_levels*microsite+RDM+max_temp, family = "quasipoisson", data = final.data)
+anova(m15, test = "Chisq")
+e15 <- emmeans(m15, pairwise~density_levels*microsite+RDM+max_temp)
+e15
+#again emmeans yields NA
+```
+```{r}
+##Stats for Animal Richness by density level with RDM and max temp as covariates
+m15 <- glm(richness ~ density_levels*microsite+RDM+max_temp, family = "gaussian", data = final.data)
+anova(m15, test = "Chisq")
+e15 <- emmeans(m15, pairwise~density_levels*microsite+RDM+max_temp)
+e15
+#Again emmeans yields NA
+```
+
+
+
 ####Possible figures For Publication
 ```{r}
 #Diversity by shrub density by invert/vert
