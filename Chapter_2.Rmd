@@ -987,29 +987,111 @@ list(animal.data.final)
 ```
 ```{r}
 #Vegan Set-up for PCoA
-library(tidyverse)
 library(vegan)
-finalvegan <- data.final %>%
-  group_by(species, phylum, density, daily_animal_totals) %>%
-  summarise(captures = sum(daily_animal_totals))
-
-finalvegan$species <- gsub(" ", "", finalvegan$species)
-finalvegan$species <- as.factor(finalvegan$species)
-finalvegan$uniID <- paste(finalvegan$species, finalvegan$density)
-str(finalvegan)
-
+library(ape)
+library(tidyverse)
+library(tidyr)
 library(dplyr)
-finalvegan <- finalvegan %>% 
-  ungroup()%>%
-  dplyr::select(species, daily_animal_totals)
-finalvegan <- finalvegan %>% group_by(species, daily_animal_totals) %>% summarise(captures = sum(daily_animal_totals))
 
-community <- finalvegan %>% spread(species, captures)
-community[is.na(community)] <- 0
+data <- read_csv("animals_revised.csv")
 
-community <- community %>%
-  ungroup() %>%
-  dplyr::select(-daily_animal_totals)
+#summarize to site/plot/sample unit per row as observation
+data <- read_csv("animals_revised.csv") %>%
+  group_by(plot, microsite, phylum, species) %>%
+  summarise(abundance = sum(daily_animal_totals)) %>%
+  na.omit()
+
+#turn into species matrix only
+#split species into meaninful groups if needed such as native/exotic, vert/invert, functional roles
+vert_species <- data %>%
+  filter(phylum == "vertebrate") %>%
+  spread(species,abundance) %>%
+  ungroup() %>% 
+  dplyr::select(-plot, -microsite, -phylum) %>% 
+  replace(is.na(.), 0)
+dim(vert_species)
+env <- read_csv("environment.csv")
+dim(env)
+```
+```{r}
+m01 <- adonis(vert_species ~ microsite*shrub_density, data = env)
+m01
+#PCA!!!
+dist <- vegdist(vert_species,  method = "bray")
+
+res <- pcoa(dist) #ape library function
+p1 <- as.data.frame(res$vectors) %>% 
+  dplyr::select(Axis.1, Axis.2) %>%
+  bind_cols(env, .)
+#label by site is ok
+ggplot(p1, aes(Axis.1, Axis.2, group = microsite)) +
+  geom_point(aes(color = microsite)) +
+  geom_text(aes(label=plot),hjust=0, vjust=0, check_overlap = TRUE, nudge_x = 0.01) +
+  scale_color_brewer(palette = "Set1") +
+  labs(color = "", subtitle = "labels denote plot identity")
+```
+```{r}
+ggplot(p1, aes(Axis.1, Axis.2, group = microsite)) +
+  geom_point(aes(color = microsite)) +
+  geom_text(aes(label=shrub_density),hjust=0, vjust=0, check_overlap = TRUE, nudge_x = 0.01) +
+  scale_color_brewer(palette = "Set1") +
+  labs(color = "", subtitle = "labels denote shrub density at each plot")
+```
+```{r}
+m02 <- betadisper(dist, env$microsite)
+m02
+anova(m02)
+permutest(m02, pairwise = TRUE, permutations = 99)
+m2.HSD <- TukeyHSD(m02)
+boxplot(m02)
+```
+```{r}
+m03 <- betadisper(dist, env$shrub_density)
+m03
+anova(m03)
+permutest(m03, pairwise = TRUE, permutations = 99)
+m03.HSD <- TukeyHSD(m03)
+boxplot(m03)
+```
+```{r}
+##PCA set up for Inverts
+data <- read_csv("animals_revised.csv") %>%
+  group_by(plot, microsite, phylum, species) %>%
+  summarise(abundance = sum(daily_animal_totals)) %>%
+  na.omit()
+invert_species <- data %>%
+  filter(phylum == "invertebrate") %>%
+  spread(species, abundance) %>%
+  ungroup() %>% 
+  dplyr::select(-plot, -microsite, -phylum) %>% 
+  replace(is.na(.), 0)
+dim(invert_species)
+env2 <- read_csv("environment.csv")
+dim(env2)
+```
+
+```{r}
+m04 <- adonis(invert_species ~ microsite*shrub_density, data = env2)
+m04
+dist <- vegdist(invert_species,  method = "bray")
+
+res <- pcoa(dist) #ape library function
+p2 <- as.data.frame(res$vectors) %>% 
+  dplyr::select(Axis.1, Axis.2) %>%
+  bind_cols(env, .)
+#label by site is ok
+ggplot(p2, aes(Axis.1, Axis.2, group = microsite)) +
+  geom_point(aes(color = microsite)) +
+  geom_text(aes(label=plot),hjust=0, vjust=0, check_overlap = TRUE, nudge_x = 0.01) +
+  scale_color_brewer(palette = "Set1") +
+  labs(color = "", subtitle = "labels denote plot identity")
+```
+```{r}
+ggplot(p2, aes(Axis.1, Axis.2, group = microsite)) +
+  geom_point(aes(color = microsite)) +
+  geom_text(aes(label=shrub_density),hjust=0, vjust=0, check_overlap = TRUE, nudge_x = 0.01) +
+  scale_color_brewer(palette = "Set1") +
+  labs(color = "", subtitle = "labels denote shrub density at each plot")
 ```
 
 
