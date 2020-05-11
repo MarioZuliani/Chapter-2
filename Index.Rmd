@@ -82,6 +82,12 @@ final.data <- merge(density_simple5, rdm.climate, all = TRUE)
 
 final.data$sd.animals <- sd(density_simple$animals, na.rm = TRUE)
 final.data$sd.richness <- sd(density_simple$richness, na.rm = TRUE)
+
+animal.data <- read.csv("animals.csv")
+animal.data.final <- animal.data %>%
+  group_by(as.character(species)) %>%
+  summarise(number_of_animals = sum(daily_animal_totals)) %>%
+  rename(species = "as.character(species)")
 ```
 
 ###Data Viz
@@ -141,3 +147,18 @@ e16 <- emmeans(m16, pairwise~density_levels*microsite+RDM+max_temp)
 e16
 #Again emmeans yields NA
 ```
+
+#Appendix Figures
+```{r}
+#Appendix D Species List
+list(animal.data.final)
+```
+```{r}
+#Appendix E Contrast of sampling methods
+ggplot(data_simple, aes(density_levels, animals, color = method)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") +
+  theme_classic() + 
+  labs(x = "shrub density level", y = "animal abundance")
+```
+
