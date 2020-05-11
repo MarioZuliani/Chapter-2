@@ -559,10 +559,12 @@ transectvegan <- transect %>%
   group_by(Site, Site.Number, Site.Density, RTM) %>%
   summarise(captures = sum(animal.hit))
 
+
 transectvegan$Site.Number <- gsub(" ", "", transectvegan$Site.Number)
 transectvegan$Site.Number <- as.factor(transectvegan$Site.Number)
 transectvegan$uniID <- paste(transectvegan$Site, transectvegan$Site.Density, transectvegan$Site.Number)
 str(transectvegan)
+
 ```
 ```{r}
 library(dplyr)
@@ -576,6 +578,7 @@ transectdata[is.na(transectdata)] <- 0
 transectdata <- transectdata %>%
   ungroup() %>%
   dplyr::select(-uniID)
+names(transectvegan)[2] <- "RTU"
 ```
 
 Now put the site data with the transect data (Seperate from the photo data)
@@ -974,8 +977,67 @@ rdm.climate <- merge(data_climate2, data_RDM2, all = TRUE)
 final.data <- merge(density_simple5, rdm.climate, all = TRUE)
 ```
 
+```{r}
+animal.data <- read.csv("animals.csv")
+animal.data.final <- animal.data %>%
+  group_by(as.character(species)) %>%
+  summarise(number_of_animals = sum(daily_animal_totals)) %>%
+  rename(species = "as.character(species)")
+list(animal.data.final)
+```
+```{r}
+#Vegan Set-up for PCoA
+library(tidyverse)
+library(vegan)
+finalvegan <- data.final %>%
+  group_by(species, phylum, density, daily_animal_totals) %>%
+  summarise(captures = sum(daily_animal_totals))
+
+finalvegan$species <- gsub(" ", "", finalvegan$species)
+finalvegan$species <- as.factor(finalvegan$species)
+finalvegan$uniID <- paste(finalvegan$species, finalvegan$density)
+str(finalvegan)
+
+library(dplyr)
+finalvegan <- finalvegan %>% 
+  ungroup()%>%
+  dplyr::select(species, daily_animal_totals)
+finalvegan <- finalvegan %>% group_by(species, daily_animal_totals) %>% summarise(captures = sum(daily_animal_totals))
+
+community <- finalvegan %>% spread(species, captures)
+community[is.na(community)] <- 0
+
+community <- community %>%
+  ungroup() %>%
+  dplyr::select(-daily_animal_totals)
+```
 
 
+```{r}
+site.4 <- read.csv("Site 4 Data Sheet.csv")
+#Map for appendix
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo4 <- get_map(location = c(lon = -119.6283, lat = 35.11985), zoom = 17)
+carrizo4
+site.wide.map <- ggmap(carrizo4)
+site.wide.map <- site.wide.map +
+  geom_point(data=site.4, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
+  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
+site.wide.map
+
+site.3 <- read.csv("Site 3 Data Sheet.csv")
+#Map for appendix
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo3 <- get_map(location = c(lon = -119.67192, lat = 35.16175), zoom = 17)
+carrizo3
+site.wide.map <- ggmap(carrizo3)
+site.wide.map <- site.wide.map +
+  geom_point(data=site.3, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
+  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
+site.wide.map
+```
 ###Final Stats
 ```{r}
 #Animal Abundance by Density Level and Microsite
@@ -1085,11 +1147,22 @@ e12
 ```{r}
 #Stats for animal abundance with density level by micorsite with RDM and mean temp as covariates
 m13 <- glm(animals ~ density_levels*microsite+RDM+mean_temp, family = "quasipoisson", data = final.data)
-anova(m12, test = "Chisq")
+anova(m13, test = "Chisq")
 e13 <- emmeans(m13, pairwise~density_levels*microsite)
 e13
 #emmeans seems to not yield any data for this
 ```
+```{r}
+#Stats for Animal Richness
+m14 <- glm(richness ~ density_levels*microsite+RDM+mean_temp, family = "gaussian", data = final.data)
+anova(m14, test = "Chisq")
+e14 <- emmeans(m14, pairwise~density_levels*microsite)
+e14
+#Again emmeans seems to not work here
+```
+
+
+
 
 ```{r}
 ggplot(final.data, aes(density, richness, color = microsite)) +

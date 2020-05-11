@@ -150,6 +150,37 @@ e16
 
 #Appendix Figures
 ```{r}
+#Appendix A Map of Sites
+site.4 <- read.csv("Site 4 Data Sheet.csv")
+#Map for appendix
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo4 <- get_map(location = c(lon = -119.6283, lat = 35.11985), zoom = 17)
+carrizo4
+site.wide.map <- ggmap(carrizo4)
+site.wide.map <- site.wide.map +
+  geom_point(data=site.4, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
+  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
+site.wide.map
+```
+
+```{r}
+site.3 <- read.csv("Site 3 Data Sheet.csv")
+#Map for appendix
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo3 <- get_map(location = c(lon = -119.67192, lat = 35.16175), zoom = 17)
+carrizo3
+site.wide.map <- ggmap(carrizo3)
+site.wide.map <- site.wide.map +
+  geom_point(data=site.3, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
+  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
+site.wide.map
+```
+
+
+
+```{r}
 #Appendix D Species List
 list(animal.data.final)
 ```
