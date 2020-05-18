@@ -280,7 +280,7 @@ boxplot(m03)
 ```
 ###Appendix Figures
 ```{r}
-#Appendix C Environmental Data (RDM, Temp)
+#Appendix C Environmental Data (RDM, Temp, Cover)
 ggplot(animal.RDM.data, aes(RDM_g, animals, fill = microsite)) +
   geom_histogram(stat = "identity") +
   facet_wrap(~density_category) +
@@ -314,8 +314,13 @@ ggplot(animal.climate.data, aes(as.character(density_levels), temp)) +
   facet_wrap(~microsite)
   labs(x = "shrub density level", y = "temperature")
 ```
-
-
+```{r}
+ggplot(density_simple2, aes(as.character(cover), animals)) +
+  geom_bar(stat = "identity") +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal density") + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
 
 ```{r}
 #Appendix D Species List
