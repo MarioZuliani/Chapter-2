@@ -15,6 +15,14 @@ library(vegan)
 library(emmeans)
 setwd("/R Packages/Chapter 2")
 ```
+###Hypothesis
+Increasing shrub densities will result in increasing animal interactions, and may be influenced by the local microclimate.
+
+###Predictions
+a. Increasing shrub density from shrub-free locations to relatively higher densities positively predict animal community density; b. Increasing shrub cover at varying densities positively predicts animal community densities; 
+c. Response to shrub density are species specific by the animal population; 
+d. Local microclimate will act as a stressor impacting animal interactions
+
 ###Wrangle
 ```{r}
 data.final <- read.csv("data.csv")
@@ -31,6 +39,11 @@ data_simple <- data.final %>%
 
 density_simple2 <- data.final %>%
   group_by(as.character(density_levels), density_category, density, cover) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+density_simple3 <- data.final %>%
+  group_by(as.character(density_levels), density_category, microsite, density) %>%
   summarise(animals = sum(daily_animal_totals), richness = n()) %>%
   rename(density_levels = 'as.character(density_levels)')
 ```
@@ -88,6 +101,24 @@ animal.data.final <- animal.data %>%
   group_by(as.character(species)) %>%
   summarise(number_of_animals = sum(daily_animal_totals)) %>%
   rename(species = "as.character(species)")
+
+RDM <- read.csv("RDM.CSV")
+data_RDM <- RDM %>%
+  group_by(as.character(density_level), Site.Density, density, RDM_g, microsite) %>%
+  summarise() %>%
+  rename(density_level = 'as.character(density_level)')
+
+names(data_RDM)[1] <- "density_levels"
+animal.RDM.data <- merge(density_simple3, data_RDM, all = TRUE)
+
+climate <- read_csv("Carrizo_micronet.csv")
+data_climate <- climate %>%
+  group_by(as.character(density_level), microsite, temp) %>%
+  summarise() %>%
+  rename(density_level = 'as.character(density_level)')
+names(data_climate)[1] <- "density_levels"
+
+animal.climate.data <- merge(data_climate, density_simple4, all = TRUE)
 ```
 
 ```{r}
@@ -133,8 +164,6 @@ dim(invert_species)
 env2 <- read_csv("environment.csv")
 dim(env2)
 ```
-
-
 ###Data Viz
 ```{r}
 ggplot(final.data, aes(density, animals, color = microsite)) +
@@ -201,7 +230,7 @@ ggplot(p2, aes(Axis.1, Axis.2, group = microsite)) +
   scale_color_brewer(palette = "Set1") +
   labs(color = "", subtitle = "labels denote shrub density at each plot")
 ```
-#Stats Analysis
+###Stats Analysis
 ```{r}
 #Stats for animal abundance with density level by micorsite with RDM and mean temp as covariates
 m13 <- glm(animals ~ density*microsite+RDM+mean_temp, family = "quasipoisson", data = final.data)
@@ -249,36 +278,41 @@ permutest(m03, pairwise = TRUE, permutations = 99)
 m03.HSD <- TukeyHSD(m03)
 boxplot(m03)
 ```
-
-
-#Appendix Figures
+###Appendix Figures
 ```{r}
-#Appendix A Map of Sites
-site.4 <- read.csv("Site 4 Data Sheet.csv")
-#Map for appendix
-library(ggmap)
-register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
-carrizo4 <- get_map(location = c(lon = -119.6283, lat = 35.11985), zoom = 17)
-carrizo4
-site.wide.map <- ggmap(carrizo4)
-site.wide.map <- site.wide.map +
-  geom_point(data=site.4, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
-  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
-site.wide.map
+#Appendix C Environmental Data (RDM, Temp)
+ggplot(animal.RDM.data, aes(RDM_g, animals, fill = microsite)) +
+  geom_histogram(stat = "identity") +
+  facet_wrap(~density_category) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "RDM (grams)", y = "animal density")
+ggplot(animal.RDM.data, aes(RDM_g, animals, fill = microsite)) +
+  geom_histogram(stat = "identity") +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "RDM (grams)", y = "animal density")
 ```
-
 ```{r}
-site.3 <- read.csv("Site 3 Data Sheet.csv")
-#Map for appendix
-library(ggmap)
-register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
-carrizo3 <- get_map(location = c(lon = -119.67192, lat = 35.16175), zoom = 17)
-carrizo3
-site.wide.map <- ggmap(carrizo3)
-site.wide.map <- site.wide.map +
-  geom_point(data=site.3, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
-  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
-site.wide.map
+#Compares Temperatures with animal abundances for each microsite (Use of Appendix?)
+ggplot(animal.climate.data, aes(temp, animals, fill = density_levels)) +
+  geom_histogram(stat = "identity") +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "Temperature", y = "animal density")
+#Compares Temperatures with animal abundance
+ggplot(animal.climate.data, aes(temp, animals, fill = microsite)) +
+  geom_histogram(stat = "identity") +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "Temperature", y = "animal density")
+#Compares Site Density temperatures
+ggplot(animal.climate.data, aes(as.character(density_levels), temp)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal richness")
+#Shows Compares site density temperature in both microsites
+ggplot(animal.climate.data, aes(as.character(density_levels), temp)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  facet_wrap(~microsite)
+  labs(x = "shrub density level", y = "temperature")
 ```
 
 
@@ -295,4 +329,3 @@ ggplot(data_simple, aes(density_levels, animals, color = method)) +
   theme_classic() + 
   labs(x = "shrub density level", y = "animal abundance")
 ```
-
