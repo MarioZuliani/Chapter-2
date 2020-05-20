@@ -74,7 +74,7 @@ animal.climate.data <- merge(data_climate, density_simple4, all = TRUE)
 ```
 ```{r}
 density_simple5 <- data.final %>%
-  group_by(as.character(density_levels), density, microsite, phylum) %>%
+  group_by(as.character(density_levels), plot, density, microsite, phylum) %>%
   summarise(animals = sum(daily_animal_totals), richness = n()) %>%
   rename(density_levels = 'as.character(density_levels)')
 
@@ -95,6 +95,11 @@ final.data <- merge(density_simple5, rdm.climate, all = TRUE)
 
 final.data$sd.animals <- sd(density_simple$animals, na.rm = TRUE)
 final.data$sd.richness <- sd(density_simple$richness, na.rm = TRUE)
+
+standarderroranimal <- sd(final.data$animals)/sqrt(length(final.data$animals))
+final.data$se_animal <- standarderroranimal
+standard_error_richness <- sd(final.data$richness)/sqrt(length(final.data$richness))
+final.data$se_richness <- standard_error_richness
 
 animal.data <- read.csv("animals.csv")
 animal.data.final <- animal.data %>%
@@ -168,10 +173,10 @@ dim(env2)
 ```{r}
 ggplot(final.data, aes(density, animals, color = microsite)) +
   geom_point() +
-  geom_errorbar(aes(ymin=animals-sd.animals, ymax=animals+sd.animals), width=.2,
+  geom_errorbar(aes(ymin=animals-se_animal, ymax=animals+se_animal), width=.2,
                  position=position_dodge(0.05)) +
   facet_wrap(~phylum) +
-  scale_x_continuous(breaks = c(0,3,6,9,12)) +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = FALSE) + 
   labs(x = "shrub density", y = "animal density")
@@ -180,15 +185,108 @@ ggplot(final.data, aes(density, animals, color = microsite)) +
 #Animal Richness
 ggplot(final.data, aes(density, richness, color = microsite)) +
   geom_point() +
-  geom_errorbar(aes(ymin=richness-sd.richness, ymax=richness+sd.richness), width=.2,
+  geom_errorbar(aes(ymin=richness-se_richness, ymax=richness+se_richness), width=.2,
                  position=position_dodge(0.05)) +
   facet_wrap(~phylum) +
-  scale_x_continuous(breaks = c(0,3,6,9,12)) +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = FALSE) + 
   labs(x = "shrub density", y = "animal richness")
 ```
+
+###Stats Analysis
 ```{r}
+#Stats for animal abundance with density level by micorsite with RDM, mean temp and phylum as covariates
+m13 <- glm(animals ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoisson", data = final.data)
+anova(m13, test = "Chisq")
+e13 <- emmeans(m13, pairwise~microsite|phylum)
+e13
+#emmeans seems to not yield any data for this
+```
+```{r}
+#Stats for Animal Richness by density level with RDM and mean temp as covariates
+m14 <- glm(richness ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoisson", data = final.data)
+anova(m14, test = "Chisq")
+e14 <- emmeans(m14, pairwise~microsite|phylum)
+e14
+#Again emmeans seems to not work here
+```
+###Appendix Figures
+```{r}
+#Appendix A Map of Shrub Locations
+site.4 <- read.csv("Site 4 Data Sheet.csv")
+#Map for appendix
+library(ggmap)
+register_google(key="AIzaSyBurG6FR6I4uc_nRUr6TY118dCsnM0tsiE")
+carrizo4 <- get_map(location = c(lon = -119.6287, lat = 35.11975), zoom = 18, maptype = "satellite")
+carrizo4
+site.wide.map <- ggmap(carrizo4)
+site.wide.map <- site.wide.map +
+  geom_point(data=site.4, aes(x=shrub.lng, y=shrub.lat, color = Site), alpha = 3/10, size =4) +
+  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
+site.wide.map
+```
+```{r}
+site.3 <- read.csv("Site 3 Data Sheet.csv")
+#Map for appendix
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo3 <- get_map(location = c(lon = -119.67212, lat = 35.16175), zoom = 18, maptype = "satellite")
+carrizo3
+site.wide.map <- ggmap(carrizo3)
+site.wide.map <- site.wide.map +
+  geom_point(data=site.3, aes(x=shrub.lng, y=shrub.lat, color = Site), alpha = 3/10, size =4) +
+  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
+site.wide.map
+```
+
+```{r}
+#Appendix C Environmental Data (RDM, Temp, Cover)
+ggplot(final.data, aes(RDM, animals, color = microsite)) +
+  geom_point() +
+  facet_wrap(~phylum) +
+  geom_errorbar(aes(ymin=animals-se_animal, ymax=animals+se_animal), width=.2,
+                 position=position_dodge(0.05)) +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  geom_smooth(method = lm, se = FALSE) + 
+  labs(x = "shrub density", y = "animal density")
+```
+```{r}
+#Compares Temperatures with animal abundances for each microsite (Use of Appendix?)
+ggplot(final.data, aes(max_temp, animals, color = microsite)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=animals-se_animal, ymax=animals+se_animal), width=.2,
+                 position=position_dodge(0.05)) +
+  facet_wrap(~phylum) +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  geom_smooth(method = lm, se = FALSE) + 
+  labs(x = "Mean Temperature", y = "animal density")
+```
+```{r}
+ggplot(density_simple2, aes(cover, animals)) +
+  geom_point(stat = "identity") +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal density") + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+
+```{r}
+#Appendix D Species List
+list(animal.data.final)
+```
+```{r}
+#Appendix E Contrast of sampling methods
+ggplot(data_simple, aes(density_levels, animals, color = method)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") +
+  theme_classic() + 
+  labs(x = "shrub density level", y = "animal abundance")
+```
+
+```{r}
+##Appendix E
 m01 <- adonis(vert_species ~ microsite*shrub_density, data = env)
 m01
 #PCA!!!
@@ -230,39 +328,7 @@ ggplot(p2, aes(Axis.1, Axis.2, group = microsite)) +
   scale_color_brewer(palette = "Set1") +
   labs(color = "", subtitle = "labels denote shrub density at each plot")
 ```
-###Stats Analysis
-```{r}
-#Stats for animal abundance with density level by micorsite with RDM and mean temp as covariates
-m13 <- glm(animals ~ density*microsite+RDM+mean_temp, family = "quasipoisson", data = final.data)
-anova(m13, test = "Chisq")
-e13 <- emmeans(m13, pairwise~density*microsite+RDM+mean_temp)
-e13
-#emmeans seems to not yield any data for this
-```
-```{r}
-#Stats for Animal Richness by density level with RDM and mean temp as covariates
-m14 <- glm(richness ~ density*microsite+RDM+mean_temp, family = "gaussian", data = final.data)
-anova(m14, test = "Chisq")
-e14 <- emmeans(m14, pairwise~density*microsite+RDM+mean_temp)
-e14
-#Again emmeans seems to not work here
-```
-```{r}
-##Stats for Animal Abundance by density level with RDM and max temp as covariates
-m15 <- glm(animals ~ density*microsite+RDM+max_temp, family = "quasipoisson", data = final.data)
-anova(m15, test = "Chisq")
-e15 <- emmeans(m15, pairwise~density*microsite+RDM+max_temp)
-e15
-#again emmeans yields NA
-```
-```{r}
-##Stats for Animal Richness by density level with RDM and max temp as covariates
-m16 <- glm(richness ~ density*microsite+RDM+max_temp, family = "gaussian", data = final.data)
-anova(m16, test = "Chisq")
-e16 <- emmeans(m16, pairwise~density*microsite+RDM+max_temp)
-e16
-#Again emmeans yields NA
-```
+
 ```{r}
 #PCOA Stats
 m02 <- betadisper(dist, env$microsite)
@@ -277,88 +343,4 @@ anova(m03)
 permutest(m03, pairwise = TRUE, permutations = 99)
 m03.HSD <- TukeyHSD(m03)
 boxplot(m03)
-```
-###Appendix Figures
-```{r}
-#Appendix A Map of Sites
-site.4 <- read.csv("Site 4 Data Sheet.csv")
-#Map for appendix
-library(ggmap)
-register_google(key="AIzaSyBurG6FR6I4uc_nRUr6TY118dCsnM0tsiE")
-carrizo4 <- get_map(location = c(lon = -119.6283, lat = 35.11985), zoom = 17)
-carrizo4
-site.wide.map <- ggmap(carrizo4)
-site.wide.map <- site.wide.map +
-  geom_point(data=site.4, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
-  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
-site.wide.map
-```
-```{r}
-site.3 <- read.csv("Site 3 Data Sheet.csv")
-#Map for appendix
-library(ggmap)
-register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
-carrizo3 <- get_map(location = c(lon = -119.67192, lat = 35.16175), zoom = 17)
-carrizo3
-site.wide.map <- ggmap(carrizo3)
-site.wide.map <- site.wide.map +
-  geom_point(data=site.3, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
-  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
-site.wide.map
-```
-
-```{r}
-#Appendix C Environmental Data (RDM, Temp, Cover)
-ggplot(animal.RDM.data, aes(RDM_g, animals, fill = microsite)) +
-  geom_histogram(stat = "identity") +
-  facet_wrap(~density_category) +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
-  labs(x = "RDM (grams)", y = "animal density")
-ggplot(animal.RDM.data, aes(RDM_g, animals, fill = microsite)) +
-  geom_histogram(stat = "identity") +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
-  labs(x = "RDM (grams)", y = "animal density")
-```
-```{r}
-#Compares Temperatures with animal abundances for each microsite (Use of Appendix?)
-ggplot(animal.climate.data, aes(temp, animals, fill = density_levels)) +
-  geom_histogram(stat = "identity") +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
-  labs(x = "Temperature", y = "animal density")
-#Compares Temperatures with animal abundance
-ggplot(animal.climate.data, aes(temp, animals, fill = microsite)) +
-  geom_histogram(stat = "identity") +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
-  labs(x = "Temperature", y = "animal density")
-#Compares Site Density temperatures
-ggplot(animal.climate.data, aes(as.character(density_levels), temp)) +
-  geom_boxplot() +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
-  labs(x = "shrub density level", y = "animal richness")
-#Shows Compares site density temperature in both microsites
-ggplot(animal.climate.data, aes(as.character(density_levels), temp)) +
-  geom_boxplot() +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
-  facet_wrap(~microsite)
-  labs(x = "shrub density level", y = "temperature")
-```
-```{r}
-ggplot(density_simple2, aes(as.character(cover), animals)) +
-  geom_bar(stat = "identity") +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
-  labs(x = "shrub density level", y = "animal density") + 
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
-```
-
-```{r}
-#Appendix D Species List
-list(animal.data.final)
-```
-```{r}
-#Appendix E Contrast of sampling methods
-ggplot(data_simple, aes(density_levels, animals, color = method)) +
-  geom_boxplot() +
-  scale_color_brewer(palette = "Set1") +
-  theme_classic() + 
-  labs(x = "shrub density level", y = "animal abundance")
 ```
