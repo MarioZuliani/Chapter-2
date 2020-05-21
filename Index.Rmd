@@ -169,6 +169,64 @@ dim(invert_species)
 env2 <- read_csv("environment.csv")
 dim(env2)
 ```
+
+```{r}
+##Set up Simpson Data```{r}
+density_simple6 <- data.final %>%
+  group_by(as.character(density_levels), plot, density, phylum, daily_animal_totals, species, microsite) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+vegandata <- merge(density_simple6, rdm.climate, all = TRUE)
+
+vegandata <- vegandata %>%
+  group_by(density_levels, plot, density, microsite, daily_animal_totals, species, animals) %>%
+  summarise(captures = sum(animals))
+
+vegandata$density <- gsub(" ", "", vegandata$density)
+vegandata$density <- as.factor(vegandata$density)
+vegandata$uniID <- paste(vegandata$plot, vegandata$density)
+str(vegandata)
+
+library(dplyr)
+vegandata <- vegandata %>% 
+  ungroup()%>%
+  dplyr::select(uniID, daily_animal_totals, captures)
+vegandata <- vegandata %>% group_by(uniID, daily_animal_totals) %>% summarise(captures = sum(captures))
+
+commvegan <- vegandata %>% spread(daily_animal_totals, captures)
+commvegan[is.na(commvegan)] <- 0
+
+commvegan <- commvegan %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+
+sitefinal <- read_csv("site desntiy shortcut.csv")
+
+sitefinal <- sitefinal %>%
+  group_by(Site, plot, site.density, shrub.count)
+
+sitefinal$shrub.count <- gsub(" ", "", sitefinal$shrub.count)
+sitefinal$shrub.count <- as.factor(sitefinal$shrub.count)
+sitefinal$uniID <- paste(sitefinal$site.density, sitefinal$site.count)
+str(sitefinal)
+
+sitefinal <- sitefinal %>%
+  ungroup() %>%
+  dplyr::select(uniID, plot, site.density, shrub.count)
+sitefinal <- sitefinal %>% group_by(uniID, site.density)
+
+sitefinal <- sitefinal %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+
+names(sitefinal)[3] <- "density"
+
+simpsonfinal <- diversity(commvegan, index = "simpson")
+sitefinal$Simpson <- simpsonfinal
+
+final.data <- merge(final.data, sitefinal)
+```
+
 ###Data Viz
 ```{r}
 ggplot(final.data, aes(density, animals, color = microsite)) +

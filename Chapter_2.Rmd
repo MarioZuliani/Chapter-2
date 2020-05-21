@@ -796,7 +796,7 @@ write.csv(masterdata, "data_2019_compiled2.csv")
 data.final <- read.csv("data.csv")
 
 density_simple <- data.final %>%
-  group_by(as.character(density_levels), density_category, density, microsite, phylum) %>%
+  group_by(as.character(density_levels), plot, density_category, density, microsite, phylum) %>%
   summarise(animals = sum(daily_animal_totals), richness = n()) %>%
   rename(density_levels = 'as.character(density_levels)')
 ##Plot good for Appendix and Defence
@@ -957,7 +957,7 @@ ggplot(animal.climate.data, aes(as.character(density_levels), temp)) +
 ```
 ```{r}
 density_simple5 <- data.final %>%
-  group_by(as.character(density_levels), density, microsite, phylum) %>%
+  group_by(as.character(density_levels), plot, density, microsite, phylum) %>%
   summarise(animals = sum(daily_animal_totals), richness = n()) %>%
   rename(density_levels = 'as.character(density_levels)')
 
@@ -1280,6 +1280,63 @@ ggplot(density_simple, aes(as.character(density_levels), animals)) +
   geom_boxplot() +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   labs(x = "shrub density level", y = "animal density")
+```
+
+```{r}
+density_simple6 <- data.final %>%
+  group_by(as.character(density_levels), plot, density, phylum, daily_animal_totals, species, microsite) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+vegandata <- merge(density_simple6, rdm.climate, all = TRUE)
+
+vegandata <- vegandata %>%
+  group_by(density_levels, plot, density, microsite, daily_animal_totals, species, animals) %>%
+  summarise(captures = sum(animals))
+
+vegandata$density <- gsub(" ", "", vegandata$density)
+vegandata$density <- as.factor(vegandata$density)
+vegandata$uniID <- paste(vegandata$plot, vegandata$density)
+str(vegandata)
+
+
+library(dplyr)
+vegandata <- vegandata %>% 
+  ungroup()%>%
+  dplyr::select(uniID, daily_animal_totals, captures)
+vegandata <- vegandata %>% group_by(uniID, daily_animal_totals) %>% summarise(captures = sum(captures))
+
+commvegan <- vegandata %>% spread(daily_animal_totals, captures)
+commvegan[is.na(commvegan)] <- 0
+
+commvegan <- commvegan %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+
+sitefinal <- read_csv("site desntiy shortcut.csv")
+
+sitefinal <- sitefinal %>%
+  group_by(Site, plot, site.density, shrub.count)
+
+sitefinal$shrub.count <- gsub(" ", "", sitefinal$shrub.count)
+sitefinal$shrub.count <- as.factor(sitefinal$shrub.count)
+sitefinal$uniID <- paste(sitefinal$site.density, sitefinal$site.count)
+str(sitefinal)
+
+sitefinal <- sitefinal %>%
+  ungroup() %>%
+  dplyr::select(uniID, plot, site.density, shrub.count)
+sitefinal <- sitefinal %>% group_by(uniID, site.density)
+
+sitefinal <- sitefinal %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+
+names(sitefinal)[3] <- "density"
+
+simpsonfinal <- diversity(commvegan, index = "simpson")
+sitefinal$Simpson <- simpsonfinal
+
+final.data <- merge(final.data, sitefinal)
 ```
 
 ```{r}
