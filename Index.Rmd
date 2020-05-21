@@ -19,7 +19,8 @@ setwd("/R Packages/Chapter 2")
 Increasing shrub densities will result in increasing animal interactions, and may be influenced by the local microclimate.
 
 ###Predictions
-a. Increasing shrub density from shrub-free locations to relatively higher densities positively predict animal community density; b. Increasing shrub cover at varying densities positively predicts animal community densities; 
+a. Increasing shrub density from shrub-free locations to relatively higher densities positively predict animal community density;
+b. Increasing shrub cover at varying densities positively predicts animal community densities; 
 c. Response to shrub density are species specific by the animal population; 
 d. Local microclimate will act as a stressor impacting animal interactions
 
@@ -230,6 +231,14 @@ final.data$sd.simpson <- sd(final.data$Simpson, na.rm = TRUE)
 
 standarderrorsimpson <- sd(final.data$Simpson)/sqrt(length(final.data$Simpson))
 final.data$se_simpson <- standarderrorsimpson
+
+density_simple7 <- data.final %>%
+  group_by(as.character(density_levels), plot, density, cover) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')%>%
+  dplyr::select(-animals, -richness)
+
+final.data <- merge(final.data, density_simple7)
 ```
 
 ###Data Viz
@@ -284,7 +293,15 @@ m14 <- glm(richness ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoi
 anova(m14, test = "Chisq")
 e14 <- emmeans(m14, pairwise~microsite|phylum)
 e14
-#Again emmeans seems to not work here
+
+```
+
+```{r}
+#Stat analysis for simpson
+m17 <- glm(Simpson ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoisson", data = final.data)
+anova(m17, test = "Chisq")
+e17 <- emmeans(m17, pairwise~microsite|phylum)
+e17
 ```
 ###Appendix Figures
 ```{r}
@@ -340,11 +357,15 @@ ggplot(final.data, aes(max_temp, animals, color = microsite)) +
   labs(x = "Mean Temperature", y = "animal density")
 ```
 ```{r}
-ggplot(density_simple2, aes(cover, animals)) +
-  geom_point(stat = "identity") +
+ggplot(final.data, aes(cover, animals, color = microsite)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=animals-se_animal, ymax=animals+se_animal), width=.2,
+                 position=position_dodge(0.05)) +
+  facet_wrap(~phylum) +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
-  labs(x = "shrub density level", y = "animal density") + 
-  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+  geom_smooth(method = lm, se = FALSE) + 
+  labs(x = "Mean Temperature", y = "animal density")
 ```
 
 ```{r}
