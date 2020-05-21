@@ -225,10 +225,16 @@ simpsonfinal <- diversity(commvegan, index = "simpson")
 sitefinal$Simpson <- simpsonfinal
 
 final.data <- merge(final.data, sitefinal)
+
+final.data$sd.simpson <- sd(final.data$Simpson, na.rm = TRUE)
+
+standarderrorsimpson <- sd(final.data$Simpson)/sqrt(length(final.data$Simpson))
+final.data$se_simpson <- standarderrorsimpson
 ```
 
 ###Data Viz
 ```{r}
+##Shrub Density v Animal Density
 ggplot(final.data, aes(density, animals, color = microsite)) +
   geom_point() +
   geom_errorbar(aes(ymin=animals-se_animal, ymax=animals+se_animal), width=.2,
@@ -240,13 +246,24 @@ ggplot(final.data, aes(density, animals, color = microsite)) +
   labs(x = "shrub density", y = "animal density")
 ```
 ```{r}
-#Animal Richness
+##Shrub Density v Animal Richness
 ggplot(final.data, aes(density, richness, color = microsite)) +
   geom_point() +
   geom_errorbar(aes(ymin=richness-se_richness, ymax=richness+se_richness), width=.2,
                  position=position_dodge(0.05)) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  geom_smooth(method = lm, se = FALSE) + 
+  labs(x = "shrub density", y = "animal richness")
+```
+```{r}
+##Simpson v Animal Density
+ggplot(final.data, aes(density, Simpson, color = microsite)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=Simpson-se_simpson, ymax=Simpson+se_simpson), width=.2,
+                 position=position_dodge(0.05)) +
+  facet_wrap(~phylum) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = FALSE) + 
   labs(x = "shrub density", y = "animal richness")
