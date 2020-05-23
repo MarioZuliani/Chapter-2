@@ -275,8 +275,20 @@ ggplot(final.data, aes(density, Simpson, color = microsite)) +
   facet_wrap(~phylum) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = FALSE) + 
-  labs(x = "shrub density", y = "animal richness")
+  labs(x = "shrub density", y = "Simpsons Value")
 ```
+
+```{r}
+ggplot(final.data, aes(animals, richness, color = microsite)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=richness-se_richness, ymax=richness+se_richness), width=.2,
+                 position=position_dodge(0.05)) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  geom_smooth(method = lm, se = FALSE) + 
+  labs(x = "Animal Density", y = "Animal Richness")
+```
+
 
 ###Stats Analysis
 ```{r}
