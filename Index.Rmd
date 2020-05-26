@@ -223,7 +223,11 @@ sitefinal <- sitefinal %>%
 names(sitefinal)[3] <- "density"
 
 simpsonfinal <- diversity(commvegan, index = "simpson")
+Hfinal <- diversity(commvegan)
+Sfinal <- specnumber(commvegan)
+Evenness <- Hfinal/log(Sfinal)
 sitefinal$Simpson <- simpsonfinal
+sitefinal$Evenness <- Evenness
 
 final.data <- merge(final.data, sitefinal)
 
@@ -231,6 +235,9 @@ final.data$sd.simpson <- sd(final.data$Simpson, na.rm = TRUE)
 
 standarderrorsimpson <- sd(final.data$Simpson)/sqrt(length(final.data$Simpson))
 final.data$se_simpson <- standarderrorsimpson
+
+standarderrorEvenness <- sd(final.data$Evenness)/sqrt(length(final.data$Evenness))
+final.data$se_Evenness <- standarderrorEvenness
 
 density_simple7 <- data.final %>%
   group_by(as.character(density_levels), plot, density, cover) %>%
@@ -272,13 +279,28 @@ ggplot(final.data, aes(density, Simpson, color = microsite)) +
   geom_point() +
   geom_errorbar(aes(ymin=Simpson-se_simpson, ymax=Simpson+se_simpson), width=.2,
                  position=position_dodge(0.05)) +
+  geom_jitter(position=position_jitter(0.2)) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  geom_smooth(method = lm, se = FALSE) + 
+  labs(x = "shrub density", y = "Simpsons Value")
+```
+```{r}
+##Simpson v Animal Density
+ggplot(final.data, aes(density, Evenness, color = microsite)) +
+  geom_point() +
+  geom_errorbar(aes(ymin=Evenness-se_Evenness, ymax=Evenness+se_Evenness), width=.2,
+                 position=position_dodge(0.05)) +
+  geom_jitter(position=position_jitter(0.2)) +
   facet_wrap(~phylum) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = FALSE) + 
   labs(x = "shrub density", y = "Simpsons Value")
 ```
 
+
 ```{r}
+#Animal Abundance v Richness
 ggplot(final.data, aes(animals, richness, color = microsite)) +
   geom_point() +
   geom_errorbar(aes(ymin=richness-se_richness, ymax=richness+se_richness), width=.2,
@@ -314,6 +336,13 @@ m17 <- glm(Simpson ~ density*microsite+phylum+RDM+mean_temp, family = "quasipois
 anova(m17, test = "Chisq")
 e17 <- emmeans(m17, pairwise~microsite|phylum)
 e17
+```
+```{r}
+#Stat analysis for Evenness
+m18 <- glm(Evenness ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoisson", data = final.data)
+anova(m18, test = "Chisq")
+e18 <- emmeans(m18, pairwise~microsite|phylum)
+e18
 ```
 ###Appendix Figures
 ```{r}
