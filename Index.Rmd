@@ -252,49 +252,39 @@ final.data <- merge(final.data, density_simple7)
 ```{r}
 ##Shrub Density v Animal Density
 ggplot(final.data, aes(density, animals, color = microsite)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=animals-se_animal, ymax=animals+se_animal), width=.2,
-                 position=position_dodge(0.05)) +
+  geom_point(size = -1) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
-  geom_smooth(method = lm, se = FALSE) + 
+  geom_smooth(method = lm, se = TRUE) + 
   labs(x = "shrub density", y = "animal density")
 ```
 ```{r}
 ##Shrub Density v Animal Richness
 ggplot(final.data, aes(density, richness, color = microsite)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=richness-se_richness, ymax=richness+se_richness), width=.2,
-                 position=position_dodge(0.05)) +
+  geom_point(size = -1) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
-  geom_smooth(method = lm, se = FALSE) + 
+  geom_smooth(method = lm, se = TRUE) + 
   labs(x = "shrub density", y = "animal richness")
 ```
 ```{r}
 ##Simpson v Animal Density
 ggplot(final.data, aes(density, Simpson, color = microsite)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=Simpson-se_simpson, ymax=Simpson+se_simpson), width=.2,
-                 position=position_dodge(0.05)) +
-  geom_jitter(position=position_jitter(0.2)) +
+  geom_point(size = -1) +
   facet_wrap(~phylum) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
-  geom_smooth(method = lm, se = FALSE) + 
+  geom_smooth(method = lm, se = TRUE) + 
   labs(x = "shrub density", y = "Simpsons Value")
 ```
 ```{r}
 ##Simpson v Animal Density
 ggplot(final.data, aes(density, Evenness, color = microsite)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=Evenness-se_Evenness, ymax=Evenness+se_Evenness), width=.2,
-                 position=position_dodge(0.05)) +
-  geom_jitter(position=position_jitter(0.2)) +
+  geom_point(size = -1) +
   facet_wrap(~phylum) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
-  geom_smooth(method = lm, se = FALSE) + 
+  geom_smooth(method = lm, se = TRUE) + 
   labs(x = "shrub density", y = "Evenness Value")
 ```
 
@@ -302,12 +292,10 @@ ggplot(final.data, aes(density, Evenness, color = microsite)) +
 ```{r}
 #Animal Abundance v Richness
 ggplot(final.data, aes(animals, richness, color = microsite)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=richness-se_richness, ymax=richness+se_richness), width=.2,
-                 position=position_dodge(0.05)) +
+  geom_point(size = -1) +
   facet_wrap(~phylum) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
-  geom_smooth(method = lm, se = FALSE) + 
+  geom_smooth(method = lm, se = TRUE) + 
   labs(x = "Animal Density", y = "Animal Richness")
 ```
 
@@ -376,36 +364,30 @@ site.wide.map
 ```{r}
 #Appendix C Environmental Data (RDM, Temp, Cover)
 ggplot(final.data, aes(RDM, animals, color = microsite)) +
-  geom_point() +
+  geom_point(size = -1) +
   facet_wrap(~phylum) +
-  geom_errorbar(aes(ymin=animals-se_animal, ymax=animals+se_animal), width=.2,
-                 position=position_dodge(0.05)) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
-  geom_smooth(method = lm, se = FALSE) + 
+  geom_smooth(method = lm, se = TRUE) + 
   labs(x = "shrub density", y = "animal density")
 ```
 ```{r}
 #Compares Temperatures with animal abundances for each microsite (Use of Appendix?)
 ggplot(final.data, aes(max_temp, animals, color = microsite)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=animals-se_animal, ymax=animals+se_animal), width=.2,
-                 position=position_dodge(0.05)) +
+  geom_point(size = -1) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
-  geom_smooth(method = lm, se = FALSE) + 
+  geom_smooth(method = lm, se = TRUE) + 
   labs(x = "Mean Temperature", y = "animal density")
 ```
 ```{r}
 ggplot(final.data, aes(cover, animals, color = microsite)) +
-  geom_point() +
-  geom_errorbar(aes(ymin=animals-se_animal, ymax=animals+se_animal), width=.2,
-                 position=position_dodge(0.05)) +
+  geom_point(size = -1) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
-  geom_smooth(method = lm, se = FALSE) + 
+  geom_smooth(method = lm, se = TRUE) + 
   labs(x = "Mean Temperature", y = "animal density")
 ```
 
