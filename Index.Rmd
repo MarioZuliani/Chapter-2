@@ -10,7 +10,7 @@ library(meta)
 library(PRISMAstatement)
 library(skimr)
 library(MASS)
-library(ggpubr)
+library(ggpubr) 
 library(vegan)
 library(emmeans)
 setwd("/R Packages/Chapter 2")
@@ -285,7 +285,7 @@ ggplot(final.data, aes(density, Evenness, color = microsite)) +
   facet_wrap(~phylum) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = TRUE) + 
-  labs(x = "shrub density", y = "Evenness Value")
+  labs(x = "shrub density", y = "Evenness")
 ```
 
 
@@ -376,19 +376,17 @@ ggplot(final.data, aes(RDM, animals, color = microsite)) +
 ggplot(final.data, aes(max_temp, animals, color = microsite)) +
   geom_point(size = -1) +
   facet_wrap(~phylum) +
-  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = TRUE) + 
-  labs(x = "Mean Temperature", y = "animal density")
+  labs(x = "Max Temperature", y = "animal density")
 ```
 ```{r}
 ggplot(final.data, aes(cover, animals, color = microsite)) +
   geom_point(size = -1) +
   facet_wrap(~phylum) +
-  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = TRUE) + 
-  labs(x = "Mean Temperature", y = "animal density")
+  labs(x = "Shrub Cover", y = "animal density")
 ```
 
 ```{r}
@@ -405,7 +403,7 @@ ggplot(data_simple, aes(density_levels, animals, color = method)) +
 ```
 
 ```{r}
-##Appendix E
+##Appendix F
 m01 <- adonis(vert_species ~ microsite*shrub_density, data = env)
 m01
 #PCA!!!
