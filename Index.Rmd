@@ -269,17 +269,9 @@ ggplot(final.data, aes(density, richness, color = microsite)) +
   geom_smooth(method = lm, se = TRUE) + 
   labs(x = "shrub density", y = "animal richness")
 ```
+
 ```{r}
-##Simpson v Animal Density
-ggplot(final.data, aes(density, Simpson, color = microsite)) +
-  geom_point(size = -1) +
-  facet_wrap(~phylum) +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
-  geom_smooth(method = lm, se = TRUE) + 
-  labs(x = "shrub density", y = "Simpsons Value")
-```
-```{r}
-##Simpson v Animal Density
+##Evenness v Animal Density
 ggplot(final.data, aes(density, Evenness, color = microsite)) +
   geom_point(size = -1) +
   facet_wrap(~phylum) +
@@ -288,18 +280,6 @@ ggplot(final.data, aes(density, Evenness, color = microsite)) +
   labs(x = "shrub density", y = "Evenness")
 ```
 
-
-```{r}
-#Animal Abundance v Richness
-ggplot(final.data, aes(animals, richness, color = microsite)) +
-  geom_point(size = -1) +
-  facet_wrap(~phylum) +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
-  geom_smooth(method = lm, se = TRUE) + 
-  labs(x = "Animal Density", y = "Animal Richness")
-```
-
-
 ###Stats Analysis
 ```{r}
 #Stats for animal abundance with density level by micorsite with RDM, mean temp and phylum as covariates
@@ -307,15 +287,19 @@ m13 <- glm(animals ~ density*microsite+phylum+RDM+mean_temp, family = "quasipois
 anova(m13, test = "Chisq")
 e13 <- emmeans(m13, pairwise~microsite|phylum)
 e13
-#emmeans seems to not yield any data for this
+e20 <- emmeans(m13, pairwise~phylum|density)
+e20
+e21 <- emmeans(m13, pairwise~phylum|density*microsite)
+e21
 ```
+
+
 ```{r}
 #Stats for Animal Richness by density level with RDM and mean temp as covariates
 m14 <- glm(richness ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoisson", data = final.data)
 anova(m14, test = "Chisq")
 e14 <- emmeans(m14, pairwise~microsite|phylum)
 e14
-
 ```
 
 ```{r}
@@ -369,7 +353,7 @@ ggplot(final.data, aes(RDM, animals, color = microsite)) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = TRUE) + 
-  labs(x = "shrub density", y = "animal density")
+  labs(x = "Residual Dry Matter", y = "animal density")
 ```
 ```{r}
 #Compares Temperatures with animal abundances for each microsite (Use of Appendix?)
@@ -391,7 +375,9 @@ ggplot(final.data, aes(cover, animals, color = microsite)) +
 
 ```{r}
 #Appendix D Species List
-list(animal.data.final)
+list <- list(animal.data.final)
+list
+capture.output(write.table(list), file = "Animal List.csv")
 ```
 ```{r}
 #Appendix E Contrast of sampling methods
