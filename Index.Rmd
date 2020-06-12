@@ -275,6 +275,7 @@ ggplot(final.data, aes(density, richness, color = microsite)) +
 ggplot(final.data, aes(density, Evenness, color = microsite)) +
   geom_point(size = -1) +
   facet_wrap(~phylum) +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() +
   geom_smooth(method = lm, se = TRUE) + 
   labs(x = "shrub density", y = "Evenness")
@@ -289,10 +290,22 @@ e13 <- emmeans(m13, pairwise~microsite|phylum)
 e13
 e20 <- emmeans(m13, pairwise~phylum|density)
 e20
-e21 <- emmeans(m13, pairwise~phylum|density*microsite)
+e21 <- emmeans(m13, pairwise~microsite|RDM)
 e21
 ```
-
+```{r}
+#Stats for animal abundance with density level by micorsite and phylum with RDM, mean temp and phylum as covariates
+m24 <- glm(animals ~ density*microsite*phylum+RDM+max_temp+cover, family = "quasipoisson", data = final.data)
+anova(m24, test = "Chisq")
+e24 <- emmeans(m24, pairwise~phylum)
+e24
+e25 <- emmeans(m24, pairwise~microsite:phylum)
+e25
+e26 <- emmeans(m24, pairwise~microsite:phylum|density)
+e26
+e27 <- emmeans(m24, pairwise~density:microsite)
+e27
+```
 
 ```{r}
 #Stats for Animal Richness by density level with RDM and mean temp as covariates
@@ -300,6 +313,19 @@ m14 <- glm(richness ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoi
 anova(m14, test = "Chisq")
 e14 <- emmeans(m14, pairwise~microsite|phylum)
 e14
+e22 <- emmeans(m14, pairwise~microsite|RDM)
+e22
+e26 <- emmeans(m14, pairwise~microsite)
+e26
+```
+```{r}
+#Stats for animal richness with density level by micorsite and phylum with RDM, mean temp and phylum as covariates
+m27 <- glm(richness ~ density*microsite*phylum+RDM+max_temp+cover, family = "quasipoisson", data = final.data)
+anova(m27, test = "Chisq")
+e27 <- emmeans(m27, pairwise~phylum)
+e27
+e28 <- emmeans(m27, pairwise~phylum|microsite)
+e28
 ```
 
 ```{r}
@@ -311,7 +337,7 @@ e17
 ```
 ```{r}
 #Stat analysis for Evenness
-m18 <- glm(Evenness ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoisson", data = final.data)
+m18 <- glm(Evenness ~ density*microsite*phylum+RDM+max_temp+cover, family = "quasipoisson", data = final.data)
 anova(m18, test = "Chisq")
 e18 <- emmeans(m18, pairwise~microsite|phylum)
 e18
