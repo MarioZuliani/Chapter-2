@@ -1283,6 +1283,7 @@ ggplot(density_simple, aes(as.character(density_levels), animals)) +
 ```
 
 ```{r}
+##Set up for Simpson Test
 density_simple6 <- data.final %>%
   group_by(as.character(density_levels), plot, density, phylum, daily_animal_totals, species, microsite) %>%
   summarise(animals = sum(daily_animal_totals), richness = n()) %>%
@@ -1297,7 +1298,6 @@ vegandata$density <- gsub(" ", "", vegandata$density)
 vegandata$density <- as.factor(vegandata$density)
 vegandata$uniID <- paste(vegandata$plot, vegandata$density)
 str(vegandata)
-
 
 library(dplyr)
 vegandata <- vegandata %>% 
@@ -1334,9 +1334,22 @@ sitefinal <- sitefinal %>%
 names(sitefinal)[3] <- "density"
 
 simpsonfinal <- diversity(commvegan, index = "simpson")
+Hfinal <- diversity(commvegan)
+Sfinal <- specnumber(commvegan)
+Evenness <- Hfinal/log(Sfinal)
+
 sitefinal$Simpson <- simpsonfinal
+sitefinal$Evenness <- Evenness
 
 final.data <- merge(final.data, sitefinal)
+
+density_simple7 <- data.final %>%
+  group_by(as.character(density_levels), plot, density, cover) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')%>%
+  dplyr::select(-animals, -richness)
+
+final.data <- merge(final.data, density_simple7)
 ```
 
 ```{r}
@@ -1367,3 +1380,32 @@ site.wide.map <- site.wide.map +
   labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
 site.wide.map
 ```
+
+```{r}
+###Percent Pressence Data
+percent_presence <- data.final %>%
+  group_by(as.character(density_levels), species, microsite, density) %>%
+  summarise(animals = sum(daily_animal_totals)) %>%
+  rename(density_levels = 'as.character(density_levels)')
+```
+
+standarderroranimal <- sd(final.data$animals)/sqrt(length(final.data$animals))
+final.data$se_animal <- standarderroranimal
+standard_error_richness <- sd(final.data$richness)/sqrt(length(final.data$richness))
+final.data$se_richness <- standard_error_richness
+
+```{r}
+by_plot <- group_by(percent_presence, density)
+summary_by_plot <- summarize(by_plot, plot_animals = sum(animals))
+animal_by_plot <- merge(by_plot, summary_by_plot, all = TRUE)
+animal_presence <- animal_by_plot$animals/animal_by_plot$plot_animals*100
+animal_by_plot$percent_presence <- animal_presence
+```
+```{r}
+ggplot(animal_by_plot, aes(as.factor(density), percent_presence, fill = species)) +
+  geom_bar(stat = "identity") +
+  labs(fill = "", x = "Shrub density", y= "Percent Presence")
+```
+
+
+

@@ -3,6 +3,7 @@ title: "Index (Cleaned up work)"
 output: html_document
 ---
 ```{r setup, include=FALSE}
+library(ggmap)
 library(ggplot2)
 library(tidyverse)
 library(dplyr)
@@ -13,6 +14,7 @@ library(MASS)
 library(ggpubr) 
 library(vegan)
 library(emmeans)
+library(sjPlot)
 setwd("/R Packages/Chapter 2")
 ```
 ###Hypothesis
@@ -251,35 +253,47 @@ final.data <- merge(final.data, density_simple7)
 ###Data Viz
 ```{r}
 ##Shrub Density v Animal Density
-ggplot(final.data, aes(density, animals, color = microsite)) +
+Abundance <- ggplot(final.data, aes(density, animals, color = microsite),show.legend=FALSE) +
   geom_point(size = -1) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "A")+
   geom_smooth(method = lm, se = TRUE) + 
-  labs(x = "shrub density", y = "animal density")
+  labs(x = "Shrub density", y = "Animal density")
 ```
 ```{r}
 ##Shrub Density v Animal Richness
-ggplot(final.data, aes(density, richness, color = microsite)) +
+Richness<- ggplot(final.data, aes(density, richness, color = microsite),show.legend=FALSE) + 
   geom_point(size = -1) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "B")+
   geom_smooth(method = lm, se = TRUE) + 
-  labs(x = "shrub density", y = "animal richness")
+  labs(x = "Shrub density", y = "Animal richness")
 ```
 
 ```{r}
 ##Evenness v Animal Density
-ggplot(final.data, aes(density, Evenness, color = microsite)) +
+evenness <- ggplot(final.data, aes(density, Evenness, color = microsite)) + 
   geom_point(size = -1) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "C")+
   geom_smooth(method = lm, se = TRUE) + 
-  labs(x = "shrub density", y = "Evenness")
+  labs(x = "Shrub density", y = "Evenness")
 ```
+
+```{r}
+###Figure 1
+ggarrange(Abundance, Richness, evenness, nrow = 2, ncol = 2)
+```
+
+```{r}
+ggplot(data.final, aes(as.factor(density), daily_animal_totals, fill = species)) +
+  geom_bar(stat = "identity") + facet_wrap(~microsite) +
+  labs(fill = "", x = "total captures")
+```
+
 
 ###Stats Analysis
 ```{r}
@@ -305,9 +319,11 @@ e26 <- emmeans(m24, pairwise~microsite:phylum|density)
 e26
 e27 <- emmeans(m24, pairwise~density:microsite)
 e27
+tab_model(m24)
 ```
 
 ```{r}
+###Does not have phylum as factor!!!!!
 #Stats for Animal Richness by density level with RDM and mean temp as covariates
 m14 <- glm(richness ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoisson", data = final.data)
 anova(m14, test = "Chisq")
@@ -318,6 +334,7 @@ e22
 e26 <- emmeans(m14, pairwise~microsite)
 e26
 ```
+
 ```{r}
 #Stats for animal richness with density level by micorsite and phylum with RDM, mean temp and phylum as covariates
 m27 <- glm(richness ~ density*microsite*phylum+RDM+max_temp+cover, family = "quasipoisson", data = final.data)
@@ -349,7 +366,7 @@ site.4 <- read.csv("Site 4 Data Sheet.csv")
 #Map for appendix
 library(ggmap)
 register_google(key="AIzaSyBurG6FR6I4uc_nRUr6TY118dCsnM0tsiE")
-carrizo4 <- get_map(location = c(lon = -119.6287, lat = 35.11941), zoom = 19, maptype = "satellite")
+carrizo4 <- get_map(location = c(lon = -119.6287, lat = 35.11941), zoom = 16, maptype = "satellite")
 carrizo4
 site.wide.map <- ggmap(carrizo4)
 site.wide.map <- site.wide.map +
@@ -362,7 +379,7 @@ site.3 <- read.csv("Site 3 Data Sheet.csv")
 #Map for appendix
 library(ggmap)
 register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
-carrizo3 <- get_map(location = c(lon = -119.67255, lat = 35.16180), zoom = 19, maptype = "satellite")
+carrizo3 <- get_map(location = c(lon = -119.67255, lat = 35.16180), zoom = 16, maptype = "satellite")
 carrizo3
 site.wide.map <- ggmap(carrizo3)
 site.wide.map <- site.wide.map +
@@ -370,6 +387,20 @@ site.wide.map <- site.wide.map +
   labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
 site.wide.map
 ```
+
+
+```{r}
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo <- get_map(location = c(lon = -119.8633, lat = 35.1899), zoom = 8, maptype = "satellite")
+carrizo
+site.wide.map <- ggmap(carrizo)
+site.wide.map <- site.wide.map +
+  geom_point(data=site.3, aes(x=site.lng, y=site.lat, color = Site), alpha = 6/10, size = 3, show.legend = FALSE) +
+  labs(title = "Site Location", x = "longitude", y = "latitude")
+site.wide.map
+```
+
 
 ```{r}
 #Appendix C Environmental Data (RDM, Temp, Cover)
