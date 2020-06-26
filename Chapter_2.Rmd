@@ -1389,11 +1389,6 @@ percent_presence <- data.final %>%
   rename(density_levels = 'as.character(density_levels)')
 ```
 
-standarderroranimal <- sd(final.data$animals)/sqrt(length(final.data$animals))
-final.data$se_animal <- standarderroranimal
-standard_error_richness <- sd(final.data$richness)/sqrt(length(final.data$richness))
-final.data$se_richness <- standard_error_richness
-
 ```{r}
 by_plot <- group_by(percent_presence, density)
 summary_by_plot <- summarize(by_plot, plot_animals = sum(animals))
@@ -1406,6 +1401,16 @@ ggplot(animal_by_plot, aes(as.factor(density), percent_presence, fill = species)
   geom_bar(stat = "identity") +
   labs(fill = "", x = "Shrub density", y= "Percent Presence")
 ```
-
-
+```{r}
+by_plot_microsite <- group_by(percent_presence, density, microsite)
+summary_by_plot_microsite <- summarize(by_plot_microsite, plot_animals_microsite = sum(animals))
+animal_by_plot_microsite <- merge(by_plot_microsite, summary_by_plot_microsite, all = TRUE)
+animal_presence_microsite <- animal_by_plot_microsite$animals/animal_by_plot_microsite$plot_animals*100
+animal_by_plot_microsite$percent_presence <- animal_presence_microsite
+```
+```{r}
+ggplot(animal_by_plot_microsite, aes(as.factor(density), percent_presence, fill = species)) +
+  geom_bar(stat = "identity") + facet_wrap(~microsite) +
+  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)")
+```
 

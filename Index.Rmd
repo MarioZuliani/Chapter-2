@@ -289,10 +289,23 @@ ggarrange(Abundance, Richness, evenness, nrow = 2, ncol = 2)
 ```
 
 ```{r}
-ggplot(data.final, aes(as.factor(density), daily_animal_totals, fill = species)) +
+###Percent Pressence Data
+percent_presence <- data.final %>%
+  group_by(as.character(density_levels), species, microsite, density) %>%
+  summarise(animals = sum(daily_animal_totals)) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+by_plot_microsite <- group_by(percent_presence, density, microsite)
+summary_by_plot_microsite <- summarize(by_plot_microsite, plot_animals_microsite = sum(animals))
+animal_by_plot_microsite <- merge(by_plot_microsite, summary_by_plot_microsite, all = TRUE)
+animal_presence_microsite <- animal_by_plot_microsite$animals/animal_by_plot_microsite$plot_animals*100
+animal_by_plot_microsite$percent_presence <- animal_presence_microsite
+
+ggplot(animal_by_plot_microsite, aes(as.factor(density), percent_presence, fill = species)) +
   geom_bar(stat = "identity") + facet_wrap(~microsite) +
-  labs(fill = "", x = "total captures")
+  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)")
 ```
+
 
 
 ###Stats Analysis
