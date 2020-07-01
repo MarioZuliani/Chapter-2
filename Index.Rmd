@@ -298,15 +298,13 @@ percent_presence <- data.final %>%
 by_plot_microsite <- group_by(percent_presence, density, microsite)
 summary_by_plot_microsite <- summarize(by_plot_microsite, plot_animals_microsite = sum(animals))
 animal_by_plot_microsite <- merge(by_plot_microsite, summary_by_plot_microsite, all = TRUE)
-animal_presence_microsite <- animal_by_plot_microsite$animals/animal_by_plot_microsite$plot_animals*100
+animal_presence_microsite <- animal_by_plot_microsite$animals/animal_by_plot_microsite$plot_animals
 animal_by_plot_microsite$percent_presence <- animal_presence_microsite
 
 ggplot(animal_by_plot_microsite, aes(as.factor(density), percent_presence, fill = species)) +
-  geom_bar(stat = "identity") + facet_wrap(~microsite) +
-  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)")
+  geom_histogram (stat = "identity") + facet_wrap(~microsite) +
+  labs(fill = "", x = "Shrub density", y= "Relative Proportion (%)")
 ```
-
-
 
 ###Stats Analysis
 ```{r}
@@ -379,7 +377,7 @@ site.4 <- read.csv("Site 4 Data Sheet.csv")
 #Map for appendix
 library(ggmap)
 register_google(key="AIzaSyBurG6FR6I4uc_nRUr6TY118dCsnM0tsiE")
-carrizo4 <- get_map(location = c(lon = -119.6287, lat = 35.11941), zoom = 16, maptype = "satellite")
+carrizo4 <- get_map(location = c(lon = -119.6287, lat = 35.11941), zoom = 18, maptype = "satellite")
 carrizo4
 site.wide.map <- ggmap(carrizo4)
 site.wide.map <- site.wide.map +
@@ -392,7 +390,7 @@ site.3 <- read.csv("Site 3 Data Sheet.csv")
 #Map for appendix
 library(ggmap)
 register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
-carrizo3 <- get_map(location = c(lon = -119.67255, lat = 35.16180), zoom = 16, maptype = "satellite")
+carrizo3 <- get_map(location = c(lon = -119.67300, lat = 35.16250), zoom = 18, maptype = "satellite")
 carrizo3
 site.wide.map <- ggmap(carrizo3)
 site.wide.map <- site.wide.map +
@@ -451,11 +449,12 @@ capture.output(write.table(list), file = "Animal List.csv")
 ```
 ```{r}
 #Appendix E Contrast of sampling methods
-ggplot(data_simple, aes(density_levels, animals, color = method)) +
+ggplot(data_simple, aes(density, animals, color = method)) +
   geom_boxplot() +
   scale_color_brewer(palette = "Set1") +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   theme_classic() + 
-  labs(x = "shrub density level", y = "animal abundance")
+  labs(x = "Shrub Density", y = "Animals Observed")
 ```
 
 ```{r}
