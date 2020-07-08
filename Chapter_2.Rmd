@@ -832,7 +832,7 @@ ggplot(density_simple, aes(as.character(density), richness)) +
 ```
 ```{r}
 data_simple <- data.final %>%
-  group_by(as.character(density_levels), method, density_category, density, microsite) %>%
+  group_by(as.character(density_levels), method, density_category, density, microsite, phylum) %>%
   summarise(animals = sum(daily_animal_totals), richness = n()) %>%
   rename(density_levels = 'as.character(density_levels)')
 
@@ -1384,7 +1384,7 @@ site.wide.map
 ```{r}
 ###Percent Pressence Data
 percent_presence <- data.final %>%
-  group_by(as.character(density_levels), species, microsite, density) %>%
+  group_by(as.character(density_levels), species, microsite, density, phylum) %>%
   summarise(animals = sum(daily_animal_totals)) %>%
   rename(density_levels = 'as.character(density_levels)')
 ```
@@ -1409,8 +1409,140 @@ animal_presence_microsite <- animal_by_plot_microsite$animals/animal_by_plot_mic
 animal_by_plot_microsite$percent_presence <- animal_presence_microsite
 ```
 ```{r}
-ggplot(animal_by_plot_microsite, aes(as.factor(density), percent_presence, fill = species)) +
+micrositebargraph <- ggplot(animal_by_plot_microsite, aes(as.factor(density), percent_presence, fill = species)) +
   geom_bar(stat = "identity") + facet_wrap(~microsite) +
   labs(fill = "", x = "Shrub density", y= "Percent Presence (%)")
 ```
 
+```{r}
+by_plot_phylum <- group_by(percent_presence, density, phylum)
+summary_by_plot_phylum <- summarize(by_plot_phylum, plot_animals_phylum = sum(animals))
+animal_by_plot_phylum <- merge(by_plot_phylum, summary_by_plot_phylum, all = TRUE)
+animal_presence_phylum <- animal_by_plot_phylum$animals/animal_by_plot_phylum$plot_animals*100
+animal_by_plot_phylum$percent_presence <- animal_presence_phylum
+```
+```{r}
+phylumbargraph <- ggplot(animal_by_plot_phylum, aes(as.factor(density), percent_presence, fill = species)) +
+  geom_bar(stat = "identity") + facet_wrap(~phylum) +
+  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)")
+```
+
+```{r}
+ggarrange(micrositebargraph, phylumbargraph, common.legend = TRUE, legend = "right", nrow = 2)
+```
+```{r}
+library(gridExtra)
+library(cowplot)
+legends <- get_legend(Abundance)
+```
+
+```{r}
+grid.arrange(Abundance, Richness, evenness, legends, ncol=2, nrow =2, layout_matrix = cbind(c(1,2,3)))
+```
+```{r}
+d1 <- glm(animals ~ density*microsite*phylum + method, family = "quasipoisson", data = data_simple)
+anova(d1, test = "Chisq")
+de1 <- emmeans(d1, pairwise~ method | phylum, var = "density")
+de1
+```
+```{r}
+d2<- glm(max_temp ~ density*microsite*phylum*animals, family = "quasipoisson", data = final.data)
+anova(d2, test = "Chisq")
+de2 <- emmeans(d2, pairwise~microsite|phylum)
+de2
+```
+```{r}
+d3<- glm(max_temp ~ density*microsite*phylum*richness, family = "quasipoisson", data = final.data)
+anova(d3, test = "Chisq")
+de3 <- emmeans(d3, pairwise~microsite|phylum)
+de3
+```
+```{r}
+d4<- glm(max_temp ~ density*microsite*phylum*Evenness, family = "quasipoisson", data = final.data)
+anova(d4, test = "Chisq")
+de4 <- emmeans(d4, pairwise~microsite|phylum)
+de4
+```
+```{r}
+d5<- glm(RDM ~ density*microsite*phylum*animals, family = "quasipoisson", data = final.data)
+anova(d5, test = "Chisq")
+de5 <- emmeans(d5, pairwise~microsite|phylum)
+de5
+```
+```{r}
+d6<- glm(RDM ~ density*microsite*phylum*richness, family = "quasipoisson", data = final.data)
+anova(d6, test = "Chisq")
+de6 <- emmeans(d6, pairwise~microsite|phylum)
+de6
+```
+```{r}
+d7<- glm(RDM ~ density*microsite*phylum*Evenness, family = "quasipoisson", data = final.data)
+anova(d7, test = "Chisq")
+de7 <- emmeans(d7, pairwise~microsite|phylum)
+de7
+```
+
+```{r}
+d8<- glm(cover ~ density*microsite*phylum*animals, family = "quasipoisson", data = final.data)
+anova(d8, test = "Chisq")
+de8 <- emmeans(d8, pairwise~microsite|phylum)
+de8
+```
+
+```{r}
+d9<- glm(RDM ~ density*microsite*phylum*richness, family = "quasipoisson", data = final.data)
+anova(d9, test = "Chisq")
+de9 <- emmeans(d9, pairwise~microsite|phylum)
+de9
+```
+
+```{r}
+d10<- glm(RDM ~ density*microsite*phylum*Evenness, family = "quasipoisson", data = final.data)
+anova(d10, test = "Chisq")
+de10 <- emmeans(d10, pairwise~microsite|phylum)
+de10
+```
+
+```{r}
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo <- get_map(location = c(lon = -119.8633, lat = 35.1899), zoom = 4, maptype = "satellite")
+carrizo
+site.wide.map3 <- ggmap(carrizo)
+site.wide.map3 <- site.wide.map3 +
+  geom_point(data=site.3, aes(x=site.lng, y=site.lat, color = Site), alpha = 6/10, size = 3, show.legend = FALSE) +
+  labs(x = "longitude", y = "latitude") + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
+site.wide.map3
+```
+
+```{r}
+chris <- read_csv("Chris_shrub.csv")
+mario <- read_csv("Shrub Density Setup.csv")
+site <- read_csv("site density shortcut.csv")
+colnames(chris)[1] = "Site"
+colnames(chris)[3] = "plot.lat"
+colnames(chris)[4] = "plot.lng"
+colnames(chris)[6] = "density"
+colnames(site)[5] = "density"
+chris <- chris[ , -c(2,3,4,5,7)]
+chris
+mario <- mario [, -c(2,4,5)]
+mario
+site <- site [ , -c(2,3,4)]
+site
+```
+
+
+```{r}
+mario.site <- merge(mario, site, all = TRUE)
+mario.site
+```
+```{r}
+combined <- merge(chris, mario.site, all=TRUE)
+combined
+```
+```{r}
+c1 <- glm(density ~ observer, family = "quasipoisson", data = combined)
+res.aov <- aov(density ~ observer, data = combined)
+summary(res.aov)
+```

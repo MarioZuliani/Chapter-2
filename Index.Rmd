@@ -15,6 +15,8 @@ library(ggpubr)
 library(vegan)
 library(emmeans)
 library(sjPlot)
+library(gridExtra)
+library(cowplot)
 setwd("/R Packages/Chapter 2")
 ```
 ###Hypothesis
@@ -203,7 +205,7 @@ commvegan <- commvegan %>%
   ungroup() %>%
   dplyr::select(-uniID)
 
-sitefinal <- read_csv("site desntiy shortcut.csv")
+sitefinal <- read_csv("site density shortcut.csv")
 
 sitefinal <- sitefinal %>%
   group_by(Site, plot, site.density, shrub.count)
@@ -258,6 +260,7 @@ Abundance <- ggplot(final.data, aes(density, animals, color = microsite),show.le
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "A")+
+  theme(axis.title.x = element_blank()) +
   geom_smooth(method = lm, se = TRUE) + 
   labs(x = "Shrub density", y = "Animal density")
 ```
@@ -268,6 +271,7 @@ Richness<- ggplot(final.data, aes(density, richness, color = microsite),show.leg
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "B")+
+  theme(axis.title.x = element_blank()) +
   geom_smooth(method = lm, se = TRUE) + 
   labs(x = "Shrub density", y = "Animal richness")
 ```
@@ -285,13 +289,12 @@ evenness <- ggplot(final.data, aes(density, Evenness, color = microsite)) +
 
 ```{r}
 ###Figure 1
-ggarrange(Abundance, Richness, evenness, nrow = 2, ncol = 2)
+ggarrange(Abundance, Richness, evenness, nrow = 2, ncol = 2, align = "v", heights = 10, common.legend = TRUE, legend = "right")
 ```
-
 ```{r}
 ###Percent Pressence Data
 percent_presence <- data.final %>%
-  group_by(as.character(density_levels), species, microsite, density) %>%
+  group_by(as.character(density_levels), species, microsite, density, phylum) %>%
   summarise(animals = sum(daily_animal_totals)) %>%
   rename(density_levels = 'as.character(density_levels)')
 
@@ -301,11 +304,27 @@ animal_by_plot_microsite <- merge(by_plot_microsite, summary_by_plot_microsite, 
 animal_presence_microsite <- animal_by_plot_microsite$animals/animal_by_plot_microsite$plot_animals
 animal_by_plot_microsite$percent_presence <- animal_presence_microsite
 
-ggplot(animal_by_plot_microsite, aes(as.factor(density), percent_presence, fill = species)) +
+micrositebargraph <- ggplot(animal_by_plot_microsite, aes(as.factor(density), percent_presence, fill = species)) +
   geom_histogram (stat = "identity") + facet_wrap(~microsite) +
   labs(fill = "", x = "Shrub density", y= "Relative Proportion (%)")
 ```
 
+```{r}
+by_plot_phylum <- group_by(percent_presence, density, phylum)
+summary_by_plot_phylum <- summarize(by_plot_phylum, plot_animals_phylum = sum(animals))
+animal_by_plot_phylum <- merge(by_plot_phylum, summary_by_plot_phylum, all = TRUE)
+animal_presence_phylum <- animal_by_plot_phylum$animals/animal_by_plot_phylum$plot_animals*100
+animal_by_plot_phylum$percent_presence <- animal_presence_phylum
+```
+```{r}
+phylumbargraph <- ggplot(animal_by_plot_phylum, aes(as.factor(density), percent_presence, fill = species)) +
+  geom_bar(stat = "identity") + facet_wrap(~phylum) +
+  labs(fill = "", x = "Shrub density", y= "Relative Proportion (%)")
+```
+
+```{r}
+ggarrange(micrositebargraph, phylumbargraph, common.legend = TRUE, legend = "right", nrow = 2)
+```
 ###Stats Analysis
 ```{r}
 #Stats for animal abundance with density level by micorsite with RDM, mean temp and phylum as covariates
@@ -334,6 +353,14 @@ tab_model(m24)
 ```
 
 ```{r}
+emtrends(m24,pairwise ~ microsite | phylum, var = "density")
+emtrends(m24,pairwise ~ microsite | RDM, var = "density")
+emtrends(m24,pairwise ~ phylum | RDM, var = "density")
+emtrends(m24,pairwise ~ microsite | RDM, var = "density")
+emmeans(m24, pairwise ~ phylum+max_temp)
+```
+
+```{r}
 ###Does not have phylum as factor!!!!!
 #Stats for Animal Richness by density level with RDM and mean temp as covariates
 m14 <- glm(richness ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoisson", data = final.data)
@@ -354,6 +381,10 @@ e27 <- emmeans(m27, pairwise~phylum)
 e27
 e28 <- emmeans(m27, pairwise~phylum|microsite)
 e28
+```
+
+```{r}
+emtrends(m27,pairwise ~ microsite | phylum, var = "density")
 ```
 
 ```{r}
@@ -379,11 +410,11 @@ library(ggmap)
 register_google(key="AIzaSyBurG6FR6I4uc_nRUr6TY118dCsnM0tsiE")
 carrizo4 <- get_map(location = c(lon = -119.6287, lat = 35.11941), zoom = 18, maptype = "satellite")
 carrizo4
-site.wide.map <- ggmap(carrizo4)
-site.wide.map <- site.wide.map +
+site.wide.map2 <- ggmap(carrizo4)
+site.wide.map2 <- site.wide.map2 +
   geom_point(data=site.4, aes(x=shrub.lng, y=shrub.lat, color = Site), alpha = 6/10, size =2, show.legend = FALSE) +
-  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
-site.wide.map
+  labs(x = "longitude", y = "latitude") + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
+site.wide.map2
 ```
 ```{r}
 site.3 <- read.csv("Site 3 Data Sheet.csv")
@@ -392,11 +423,18 @@ library(ggmap)
 register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
 carrizo3 <- get_map(location = c(lon = -119.67300, lat = 35.16250), zoom = 18, maptype = "satellite")
 carrizo3
-site.wide.map <- ggmap(carrizo3)
-site.wide.map <- site.wide.map +
+site.wide.map1 <- ggmap(carrizo3)
+site.wide.map1 <- site.wide.map1 +
   geom_point(data=site.3, aes(x=shrub.lng, y=shrub.lat, color = Site), alpha = 6/10, size =2, show.legend = FALSE) +
-  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
-site.wide.map
+  labs(x = "longitude", y = "latitude") + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
+site.wide.map1
+```
+```{r}
+figure <- ggarrange(site.wide.map2, site.wide.map1)
+annotate_figure(figure,
+                bottom = text_grob("Longitude", color = "black"),
+                left = text_grob("Latitude", color = "black", rot = 90))
+
 ```
 
 
@@ -405,11 +443,28 @@ library(ggmap)
 register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
 carrizo <- get_map(location = c(lon = -119.8633, lat = 35.1899), zoom = 8, maptype = "satellite")
 carrizo
-site.wide.map <- ggmap(carrizo)
-site.wide.map <- site.wide.map +
+site.wide.map4 <- ggmap(carrizo)
+site.wide.map4 <- site.wide.map4 +
   geom_point(data=site.3, aes(x=site.lng, y=site.lat, color = Site), alpha = 6/10, size = 3, show.legend = FALSE) +
-  labs(title = "Site Location", x = "longitude", y = "latitude")
-site.wide.map
+  labs(x = "longitude", y = "latitude") + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
+site.wide.map4
+```
+```{r}
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo <- get_map(location = c(lon = -119.8633, lat = 35.1899), zoom = 4, maptype = "satellite")
+carrizo
+site.wide.map3 <- ggmap(carrizo)
+site.wide.map3 <- site.wide.map3 +
+  geom_point(data=site.3, aes(x=site.lng, y=site.lat, color = Site), alpha = 6/10, size = 3, show.legend = FALSE) +
+  labs(x = "longitude", y = "latitude") + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
+site.wide.map3
+```
+```{r}
+figure2 <- ggarrange(site.wide.map3, site.wide.map4)
+annotate_figure(figure2,
+                bottom = text_grob("Longitude", color = "black"),
+                left = text_grob("Latitude", color = "black", rot = 90))
 ```
 
 
