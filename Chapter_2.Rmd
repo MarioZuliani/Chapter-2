@@ -1395,6 +1395,7 @@ summary_by_plot <- summarize(by_plot, plot_animals = sum(animals))
 animal_by_plot <- merge(by_plot, summary_by_plot, all = TRUE)
 animal_presence <- animal_by_plot$animals/animal_by_plot$plot_animals*100
 animal_by_plot$percent_presence <- animal_presence
+
 ```
 ```{r}
 ggplot(animal_by_plot, aes(as.factor(density), percent_presence, fill = species)) +
@@ -1407,11 +1408,13 @@ summary_by_plot_microsite <- summarize(by_plot_microsite, plot_animals_microsite
 animal_by_plot_microsite <- merge(by_plot_microsite, summary_by_plot_microsite, all = TRUE)
 animal_presence_microsite <- animal_by_plot_microsite$animals/animal_by_plot_microsite$plot_animals*100
 animal_by_plot_microsite$percent_presence <- animal_presence_microsite
+animal_by_plot_microsite$Species <- factor(animal_by_plot_microsite$species, levels = c("Andrena nigripes", "Calathus ruficollis", "Dasymutilla aureola", "Dicolonus simplex", "Hippodamia convergens", "Icaricia acmon", "Oedaleonotus enigma", "Pepsis formos", "Rhionaeschna multicolor","small mammal", "Ammospermophilus nelsoni", "Dipodomys ingens", "Otospermophilus beecheyi", "Perognathus inornatus", "Vulpes macrotis", "Lepus californicus", "Aspidoscelis tigris", "Leopard Lizard", "Uta stansburiana","Crotalus oreganus", "Pituophis catenifer", "Buteo jamaicensis", "Corvus corax", "Calypte anna","Chondestes grammacus", "Geococcyx californianus"))
 ```
 ```{r}
-micrositebargraph <- ggplot(animal_by_plot_microsite, aes(as.factor(density), percent_presence, fill = species)) +
+micrositebargraph <- ggplot(animal_by_plot_microsite, aes(as.factor(density), percent_presence, fill = Species)) +
   geom_bar(stat = "identity") + facet_wrap(~microsite) +
   labs(fill = "", x = "Shrub density", y= "Percent Presence (%)")
+micrositebargraph
 ```
 
 ```{r}
@@ -1420,20 +1423,28 @@ summary_by_plot_phylum <- summarize(by_plot_phylum, plot_animals_phylum = sum(an
 animal_by_plot_phylum <- merge(by_plot_phylum, summary_by_plot_phylum, all = TRUE)
 animal_presence_phylum <- animal_by_plot_phylum$animals/animal_by_plot_phylum$plot_animals*100
 animal_by_plot_phylum$percent_presence <- animal_presence_phylum
-```
-```{r}
-phylumbargraph <- ggplot(animal_by_plot_phylum, aes(as.factor(density), percent_presence, fill = species)) +
-  geom_bar(stat = "identity") + facet_wrap(~phylum) +
-  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)")
+
 ```
 
 ```{r}
-ggarrange(micrositebargraph, phylumbargraph, common.legend = TRUE, legend = "right", nrow = 2)
+animal_by_plot_phylum$Species <- factor(animal_by_plot_phylum$species, levels = c("Andrena nigripes", "Calathus ruficollis", "Dasymutilla aureola", "Dicolonus simplex", "Hippodamia convergens", "Icaricia acmon", "Oedaleonotus enigma", "Pepsis formos", "Rhionaeschna multicolor","small mammal", "Ammospermophilus nelsoni", "Dipodomys ingens", "Otospermophilus beecheyi", "Perognathus inornatus", "Vulpes macrotis", "Lepus californicus", "Aspidoscelis tigris", "Leopard Lizard", "Uta stansburiana","Crotalus oreganus", "Pituophis catenifer", "Buteo jamaicensis", "Corvus corax", "Calypte anna","Chondestes grammacus", "Geococcyx californianus"))
 ```
+
+```{r}
+phylumbargraph <- ggplot(animal_by_plot_phylum, aes(as.factor(density), percent_presence, fill = Species, order = as.factor(Species))) +
+  geom_bar(stat = "identity") + facet_wrap(~phylum) +
+  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)")
+phylumbargraph
+```
+
+```{r}
+communitybar <- ggarrange(micrositebargraph, phylumbargraph, common.legend = TRUE, legend = "right", nrow = 2) 
+```
+
 ```{r}
 library(gridExtra)
 library(cowplot)
-legends <- get_legend(Abundance)
+legends <- get_legend(Abundance) 
 ```
 
 ```{r}
@@ -1546,3 +1557,68 @@ c1 <- glm(density ~ observer, family = "quasipoisson", data = combined)
 res.aov <- aov(density ~ observer, data = combined)
 summary(res.aov)
 ```
+```{r}
+ RDMrichness <- ggplot(final.data, aes(RDM, richness, color = microsite)) +
+  geom_point(size = 0.5) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + theme(axis.title.x = element_blank()) + labs(tag = "B")+
+  labs(x = "Residual Dry Matter", y = "Species richness")
+```
+```{r}
+Temprichness <- ggplot(final.data, aes(max_temp, richness, color = microsite)) +
+  geom_point(size = -1) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + 
+  labs(x = "Max Temperature", y = "Species richness")
+```
+
+```{r}
+figure3 <- ggarrange(RDMrichness, Temprichness, ncol = 1, common.legend = TRUE, legend = "right")
+figure3
+```
+
+```{r}
+rdmabundance <- ggplot(final.data, aes(RDM, animals, color = microsite)) +
+  geom_point(size = 0.5) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + theme(axis.title.x = element_blank()) + labs(tag = "A")+
+  labs(x = "Residual Dry Matter", y = "Animal abundance")
+rdmevenness <- ggplot(final.data, aes(RDM, Evenness, color = microsite)) +
+  geom_point(size = 0.5) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + labs(tag = "C")+
+  labs(x = "Residual Dry Matter (g)", y = "Evenness")
+```
+```{r}
+figure4 <- ggarrange(rdmabundance, RDMrichness, rdmevenness, ncol = 1, align = "v")
+figure4
+```
+```{r}
+tempabundance <- ggplot(final.data, aes(max_temp, animals, color = microsite)) +
+  geom_point(size = -1) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + theme(axis.title.x = element_blank()) +
+  labs(x = "Temperature", y = "Animal abundance")
+tempevenness <- ggplot(final.data, aes(max_temp, Evenness, color = microsite)) +
+  geom_point(size = 1) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + 
+  labs(x = "Temperature", y = "Evenness")
+temprichness <- ggplot(final.data, aes(max_temp, richness, color = microsite)) +
+  geom_point(size = 1) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + theme(axis.title.x = element_blank()) +
+  labs(x = "Temperature", y = "Species richness")
+```
+```{r}
+figure5 <- ggarrange(tempabundance, temprichness, tempevenness, ncol = 1, align = "v", common.legend = TRUE, legend = "right")
+figure5
+```
+
