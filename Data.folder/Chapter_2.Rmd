@@ -1,0 +1,1889 @@
+---
+title: "Chapter 2 Carrizo"
+output: html_document
+---
+###Load Data
+```{r setup, include=FALSE}
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(meta)
+library(PRISMAstatement)
+library(skimr)
+library(MASS)
+library(ggpubr)
+setwd("/R Packages/Chapter 2")
+```
+
+```{r, message=FALSE, warning=TRUE}
+###Load all necessary .csv files
+setwd("/R Packages/Chapter 2")
+photo <- read_csv("Carrizo Shrub Photo density Sheet.csv")
+colnames(photo)[6] = "site"
+photo$site <- as.character(photo$site)
+focal <- read_csv("Focal Observations Data Sheet.csv")
+focal$Site <- as.character(focal$Site)
+transect <- read_csv("Transect Data Sheet.csv")
+transect$Site.Number <- as.character(transect$Site.Number)
+cam.location <- read_csv("Camera Location data Sheet.csv")
+str(transect)
+
+shrub <- read.csv("Site Data Sheet.csv")
+```
+
+
+### Data Set-up
+```{r}
+###Give Summary of photo data
+summary(photo)
+```
+
+```{r}
+count.hit <- photo %>%
+  count(animal.hit) %>%
+  na.omit()
+summary(count.hit)
+
+###Camera recorded an animal 2.705% of the time. Not too bad
+```
+```{r}
+skim(photo)
+```
+```{r}
+###Transect Data
+
+summary(transect)
+```
+
+```{r}
+tran.hit <- transect %>%
+  count(animal.hit) %>%
+  na.omit()
+summary(tran.hit)
+```
+
+```{r}
+skim(transect)
+```
+```{r}
+tran.hit %>%
+  ggplot(aes(animal.hit, n)) + geom_col() + theme_classic() + xlab("Hits") + ylab("Count") + ggtitle("Hits during Transects")
+```
+```{r}
+####Summary capture data on Transects
+transect.data <- transect %>%
+  group_by(Site, Site.Number, Site.Density) %>%
+  summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTM)-1) %>% mutate(rate = captures/n) #-1 for richness bc of none as level
+transect.data$rate <- as.character(transect.data$rate)
+
+###Summary Transect Animal Data
+transect.diversity <- transect %>%
+  group_by(Site, Site.Number, Site.Density) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
+
+unique(transect.diversity$Site.Density)
+```
+```{r}
+transect.level <- transect %>%
+  group_by(Site, Site.Number, Site.Density, Date) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
+
+unique(transect.level$Site.Density)
+```
+
+```{r}
+###Data Viz for number of hits during photo analysis
+count.hit %>%
+  ggplot(aes(animal.hit, n)) + geom_col() + theme_classic() + xlab("Hits") + ylab("Count") + ggtitle("Number of total animal hits")
+```
+```{r}
+###Summary Capture Data
+data <- photo %>%
+  group_by(region, site, week, `level (l,m,h,none)`, rep, camera.number) %>%
+  summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTU)-1) %>% mutate(rate = captures/n) #-1 for richness bc of none as level
+data$rep <- as.character(data$rep)
+
+###Summary Animal Data
+diversity <- photo %>%
+  group_by(region, site, `level (l,m,h,none)`, RTU) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
+
+unique(diversity$RTU)
+```
+
+```{r}
+###Summary level Data
+level <- photo %>%
+  group_by(region, site, week, rep, `level (l,m,h,none)`) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
+
+unique(level$`level (l,m,h,none)`)
+```
+
+```{r}
+animals <- photo %>%
+  group_by(region, site, RTU) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n)
+
+unique(animals$RTU)
+```
+
+```{r}
+summary(shrub)
+```
+
+```{r}
+###Data for shrub size and total number of shrubs in each site. (Ask Chris about)
+shrub.size <- shrub%>%
+  group_by(site.number, site.density, shrub.count, x, y, z) %>%
+  summarise(volume = sum(x*y*z))
+```
+
+```{r}
+##Clean up focal data
+focal.data <- focal %>%
+  count(animal.hit) %>%
+  na.omit()
+
+skim(focal)
+focal.data <- focal %>%
+  group_by(Site, site.density) %>%
+  summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTU)-1) %>% mutate(rate = captures/n)
+
+unique(transect.level$Site.Density)
+
+focal.site <- focal%>%
+  group_by(Site, site.density, Date) %>%
+  summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(RTU)-1) %>% mutate(rate = captures/n)
+```
+
+
+###Data Viz
+```{r}
+###Total captures between site levels
+
+ggplot(level, aes(`level (l,m,h,none)`, captures)) +
+  geom_boxplot() + 
+  labs(y = "total captures", x = "site density") + ggtitle("Number of Total Animal Hits in Camera Traps")
+```
+```{r}
+###Capture rate per site level
+ggplot(level, aes(`level (l,m,h,none)`, rate)) +
+  geom_boxplot() + 
+  labs(y = "capture rate", x = "site density")
+```
+
+
+```{r}
+ggplot(transect.level, aes(rate, captures, color = Site.Density)) +
+         geom_point() +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "Rate of Capture", y = "total captures")
+```
+```{r}
+require(mgcv)
+ggplot(transect.level, aes(rate, captures, color = Site.Density)) +
+         stat_smooth(method = "gam") +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "Rate of Capture", y = "total captures")
+```
+
+```{r}
+ggplot(transect.level, aes(n, captures, color = Site.Density)) +
+         geom_point() +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "n", y = "total captures")
+```
+```{r}
+require(mgcv)
+ggplot(transect.level, aes(n, captures, color = Site.Density)) +
+         stat_smooth(method = "gam") +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "n", y = "total captures")
+```
+
+```{r}
+ggplot(transect.level, aes(rate, n, color = Site.Density)) +
+         geom_point() +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "Rate of Capture", y = "n")
+```
+```{r}
+require(mgcv)
+ggplot(transect.level, aes(n, rate, color = Site.Density)) +
+         stat_smooth(method = "gam") +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~Site.Density, scales = "free") +
+  labs(color = "", x = "n", y = "rate")
+```
+
+```{r}
+###Diversity Plot from Photo Data looking at Total Captures
+excludes <- c("none", "None", "unidentifiable", "unkown", "", "Unidentifiable", "Human")
+
+plot.diversity <- diversity%>%
+  filter(!RTU %in% excludes)
+
+ggplot(plot.diversity, aes(RTU, captures, fill = site)) +
+  geom_bar(stat = "identity") +
+  coord_flip() + 
+  labs(fill = "", x = "total captures")
+```
+```{r}
+###Diversity Plot from Photo Data looking at Rate
+ggplot(plot.diversity, aes(RTU, rate, fill = site)) +
+  geom_bar(stat = "identity") +
+  coord_flip() + 
+  labs(fill = "", x = "total captures")
+```
+```{r}
+ggplot(focal.data, aes(n, captures, color = site.density)) +
+         stat_smooth(method = "gam") +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~site.density, scales = "free") +
+  labs(color = "", x = "captures", y = "rate")
+```
+Camera Presence Boxplot
+```{r}
+photopresence <- ggplot(level, aes(`level (l,m,h,none)`, captures, fill = as.character(site))) +
+  geom_boxplot() +
+  labs(y = "Presence", x = "site density") + theme_classic() + guides(fill=FALSE)
+photopresence
+```
+```{r}
+transectpresence <- ggplot(transect.level, aes(Site.Density, captures, fill = as.character(Site.Number))) +
+  geom_boxplot() +
+  labs(y = "Presence", x = "site density") + theme_classic() + guides(fill=FALSE)
+transectpresence
+```
+
+
+
+Camera Abundance Boxplot
+```{r}
+ggplot(level, aes(`level (l,m,h,none)`, rate, fill = as.character(site))) +
+  geom_boxplot() +
+  labs(y = "Abundance", x = "site density")
+```
+
+
+Focal Presence Boxplot
+```{r}
+focalpresence <- ggplot(focal.site, aes(site.density, captures, fill = as.character(Site))) +
+  geom_boxplot() + guides(fill=FALSE) + theme_classic() + xlab("site density") + ylab("Presence")
+
+focalpresence
+```
+
+###Focal abundance Boxplot
+```{r}
+ggplot(focal.site, aes(site.density, rate, fill = as.character(Site))) +
+  geom_boxplot() +
+  labs(y = "abundance", x = "site density")
+```
+
+
+##Stats
+###Stats for capture compare to level
+```{r}
+m <- glm(captures~`level (l,m,h,none)`, data = level) #capture difference between microsite
+summary(m)
+```
+```{r}
+### Test if data is significant
+anova(m, test = "Chisq")
+
+####ITS SIGNIFICANT!!!
+```
+```{r}
+shapiro.test(m$residuals)
+
+###Data is not Normally distributed
+```
+```{r}
+library(lsmeans)
+lsmeans(m, pairwise~`level (l,m,h,none)`, adjust = "Tukey")
+```
+```{r}
+m <- glm(captures~`level (l,m,h,none)`, data = level, family = "quasipoisson")
+anova(m)
+summary(m)
+```
+
+
+###Stats for Captures by Site
+```{r}
+m <- glm(captures~site, data = level) #capture difference between microsite
+summary(m)
+```
+```{r}
+anova(m, test = "Chisq")
+```
+```{r}
+ggplot(level, aes(`level (l,m,h,none)`, captures, fill = as.character(site))) +
+  geom_boxplot() +
+  labs(y = "capture rate", x = "site density")
+```
+
+```{r}
+m <- glm(rate~site, data = level) #capture difference between microsite
+summary(m)
+```
+```{r}
+m <- glm(rate~`level (l,m,h,none)`, data = level) #rate of capture between microsites
+summary(m)
+```
+```{r}
+anova(m, test = "Chisq")
+```
+
+
+```{r}
+ggplot(level, aes(`level (l,m,h,none)`, rate)) +
+  geom_boxplot() +
+  labs(y = "capture rate", x = "site density")
+```
+
+
+###Stats for rate of capture between Levels
+```{r}
+mp <- glm(rate~`level (l,m,h,none)`, data = level, family = "quasipoisson")
+summary(mp)
+```
+```{r}
+anova(mp, test = "Chisq")
+```
+```{r}
+shapiro.test(mp$residuals)
+
+###Data is not Normally distributed
+```
+```{r}
+library(lsmeans)
+lsmeans(mp, pairwise~`level (l,m,h,none)`, adjust = "Tukey")
+```
+
+###Stats for Transect captures
+```{r}
+###Boxplot for Transect Captures
+ggplot(transect.data,  aes(Site.Density, captures)) +
+  geom_boxplot() +
+  labs(y = "capture", x = "site density")
+```
+
+```{r}
+mt <- glm(captures~Site.Density, data = transect.level, family = "poisson")
+summary(mt)
+```
+```{r}
+anova(mt, test = "Chisq") #get p-value for model
+```
+```{r}
+shapiro.test(mt$residuals) #explore residuals
+```
+```{r}
+library(emmeans)
+library(lsmeans)
+lsmeans(mt, pairwise~Site.Density, adjust = "Tukey")
+```
+```{r}
+mt <- lm(captures~Site.Number, data = transect.level)
+summary(mt)
+```
+
+
+```{r}
+mt <- glm(rate~Site.Density, data = transect.level)
+summary(mt)
+```
+```{r}
+anova(mt, test = "Chisq")
+```
+###Look at Stats for varying density level by individual sites for cameras
+```{r}
+library(emmeans)
+mg <- glm(captures~`level (l,m,h,none)`*as.factor(site), family = "quasipoisson", data = level)
+summary(mg)
+anova(mg, test = "Chisq")
+emmeans(mg, pairwise~`level (l,m,h,none)`)
+```
+regression curve needed!!!!!
+
+###Look at Stats for varying density level by individual sites for Transects
+```{r}
+library(emmeans)
+mt <- glm(captures~Site.Density*as.factor(Site.Number), family = "quasipoisson", data = transect.level)
+summary(mt)
+anova(mt, test = "Chisq")
+emmeans(mt, pairwise~Site.Density)
+```
+###Look at the rate of capture difference between the sites (Cameras)
+```{r}
+mg <- glm(rate~`level (l,m,h,none)`*as.factor(site), family = "quasipoisson", data = level)
+summary(mg)
+anova(mg, test = "Chisq")
+emmeans(mg, pairwise~`level (l,m,h,none)`)
+```
+###Looks at the rate of capture between site densities (Transects)
+```{r}
+mt <- glm(rate~Site.Density*as.factor(Site.Number), family = "quasipoisson", data = transect.level)
+summary(mt)
+anova(mt, test = "Chisq")
+emmeans(mt, pairwise~Site.Density*as.factor(Site.Number))
+```
+
+
+```{r}
+mod <- lm(captures~`level (l,m,h,none)`*as.factor(site), data = level)
+summary(mod)
+```
+
+
+
+```{r}
+ggplot(level, aes(rate, captures, color = `level (l,m,h,none)`)) +
+         geom_point() +
+  geom_smooth(method = lm, se = FALSE) +
+  facet_wrap(~`level (l,m,h,none)`, scales = "free") +
+  labs(color = "", x = "Rate of Capture", y = "captures")
+```
+##Captures for Photo Data Stats
+```{r}
+library(emmeans)
+mg <- glm(captures~`level (l,m,h,none)`*as.factor(site) + offset(log(n)), family = "quasipoisson", data = level)
+anova(mg, test = "Chisq")
+emmeans(mg, pairwise~`level (l,m,h,none)`*as.factor(site))
+```
+
+
+
+###Interpretation
+1) 
+##Things still to do
+1) Figure out how to do abundance for images
+2) Figure out how to do diversity for images
+3) Build a species list off what we founf in camera traps
+
+
+
+###Diversity Data for Photos
+```{r}
+library(tidyverse)
+library(vegan)
+photovegan <- photo %>%
+  group_by(region, site, rep, `level (l,m,h,none)`, RTU) %>%
+  summarise(captures = sum(animal.hit))
+
+photovegan$region <- gsub(" ", "", photovegan$region)
+photovegan$region <- as.factor(photovegan$region)
+photovegan$uniID <- paste(photovegan$site, photovegan$`level (l,m,h,none)`)
+str(photovegan)
+```
+
+```{r}
+library(dplyr)
+photovegan <- photovegan %>% 
+  ungroup()%>%
+  dplyr::select(uniID, RTU, captures)
+photovegan <- photovegan %>% group_by(uniID, RTU) %>% summarise(captures = sum(captures))
+
+comm <- photovegan %>% spread(RTU, captures) %>% dplyr::select(-none, -None)
+comm[is.na(comm)] <- 0
+```
+
+```{r}
+comm <- comm %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+```
+
+```{r}
+siteshort <- read_csv("site desntiy shortcut.csv")
+
+shortvegan <- siteshort %>%
+  group_by(Site, site.density, shrub.count)
+
+shortvegan$shrub.count <- gsub(" ", "", shortvegan$shrub.count)
+shortvegan$shrub.count <- as.factor(shortvegan$shrub.count)
+shortvegan$uniID <- paste(shortvegan$site.density, shortvegan$site.count)
+str(shortvegan)
+
+shortvegan <- shortvegan %>%
+  ungroup() %>%
+  dplyr::select(uniID, site.density, shrub.count)
+shortvegan <- shortvegan %>% group_by(uniID, site.density)
+
+shortvegan <- shortvegan %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+
+```
+
+```{r}
+Hphoto <- diversity(comm)
+simpphoto <- diversity(comm, index = "simpson")
+Sphoto <- specnumber(comm)
+Jphoto <- Hphoto/log(Sphoto)
+shortvegan$H <- Hphoto
+shortvegan$Simpson <- simpphoto
+shortvegan$Species <- Sphoto
+shortvegan$Even <- Jphoto
+```
+
+```{r}
+ggplot(shortvegan, aes(site.density, Species)) + geom_boxplot() + ylab("Species Diversity (Photo)") + xlab("Site Density") + theme_classic()
+ggplot(shortvegan, aes(site.density, Even)) + geom_boxplot() + ylab("Species Evenness (Photo)") + xlab("Site Density") + theme_classic()
+plot1 <- ggplot(shortvegan, aes(site.density, H)) + geom_boxplot() + ylab("Species Diversity") + xlab("Site Density") + theme_classic() + ggtitle("Photo")
+plot1
+```
+```{r}
+dataphoto <- glm(H~site.density, data = shortvegan)
+summary(dataphoto)
+```
+###Stats to show photo captures
+```{r}
+anova(dataphoto, test = "Chisq")
+emmeans(dataphoto, pairwise~site.density)
+```
+
+###Diversity Data for Transects
+```{r}
+library(tidyverse)
+library(vegan)
+transectvegan <- transect %>%
+  group_by(Site, Site.Number, Site.Density, RTM) %>%
+  summarise(captures = sum(animal.hit))
+
+
+transectvegan$Site.Number <- gsub(" ", "", transectvegan$Site.Number)
+transectvegan$Site.Number <- as.factor(transectvegan$Site.Number)
+transectvegan$uniID <- paste(transectvegan$Site, transectvegan$Site.Density, transectvegan$Site.Number)
+str(transectvegan)
+
+```
+```{r}
+library(dplyr)
+transectvegan <- transectvegan %>% 
+  ungroup()%>%
+  dplyr::select(uniID, RTM, captures)
+transectvegan <- transectvegan %>% group_by(uniID, RTM) %>% summarise(captures = sum(captures))
+
+transectdata <- transectvegan %>% spread(RTM, captures) %>% dplyr::select(-none)
+transectdata[is.na(transectdata)] <- 0
+transectdata <- transectdata %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+names(transectvegan)[2] <- "RTU"
+```
+
+Now put the site data with the transect data (Seperate from the photo data)
+```{r}
+shorttransect <- siteshort %>%
+  group_by(Site, site.density, shrub.count)
+
+shorttransect$shrub.count <- gsub(" ", "", shorttransect$shrub.count)
+shorttransect$shrub.count <- as.factor(shorttransect$shrub.count)
+shorttransect$uniID <- paste(shorttransect$site.density, shorttransect$site.count)
+str(shorttransect)
+
+shorttransect <- shorttransect %>%
+  ungroup() %>%
+  dplyr::select(uniID, site.density, shrub.count)
+shorttransect <- shorttransect %>% group_by(uniID, site.density)
+
+shorttransect <- shorttransect %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+```
+```{r}
+Htransect <- diversity(transectdata)
+simptransect <- diversity(transectdata, index = "simpson")
+Stransect <- specnumber(transectdata)
+Jtransect <- Htransect/log(Stransect)
+shorttransect$H <- Htransect
+shorttransect$Simpson <- simptransect
+shorttransect$Species <- Stransect
+shorttransect$Even <- Jtransect
+```
+Figures for transect diversity
+```{r}
+ggplot(shorttransect, aes(site.density, Species)) + geom_boxplot() + ylab("Number of Species (Transect)") + xlab("Site Density") + theme_classic()
+ggplot(shorttransect, aes(site.density, Even)) + geom_boxplot() + ylab("Species Evenness (Transect)") + xlab("Site Density") + theme_classic()
+plot2 <- ggplot(shorttransect, aes(site.density, H)) + geom_boxplot() + xlab("Site Density") + theme_classic() + ggtitle("Transect") + ylab("")
+```
+```{r}
+datatransect <- glm(H~site.density, data = shorttransect)
+summary(datatransect)
+```
+```{r}
+anova(datatransect, test = "Chisq")
+emmeans(datatransect, pairwise~site.density)
+```
+###Diversity Data for Focal Observations
+```{r}
+library(tidyverse)
+library(vegan)
+focalvegan <- focal %>%
+  group_by(Site, site.density, RTU) %>%
+  summarise(captures = sum(animal.hit))
+
+focalvegan$Site <- gsub(" ", "", focalvegan$Site)
+focalvegan$Site <- as.factor(focalvegan$Site)
+focalvegan$uniID <- paste(focalvegan$Site, focalvegan$site.density)
+str(focalvegan)
+```
+```{r}
+library(dplyr)
+focalvegan <- focalvegan %>% 
+  ungroup()%>%
+  dplyr::select(uniID, RTU, captures)
+focalvegan <- focalvegan %>% group_by(uniID, RTU) %>% summarise(captures = sum(captures))
+
+focaldata <- focalvegan %>% spread(RTU, captures) %>% dplyr::select(-none)
+focaldata[is.na(focaldata)] <- 0
+focaldata <- focaldata %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+```
+
+```{r}
+shortfocal <- siteshort %>%
+  group_by(Site, site.density, shrub.count)
+
+shortfocal$shrub.count <- gsub(" ", "", shortfocal$shrub.count)
+shortfocal$shrub.count <- as.factor(shortfocal$shrub.count)
+shortfocal$uniID <- paste(shortfocal$site.density, shortfocal$site.count)
+str(shortfocal)
+
+shortfocal <- shortfocal %>%
+  ungroup() %>%
+  dplyr::select(uniID, site.density, shrub.count)
+shortfocal <- shortfocal %>% group_by(uniID, site.density)
+
+shortfocal <- shortfocal %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+```
+
+
+
+```{r}
+Hfocal <- diversity(focaldata)
+simpfocal <- diversity(focaldata, index = "simpson")
+Sfocal <- specnumber(focaldata)
+Jfocal <- Hfocal/log(Sfocal)
+shortfocal$H <- Hfocal
+shortfocal$Simpson <- simpfocal
+shortfocal$Species <- Sfocal
+shortfocal$Even <- Jfocal
+```
+
+```{r}
+ggplot(shortfocal, aes(site.density, Species)) + geom_boxplot() + ylab("Number of Species") + xlab("Site Density") + theme_classic()
+ggplot(shortfocal, aes(site.density, Even)) + geom_boxplot() + ylab("Species Evenness") + xlab("Site Density") + theme_classic()
+plot3 <- ggplot(shortfocal, aes(site.density, H)) + geom_boxplot() + xlab("Site Density") + theme_classic() + ggtitle("Focal") +ylab("")
+```
+```{r}
+datafocal <- glm(H~site.density, data = shortfocal)
+summary(shortfocal)
+```
+```{r}
+anova(datafocal, test = "Chisq")
+emmeans(datafocal, pairwise~site.density)
+```
+
+So what has been done so far.
+1) First couple hundred lines of code display that there is a difference in the number of visitation between site densities. It seems more animals are in the low density area than the Medium, High and None areas
+2) I ran the code for diversity for the focal data first and it seems to be significant with high density (seen in GLM) but after running annova and emmeans it says it is not significant
+3) I ran the code for diversity of transects and focal observations. Both of which say that there is no significant difference between the Diversity of the sites
+
+```{r}
+dataphoto1 <- glm(Even~site.density, data = shortvegan)
+anova(dataphoto1, test = "Chisq")
+emmeans(dataphoto1, pairwise~site.density)
+```
+```{r}
+ggarrange(plot1, plot2, plot3, nrow = 1, ncol = 3)
+```
+
+```{r}
+datatransect1 <- glm(Even~site.density, data = shorttransect)
+anova(datatransect1, test = "Chisq")
+emmeans(datatransect1, pairwise~site.density)
+```
+
+```{r}
+ggarrange(photopresence, transectpresence, focalpresence, nrow = 2, ncol = 2)
+```
+
+
+```{r}
+fig1 <- ggplot(level, aes(`level (l,m,h,none)`, captures)) +
+  geom_boxplot() +
+  labs(y = "Animal Abundance", x = "Site Density") + theme_classic()
+fig2 <- ggplot(transect.data, aes(Site.Density, captures)) +
+  geom_boxplot() +
+  labs(y = "Animal Abundance", x = "Site Density") + theme_classic()
+fig3 <- ggplot(focal.data, aes(site.density, captures)) +
+  geom_boxplot() +
+  labs(y = "Animal Abundance", x = "Site Density") + theme_classic()
+```
+
+```{r}
+ggarrange(fig1, fig2, fig3, nrow = 2, ncol = 2)
+```
+
+##Set up data to have Photo, Transect and Focals all together with shrub covers!
+
+```{r}
+masterphoto <- photo %>%
+  group_by(site, plot,  `level (l,m,h,none)`, density_level,Measure, date, day_sample, RTU, microsite) %>%
+  summarise(daily_animal_totals = sum(animal.hit))
+
+
+masterphoto$uniID <- paste(masterphoto$site, masterphoto$`level (l,m,h,none)`)
+str(masterphoto)
+
+masterphoto$uniID <- NULL
+names(masterphoto)[3] <- "density_category"
+```
+```{r}
+mastertransect <- transect %>%
+  group_by(Site.Number, plot, Site.Density, density_level, Measure, Date, day_sample, RTM, microsite) %>%
+  summarise(daily_animal_totals = sum(animal.hit))
+
+
+mastertransect$uniID <- paste(mastertransect$site, mastertransect$Site.Density)
+str(mastertransect)
+mastertransect$uniID <- NULL
+names(mastertransect)[1] <- "site"
+names(mastertransect)[3] <- "density_category"
+names(mastertransect)[6] <- "date"
+names(mastertransect)[8] <- "RTU"
+```
+```{r}
+masterfocal <- focal %>%
+  group_by(Site, plot, site.density, density_level, Measure, Date, day_sample, RTU, microsite) %>%
+  summarise(daily_animal_totals = sum(animal.hit))
+
+
+masterfocal$uniID <- paste(masterfocal$Site, masterfocal$site.density)
+str(masterfocal)
+masterfocal$uniID <- NULL
+names(masterfocal)[6] <- "date"
+names(masterfocal)[1] <- "site"
+names(masterfocal)[3] <- "density_category"
+
+```
+```{r}
+masterphotofocal <- merge(masterphoto, masterfocal, all=TRUE)
+
+masterdata <- merge(masterphotofocal, mastertransect, all=TRUE)
+names(masterdata)[8] <- "species"
+names(masterdata)[5] <- "method"
+names(masterdata)[7] <- "sample_day"
+
+write.csv(masterdata, "data_2019_compiled2.csv")
+```
+
+###Continuing here from March!
+```{r}
+data.final <- read.csv("data.csv")
+
+density_simple <- data.final %>%
+  group_by(as.character(density_levels), plot, density_category, density, microsite, phylum) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+##Plot good for Appendix and Defence
+ggplot(density_simple, aes(as.character(density_category), animals, color = microsite)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal density")
+
+```
+
+```{r}
+ggplot(density_simple, aes(as.character(density_levels), animals)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal density")
+```
+
+```{r}
+ggplot(density_simple, aes(as.character(density_levels), animals)) +
+  geom_boxplot() +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal density")
+
+```
+
+
+```{r}
+ggplot(density_simple, aes(as.character(density), richness)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") +
+  labs(x = "shrub density", y = "total animal richness")
+```
+```{r}
+data_simple <- data.final %>%
+  group_by(as.character(density_levels), method, density_category, density, microsite, phylum) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+ggplot(data_simple, aes(density_levels, animals, color = method)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") +
+  theme_classic() + 
+  labs(x = "shrub density level", y = "animal abundance")
+
+```
+
+
+
+```{r}
+ggplot(data_simple, aes(density_levels, richness)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") +
+  labs(x = "shrub density level", y = "animal richness")
+
+```
+##Cover Data
+```{r}
+density_simple2 <- data.final %>%
+  group_by(as.character(density_levels), density_category, density, cover) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+ggplot(density_simple2, aes(as.character(cover), animals)) +
+  geom_bar(stat = "identity") +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal density") + 
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
+Does this work for cover?
+
+###RDM Data
+```{r}
+density_simple3 <- data.final %>%
+  group_by(as.character(density_levels), density_category, microsite, density) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+```
+
+```{r}
+#RDM Set up
+RDM <- read.csv("RDM.CSV")
+data_RDM <- RDM %>%
+  group_by(as.character(density_level), Site.Density, density, RDM_g, microsite) %>%
+  summarise() %>%
+  rename(density_level = 'as.character(density_level)')
+
+names(data_RDM)[1] <- "density_levels"
+
+```
+
+#Merge RDM data with animal data!
+```{r}
+animal.RDM.data <- merge(density_simple3, data_RDM, all = TRUE)
+```
+
+```{r}
+#RDM PLot (Use first for appendix?)
+ggplot(animal.RDM.data, aes(RDM_g, animals, fill = microsite)) +
+  geom_histogram(stat = "identity") +
+  facet_wrap(~density) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "RDM (grams)", y = "animal density")
+ggplot(animal.RDM.data, aes(RDM_g, animals, fill = microsite)) +
+  geom_histogram(stat = "identity") +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "RDM (grams)", y = "animal density")
+```
+
+```{r}
+#Diversity by shrub density by invert/vert
+ggplot(density_simple, aes(as.character(density_levels), richness)) +
+  geom_boxplot() +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal richness")
+```
+
+```{r}
+#Climate Data
+climate <- read_csv("Carrizo_micronet.csv")
+data_climate <- climate %>%
+  group_by(as.character(density_level), microsite, temp) %>%
+  summarise() %>%
+  rename(density_level = 'as.character(density_level)')
+names(data_climate)[1] <- "density_levels"
+
+density_simple4 <- data.final %>%
+  group_by(as.character(density_levels), microsite) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+animal.climate.data <- merge(data_climate, density_simple4, all = TRUE)
+```
+
+```{r}
+#Compares Temperatures with animal abundances for each microsite (Use of Appendix?)
+ggplot(animal.climate.data, aes(temp, animals, fill = density_levels)) +
+  geom_histogram(stat = "identity") +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "Temperature", y = "animal density")
+#Compares Temperatures with animal abundance
+ggplot(animal.climate.data, aes(temp, animals, fill = microsite)) +
+  geom_histogram(stat = "identity") +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "Temperature", y = "animal density")
+#Compares Site Density temperatures
+ggplot(animal.climate.data, aes(as.character(density_levels), temp)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal richness")
+#Shows Compares site density temperature in both microsites
+ggplot(animal.climate.data, aes(as.character(density_levels), temp)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  facet_wrap(~microsite)
+  labs(x = "shrub density level", y = "temperature")
+```
+```{r}
+density_simple5 <- data.final %>%
+  group_by(as.character(density_levels), plot, density, microsite, phylum) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+data_RDM2 <- RDM %>%
+  group_by(as.character(density_level), density, microsite) %>%
+  summarise(RDM = mean(RDM_g)) %>%
+  rename(density_level = 'as.character(density_level)')
+names(data_RDM2)[1] <- "density_levels"
+
+data_climate2 <- climate %>%
+  group_by(as.character(density_level), microsite) %>%
+  summarise(mean_temp = mean(temp), max_temp = max(temp)) %>%
+  rename(density_level = 'as.character(density_level)')
+names(data_climate2)[1] <- "density_levels"
+
+rdm.climate <- merge(data_climate2, data_RDM2, all = TRUE)
+final.data <- merge(density_simple5, rdm.climate, all = TRUE)
+```
+
+```{r}
+animal.data <- read.csv("animals.csv")
+animal.data.final <- animal.data %>%
+  group_by(as.character(species)) %>%
+  summarise(number_of_animals = sum(daily_animal_totals)) %>%
+  rename(species = "as.character(species)")
+list(animal.data.final)
+```
+```{r}
+#Vegan Set-up for PCoA
+library(vegan)
+library(ape)
+library(tidyverse)
+library(tidyr)
+library(dplyr)
+
+data <- read_csv("animals_revised.csv")
+
+#summarize to site/plot/sample unit per row as observation
+data <- read_csv("animals_revised.csv") %>%
+  group_by(plot, microsite, phylum, species) %>%
+  summarise(abundance = sum(daily_animal_totals)) %>%
+  na.omit()
+
+#turn into species matrix only
+#split species into meaninful groups if needed such as native/exotic, vert/invert, functional roles
+vert_species <- data %>%
+  filter(phylum == "vertebrate") %>%
+  spread(species,abundance) %>%
+  ungroup() %>% 
+  dplyr::select(-plot, -microsite, -phylum) %>% 
+  replace(is.na(.), 0)
+dim(vert_species)
+env <- read_csv("environment.csv")
+dim(env)
+```
+```{r}
+m01 <- adonis(vert_species ~ microsite*shrub_density, data = env)
+m01
+#PCA!!!
+dist <- vegdist(vert_species,  method = "bray")
+
+res <- pcoa(dist) #ape library function
+p1 <- as.data.frame(res$vectors) %>% 
+  dplyr::select(Axis.1, Axis.2) %>%
+  bind_cols(env, .)
+#label by site is ok
+ggplot(p1, aes(Axis.1, Axis.2, group = microsite)) +
+  geom_point(aes(color = microsite)) +
+  geom_text(aes(label=plot),hjust=0, vjust=0, check_overlap = TRUE, nudge_x = 0.01) +
+  scale_color_brewer(palette = "Set1") +
+  labs(color = "", subtitle = "labels denote plot identity")
+```
+```{r}
+ggplot(p1, aes(Axis.1, Axis.2, group = microsite)) +
+  geom_point(aes(color = microsite)) +
+  geom_text(aes(label=shrub_density),hjust=0, vjust=0, check_overlap = TRUE, nudge_x = 0.01) +
+  scale_color_brewer(palette = "Set1") +
+  labs(color = "", subtitle = "labels denote shrub density at each plot")
+```
+```{r}
+m02 <- betadisper(dist, env$microsite)
+m02
+anova(m02)
+permutest(m02, pairwise = TRUE, permutations = 99)
+m2.HSD <- TukeyHSD(m02)
+boxplot(m02)
+```
+```{r}
+m03 <- betadisper(dist, env$shrub_density)
+m03
+anova(m03)
+permutest(m03, pairwise = TRUE, permutations = 99)
+m03.HSD <- TukeyHSD(m03)
+boxplot(m03)
+```
+```{r}
+##PCA set up for Inverts
+data <- read_csv("animals_revised.csv") %>%
+  group_by(plot, microsite, phylum, species) %>%
+  summarise(abundance = sum(daily_animal_totals)) %>%
+  na.omit()
+invert_species <- data %>%
+  filter(phylum == "invertebrate") %>%
+  spread(species, abundance) %>%
+  ungroup() %>% 
+  dplyr::select(-plot, -microsite, -phylum) %>% 
+  replace(is.na(.), 0)
+dim(invert_species)
+env2 <- read_csv("environment.csv")
+dim(env2)
+```
+
+```{r}
+m04 <- adonis(invert_species ~ microsite*shrub_density, data = env2)
+m04
+dist <- vegdist(invert_species,  method = "bray")
+
+res <- pcoa(dist) #ape library function
+p2 <- as.data.frame(res$vectors) %>% 
+  dplyr::select(Axis.1, Axis.2) %>%
+  bind_cols(env, .)
+#label by site is ok
+ggplot(p2, aes(Axis.1, Axis.2, group = microsite)) +
+  geom_point(aes(color = microsite)) +
+  geom_text(aes(label=plot),hjust=0, vjust=0, check_overlap = TRUE, nudge_x = 0.01) +
+  scale_color_brewer(palette = "Set1") +
+  labs(color = "", subtitle = "labels denote plot identity")
+```
+```{r}
+ggplot(p2, aes(Axis.1, Axis.2, group = microsite)) +
+  geom_point(aes(color = microsite)) +
+  geom_text(aes(label=shrub_density),hjust=0, vjust=0, check_overlap = TRUE, nudge_x = 0.01) +
+  scale_color_brewer(palette = "Set1") +
+  labs(color = "", subtitle = "labels denote shrub density at each plot")
+```
+
+
+```{r}
+site.4 <- read.csv("Site 4 Data Sheet.csv")
+#Map for appendix
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo4 <- get_map(location = c(lon = -119.6283, lat = 35.11985), zoom = 17)
+carrizo4
+site.wide.map <- ggmap(carrizo4)
+site.wide.map <- site.wide.map +
+  geom_point(data=site.4, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
+  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
+site.wide.map
+
+site.3 <- read.csv("Site 3 Data Sheet.csv")
+#Map for appendix
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo3 <- get_map(location = c(lon = -119.67192, lat = 35.16175), zoom = 17)
+carrizo3
+site.wide.map <- ggmap(carrizo3)
+site.wide.map <- site.wide.map +
+  geom_point(data=site.3, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
+  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
+site.wide.map
+```
+###Final Stats
+```{r}
+#Animal Abundance by Density Level and Microsite
+m1 <- glm(animals ~ density_category*microsite, family = "poisson", data = density_simple)
+anova(m1, test = "Chisq")
+e1 <- emmeans(m1, pairwise~density_category*microsite)
+e1
+```
+
+```{r}
+#Animal Abundance by Density Level
+m2 <- glm(animals~density_levels, family = "poisson", data = density_simple)
+anova(m2, test = "Chisq")
+e2 <- emmeans(m2, pairwise~density_levels)
+e2
+```
+
+```{r}
+#Animal Abundance by Density level and Phylum
+m3 <- glm(animals~density_levels*phylum, family = "poisson", data = density_simple)
+anova(m3, test = "Chisq")
+e3 <- emmeans(m3, pairwise~density_levels*phylum)
+e3
+```
+
+```{r}
+#Animal Richness by Density Level
+m4 <- glm(richness~density, family = "quasipoisson", data = density_simple)
+anova(m4, test = "Chisq")
+emmeans(m4, pairwise~density)
+```
+
+```{r}
+#Animal Abundance by Method and Density level
+m5 <- glm(animals~method*density_levels, family = "poisson", data = data_simple)
+anova(m5, test = "Chisq")
+e5 <- emmeans(m5, pairwise~method*density_levels)
+e5
+```
+
+```{r}
+#Animal Abundance by Density Level
+m6 <- glm(animals~density_levels, family = "poisson", data = data_simple)
+anova(m6, test = "Chisq")
+emmeans(m6, pairwise~density_levels)
+
+```
+
+```{r}
+#Cover Stats
+m7 <- glm(animals~density_category*cover, family = "poisson", data = density_simple2)
+m7
+anova(m7, test = "Chisq")
+e7 <- emmeans(m7, pairwise~density_category*cover)
+e7
+```
+
+```{r}
+#RDM Stats
+m8 <- glm(animals~density_category*RDM_g, family = "poisson", data = animal.RDM.data)
+m8
+anova(m8, test = "Chisq")
+e8 <- emmeans(m8, pairwise~density_category*RDM_g)
+e8
+
+```
+```{r}
+#Animal Abundance by Density Level and Phylum
+m8 <- glm(animals ~ density_category*phylum, family = "poisson", data = density_simple)
+anova(m8, test = "Chisq")
+e8 <- emmeans(m8, pairwise~density_category*phylum)
+e8
+```
+```{r}
+#Animals compared to temp and density level
+m9 <- glm(animals ~ temp*density_levels, family = "poisson", data = animal.climate.data)
+anova(m9, test = "Chisq")
+e9 <- emmeans(m9, pairwise~temp*density_levels)
+e9
+#Significant Difference Between Low - Medium, Low - High and Medium - High Plots
+```
+```{r}
+#Animals compared to temp and microsite
+m10 <- glm(animals ~ temp*microsite, family = "poisson", data = animal.climate.data)
+anova(m10, test = "Chisq")
+e10 <- emmeans(m10, pairwise~temp*microsite)
+e10
+#Significant difference between Shrub and open animal interactions with temperature as a factor
+```
+```{r}
+#Comparing Temp to density levels
+m11 <- glm(temp ~ density_levels, family = "poisson", data = animal.climate.data)
+anova(m11, test = "Chisq")
+e11 <- emmeans(m11, pairwise~density_levels)
+e11
+#Significant difference between Medium - High Density Plots and Low - High Density Plats
+```
+```{r}
+#Comparing Temp vetween Density levels and microsites
+m12 <- glm(temp ~ density_levels*microsite, family = "poisson", data = animal.climate.data)
+anova(m12, test = "Chisq")
+e12 <- emmeans(m12, pairwise~density_levels*microsite)
+e12
+#Significant difference between Low open - High Shrub, Medium Open - High Shrub, Medium Shrub - High Shrub, Which supports why we see more animals at the medium plots
+##Somethings Up with the numbers though. Looks weird when knitted
+```
+```{r}
+#Stats for animal abundance with density level by micorsite with RDM and mean temp as covariates
+m13 <- glm(animals ~ density_levels*microsite+RDM+mean_temp, family = "quasipoisson", data = final.data)
+anova(m13, test = "Chisq")
+e13 <- emmeans(m13, pairwise~density_levels*microsite)
+e13
+#emmeans seems to not yield any data for this
+```
+```{r}
+#Stats for Animal Richness
+m14 <- glm(richness ~ density_levels*microsite+RDM+mean_temp, family = "gaussian", data = final.data)
+anova(m14, test = "Chisq")
+e14 <- emmeans(m14, pairwise~density_levels*microsite)
+e14
+#Again emmeans seems to not work here
+```
+
+
+
+
+```{r}
+ggplot(final.data, aes(density, richness, color = microsite)) +
+  geom_point() +
+  facet_wrap(~phylum) +
+  scale_x_continuous(breaks = c(0,3,6,9,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  geom_smooth(method = lm, se = FALSE) + 
+  labs(x = "shrub density level", y = "animal richness")
+```
+
+
+
+####Possible figures For Publication
+```{r}
+#Diversity by shrub density by invert/vert
+ggplot(density_simple, aes(as.character(density_levels), richness)) +
+  geom_boxplot() +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal richness")
+```
+```{r}
+#Comparison of animal density to individual shrub densities
+ggplot(density_simple, aes(as.character(density), richness)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") +
+  labs(x = "shrub density", y = "total animal richness")
+```
+```{r}
+#Displays animal density to each established plot
+ggplot(density_simple, aes(as.character(density_levels), animals)) +
+  geom_boxplot() +
+  scale_color_brewer(palette = "Set1") + theme_classic() +
+  labs(x = "shrub density level", y = "animal density")
+```
+
+```{r}
+##Set up for Simpson Test
+density_simple6 <- data.final %>%
+  group_by(as.character(density_levels), plot, density, phylum, daily_animal_totals, species, microsite) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+vegandata <- merge(density_simple6, rdm.climate, all = TRUE)
+
+vegandata <- vegandata %>%
+  group_by(density_levels, plot, density, microsite, daily_animal_totals, species, animals) %>%
+  summarise(captures = sum(animals))
+
+vegandata$density <- gsub(" ", "", vegandata$density)
+vegandata$density <- as.factor(vegandata$density)
+vegandata$uniID <- paste(vegandata$plot, vegandata$density)
+str(vegandata)
+
+library(dplyr)
+vegandata <- vegandata %>% 
+  ungroup()%>%
+  dplyr::select(uniID, daily_animal_totals, captures)
+vegandata <- vegandata %>% group_by(uniID, daily_animal_totals) %>% summarise(captures = sum(captures))
+
+commvegan <- vegandata %>% spread(daily_animal_totals, captures)
+commvegan[is.na(commvegan)] <- 0
+
+commvegan <- commvegan %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+
+sitefinal <- read_csv("site desntiy shortcut.csv")
+
+sitefinal <- sitefinal %>%
+  group_by(Site, plot, site.density, shrub.count)
+
+sitefinal$shrub.count <- gsub(" ", "", sitefinal$shrub.count)
+sitefinal$shrub.count <- as.factor(sitefinal$shrub.count)
+sitefinal$uniID <- paste(sitefinal$site.density, sitefinal$site.count)
+str(sitefinal)
+
+sitefinal <- sitefinal %>%
+  ungroup() %>%
+  dplyr::select(uniID, plot, site.density, shrub.count)
+sitefinal <- sitefinal %>% group_by(uniID, site.density)
+
+sitefinal <- sitefinal %>%
+  ungroup() %>%
+  dplyr::select(-uniID)
+
+names(sitefinal)[3] <- "density"
+
+simpsonfinal <- diversity(commvegan, index = "simpson")
+Hfinal <- diversity(commvegan)
+Sfinal <- specnumber(commvegan)
+Evenness <- Hfinal/log(Sfinal)
+
+sitefinal$Simpson <- simpsonfinal
+sitefinal$Evenness <- Evenness
+
+final.data <- merge(final.data, sitefinal)
+
+density_simple7 <- data.final %>%
+  group_by(as.character(density_levels), plot, density, cover) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')%>%
+  dplyr::select(-animals, -richness)
+
+final.data <- merge(final.data, density_simple7)
+```
+
+```{r}
+#Appendix A Map of Sites
+site.4 <- read.csv("Site 4 Data Sheet.csv")
+#Map for appendix
+library(ggmap)
+register_google(key="AIzaSyBurG6FR6I4uc_nRUr6TY118dCsnM0tsiE")
+carrizo4 <- get_map(location = c(lon = -119.6283, lat = 35.11985), zoom = 17)
+carrizo4
+site.wide.map <- ggmap(carrizo4)
+site.wide.map <- site.wide.map +
+  geom_point(data=site.4, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
+  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
+site.wide.map
+```
+
+```{r}
+site.3 <- read.csv("Site 3 Data Sheet.csv")
+#Map for appendix
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo3 <- get_map(location = c(lon = -119.67192, lat = 35.16175), zoom = 17)
+carrizo3
+site.wide.map <- ggmap(carrizo3)
+site.wide.map <- site.wide.map +
+  geom_point(data=site.3, aes(x=shrub.lng, y=shrub.lat), alpha = 3/10, size =4) +
+  labs(title = "Site Wide Species Observations", x = "longitude", y = "latitude")
+site.wide.map
+```
+
+```{r}
+###Percent Pressence Data
+percent_presence <- data.final %>%
+  group_by(as.character(density_levels), species, microsite, density, phylum) %>%
+  summarise(animals = sum(daily_animal_totals)) %>%
+  rename(density_levels = 'as.character(density_levels)')
+```
+
+```{r}
+by_plot <- group_by(percent_presence, density)
+summary_by_plot <- summarize(by_plot, plot_animals = sum(animals))
+animal_by_plot <- merge(by_plot, summary_by_plot, all = TRUE)
+animal_presence <- animal_by_plot$animals/animal_by_plot$plot_animals*100
+animal_by_plot$percent_presence <- animal_presence
+
+```
+```{r}
+ggplot(animal_by_plot, aes(as.factor(density), percent_presence, fill = species)) +
+  geom_bar(stat = "identity") +
+  labs(fill = "", x = "Shrub density", y= "Percent Presence")
+```
+```{r}
+by_plot_microsite <- group_by(percent_presence, density, microsite)
+summary_by_plot_microsite <- summarize(by_plot_microsite, plot_animals_microsite = sum(animals))
+animal_by_plot_microsite <- merge(by_plot_microsite, summary_by_plot_microsite, all = TRUE)
+animal_presence_microsite <- animal_by_plot_microsite$animals/animal_by_plot_microsite$plot_animals*100
+animal_by_plot_microsite$percent_presence <- animal_presence_microsite
+animal_by_plot_microsite$Species <- factor(animal_by_plot_microsite$species, levels = c("Andrena nigripes", "Calathus ruficollis", "Dasymutilla aureola", "Dicolonus simplex", "Hippodamia convergens", "Icaricia acmon", "Oedaleonotus enigma", "Pepsis formos", "Rhionaeschna multicolor","small mammal", "Ammospermophilus nelsoni", "Dipodomys ingens", "Otospermophilus beecheyi", "Perognathus inornatus", "Vulpes macrotis", "Lepus californicus", "Aspidoscelis tigris", "Leopard Lizard", "Uta stansburiana","Crotalus oreganus", "Pituophis catenifer", "Buteo jamaicensis", "Corvus corax", "Calypte anna","Chondestes grammacus", "Geococcyx californianus"))
+```
+```{r}
+micrositebargraph <- ggplot(animal_by_plot_microsite, aes(as.factor(density), percent_presence, fill = Species)) +
+  geom_bar(stat = "identity") + facet_wrap(~microsite) +
+  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)")
+micrositebargraph
+```
+
+```{r}
+by_plot_phylum <- group_by(percent_presence, density, phylum)
+summary_by_plot_phylum <- summarize(by_plot_phylum, plot_animals_phylum = sum(animals))
+animal_by_plot_phylum <- merge(by_plot_phylum, summary_by_plot_phylum, all = TRUE)
+animal_presence_phylum <- animal_by_plot_phylum$animals/animal_by_plot_phylum$plot_animals*100
+animal_by_plot_phylum$percent_presence <- animal_presence_phylum
+
+```
+
+```{r}
+animal_by_plot_phylum$Species <- factor(animal_by_plot_phylum$species, levels = c("Andrena nigripes", "Calathus ruficollis", "Dasymutilla aureola", "Dicolonus simplex", "Hippodamia convergens", "Icaricia acmon", "Oedaleonotus enigma", "Pepsis formos", "Rhionaeschna multicolor","small mammal", "Ammospermophilus nelsoni", "Dipodomys ingens", "Otospermophilus beecheyi", "Perognathus inornatus", "Vulpes macrotis", "Lepus californicus", "Aspidoscelis tigris", "Leopard Lizard", "Uta stansburiana","Crotalus oreganus", "Pituophis catenifer", "Buteo jamaicensis", "Corvus corax", "Calypte anna","Chondestes grammacus", "Geococcyx californianus"))
+
+animal_by_plot_phylum + scale_colour_manual(values = c("#00AFBB", "Calathus ruficollis", "Dasymutilla aureola", "Dicolonus simplex", "Hippodamia convergens", "Icaricia acmon", "Oedaleonotus enigma", "Pepsis formos", "Rhionaeschna multicolor","small mammal", "Ammospermophilus nelsoni", "Dipodomys ingens", "Otospermophilus beecheyi", "Perognathus inornatus", "Vulpes macrotis", "Lepus californicus", "Aspidoscelis tigris", "Leopard Lizard", "Uta stansburiana","Crotalus oreganus", "Pituophis catenifer", "Buteo jamaicensis", "Corvus corax", "Calypte anna","Chondestes grammacus", "Geococcyx californianus"))
+```
+
+```{r}
+phylumbargraph <- ggplot(animal_by_plot_phylum, aes(as.factor(density), percent_presence, fill = Species, order = as.factor(Species))) +
+  geom_bar(stat = "identity") + facet_wrap(~phylum) +
+  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)") 
+phylumbargraph 
+```
+
+```{r}
+communitybar <- ggarrange(micrositebargraph, phylumbargraph, common.legend = TRUE, legend = "right", nrow = 2) 
+```
+
+```{r}
+library(gridExtra)
+library(cowplot)
+legends <- get_legend(Abundance)
+```
+
+```{r}
+grid.arrange(Abundance, Richness, evenness, legends, ncol=2, nrow =2, layout_matrix = cbind(c(1,2,3))) 
+```
+```{r}
+d1 <- glm(animals ~ density*microsite*phylum + method, family = "quasipoisson", data = data_simple)
+anova(d1, test = "Chisq")
+de1 <- emmeans(d1, pairwise~ method, var = "density")
+de1
+```
+```{r}
+d2<- glm(max_temp ~ density*microsite*phylum*animals, family = "quasipoisson", data = final.data)
+anova(d2, test = "Chisq")
+de2 <- emmeans(d2, pairwise~microsite|phylum)
+de2
+```
+```{r}
+d3<- glm(max_temp ~ density*microsite*phylum*richness, family = "quasipoisson", data = final.data)
+anova(d3, test = "Chisq")
+de3 <- emmeans(d3, pairwise~microsite|phylum)
+de3
+```
+```{r}
+d4<- glm(max_temp ~ density*microsite*phylum*Evenness, family = "quasipoisson", data = final.data)
+anova(d4, test = "Chisq")
+de4 <- emmeans(d4, pairwise~microsite|phylum)
+de4
+```
+```{r}
+d5<- glm(RDM ~ density*microsite*phylum*animals, family = "quasipoisson", data = final.data)
+anova(d5, test = "Chisq")anova(d5, test = "Chisq")
+de5 <- emmeans(d5, pairwise~microsite|phylum)
+de5
+```
+```{r}
+d6<- glm(RDM ~ density*microsite*phylum*richness, family = "quasipoisson", data = final.data)
+anova(d6, test = "Chisq")
+de6 <- emmeans(d6, pairwise~microsite|phylum)
+de6
+```
+```{r}
+d7<- glm(RDM ~ density*microsite*phylum*Evenness, family = "quasipoisson", data = final.data)
+anova(d7, test = "Chisq")
+de7 <- emmeans(d7, pairwise~microsite|phylum)
+de7
+```
+
+```{r}
+d8<- glm(cover ~ density*microsite*phylum*animals, family = "quasipoisson", data = final.data)
+anova(d8, test = "Chisq")
+de8 <- emmeans(d8, pairwise~microsite|phylum)
+de8
+```
+
+```{r}
+d9<- glm(cover ~ density*microsite*phylum*richness, family = "quasipoisson", data = final.data)
+anova(d9, test = "Chisq")
+de9 <- emmeans(d9, pairwise~microsite|phylum)
+de9
+```
+
+```{r}
+d10<- glm(cover ~ density*microsite*phylum*Evenness, family = "quasipoisson", data = final.data)
+anova(d10, test = "Chisq")
+de10 <- emmeans(d10, pairwise~microsite|phylum)
+de10
+```
+
+```{r}
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+carrizo <- get_map(location = c(lon = -119.8633, lat = 35.1899), zoom = 4, maptype = "satellite")
+carrizo
+site.wide.map3 <- ggmap(carrizo)
+site.wide.map3 <- site.wide.map3 +
+  geom_point(data=site.3, aes(x=site.lng, y=site.lat, color = Site), alpha = 6/10, size = 3, show.legend = FALSE) +
+  labs(x = "longitude", y = "latitude") + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
+site.wide.map3
+```
+
+```{r}
+chris <- read_csv("Chris_shrub.csv")
+mario <- read_csv("Shrub Density Setup.csv")
+site <- read_csv("site density shortcut.csv")
+colnames(chris)[1] = "Site"
+colnames(chris)[3] = "plot.lat"
+colnames(chris)[4] = "plot.lng"
+colnames(chris)[6] = "density"
+colnames(site)[5] = "density"
+chris <- chris[ , -c(2,3,4,5,7)]
+chris
+mario <- mario [, -c(2,4,5)]
+mario
+site <- site [ , -c(2,3,4)]
+site
+```
+
+
+```{r}
+mario.site <- merge(mario, site, all = TRUE)
+mario.site
+```
+```{r}
+combined <- merge(chris, mario.site, all=TRUE)
+combined
+```
+```{r}
+c1 <- glm(density ~ observer, family = "quasipoisson", data = combined)
+res.aov <- aov(density ~ observer, data = combined)
+summary(res.aov)
+```
+```{r}
+ RDMrichness <- ggplot(final.data, aes(RDM, richness, color = microsite)) +
+  geom_point(size = 0.5) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + theme(axis.title.x = element_blank()) + labs(tag = "B")+
+  labs(x = "Residual Dry Matter", y = "Species richness")
+```
+```{r}
+Temprichness <- ggplot(final.data, aes(max_temp, richness, color = microsite)) +
+  geom_point(size = -1) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + 
+  labs(x = "Max Temperature", y = "Species richness")
+```
+
+```{r}
+figure3 <- ggarrange(RDMrichness, Temprichness, ncol = 1, common.legend = TRUE, legend = "right")
+figure3
+```
+
+```{r}
+rdmabundance <- ggplot(final.data, aes(RDM, animals, color = microsite)) +
+  geom_point(size = 0.5) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + theme(axis.title.x = element_blank()) + labs(tag = "A")+
+  labs(x = "Residual Dry Matter", y = "Animal abundance")
+rdmevenness <- ggplot(final.data2, aes(RDM, Evenness, color = microsite)) +
+  geom_point(size = 0.5) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + labs(tag = "C")+
+  labs(x = "Residual Dry Matter (g)", y = "Evenness")
+rdmevenness
+```
+```{r}
+figure4 <- ggarrange(rdmabundance, RDMrichness, rdmevenness, ncol = 1, align = "v")
+figure4
+```
+```{r}
+tempabundance <- ggplot(final.data, aes(max_temp, animals, color = microsite)) +
+  geom_point(size = -1) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + theme(axis.title.x = element_blank()) +
+  labs(x = "Temperature", y = "Animal abundance")
+tempevenness <- ggplot(final.data, aes(max_temp, Evenness, color = microsite)) +
+  geom_point(size = 1) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + 
+  labs(x = "Temperature", y = "Evenness")
+temprichness <- ggplot(final.data, aes(max_temp, richness, color = microsite)) +
+  geom_point(size = 1) +
+  facet_wrap(~phylum) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
+  geom_smooth(method = lm, se = TRUE) + theme(axis.title.x = element_blank()) +
+  labs(x = "Temperature", y = "Species richness")
+```
+```{r}
+figure5 <- ggarrange(tempabundance, temprichness, tempevenness, ncol = 1, align = "v", common.legend = TRUE, legend = "right")
+figure5
+```
+
+```{r}
+m30 <- glm(animals ~ density*microsite*phylum, family = "poisson", data = percent_presence)
+anova(m30, test = "Chisq")
+e30 <- emmeans(m30, pairwise~microsite|phylum)
+e30
+```
+```{r}
+library(RColorBrewer)
+ggplot(animal_by_plot_phylum, aes(as.factor(density), percent_presence, fill = Species, order = as.factor(Species))) +
+  geom_bar(stat = "identity") + facet_wrap(~phylum) + scale_fill_brewer(palette="Spectral")
+  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)") 
+```
+
+```{r}
+
+data_RDM3 <- RDM %>%
+  group_by(as.character(plot), density, microsite) %>%
+  summarise(RDM = mean(RDM_g)) %>%
+  rename(plot = 'as.character(plot)')
+names(data_RDM3)[1] <- "plot"
+
+newclimate <- read_csv("Carrizo_micronet.csv")
+
+data_climate3 <- newclimate %>%
+  group_by(as.character(plot), microsite) %>%
+  summarise(mean_temp = mean(temp), max_temp = max(temp)) %>%
+  rename(plot = 'as.character(plot)')
+names(data_climate3)[1] <- "plot"
+
+newrdm.climate <- merge(data_climate3, data_RDM3, all = TRUE)
+
+density_simple8 <- data.final %>%
+  group_by(as.character(plot), density, phylum, daily_animal_totals, microsite) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(plot = 'as.character(plot)')
+newvegandata <- merge(density_simple8, newrdm.climate, all = TRUE)
+
+```
+
+```{r}
+newvegandata <- newvegandata %>%
+  group_by(plot, density, microsite, phylum, daily_animal_totals, animals) %>%
+  summarise(captures = sum(animals))
+
+newvegandata$density <- gsub(" ", "", newvegandata$density)
+newvegandata$density <- as.factor(newvegandata$density)
+newvegandata$uniID <- paste(newvegandata$plot, newvegandata$density)
+str(vegandata)
+
+library(dplyr)
+newvegandata <- newvegandata %>% 
+  ungroup()%>%
+  dplyr::select(uniID, daily_animal_totals, phylum, captures)
+newvegandata <- newvegandata %>% group_by(uniID, phylum, daily_animal_totals) %>% summarise(captures = sum(captures))
+
+newcommvegan <- newvegandata %>% spread(daily_animal_totals, captures)
+newcommvegan[is.na(newcommvegan)] <- 0
+
+newcommvegan <- newcommvegan %>%
+  ungroup() %>%
+  dplyr::select(-uniID, -phylum)
+```
+
+```{r}
+newsitefinal <- read_csv("new site density shortcut.csv")
+
+final.data2 <- merge(density_simple8, newsitefinal)
+
+final.data2fixed <- subset(final.data2, select = -c(plot, daily_animal_totals, Site, site.number, site.density))
+```
+```{r}
+newsimpsonfinal <- diversity(newcommvegan, index = "simpson")
+HFinal <- diversity(newcommvegan)
+SFinal <- specnumber(newcommvegan)
+NewEvenness <- HFinal/log(SFinal)
+newsitefinal$Simpson <- newsimpsonfinal
+newsitefinal$Evenness <- NewEvenness
+```
+
+
+```{r}
+final.data2 <- merge(density_simple8, newsitefinal, all = TRUE)
+
+Evenness <- ggplot(final.data2, aes(density, Evenness, color = microsite)) + 
+  geom_point(size = 0.5) +
+  facet_wrap(~phylum) +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "C")+
+  geom_smooth(method = lm, se = TRUE) + 
+  labs(x = "Shrub density", y = "Evenness")
+Evenness
+```
+```{r}
+###Evenness
+newfinaldata <- merge(final.data2, newrdm.climate )
+m100 <- glm(Evenness ~ density*microsite*phylum+RDM+max_temp, family = "quasipoisson", data = newfinaldata)
+anova(m100, test = "Chisq")
+e100 <- emmeans(m100, pairwise~microsite|density)
+e100
+```
+ 
+```{r}
+newfinaldata <- merge(final.data2, newrdm.climate )
+m100 <- glm(RDM ~ density*microsite*phylum*Evenness, family = "quasipoisson", data = newfinaldata)
+anova(m100, test = "Chisq")
+e100 <- emmeans(m100, pairwise~microsite|phylum)
+e100
+```
+
+
+
+```{r}
+newphoto <- read_csv("Carrizo Shrub Photo density Sheet.csv")
+newshortcut <- read_csv("new site density shortcut.csv")
+newphotodata <- merge(newphoto, newshortcut)
+
+newmasterphoto <- newphotodata %>%
+  group_by(plot, shrub.count, Measure, microsite) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n) %>% na.omit()
+
+
+```
+```{r}
+colnames(photo)[19] = "species"
+colnames(photo)[15] = "density_category"
+phylumphoto <- merge(photo, animal.data, all = TRUE)
+
+
+newdata <- phylumphoto %>%
+  group_by(density_category, microsite, phylum) %>%
+  summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(species)-1) %>% mutate(rate = (captures/n)*100)
+colnames(newdata)[3] = "site.density"
+colnames(site)[2] = "site"
+
+
+```
+
+```{r}
+write.csv(newdata, "newdata.csv")
+
+sitephoto <- read_csv("newdatarate.csv")
+```
+
+
+```{r}
+capturerate <- ggplot(sitephoto, aes(shrub.count, rate, color = microsite)) +
+  geom_point(stat = "identity") + geom_point(size = 0.5) + scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + geom_smooth(method = lm, se = TRUE) + facet_wrap(~phylum)+ 
+   labs(x = "Shrub density", y = "Photo Capture Rate (%)")
+capturerate
+```
+```{r}
+m101 <- glm(rate~shrub.count*microsite*phylum, family = "quasipoisson", data = sitephoto)
+m101
+anova(m101, test = "Chisq")
+e111 <- emmeans(m101, pairwise~microsite|phylum)
+e111
+e112 <- emmeans(m101, pairwise~microsite|phylum)
+e112
+```
+
+```{r}
+withoutcams <- merge(masterfocal, mastertransect, all = TRUE) %>% na.omit()
+density_simple9 <- withoutcams %>%
+  group_by(as.character(density_level), plot, microsite) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_level)')
+data.no.cam <- merge(density_simple9, site)
+
+final.data.nocam <- merge(density_simple9, rdm.climate, all = TRUE)
+```
+```{r}
+write.csv(data.final, "data_no_cam.csv")
+```
+```{r}
+nocamdata <- read_csv("data_no_cam2.csv")
+nocamdata <- nocamdata %>% na.omit()
+
+nocamdata <- nocamdata %>%
+  group_by(as.character(density_levels), plot, density, microsite, phylum) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+nocamdata <- merge(nocamdata, rdm.climate)
+```
+
+
+```{r}
+
+nocamAbundance <- ggplot(nocamdata, aes(density, animals, color = microsite),show.legend=FALSE) +
+  geom_point(size = 0.5) +
+  facet_wrap(~phylum) +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "B")+
+  geom_smooth(method = lm, se = TRUE) + 
+  labs(x = "Shrub density", y = "Animal density")
+nocamAbundance
+```
+```{r}
+m102 <- glm(animals ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoisson", data = nocamdata)
+anova(m102, test = "Chisq")
+e102 <- emmeans(m102, pairwise~microsite|phylum)
+e102
+```
+```{r}
+sensitivity <- ggarrange(Abundance, nocamAbundance, ncol = 1, align = "v", heights = 10)
+sensitivity
+```
+```{r}
+newanimals <- read_csv("animals_revised.csv")
+finalanimals <- newanimals %>%
+  group_by(plot, phylum, species, microsite,daily_animal_totals) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+```
+
+```{r}
+m100 <- glm( ~ density*microsite*phylum+RDM+max_temp, family = "quasipoisson", data = newfinaldata)
+anova(m100, test = "Chisq")
+e100 <- emmeans(m100, pairwise~microsite|phylum)
+e100
+```
+
+```{r}
+ggplot(data_species, aes(fill=microhabitat, y=counts, x=species)) +
+  geom_bar(position="fill", stat="identity") +
+    scale_fill_manual(values=c("#A2D9CE", "#F7DC6F", "#F1948A")) +
+  facet_wrap(~season) +
+  theme_classic() +
+  coord_flip() +
+  labs(y="Percent Abundance", x="Species") +
+  theme(legend.title = element_blank())
+```
+
+```{r}
+ggplot(animal_by_plot_phylum, aes(as.factor(Species), percent_presence, fill=as.factor(density))) +
+  geom_bar(position="fill", stat="identity") +
+  facet_wrap(~microsite) +
+  theme_classic() +
+  coord_flip() +
+  labs(y="Relative Proportions (%)", x="Species") +
+  guides(fill=guide_legend(title="shrub density"))
+```
+
+```{r}
+
+```
+
+```{r}
+newsite3 <- read_csv("site 3 shortcut.csv")
+
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+newcarrizo3 <- get_map(location = c(lon = -119.67300, lat = 35.16250), zoom = 17, maptype = "satellite")
+newcarrizo3
+newsite.wide.map1 <- ggmap(newcarrizo3)
+newsite.wide.map1 <- site.wide.map1 +
+  geom_point(data=newsite3, aes(x=site.lng, y=site.lat, color = Site), alpha = 1/3, size =5, show.legend = FALSE) +
+  labs(x = "longitude", y = "latitude") + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
+newsite.wide.map1
+```
+
