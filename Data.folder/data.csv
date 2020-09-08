@@ -1,0 +1,768 @@
+plot,method,date,sample_day,phylum,species,microsite,daily_animal_totals,site,density_category,density_levels,density,cover,mean_shrub_size,proportion_shrub_cover,RDM,year
+5,camera trap,02-Jun,17,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,09-Jun,24,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,10-Jun,25,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,18-May,2,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,19-May,3,vertebrate,Ammospermophilus nelsoni,shrub,2,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,23-May,7,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,24-May,8,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,29-May,13,vertebrate,Ammospermophilus nelsoni,shrub,2,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,04-Jun-19,19,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,25-May-19,9,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,camera trap,02-Jun,17,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,03-Jun,18,vertebrate,Ammospermophilus nelsoni,open,3,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,05-Jun,20,vertebrate,Ammospermophilus nelsoni,open,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,07-Jun,22,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,10-Jun,25,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,20-May,4,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,22-May,6,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,24-May,8,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,25-May,9,vertebrate,Ammospermophilus nelsoni,open,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,25-May,9,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,26-May,10,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,28-May,12,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,focal,04-Jun-19,19,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,focal,04-Jun-19,19,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,07-Jun-19,22,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+7,camera trap,01-Jun,16,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,camera trap,02-Jun,17,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,03-Jun,18,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,06-Jun,21,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,08-Jun,23,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,09-Jun,24,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,18-May,2,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,19-May,3,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,20-May,4,vertebrate,Ammospermophilus nelsoni,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,21-May,5,vertebrate,Ammospermophilus nelsoni,open,3,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,26-May,10,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,30-May,14,vertebrate,Ammospermophilus nelsoni,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,30-May,14,vertebrate,Ammospermophilus nelsoni,shrub,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,camera trap,31-May,15,vertebrate,Ammospermophilus nelsoni,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,transect,04-Jun-19,19,vertebrate,Ammospermophilus nelsoni,shrub,3,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,25-May-19,9,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+8,camera trap,03-Jun,18,vertebrate,Ammospermophilus nelsoni,open,2,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,04-Jun,19,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,07-Jun,22,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,20-May,4,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,27-May,11,vertebrate,Ammospermophilus nelsoni,open,2,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,transect,12-Jun-19,27,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,camera trap,02-Jun,17,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,03-Jun,18,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,04-Jun,19,vertebrate,Ammospermophilus nelsoni,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,05-Jun,20,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,07-Jun,22,vertebrate,Ammospermophilus nelsoni,shrub,4,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,08-Jun,23,vertebrate,Ammospermophilus nelsoni,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,09-Jun,24,vertebrate,Ammospermophilus nelsoni,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,10-Jun,25,vertebrate,Ammospermophilus nelsoni,shrub,5,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,11-Jun,26,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,30-May,14,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,02-Jun-19,17,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,06-Jun-19,21,vertebrate,Ammospermophilus nelsoni,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,25-May-19,9,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,29-May-19,13,vertebrate,Ammospermophilus nelsoni,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,31-May-19,15,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,camera trap,01-Jun,16,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,02-Jun,17,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,03-Jun,18,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,04-Jun,19,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,05-Jun,20,vertebrate,Ammospermophilus nelsoni,shrub,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,22-May,6,vertebrate,Ammospermophilus nelsoni,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,23-May,7,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,24-May,8,vertebrate,Ammospermophilus nelsoni,open,6,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,27-May,11,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,28-May,12,vertebrate,Ammospermophilus nelsoni,open,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,29-May,13,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,31-May,15,vertebrate,Ammospermophilus nelsoni,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,transect,04-Jun-19,19,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,06-Jun-19,21,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+3,camera trap,29-May,13,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,focal,02-Jun-19,17,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,focal,31-May-19,15,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,04-Jun-19,19,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,29-May-19,13,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,31-May-19,15,vertebrate,Ammospermophilus nelsoni,shrub,2,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+4,camera trap,03-Jun,18,vertebrate,Ammospermophilus nelsoni,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,05-Jun,20,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,07-Jun,22,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,31-May,15,vertebrate,Ammospermophilus nelsoni,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,focal,06-Jun-19,21,vertebrate,Ammospermophilus nelsoni,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+5,transect,25-May-19,9,vertebrate,Ammospermophilus nelsoni,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,28-May-19,12,invertebrate,Andrena nigripes,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,focal,28-May-19,12,invertebrate,Andrena nigripes,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+2,transect,21-May-19,5,invertebrate,Andrena nigripes,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+5,focal,07-Jun-19,22,vertebrate,Aspidoscelis tigris,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,25-May-19,9,vertebrate,Aspidoscelis tigris,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,transect,25-May-19,9,vertebrate,Aspidoscelis tigris,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+2,focal,29-May-19,13,vertebrate,Aspidoscelis tigris,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,focal,31-May-19,15,vertebrate,Aspidoscelis tigris,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+7,camera trap,21-May,5,vertebrate,Buteo jamaicensis,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+1,camera trap,25-May,9,vertebrate,Buteo jamaicensis,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+5,transect,04-Jun-19,19,invertebrate,Calathus ruficollis,shrub,2,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,28-May-19,12,invertebrate,Calathus ruficollis,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,transect,04-Jun-19,19,invertebrate,Calathus ruficollis,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+7,focal,28-May-19,12,invertebrate,Calathus ruficollis,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+3,focal,25-May-19,9,invertebrate,Calathus ruficollis,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+4,transect,29-May-19,13,invertebrate,Calathus ruficollis,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+7,camera trap,25-May,9,invertebrate,Calathus ruficollis,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+6,transect,31-May-19,15,vertebrate,Calypte anna,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+3,focal,02-Jun-19,17,vertebrate,Calypte anna,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+5,camera trap,05-Jun,20,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,08-Jun,23,vertebrate,Chondestes grammacus,shrub,3,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,07-Jun-19,22,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,25-May-19,9,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,04-Jun-19,19,vertebrate,Chondestes grammacus,open,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,3,2019
+5,transect,04-Jun-19,19,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,04-Jun-19,19,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,23-May-19,7,vertebrate,Chondestes grammacus,shrub,5,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,25-May-19,9,vertebrate,Chondestes grammacus,shrub,4,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,31-May-19,15,vertebrate,Chondestes grammacus,open,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,3,2019
+5,focal,04-Jun-19,19,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,camera trap,03-Jun,18,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,31-May,15,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,focal,02-Jun-19,17,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,focal,04-Jun-19,19,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,focal,18-May-19,2,vertebrate,Chondestes grammacus,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,focal,18-May-19,2,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,focal,28-May-19,12,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,23-May-19,7,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,25-May-19,9,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+7,camera trap,09-Jun,24,vertebrate,Chondestes grammacus,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,18-May,2,vertebrate,Chondestes grammacus,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,21-May,5,vertebrate,Chondestes grammacus,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,28-May,12,vertebrate,Chondestes grammacus,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,focal,28-May-19,12,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,focal,31-May-19,15,vertebrate,Chondestes grammacus,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,transect,07-Jun-19,22,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,12-Jun-19,27,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,25-May-19,9,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+8,camera trap,02-Jun,17,vertebrate,Chondestes grammacus,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,22-May,6,vertebrate,Chondestes grammacus,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,focal,02-Jun-19,17,vertebrate,Chondestes grammacus,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,camera trap,07-Jun,22,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,30-May,14,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,06-Jun-19,21,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,29-May-19,13,vertebrate,Chondestes grammacus,shrub,4,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,31-May-19,15,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,31-May-19,15,vertebrate,Chondestes grammacus,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,camera trap,27-May,11,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,focal,06-Jun-19,21,vertebrate,Chondestes grammacus,shrub,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+3,camera trap,25-May,9,vertebrate,Chondestes grammacus,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,focal,25-May-19,9,vertebrate,Chondestes grammacus,shrub,2,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,focal,31-May-19,15,vertebrate,Chondestes grammacus,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,transect,21-May-19,5,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,25-May-19,9,vertebrate,Chondestes grammacus,shrub,4,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,31-May-19,15,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+4,camera trap,08-Jun,23,vertebrate,Chondestes grammacus,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,10-Jun,25,vertebrate,Chondestes grammacus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,21-May-19,5,vertebrate,Chondestes grammacus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,29-May-19,13,vertebrate,Chondestes grammacus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,31-May-19,15,vertebrate,Chondestes grammacus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+5,transect,25-May-19,9,vertebrate,Chondestes grammacus,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+7,transect,04-Jun-19,19,vertebrate,Corvus corax,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+8,camera trap,26-May,10,vertebrate,Corvus corax,open,2,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,27-May,11,vertebrate,Corvus corax,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+2,transect,25-May-19,9,vertebrate,Crotalus oreganus,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,focal,02-Jun-19,17,invertebrate,Dasymutilla aureola,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+5,focal,28-May-19,12,invertebrate,Dicolonus simplex,shrub,2,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,31-May-19,15,invertebrate,Dicolonus simplex,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,28-May-19,12,invertebrate,Dicolonus simplex,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,focal,02-Jun-19,17,invertebrate,Dicolonus simplex,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,focal,07-Jun-19,22,invertebrate,Dicolonus simplex,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,transect,28-May-19,12,invertebrate,Dicolonus simplex,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,transect,28-May-19,12,invertebrate,Dicolonus simplex,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+7,focal,28-May-19,12,invertebrate,Dicolonus simplex,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+8,focal,28-May-19,12,invertebrate,Dicolonus simplex,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,focal,31-May-19,15,invertebrate,Dicolonus simplex,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,focal,06-Jun-19,21,invertebrate,Dicolonus simplex,open,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,2,2019
+1,focal,29-May-19,13,invertebrate,Dicolonus simplex,open,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,2,2019
+1,transect,29-May-19,13,invertebrate,Dicolonus simplex,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,focal,04-Jun-19,19,invertebrate,Dicolonus simplex,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,focal,06-Jun-19,21,invertebrate,Dicolonus simplex,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,focal,29-May-19,13,invertebrate,Dicolonus simplex,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,focal,31-May-19,15,invertebrate,Dicolonus simplex,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,25-May-19,9,invertebrate,Dicolonus simplex,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,29-May-19,13,invertebrate,Dicolonus simplex,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,transect,29-May-19,13,invertebrate,Dicolonus simplex,shrub,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+3,focal,25-May-19,9,invertebrate,Dicolonus simplex,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,focal,29-May-19,13,invertebrate,Dicolonus simplex,open,3,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,transect,29-May-19,13,invertebrate,Dicolonus simplex,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+4,focal,02-Jun-19,17,invertebrate,Dicolonus simplex,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,focal,04-Jun-19,19,invertebrate,Dicolonus simplex,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,focal,25-May-19,9,invertebrate,Dicolonus simplex,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,focal,29-May-19,13,invertebrate,Dicolonus simplex,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+5,camera trap,01-Jun,16,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,02-Jun,17,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,03-Jun,18,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,05-Jun,20,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,06-Jun,21,vertebrate,Dipodomys ingens,shrub,4,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,07-Jun,22,vertebrate,Dipodomys ingens,shrub,4,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,08-Jun,23,vertebrate,Dipodomys ingens,shrub,3,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,09-Jun,24,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,10-Jun,25,vertebrate,Dipodomys ingens,shrub,4,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,11-Jun,26,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,12-Jun,27,vertebrate,Dipodomys ingens,shrub,5,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,18-May,2,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,19-May,3,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,23-May,7,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,24-May,8,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,27-May,11,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,29-May,13,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,30-May,14,vertebrate,Dipodomys ingens,shrub,3,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,31-May,15,vertebrate,Dipodomys ingens,shrub,3,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,camera trap,01-Jun,16,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,01-Jun,16,vertebrate,Dipodomys ingens,shrub,5,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,03-Jun,18,vertebrate,Dipodomys ingens,open,7,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,04-Jun,19,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,04-Jun,19,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,05-Jun,20,vertebrate,Dipodomys ingens,shrub,4,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,06-Jun,21,vertebrate,Dipodomys ingens,open,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,06-Jun,21,vertebrate,Dipodomys ingens,shrub,3,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,07-Jun,22,vertebrate,Dipodomys ingens,open,3,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,07-Jun,22,vertebrate,Dipodomys ingens,shrub,9,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,08-Jun,23,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,09-Jun,24,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,09-Jun,24,vertebrate,Dipodomys ingens,shrub,3,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,10-Jun,25,vertebrate,Dipodomys ingens,shrub,3,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,11-Jun,26,vertebrate,Dipodomys ingens,open,6,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,11-Jun,26,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,12-Jun,27,vertebrate,Dipodomys ingens,open,7,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,19-May,3,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,20-May,4,vertebrate,Dipodomys ingens,open,3,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,20-May,4,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,21-May,5,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,22-May,6,vertebrate,Dipodomys ingens,open,4,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,23-May,7,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,23-May,7,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,24-May,8,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,25-May,9,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,26-May,10,vertebrate,Dipodomys ingens,open,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,26-May,10,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,27-May,11,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,28-May,12,vertebrate,Dipodomys ingens,open,7,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,28-May,12,vertebrate,Dipodomys ingens,shrub,3,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,29-May,13,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,29-May,13,vertebrate,Dipodomys ingens,shrub,12,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,30-May,14,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,30-May,14,vertebrate,Dipodomys ingens,shrub,6,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,31-May,15,vertebrate,Dipodomys ingens,shrub,4,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+7,camera trap,01-Jun,16,vertebrate,Dipodomys ingens,open,18,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,02-Jun,17,vertebrate,Dipodomys ingens,open,22,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,03-Jun,18,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,04-Jun,19,vertebrate,Dipodomys ingens,open,6,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,05-Jun,20,vertebrate,Dipodomys ingens,open,9,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,06-Jun,21,vertebrate,Dipodomys ingens,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,07-Jun,22,vertebrate,Dipodomys ingens,open,5,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,08-Jun,23,vertebrate,Dipodomys ingens,open,5,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,09-Jun,24,vertebrate,Dipodomys ingens,open,13,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,10-Jun,25,vertebrate,Dipodomys ingens,open,13,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,11-Jun,26,vertebrate,Dipodomys ingens,open,9,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,12-Jun,27,vertebrate,Dipodomys ingens,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,12-Jun,27,vertebrate,Dipodomys ingens,shrub,5,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,camera trap,18-May,2,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,18-May,2,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,camera trap,19-May,3,vertebrate,Dipodomys ingens,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,20-May,4,vertebrate,Dipodomys ingens,open,4,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,20-May,4,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,camera trap,21-May,5,vertebrate,Dipodomys ingens,open,3,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,22-May,6,vertebrate,Dipodomys ingens,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,27-May,11,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,28-May,12,vertebrate,Dipodomys ingens,open,3,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,29-May,13,vertebrate,Dipodomys ingens,open,18,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,30-May,14,vertebrate,Dipodomys ingens,open,17,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,31-May,15,vertebrate,Dipodomys ingens,open,23,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+8,camera trap,02-Jun,17,vertebrate,Dipodomys ingens,open,6,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,03-Jun,18,vertebrate,Dipodomys ingens,open,10,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,04-Jun,19,vertebrate,Dipodomys ingens,open,11,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,05-Jun,20,vertebrate,Dipodomys ingens,open,13,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,06-Jun,21,vertebrate,Dipodomys ingens,open,17,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,07-Jun,22,vertebrate,Dipodomys ingens,open,7,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,18-May,2,vertebrate,Dipodomys ingens,open,3,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,19-May,3,vertebrate,Dipodomys ingens,open,5,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,20-May,4,vertebrate,Dipodomys ingens,open,3,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,21-May,5,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,24-May,8,vertebrate,Dipodomys ingens,open,3,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,25-May,9,vertebrate,Dipodomys ingens,open,4,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,26-May,10,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,27-May,11,vertebrate,Dipodomys ingens,open,2,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,28-May,12,vertebrate,Dipodomys ingens,open,6,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,29-May,13,vertebrate,Dipodomys ingens,open,5,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,30-May,14,vertebrate,Dipodomys ingens,open,3,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,31-May,15,vertebrate,Dipodomys ingens,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,camera trap,01-Jun,16,vertebrate,Dipodomys ingens,shrub,9,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,02-Jun,17,vertebrate,Dipodomys ingens,shrub,31,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,03-Jun,18,vertebrate,Dipodomys ingens,shrub,10,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,04-Jun,19,vertebrate,Dipodomys ingens,shrub,9,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,06-Jun,21,vertebrate,Dipodomys ingens,shrub,7,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,08-Jun,23,vertebrate,Dipodomys ingens,shrub,3,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,09-Jun,24,vertebrate,Dipodomys ingens,shrub,5,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,10-Jun,25,vertebrate,Dipodomys ingens,shrub,7,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,11-Jun,26,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,17-May,1,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,25-May,9,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,29-May,13,vertebrate,Dipodomys ingens,shrub,7,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,30-May,14,vertebrate,Dipodomys ingens,shrub,10,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,31-May,15,vertebrate,Dipodomys ingens,shrub,11,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,camera trap,01-Jun,16,vertebrate,Dipodomys ingens,open,8,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,01-Jun,16,vertebrate,Dipodomys ingens,shrub,11,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,02-Jun,17,vertebrate,Dipodomys ingens,shrub,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,03-Jun,18,vertebrate,Dipodomys ingens,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,03-Jun,18,vertebrate,Dipodomys ingens,shrub,4,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,04-Jun,19,vertebrate,Dipodomys ingens,open,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,04-Jun,19,vertebrate,Dipodomys ingens,shrub,5,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,05-Jun,20,vertebrate,Dipodomys ingens,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,05-Jun,20,vertebrate,Dipodomys ingens,shrub,8,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,06-Jun,21,vertebrate,Dipodomys ingens,open,5,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,06-Jun,21,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,07-Jun,22,vertebrate,Dipodomys ingens,shrub,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,09-Jun,24,vertebrate,Dipodomys ingens,shrub,4,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,11-Jun,26,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,18-May,2,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,19-May,3,vertebrate,Dipodomys ingens,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,19-May,3,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,21-May,5,vertebrate,Dipodomys ingens,open,4,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,22-May,6,vertebrate,Dipodomys ingens,open,10,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,23-May,7,vertebrate,Dipodomys ingens,open,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,23-May,7,vertebrate,Dipodomys ingens,shrub,12,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,24-May,8,vertebrate,Dipodomys ingens,open,17,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,24-May,8,vertebrate,Dipodomys ingens,shrub,4,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,25-May,9,vertebrate,Dipodomys ingens,shrub,5,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,26-May,10,vertebrate,Dipodomys ingens,open,5,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,26-May,10,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,27-May,11,vertebrate,Dipodomys ingens,open,8,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,27-May,11,vertebrate,Dipodomys ingens,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,28-May,12,vertebrate,Dipodomys ingens,open,14,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,28-May,12,vertebrate,Dipodomys ingens,shrub,14,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,29-May,13,vertebrate,Dipodomys ingens,open,19,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,29-May,13,vertebrate,Dipodomys ingens,shrub,7,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,30-May,14,vertebrate,Dipodomys ingens,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,30-May,14,vertebrate,Dipodomys ingens,shrub,10,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,31-May,15,vertebrate,Dipodomys ingens,open,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,31-May,15,vertebrate,Dipodomys ingens,shrub,10,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+3,camera trap,01-Jun,16,vertebrate,Dipodomys ingens,open,15,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,02-Jun,17,vertebrate,Dipodomys ingens,open,20,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,03-Jun,18,vertebrate,Dipodomys ingens,open,15,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,04-Jun,19,vertebrate,Dipodomys ingens,open,13,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,05-Jun,20,vertebrate,Dipodomys ingens,open,10,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,07-Jun,22,vertebrate,Dipodomys ingens,open,7,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,08-Jun,23,vertebrate,Dipodomys ingens,open,4,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,09-Jun,24,vertebrate,Dipodomys ingens,open,9,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,10-Jun,25,vertebrate,Dipodomys ingens,open,4,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,11-Jun,26,vertebrate,Dipodomys ingens,open,6,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,29-May,13,vertebrate,Dipodomys ingens,open,23,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,29-May,13,vertebrate,Dipodomys ingens,shrub,2,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,camera trap,30-May,14,vertebrate,Dipodomys ingens,open,25,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,31-May,15,vertebrate,Dipodomys ingens,open,19,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+4,camera trap,01-Jun,16,vertebrate,Dipodomys ingens,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,02-Jun,17,vertebrate,Dipodomys ingens,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,03-Jun,18,vertebrate,Dipodomys ingens,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,04-Jun,19,vertebrate,Dipodomys ingens,open,7,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,05-Jun,20,vertebrate,Dipodomys ingens,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,06-Jun,21,vertebrate,Dipodomys ingens,open,5,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,07-Jun,22,vertebrate,Dipodomys ingens,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,08-Jun,23,vertebrate,Dipodomys ingens,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,09-Jun,24,vertebrate,Dipodomys ingens,open,4,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,10-Jun,25,vertebrate,Dipodomys ingens,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,11-Jun,26,vertebrate,Dipodomys ingens,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,18-May,2,vertebrate,Dipodomys ingens,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,20-May,4,vertebrate,Dipodomys ingens,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,21-May,5,vertebrate,Dipodomys ingens,open,4,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,22-May,6,vertebrate,Dipodomys ingens,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,23-May,7,vertebrate,Dipodomys ingens,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,24-May,8,vertebrate,Dipodomys ingens,open,4,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,25-May,9,vertebrate,Dipodomys ingens,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,26-May,10,vertebrate,Dipodomys ingens,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,27-May,11,vertebrate,Dipodomys ingens,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,28-May,12,vertebrate,Dipodomys ingens,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,29-May,13,vertebrate,Dipodomys ingens,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,30-May,14,vertebrate,Dipodomys ingens,open,8,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,31-May,15,vertebrate,Dipodomys ingens,open,5,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+5,transect,31-May-19,15,vertebrate,Geococcyx californianus,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+4,transect,11-Jun-19,26,vertebrate,Pituophis catenifer,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,25-May-19,9,vertebrate,Pituophis catenifer,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+7,focal,25-May-19,9,invertebrate,Hippodamia convergens,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+4,transect,06-Jun-19,21,invertebrate,Hippodamia convergens,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+5,camera trap,02-Jun,17,invertebrate,Icaricia acmon,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,04-Jun-19,19,invertebrate,Icaricia acmon,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,18-May-19,2,invertebrate,Icaricia acmon,shrub,3,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,25-May-19,9,invertebrate,Icaricia acmon,shrub,7,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,28-May-19,12,invertebrate,Icaricia acmon,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,31-May-19,15,invertebrate,Icaricia acmon,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,04-Jun-19,19,invertebrate,Icaricia acmon,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,23-May-19,7,invertebrate,Icaricia acmon,open,5,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,3,2019
+5,transect,23-May-19,7,invertebrate,Icaricia acmon,shrub,17,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,25-May-19,9,invertebrate,Icaricia acmon,shrub,22,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,28-May-19,12,invertebrate,Icaricia acmon,shrub,16,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,31-May-19,15,invertebrate,Icaricia acmon,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,camera trap,28-May,12,invertebrate,Icaricia acmon,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,focal,07-Jun-19,22,invertebrate,Icaricia acmon,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,focal,25-May-19,9,invertebrate,Icaricia acmon,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,focal,25-May-19,9,invertebrate,Icaricia acmon,shrub,5,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,focal,28-May-19,12,invertebrate,Icaricia acmon,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,focal,28-May-19,12,invertebrate,Icaricia acmon,shrub,5,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,focal,31-May-19,15,invertebrate,Icaricia acmon,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,04-Jun-19,19,invertebrate,Icaricia acmon,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,23-May-19,7,invertebrate,Icaricia acmon,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,transect,23-May-19,7,invertebrate,Icaricia acmon,shrub,20,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,25-May-19,9,invertebrate,Icaricia acmon,shrub,10,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,28-May-19,12,invertebrate,Icaricia acmon,shrub,7,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,31-May-19,15,invertebrate,Icaricia acmon,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+7,focal,02-Jun-19,17,invertebrate,Icaricia acmon,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,focal,07-Jun-19,22,invertebrate,Icaricia acmon,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,focal,25-May-19,9,invertebrate,Icaricia acmon,open,4,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,focal,25-May-19,9,invertebrate,Icaricia acmon,shrub,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,focal,28-May-19,12,invertebrate,Icaricia acmon,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,focal,28-May-19,12,invertebrate,Icaricia acmon,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,07-Jun-19,22,invertebrate,Icaricia acmon,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,25-May-19,9,invertebrate,Icaricia acmon,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,transect,25-May-19,9,invertebrate,Icaricia acmon,shrub,9,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,28-May-19,12,invertebrate,Icaricia acmon,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,transect,28-May-19,12,invertebrate,Icaricia acmon,shrub,5,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+8,focal,02-Jun-19,17,invertebrate,Icaricia acmon,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,focal,25-May-19,9,invertebrate,Icaricia acmon,open,14,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,focal,28-May-19,12,invertebrate,Icaricia acmon,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,transect,07-Jun-19,22,invertebrate,Icaricia acmon,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,transect,23-May-19,7,invertebrate,Icaricia acmon,open,3,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,transect,28-May-19,12,invertebrate,Icaricia acmon,open,5,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,focal,25-May-19,9,invertebrate,Icaricia acmon,shrub,9,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,31-May-19,15,invertebrate,Icaricia acmon,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,06-Jun-19,21,invertebrate,Icaricia acmon,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,21-May-19,5,invertebrate,Icaricia acmon,open,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,2,2019
+1,transect,29-May-19,13,invertebrate,Icaricia acmon,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,focal,02-Jun-19,17,invertebrate,Icaricia acmon,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,focal,25-May-19,9,invertebrate,Icaricia acmon,shrub,15,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,21-May-19,5,invertebrate,Icaricia acmon,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,transect,21-May-19,5,invertebrate,Icaricia acmon,shrub,4,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,25-May-19,9,invertebrate,Icaricia acmon,shrub,8,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+3,focal,25-May-19,9,invertebrate,Icaricia acmon,open,3,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,focal,25-May-19,9,invertebrate,Icaricia acmon,shrub,4,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,focal,29-May-19,13,invertebrate,Icaricia acmon,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,04-Jun-19,19,invertebrate,Icaricia acmon,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,transect,25-May-19,9,invertebrate,Icaricia acmon,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,transect,25-May-19,9,invertebrate,Icaricia acmon,shrub,4,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,29-May-19,13,invertebrate,Icaricia acmon,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+4,focal,25-May-19,9,invertebrate,Icaricia acmon,open,7,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,21-May-19,5,invertebrate,Icaricia acmon,open,4,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,25-May-19,9,invertebrate,Icaricia acmon,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,29-May-19,13,invertebrate,Icaricia acmon,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+5,transect,25-May-19,9,invertebrate,Icaricia acmon,open,2,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,3,2019
+5,transect,25-May-19,9,invertebrate,Icaricia acmon,shrub,5,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,07-Jun-19,22,vertebrate,Leopard Lizard,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,transect,31-May-19,15,vertebrate,Leopard Lizard,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+7,camera trap,06-Jun,21,vertebrate,Leopard Lizard,open,20,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+8,camera trap,02-Jun,17,vertebrate,Leopard Lizard,open,9,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,focal,02-Jun-19,17,vertebrate,Leopard Lizard,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,04-Jun-19,19,vertebrate,Leopard Lizard,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,camera trap,29-May,13,vertebrate,Leopard Lizard,open,10,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,focal,25-May-19,9,vertebrate,Leopard Lizard,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+3,transect,29-May-19,13,vertebrate,Leopard Lizard,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+4,focal,06-Jun-19,21,vertebrate,Leopard Lizard,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+5,transect,25-May-19,9,vertebrate,Leopard Lizard,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+7,focal,18-May-19,2,vertebrate,Lepus californicus,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+1,focal,04-Jun-19,19,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,focal,17-May-19,1,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+5,camera trap,04-Jun,19,vertebrate,Lepus californicus,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,31-May-19,15,vertebrate,Lepus californicus,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,camera trap,07-Jun,22,vertebrate,Lepus californicus,shrub,16,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,11-Jun,26,vertebrate,Lepus californicus,shrub,3,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,28-May,12,vertebrate,Lepus californicus,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,30-May,14,vertebrate,Lepus californicus,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,30-May,14,vertebrate,Lepus californicus,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,31-May,15,vertebrate,Lepus californicus,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+7,camera trap,03-Jun,18,vertebrate,Lepus californicus,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,05-Jun,20,vertebrate,Lepus californicus,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,06-Jun,21,vertebrate,Lepus californicus,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,07-Jun,22,vertebrate,Lepus californicus,open,3,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,09-Jun,24,vertebrate,Lepus californicus,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,19-May,3,vertebrate,Lepus californicus,shrub,3,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,camera trap,20-May,4,vertebrate,Lepus californicus,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,25-May,9,vertebrate,Lepus californicus,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,28-May,12,vertebrate,Lepus californicus,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,transect,07-Jun-19,22,vertebrate,Lepus californicus,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+8,camera trap,03-Jun,18,vertebrate,Lepus californicus,open,3,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,04-Jun,19,vertebrate,Lepus californicus,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,07-Jun,22,vertebrate,Lepus californicus,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,09-Jun,24,vertebrate,Lepus californicus,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,22-May,6,vertebrate,Lepus californicus,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,28-May,12,vertebrate,Lepus californicus,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,29-May,13,vertebrate,Lepus californicus,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,30-May,14,vertebrate,Lepus californicus,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,camera trap,02-Jun,17,vertebrate,Lepus californicus,shrub,4,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,04-Jun,19,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,05-Jun,20,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,06-Jun,21,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,07-Jun,22,vertebrate,Lepus californicus,shrub,4,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,08-Jun,23,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,09-Jun,24,vertebrate,Lepus californicus,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,10-Jun,25,vertebrate,Lepus californicus,shrub,4,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,17-May,1,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,18-May,2,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,21-May,5,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,23-May,7,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,29-May,13,vertebrate,Lepus californicus,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,30-May,14,vertebrate,Lepus californicus,shrub,3,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,04-Jun-19,19,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,camera trap,01-Jun,16,vertebrate,Lepus californicus,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,02-Jun,17,vertebrate,Lepus californicus,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,06-Jun,21,vertebrate,Lepus californicus,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,07-Jun,22,vertebrate,Lepus californicus,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,07-Jun,22,vertebrate,Lepus californicus,shrub,6,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,09-Jun,24,vertebrate,Lepus californicus,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,11-Jun,26,vertebrate,Lepus californicus,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,17-May,1,vertebrate,Lepus californicus,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,23-May,7,vertebrate,Lepus californicus,shrub,5,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,24-May,8,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,29-May,13,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,30-May,14,vertebrate,Lepus californicus,shrub,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,31-May,15,vertebrate,Lepus californicus,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+3,camera trap,01-Jun,16,vertebrate,Lepus californicus,shrub,2,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,camera trap,03-Jun,18,vertebrate,Lepus californicus,open,3,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,04-Jun,19,vertebrate,Lepus californicus,open,4,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,05-Jun,20,vertebrate,Lepus californicus,shrub,2,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,camera trap,07-Jun,22,vertebrate,Lepus californicus,open,6,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,07-Jun,22,vertebrate,Lepus californicus,shrub,4,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,camera trap,08-Jun,23,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,camera trap,09-Jun,24,vertebrate,Lepus californicus,open,6,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,09-Jun,24,vertebrate,Lepus californicus,shrub,4,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,camera trap,10-Jun,25,vertebrate,Lepus californicus,open,6,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,10-Jun,25,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,camera trap,11-Jun,26,vertebrate,Lepus californicus,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,11-Jun,26,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,camera trap,22-May,6,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,25-May-19,9,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,31-May-19,15,vertebrate,Lepus californicus,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+4,camera trap,03-Jun,18,vertebrate,Lepus californicus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,04-Jun,19,vertebrate,Lepus californicus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,05-Jun,20,vertebrate,Lepus californicus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,06-Jun,21,vertebrate,Lepus californicus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,07-Jun,22,vertebrate,Lepus californicus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,08-Jun,23,vertebrate,Lepus californicus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,09-Jun,24,vertebrate,Lepus californicus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,10-Jun,25,vertebrate,Lepus californicus,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,25-May,9,vertebrate,Lepus californicus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,28-May,12,vertebrate,Lepus californicus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,29-May,13,vertebrate,Lepus californicus,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,30-May,14,vertebrate,Lepus californicus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,31-May,15,vertebrate,Lepus californicus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+5,focal,02-Jun-19,17,invertebrate,Oedaleonotus enigma,shrub,4,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,07-Jun-19,22,invertebrate,Oedaleonotus enigma,shrub,3,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,focal,31-May-19,15,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,shrub,3,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,07-Jun-19,22,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,3,2019
+5,transect,07-Jun-19,22,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,12-Jun-19,27,invertebrate,Oedaleonotus enigma,shrub,4,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,25-May-19,9,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,28-May-19,12,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,3,2019
+5,transect,28-May-19,12,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,31-May-19,15,invertebrate,Oedaleonotus enigma,shrub,4,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,focal,02-Jun-19,17,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,focal,02-Jun-19,17,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,focal,04-Jun-19,19,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,focal,04-Jun-19,19,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,focal,07-Jun-19,22,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,focal,18-May-19,2,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,focal,31-May-19,15,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,shrub,7,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,07-Jun-19,22,invertebrate,Oedaleonotus enigma,shrub,5,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,12-Jun-19,27,invertebrate,Oedaleonotus enigma,shrub,10,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,25-May-19,9,invertebrate,Oedaleonotus enigma,shrub,3,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,31-May-19,15,invertebrate,Oedaleonotus enigma,shrub,5,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+7,focal,02-Jun-19,17,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,focal,07-Jun-19,22,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,focal,07-Jun-19,22,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,focal,25-May-19,9,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,focal,28-May-19,12,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,shrub,7,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,07-Jun-19,22,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,12-Jun-19,27,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,transect,12-Jun-19,27,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,25-May-19,9,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,28-May-19,12,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,transect,28-May-19,12,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,31-May-19,15,invertebrate,Oedaleonotus enigma,shrub,6,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+8,focal,28-May-19,12,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,focal,31-May-19,15,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,transect,12-Jun-19,27,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,transect,25-May-19,9,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,transect,28-May-19,12,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,focal,02-Jun-19,17,invertebrate,Oedaleonotus enigma,shrub,5,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,04-Jun-19,19,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,06-Jun-19,21,invertebrate,Oedaleonotus enigma,shrub,3,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,25-May-19,9,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,29-May-19,13,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,focal,31-May-19,15,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,shrub,4,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,06-Jun-19,21,invertebrate,Oedaleonotus enigma,shrub,5,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,11-Jun-19,26,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,2,2019
+1,transect,11-Jun-19,26,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,21-May-19,5,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,2,2019
+1,transect,21-May-19,5,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,29-May-19,13,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,2,2019
+1,transect,29-May-19,13,invertebrate,Oedaleonotus enigma,shrub,5,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,transect,31-May-19,15,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,2,2019
+1,transect,31-May-19,15,invertebrate,Oedaleonotus enigma,shrub,5,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,camera trap,03-Jun,18,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,focal,02-Jun-19,17,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,focal,04-Jun-19,19,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,focal,04-Jun-19,19,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,focal,06-Jun-19,21,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,focal,29-May-19,13,invertebrate,Oedaleonotus enigma,shrub,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,shrub,8,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,06-Jun-19,21,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,transect,06-Jun-19,21,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,11-Jun-19,26,invertebrate,Oedaleonotus enigma,open,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,transect,11-Jun-19,26,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,21-May-19,5,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,transect,21-May-19,5,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,25-May-19,9,invertebrate,Oedaleonotus enigma,open,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,transect,25-May-19,9,invertebrate,Oedaleonotus enigma,shrub,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,29-May-19,13,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,transect,29-May-19,13,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,31-May-19,15,invertebrate,Oedaleonotus enigma,open,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,transect,31-May-19,15,invertebrate,Oedaleonotus enigma,shrub,8,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+3,focal,02-Jun-19,17,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,focal,06-Jun-19,21,invertebrate,Oedaleonotus enigma,open,7,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,focal,25-May-19,9,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,shrub,2,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,06-Jun-19,21,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,transect,06-Jun-19,21,invertebrate,Oedaleonotus enigma,shrub,6,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,11-Jun-19,26,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,transect,11-Jun-19,26,invertebrate,Oedaleonotus enigma,shrub,8,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,25-May-19,9,invertebrate,Oedaleonotus enigma,open,3,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,transect,25-May-19,9,invertebrate,Oedaleonotus enigma,shrub,3,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,29-May-19,13,invertebrate,Oedaleonotus enigma,shrub,7,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,31-May-19,15,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,transect,31-May-19,15,invertebrate,Oedaleonotus enigma,shrub,6,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+4,focal,02-Jun-19,17,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,focal,04-Jun-19,19,invertebrate,Oedaleonotus enigma,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,focal,06-Jun-19,21,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,focal,25-May-19,9,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,focal,31-May-19,15,invertebrate,Oedaleonotus enigma,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,04-Jun-19,19,invertebrate,Oedaleonotus enigma,open,7,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,06-Jun-19,21,invertebrate,Oedaleonotus enigma,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,11-Jun-19,26,invertebrate,Oedaleonotus enigma,open,11,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,21-May-19,5,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,25-May-19,9,invertebrate,Oedaleonotus enigma,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,29-May-19,13,invertebrate,Oedaleonotus enigma,open,5,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,transect,31-May-19,15,invertebrate,Oedaleonotus enigma,open,7,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+5,transect,25-May-19,9,invertebrate,Oedaleonotus enigma,open,3,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,3,2019
+5,transect,25-May-19,9,invertebrate,Oedaleonotus enigma,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+1,camera trap,01-Jun,16,vertebrate,Otospermophilus beecheyi,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,02-Jun,17,vertebrate,Otospermophilus beecheyi,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,08-Jun,23,vertebrate,Otospermophilus beecheyi,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,11-Jun,26,vertebrate,Otospermophilus beecheyi,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,camera trap,04-Jun,19,vertebrate,Otospermophilus beecheyi,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,21-May,5,vertebrate,Otospermophilus beecheyi,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+3,camera trap,01-Jun,16,vertebrate,Otospermophilus beecheyi,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,01-Jun,16,vertebrate,Otospermophilus beecheyi,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+4,camera trap,30-May,14,vertebrate,Otospermophilus beecheyi,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+6,transect,07-Jun-19,22,invertebrate,Pepsis formos,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+2,transect,11-Jun-19,26,invertebrate,Pepsis formos,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+8,transect,07-Jun-19,22,invertebrate,Pepsis formos,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,camera trap,06-Jun,21,vertebrate,Perognathus inornatus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,08-Jun,23,vertebrate,Perognathus inornatus,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,camera trap,04-Jun,19,vertebrate,Perognathus inornatus,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,17-May,1,vertebrate,Perognathus inornatus,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,18-May,2,vertebrate,Perognathus inornatus,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,19-May,3,vertebrate,Perognathus inornatus,open,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,20-May,4,vertebrate,Perognathus inornatus,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,26-May,10,vertebrate,Perognathus inornatus,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,27-May,11,vertebrate,Perognathus inornatus,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,30-May,14,vertebrate,Perognathus inornatus,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+4,camera trap,18-May,2,vertebrate,Perognathus inornatus,open,4,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,19-May,3,vertebrate,Perognathus inornatus,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,20-May,4,vertebrate,Perognathus inornatus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,21-May,5,vertebrate,Perognathus inornatus,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,26-May,10,vertebrate,Perognathus inornatus,open,2,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+5,focal,02-Jun-19,17,invertebrate,Rhionaeschna multicolor,shrub,2,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,transect,12-Jun-19,27,invertebrate,Rhionaeschna multicolor,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+7,focal,25-May-19,9,invertebrate,Rhionaeschna multicolor,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,transect,25-May-19,9,invertebrate,Rhionaeschna multicolor,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+8,transect,28-May-19,12,invertebrate,Rhionaeschna multicolor,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+3,transect,06-Jun-19,21,invertebrate,Rhionaeschna multicolor,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+3,transect,25-May-19,9,invertebrate,Rhionaeschna multicolor,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+5,camera trap,05-Jun,20,vertebrate,small mammal,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,06-Jun,21,vertebrate,small mammal,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,20-May,4,vertebrate,small mammal,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+5,camera trap,28-May,12,vertebrate,small mammal,shrub,2,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,camera trap,05-Jun,20,vertebrate,small mammal,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,08-Jun,23,vertebrate,small mammal,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,11-Jun,26,vertebrate,small mammal,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,28-May,12,vertebrate,small mammal,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,camera trap,30-May,14,vertebrate,small mammal,open,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+6,camera trap,31-May,15,vertebrate,small mammal,open,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,1.3333333333333333,2019
+7,camera trap,03-Jun,18,vertebrate,small mammal,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,08-Jun,23,vertebrate,small mammal,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,18-May,2,vertebrate,small mammal,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,camera trap,19-May,3,vertebrate,small mammal,shrub,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,8.333333333333334,2019
+7,camera trap,20-May,4,vertebrate,small mammal,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,26-May,10,vertebrate,small mammal,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,28-May,12,vertebrate,small mammal,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+8,camera trap,01-Jun,16,vertebrate,small mammal,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,06-Jun,21,vertebrate,small mammal,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,camera trap,01-Jun,16,vertebrate,small mammal,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,03-Jun,18,vertebrate,small mammal,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,04-Jun,19,vertebrate,small mammal,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,07-Jun,22,vertebrate,small mammal,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,17-May,1,vertebrate,small mammal,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,18-May,2,vertebrate,small mammal,shrub,4,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,19-May,3,vertebrate,small mammal,shrub,5,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,20-May,4,vertebrate,small mammal,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,21-May,5,vertebrate,small mammal,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,22-May,5,vertebrate,small mammal,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,25-May,9,vertebrate,small mammal,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,27-May,11,vertebrate,small mammal,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+1,camera trap,30-May,14,vertebrate,small mammal,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,camera trap,01-Jun,16,vertebrate,small mammal,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,03-Jun,18,vertebrate,small mammal,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,04-Jun,19,vertebrate,small mammal,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,06-Jun,21,vertebrate,small mammal,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,10-Jun,25,vertebrate,small mammal,shrub,0,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,17-May,1,vertebrate,small mammal,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,18-May,2,vertebrate,small mammal,shrub,4,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,20-May,4,vertebrate,small mammal,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,21-May,5,vertebrate,small mammal,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,22-May,5,vertebrate,small mammal,shrub,3,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,25-May,9,vertebrate,small mammal,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,25-May,9,vertebrate,small mammal,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,29-May,13,vertebrate,small mammal,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,camera trap,30-May,14,vertebrate,small mammal,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+3,camera trap,30-May,14,vertebrate,small mammal,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+4,camera trap,02-Jun,17,vertebrate,small mammal,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,08-Jun,23,vertebrate,small mammal,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,18-May,2,vertebrate,small mammal,open,4,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,20-May,4,vertebrate,small mammal,open,3,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,23-May,7,vertebrate,small mammal,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,26-May,10,vertebrate,small mammal,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+5,focal,02-Jun-19,17,vertebrate,Uta stansburiana,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,transect,07-Jun-19,22,vertebrate,Uta stansburiana,shrub,2,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+6,transect,28-May-19,12,vertebrate,Uta stansburiana,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+7,focal,02-Jun-19,17,vertebrate,Uta stansburiana,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+8,camera trap,06-Jun,21,vertebrate,Uta stansburiana,open,3,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,focal,04-Jun-19,19,vertebrate,Uta stansburiana,shrub,1,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,camera trap,10-Jun,25,vertebrate,Uta stansburiana,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,focal,29-May-19,13,vertebrate,Uta stansburiana,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+2,transect,29-May-19,13,vertebrate,Uta stansburiana,shrub,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,7.333333333333333,2019
+5,camera trap,07-Jun,22,vertebrate,Vulpes macrotis,shrub,1,Carrizo site 3,high,3,11,41.364486531837066,17.42533259919242,52.66677684216586,10,2019
+6,camera trap,31-May,15,vertebrate,Vulpes macrotis,shrub,1,Carrizo site 3,medium,2,6,33.09722838428285,24.647430089986894,42.14060145694276,5.666666666666667,2019
+7,camera trap,05-Jun,20,vertebrate,Vulpes macrotis,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+7,camera trap,28-May,12,vertebrate,Vulpes macrotis,open,1,Carrizo site 3,low,1,3,18.724991772823923,39.074931155946814,23.841344248566237,1.3333333333333333,2019
+8,camera trap,02-Jun,17,vertebrate,Vulpes macrotis,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,05-Jun,20,vertebrate,Vulpes macrotis,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,24-May,8,vertebrate,Vulpes macrotis,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+8,camera trap,27-May,11,vertebrate,Vulpes macrotis,open,1,Carrizo site 3,none,0,0,0,0,0,5.333333333333333,2019
+1,camera trap,01-Jun,16,vertebrate,Vulpes macrotis,shrub,2,Carrizo site 4,high,3,12,66.70103858395706,30.498033098598732,84.92620140559848,6.666666666666667,2019
+2,camera trap,01-Jun,16,vertebrate,Vulpes macrotis,open,1,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+2,camera trap,08-Jun,23,vertebrate,Vulpes macrotis,open,2,Carrizo site 4,medium,2,6,50.02035969064035,57.34634047957715,63.68775107033402,2,2019
+3,camera trap,01-Jun,16,vertebrate,Vulpes macrotis,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,04-Jun,19,vertebrate,Vulpes macrotis,open,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,1.6666666666666667,2019
+3,camera trap,22-May,6,vertebrate,Vulpes macrotis,shrub,1,Carrizo site 4,low,1,2,9.837975934532775,23.065556507495444,12.526070708597882,8,2019
+4,camera trap,18-May,2,vertebrate,Vulpes macrotis,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,19-May,3,vertebrate,Vulpes macrotis,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,23-May,7,vertebrate,Vulpes macrotis,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,25-May,9,vertebrate,Vulpes macrotis,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
+4,camera trap,26-May,10,vertebrate,Vulpes macrotis,open,1,Carrizo site 4,none,0,0,0,0,0,3.6666666666666665,2019
