@@ -38,7 +38,7 @@ density_simple <- data.final %>%
   rename(density_levels = 'as.character(density_levels)')
 
 data_simple <- data.final %>%
-  group_by(as.character(density_levels), method, density_category, density, microsite) %>%
+  group_by(as.character(density_levels), method, density_category, density, microsite, phylum) %>%
   summarise(animals = sum(daily_animal_totals), richness = n()) %>%
   rename(density_levels = 'as.character(density_levels)')
 
@@ -256,7 +256,7 @@ final.data <- merge(final.data, density_simple7)
 ```{r}
 ##Shrub Density v Animal Density
 Abundance <- ggplot(final.data, aes(density, animals, color = microsite),show.legend=FALSE) +
-  geom_point(size = -1) +
+  geom_point(size = 0.5) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "A")+
@@ -267,7 +267,7 @@ Abundance <- ggplot(final.data, aes(density, animals, color = microsite),show.le
 ```{r}
 ##Shrub Density v Animal Richness
 Richness<- ggplot(final.data, aes(density, richness, color = microsite),show.legend=FALSE) + 
-  geom_point(size = -1) +
+  geom_point(size = 0.5) +
   facet_wrap(~phylum) +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "B")+
@@ -276,21 +276,7 @@ Richness<- ggplot(final.data, aes(density, richness, color = microsite),show.leg
   labs(x = "Shrub density", y = "Animal richness")
 ```
 
-```{r}
-##Evenness v Animal Density
-evenness <- ggplot(final.data, aes(density, Evenness, color = microsite)) + 
-  geom_point(size = -1) +
-  facet_wrap(~phylum) +
-  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
-  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "C")+
-  geom_smooth(method = lm, se = TRUE) + 
-  labs(x = "Shrub density", y = "Evenness")
-```
 
-```{r}
-###Figure 1
-ggarrange(Abundance, Richness, evenness, nrow = 2, ncol = 2, align = "v", heights = 10, common.legend = TRUE, legend = "right")
-```
 ```{r}
 ###Percent Pressence Data
 percent_presence <- data.final %>%
@@ -388,18 +374,13 @@ emtrends(m27,pairwise ~ microsite | phylum, var = "density")
 ```
 
 ```{r}
-#Stat analysis for simpson
-m17 <- glm(Simpson ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoisson", data = final.data)
-anova(m17, test = "Chisq")
-e17 <- emmeans(m17, pairwise~microsite|phylum)
-e17
-```
-```{r}
 #Stat analysis for Evenness
 m18 <- glm(Evenness ~ density*microsite*phylum+RDM+max_temp+cover, family = "quasipoisson", data = final.data)
 anova(m18, test = "Chisq")
 e18 <- emmeans(m18, pairwise~microsite|phylum)
 e18
+e29 <- emmeans(m18, pairwise~phylum|RDM)
+e29
 ```
 ###Appendix Figures
 ```{r}
@@ -408,11 +389,11 @@ site.4 <- read.csv("Site 4 Data Sheet.csv")
 #Map for appendix
 library(ggmap)
 register_google(key="AIzaSyBurG6FR6I4uc_nRUr6TY118dCsnM0tsiE")
-carrizo4 <- get_map(location = c(lon = -119.6287, lat = 35.11941), zoom = 18, maptype = "satellite")
+carrizo4 <- get_map(location = c(lon = -119.6287, lat = 35.11941), zoom = 17, maptype = "satellite")
 carrizo4
 site.wide.map2 <- ggmap(carrizo4)
 site.wide.map2 <- site.wide.map2 +
-  geom_point(data=site.4, aes(x=shrub.lng, y=shrub.lat, color = Site), alpha = 6/10, size =2, show.legend = FALSE) +
+  geom_point(data=site.4, aes(x=site.lng, y=site.lat, color = Site), alpha = 1, size =5, show.legend = FALSE) +
   labs(x = "longitude", y = "latitude") + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
 site.wide.map2
 ```
@@ -421,11 +402,11 @@ site.3 <- read.csv("Site 3 Data Sheet.csv")
 #Map for appendix
 library(ggmap)
 register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
-carrizo3 <- get_map(location = c(lon = -119.67300, lat = 35.16250), zoom = 18, maptype = "satellite")
+carrizo3 <- get_map(location = c(lon = -119.67300, lat = 35.16250), zoom = 17, maptype = "satellite")
 carrizo3
 site.wide.map1 <- ggmap(carrizo3)
 site.wide.map1 <- site.wide.map1 +
-  geom_point(data=site.3, aes(x=shrub.lng, y=shrub.lat, color = Site), alpha = 6/10, size =2, show.legend = FALSE) +
+  geom_point(data=site.3, aes(x=site.lng, y=site.lat, color = Site), alpha = 1, size =5, show.legend = FALSE) +
   labs(x = "longitude", y = "latitude") + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
 site.wide.map1
 ```
@@ -483,7 +464,7 @@ ggplot(final.data, aes(RDM, animals, color = microsite)) +
 ggplot(final.data, aes(max_temp, animals, color = microsite)) +
   geom_point(size = -1) +
   facet_wrap(~phylum) +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
   geom_smooth(method = lm, se = TRUE) + 
   labs(x = "Max Temperature", y = "animal density")
 ```
@@ -491,7 +472,7 @@ ggplot(final.data, aes(max_temp, animals, color = microsite)) +
 ggplot(final.data, aes(cover, animals, color = microsite)) +
   geom_point(size = -1) +
   facet_wrap(~phylum) +
-  scale_color_brewer(palette = "Set1") + theme_classic() +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
   geom_smooth(method = lm, se = TRUE) + 
   labs(x = "Shrub Cover", y = "animal density")
 ```
@@ -504,12 +485,13 @@ capture.output(write.table(list), file = "Animal List.csv")
 ```
 ```{r}
 #Appendix E Contrast of sampling methods
-ggplot(data_simple, aes(density, animals, color = method)) +
+measurefig <- ggplot(data_simple, aes(density, animals, color = method)) + facet_wrap(~phylum) +
   geom_boxplot() +
   scale_color_brewer(palette = "Set1") +
   scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
   theme_classic() + 
   labs(x = "Shrub Density", y = "Animals Observed")
+measurefig
 ```
 
 ```{r}
@@ -571,3 +553,12 @@ permutest(m03, pairwise = TRUE, permutations = 99)
 m03.HSD <- TukeyHSD(m03)
 boxplot(m03)
 ```
+
+```{r}
+m44 <- glm(RDM ~ density*microsite*phylum+max_temp+cover, family = "quasipoisson", data = final.data)
+anova(m44, test = "Chisq")
+e44 <- emmeans(m44, pairwise~microsite)
+e44
+emtrends(m44,pairwise ~ microsite | density, var = "density")
+```
+

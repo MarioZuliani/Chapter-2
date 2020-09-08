@@ -1428,13 +1428,15 @@ animal_by_plot_phylum$percent_presence <- animal_presence_phylum
 
 ```{r}
 animal_by_plot_phylum$Species <- factor(animal_by_plot_phylum$species, levels = c("Andrena nigripes", "Calathus ruficollis", "Dasymutilla aureola", "Dicolonus simplex", "Hippodamia convergens", "Icaricia acmon", "Oedaleonotus enigma", "Pepsis formos", "Rhionaeschna multicolor","small mammal", "Ammospermophilus nelsoni", "Dipodomys ingens", "Otospermophilus beecheyi", "Perognathus inornatus", "Vulpes macrotis", "Lepus californicus", "Aspidoscelis tigris", "Leopard Lizard", "Uta stansburiana","Crotalus oreganus", "Pituophis catenifer", "Buteo jamaicensis", "Corvus corax", "Calypte anna","Chondestes grammacus", "Geococcyx californianus"))
+
+animal_by_plot_phylum + scale_colour_manual(values = c("#00AFBB", "Calathus ruficollis", "Dasymutilla aureola", "Dicolonus simplex", "Hippodamia convergens", "Icaricia acmon", "Oedaleonotus enigma", "Pepsis formos", "Rhionaeschna multicolor","small mammal", "Ammospermophilus nelsoni", "Dipodomys ingens", "Otospermophilus beecheyi", "Perognathus inornatus", "Vulpes macrotis", "Lepus californicus", "Aspidoscelis tigris", "Leopard Lizard", "Uta stansburiana","Crotalus oreganus", "Pituophis catenifer", "Buteo jamaicensis", "Corvus corax", "Calypte anna","Chondestes grammacus", "Geococcyx californianus"))
 ```
 
 ```{r}
 phylumbargraph <- ggplot(animal_by_plot_phylum, aes(as.factor(density), percent_presence, fill = Species, order = as.factor(Species))) +
   geom_bar(stat = "identity") + facet_wrap(~phylum) +
-  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)")
-phylumbargraph
+  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)") 
+phylumbargraph 
 ```
 
 ```{r}
@@ -1444,16 +1446,16 @@ communitybar <- ggarrange(micrositebargraph, phylumbargraph, common.legend = TRU
 ```{r}
 library(gridExtra)
 library(cowplot)
-legends <- get_legend(Abundance) 
+legends <- get_legend(Abundance)
 ```
 
 ```{r}
-grid.arrange(Abundance, Richness, evenness, legends, ncol=2, nrow =2, layout_matrix = cbind(c(1,2,3)))
+grid.arrange(Abundance, Richness, evenness, legends, ncol=2, nrow =2, layout_matrix = cbind(c(1,2,3))) 
 ```
 ```{r}
 d1 <- glm(animals ~ density*microsite*phylum + method, family = "quasipoisson", data = data_simple)
 anova(d1, test = "Chisq")
-de1 <- emmeans(d1, pairwise~ method | phylum, var = "density")
+de1 <- emmeans(d1, pairwise~ method, var = "density")
 de1
 ```
 ```{r}
@@ -1476,7 +1478,7 @@ de4
 ```
 ```{r}
 d5<- glm(RDM ~ density*microsite*phylum*animals, family = "quasipoisson", data = final.data)
-anova(d5, test = "Chisq")
+anova(d5, test = "Chisq")anova(d5, test = "Chisq")
 de5 <- emmeans(d5, pairwise~microsite|phylum)
 de5
 ```
@@ -1501,14 +1503,14 @@ de8
 ```
 
 ```{r}
-d9<- glm(RDM ~ density*microsite*phylum*richness, family = "quasipoisson", data = final.data)
+d9<- glm(cover ~ density*microsite*phylum*richness, family = "quasipoisson", data = final.data)
 anova(d9, test = "Chisq")
 de9 <- emmeans(d9, pairwise~microsite|phylum)
 de9
 ```
 
 ```{r}
-d10<- glm(RDM ~ density*microsite*phylum*Evenness, family = "quasipoisson", data = final.data)
+d10<- glm(cover ~ density*microsite*phylum*Evenness, family = "quasipoisson", data = final.data)
 anova(d10, test = "Chisq")
 de10 <- emmeans(d10, pairwise~microsite|phylum)
 de10
@@ -1586,12 +1588,13 @@ rdmabundance <- ggplot(final.data, aes(RDM, animals, color = microsite)) +
   scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
   geom_smooth(method = lm, se = TRUE) + theme(axis.title.x = element_blank()) + labs(tag = "A")+
   labs(x = "Residual Dry Matter", y = "Animal abundance")
-rdmevenness <- ggplot(final.data, aes(RDM, Evenness, color = microsite)) +
+rdmevenness <- ggplot(final.data2, aes(RDM, Evenness, color = microsite)) +
   geom_point(size = 0.5) +
   facet_wrap(~phylum) +
   scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none") +
   geom_smooth(method = lm, se = TRUE) + labs(tag = "C")+
   labs(x = "Residual Dry Matter (g)", y = "Evenness")
+rdmevenness
 ```
 ```{r}
 figure4 <- ggarrange(rdmabundance, RDMrichness, rdmevenness, ncol = 1, align = "v")
@@ -1620,5 +1623,267 @@ temprichness <- ggplot(final.data, aes(max_temp, richness, color = microsite)) +
 ```{r}
 figure5 <- ggarrange(tempabundance, temprichness, tempevenness, ncol = 1, align = "v", common.legend = TRUE, legend = "right")
 figure5
+```
+
+```{r}
+m30 <- glm(animals ~ density*microsite*phylum, family = "poisson", data = percent_presence)
+anova(m30, test = "Chisq")
+e30 <- emmeans(m30, pairwise~microsite|phylum)
+e30
+```
+```{r}
+library(RColorBrewer)
+ggplot(animal_by_plot_phylum, aes(as.factor(density), percent_presence, fill = Species, order = as.factor(Species))) +
+  geom_bar(stat = "identity") + facet_wrap(~phylum) + scale_fill_brewer(palette="Spectral")
+  labs(fill = "", x = "Shrub density", y= "Percent Presence (%)") 
+```
+
+```{r}
+
+data_RDM3 <- RDM %>%
+  group_by(as.character(plot), density, microsite) %>%
+  summarise(RDM = mean(RDM_g)) %>%
+  rename(plot = 'as.character(plot)')
+names(data_RDM3)[1] <- "plot"
+
+newclimate <- read_csv("Carrizo_micronet.csv")
+
+data_climate3 <- newclimate %>%
+  group_by(as.character(plot), microsite) %>%
+  summarise(mean_temp = mean(temp), max_temp = max(temp)) %>%
+  rename(plot = 'as.character(plot)')
+names(data_climate3)[1] <- "plot"
+
+newrdm.climate <- merge(data_climate3, data_RDM3, all = TRUE)
+
+density_simple8 <- data.final %>%
+  group_by(as.character(plot), density, phylum, daily_animal_totals, microsite) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(plot = 'as.character(plot)')
+newvegandata <- merge(density_simple8, newrdm.climate, all = TRUE)
+
+```
+
+```{r}
+newvegandata <- newvegandata %>%
+  group_by(plot, density, microsite, phylum, daily_animal_totals, animals) %>%
+  summarise(captures = sum(animals))
+
+newvegandata$density <- gsub(" ", "", newvegandata$density)
+newvegandata$density <- as.factor(newvegandata$density)
+newvegandata$uniID <- paste(newvegandata$plot, newvegandata$density)
+str(vegandata)
+
+library(dplyr)
+newvegandata <- newvegandata %>% 
+  ungroup()%>%
+  dplyr::select(uniID, daily_animal_totals, phylum, captures)
+newvegandata <- newvegandata %>% group_by(uniID, phylum, daily_animal_totals) %>% summarise(captures = sum(captures))
+
+newcommvegan <- newvegandata %>% spread(daily_animal_totals, captures)
+newcommvegan[is.na(newcommvegan)] <- 0
+
+newcommvegan <- newcommvegan %>%
+  ungroup() %>%
+  dplyr::select(-uniID, -phylum)
+```
+
+```{r}
+newsitefinal <- read_csv("new site density shortcut.csv")
+
+final.data2 <- merge(density_simple8, newsitefinal)
+
+final.data2fixed <- subset(final.data2, select = -c(plot, daily_animal_totals, Site, site.number, site.density))
+```
+```{r}
+newsimpsonfinal <- diversity(newcommvegan, index = "simpson")
+HFinal <- diversity(newcommvegan)
+SFinal <- specnumber(newcommvegan)
+NewEvenness <- HFinal/log(SFinal)
+newsitefinal$Simpson <- newsimpsonfinal
+newsitefinal$Evenness <- NewEvenness
+```
+
+
+```{r}
+final.data2 <- merge(density_simple8, newsitefinal, all = TRUE)
+
+Evenness <- ggplot(final.data2, aes(density, Evenness, color = microsite)) + 
+  geom_point(size = 0.5) +
+  facet_wrap(~phylum) +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "C")+
+  geom_smooth(method = lm, se = TRUE) + 
+  labs(x = "Shrub density", y = "Evenness")
+Evenness
+```
+```{r}
+###Evenness
+newfinaldata <- merge(final.data2, newrdm.climate )
+m100 <- glm(Evenness ~ density*microsite*phylum+RDM+max_temp, family = "quasipoisson", data = newfinaldata)
+anova(m100, test = "Chisq")
+e100 <- emmeans(m100, pairwise~microsite|density)
+e100
+```
+ 
+```{r}
+newfinaldata <- merge(final.data2, newrdm.climate )
+m100 <- glm(RDM ~ density*microsite*phylum*Evenness, family = "quasipoisson", data = newfinaldata)
+anova(m100, test = "Chisq")
+e100 <- emmeans(m100, pairwise~microsite|phylum)
+e100
+```
+
+
+
+```{r}
+newphoto <- read_csv("Carrizo Shrub Photo density Sheet.csv")
+newshortcut <- read_csv("new site density shortcut.csv")
+newphotodata <- merge(newphoto, newshortcut)
+
+newmasterphoto <- newphotodata %>%
+  group_by(plot, shrub.count, Measure, microsite) %>%
+  summarise(captures = sum(animal.hit), n = n()) %>% mutate(rate = captures/n) %>% na.omit()
+
+
+```
+```{r}
+colnames(photo)[19] = "species"
+colnames(photo)[15] = "density_category"
+phylumphoto <- merge(photo, animal.data, all = TRUE)
+
+
+newdata <- phylumphoto %>%
+  group_by(density_category, microsite, phylum) %>%
+  summarise(captures = sum(animal.hit), n = n(), animal.richness = n_distinct(species)-1) %>% mutate(rate = (captures/n)*100)
+colnames(newdata)[3] = "site.density"
+colnames(site)[2] = "site"
+
+
+```
+
+```{r}
+write.csv(newdata, "newdata.csv")
+
+sitephoto <- read_csv("newdatarate.csv")
+```
+
+
+```{r}
+capturerate <- ggplot(sitephoto, aes(shrub.count, rate, color = microsite)) +
+  geom_point(stat = "identity") + geom_point(size = 0.5) + scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + geom_smooth(method = lm, se = TRUE) + facet_wrap(~phylum)+ 
+   labs(x = "Shrub density", y = "Photo Capture Rate (%)")
+capturerate
+```
+```{r}
+m101 <- glm(rate~shrub.count*microsite*phylum, family = "quasipoisson", data = sitephoto)
+m101
+anova(m101, test = "Chisq")
+e111 <- emmeans(m101, pairwise~microsite|phylum)
+e111
+e112 <- emmeans(m101, pairwise~microsite|phylum)
+e112
+```
+
+```{r}
+withoutcams <- merge(masterfocal, mastertransect, all = TRUE) %>% na.omit()
+density_simple9 <- withoutcams %>%
+  group_by(as.character(density_level), plot, microsite) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_level)')
+data.no.cam <- merge(density_simple9, site)
+
+final.data.nocam <- merge(density_simple9, rdm.climate, all = TRUE)
+```
+```{r}
+write.csv(data.final, "data_no_cam.csv")
+```
+```{r}
+nocamdata <- read_csv("data_no_cam2.csv")
+nocamdata <- nocamdata %>% na.omit()
+
+nocamdata <- nocamdata %>%
+  group_by(as.character(density_levels), plot, density, microsite, phylum) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+
+nocamdata <- merge(nocamdata, rdm.climate)
+```
+
+
+```{r}
+
+nocamAbundance <- ggplot(nocamdata, aes(density, animals, color = microsite),show.legend=FALSE) +
+  geom_point(size = 0.5) +
+  facet_wrap(~phylum) +
+  scale_x_continuous(breaks = c(0,2,4,6,8,10,12)) +
+  scale_color_brewer(palette = "Set1") + theme_classic() + theme(legend.position = "none")+ labs(tag = "B")+
+  geom_smooth(method = lm, se = TRUE) + 
+  labs(x = "Shrub density", y = "Animal density")
+nocamAbundance
+```
+```{r}
+m102 <- glm(animals ~ density*microsite+phylum+RDM+mean_temp, family = "quasipoisson", data = nocamdata)
+anova(m102, test = "Chisq")
+e102 <- emmeans(m102, pairwise~microsite|phylum)
+e102
+```
+```{r}
+sensitivity <- ggarrange(Abundance, nocamAbundance, ncol = 1, align = "v", heights = 10)
+sensitivity
+```
+```{r}
+newanimals <- read_csv("animals_revised.csv")
+finalanimals <- newanimals %>%
+  group_by(plot, phylum, species, microsite,daily_animal_totals) %>%
+  summarise(animals = sum(daily_animal_totals), richness = n()) %>%
+  rename(density_levels = 'as.character(density_levels)')
+```
+
+```{r}
+m100 <- glm( ~ density*microsite*phylum+RDM+max_temp, family = "quasipoisson", data = newfinaldata)
+anova(m100, test = "Chisq")
+e100 <- emmeans(m100, pairwise~microsite|phylum)
+e100
+```
+
+```{r}
+ggplot(data_species, aes(fill=microhabitat, y=counts, x=species)) +
+  geom_bar(position="fill", stat="identity") +
+    scale_fill_manual(values=c("#A2D9CE", "#F7DC6F", "#F1948A")) +
+  facet_wrap(~season) +
+  theme_classic() +
+  coord_flip() +
+  labs(y="Percent Abundance", x="Species") +
+  theme(legend.title = element_blank())
+```
+
+```{r}
+ggplot(animal_by_plot_phylum, aes(as.factor(Species), percent_presence, fill=as.factor(density))) +
+  geom_bar(position="fill", stat="identity") +
+  facet_wrap(~microsite) +
+  theme_classic() +
+  coord_flip() +
+  labs(y="Relative Proportions (%)", x="Species") +
+  guides(fill=guide_legend(title="shrub density"))
+```
+
+```{r}
+
+```
+
+```{r}
+newsite3 <- read_csv("site 3 shortcut.csv")
+
+library(ggmap)
+register_google(key="AIzaSyBpfKtYrkYVS3LEJSjV1cIHeYrxJPsPX4U")
+newcarrizo3 <- get_map(location = c(lon = -119.67300, lat = 35.16250), zoom = 17, maptype = "satellite")
+newcarrizo3
+newsite.wide.map1 <- ggmap(newcarrizo3)
+newsite.wide.map1 <- site.wide.map1 +
+  geom_point(data=newsite3, aes(x=site.lng, y=site.lat, color = Site), alpha = 1/3, size =5, show.legend = FALSE) +
+  labs(x = "longitude", y = "latitude") + theme(axis.title.x = element_blank()) + theme(axis.title.y = element_blank())
+newsite.wide.map1
 ```
 
